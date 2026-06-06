@@ -1,5 +1,6 @@
 const iconPaths = {
   "arrow-right": [["path", "M5 12h14"], ["path", "m12 5 7 7-7 7"]],
+  "arrow-down": [["path", "M12 5v14"], ["path", "m5 12 7 7 7-7"]],
   "arrow-up": [["path", "M12 19V5"], ["path", "m5 12 7-7 7 7"]],
   "badge": [["path", "M3.85 8.62a4 4 0 0 1 4.78-4.78 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.76 4 4 0 0 1-4.78 4.78 4 4 0 0 1-6.74 0 4 4 0 0 1-4.78-4.78 4 4 0 0 1 0-6.76Z"], ["circle", "12 12 3"]],
   "box": [["path", "M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"], ["path", "m3.3 7 8.7 5 8.7-5"], ["path", "M12 22V12"]],
@@ -9,6 +10,7 @@ const iconPaths = {
   "clock": [["circle", "12 12 10"], ["path", "M12 6v6l4 2"]],
   "download": [["path", "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"], ["path", "M7 10l5 5 5-5"], ["path", "M12 15V3"]],
   "feather": [["path", "M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5Z"], ["path", "M16 8 2 22"], ["path", "M17.5 15H9"]],
+  "file-cv": [["path", "M6 3h8l4 4v14H6Z"], ["path", "M14 3v5h5"], ["path", "M9 13h6"], ["path", "M9 17h4"], ["path", "m16 18 2 2 3-4"]],
   "frame": [["path", "M5 3h4"], ["path", "M15 3h4"], ["path", "M5 21h4"], ["path", "M15 21h4"], ["path", "M3 5v4"], ["path", "M21 5v4"], ["path", "M3 15v4"], ["path", "M21 15v4"], ["rect", "7 7 10 10 2"]],
   "grid": [["rect", "3 3 7 7 1"], ["rect", "14 3 7 7 1"], ["rect", "14 14 7 7 1"], ["rect", "3 14 7 7 1"]],
   "image": [["rect", "3 3 18 18 2"], ["circle", "9 9 2"], ["path", "m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"]],
@@ -35,7 +37,8 @@ const iconPaths = {
   "tv": [["rect", "3 7 18 13 2"], ["path", "m8 3 4 4 4-4"]],
   "type": [["path", "M4 7V4h16v3"], ["path", "M9 20h6"], ["path", "M12 4v16"]],
   "user-round": [["circle", "12 8 5"], ["path", "M20 21a8 8 0 0 0-16 0"]],
-  "waves": [["path", "M2 6c2.5 0 2.5 2 5 2s2.5-2 5-2 2.5 2 5 2 2.5-2 5-2"], ["path", "M2 12c2.5 0 2.5 2 5 2s2.5-2 5-2 2.5 2 5 2 2.5-2 5-2"], ["path", "M2 18c2.5 0 2.5 2 5 2s2.5-2 5-2 2.5 2 5 2 2.5-2 5-2"]]
+  "waves": [["path", "M2 6c2.5 0 2.5 2 5 2s2.5-2 5-2 2.5 2 5 2 2.5-2 5-2"], ["path", "M2 12c2.5 0 2.5 2 5 2s2.5-2 5-2 2.5 2 5 2 2.5-2 5-2"], ["path", "M2 18c2.5 0 2.5 2 5 2s2.5-2 5-2 2.5 2 5 2 2.5-2 5-2"]],
+  "wechat": [["path", "M10.2 15.2a6.3 5.5 0 1 1 1.1-9.5"], ["path", "M7 15.8 4.4 17l.8-2.3"], ["path", "M12.6 10.2a5 4.4 0 1 1 2.7 8.1"], ["path", "M17.6 18.5 20 19.6l-.7-2.2"], ["circle", "7.8 9.7 .35"], ["circle", "11.2 9.7 .35"], ["circle", "14.7 13.6 .35"], ["circle", "17.5 13.6 .35"]]
 };
 
 function renderIcons() {
@@ -361,20 +364,81 @@ function setupCarousel() {
 function setupNavigation() {
   const navLinks = [...document.querySelectorAll(".main-nav a")];
   const backTop = document.querySelector(".back-top");
+  const header = document.querySelector(".site-header");
+  const targetCache = new Map();
+  let cachedHeaderOffset = 0;
+  let navFrame = 0;
 
   if (!navLinks.length) return;
 
+  function normalizeHash(hash) {
+    if (!hash || hash === "#") return "";
+    return hash.startsWith("#") ? hash : `#${hash}`;
+  }
+
+  function measureHeaderOffset() {
+    const headerHeight = header?.getBoundingClientRect().height || 0;
+    const breathingRoom = window.innerWidth <= 760 ? 18 : 14;
+    return Math.ceil(headerHeight + breathingRoom);
+  }
+
+  function syncScrollOffset() {
+    const nextOffset = measureHeaderOffset();
+    if (nextOffset !== cachedHeaderOffset) {
+      cachedHeaderOffset = nextOffset;
+      document.documentElement.style.setProperty("--anchor-offset", `${cachedHeaderOffset}px`);
+    }
+
+    return cachedHeaderOffset;
+  }
+
+  function getCurrentHeaderOffset() {
+    return cachedHeaderOffset || syncScrollOffset();
+  }
+
+  function resolveHashTarget(hash) {
+    const normalizedHash = normalizeHash(hash);
+    if (!normalizedHash) return null;
+
+    if (targetCache.has(normalizedHash)) {
+      return targetCache.get(normalizedHash);
+    }
+
+    const selector = normalizedHash === "#home" ? ".hero-panel" : normalizedHash;
+    let target = null;
+
+    try {
+      target = document.querySelector(selector);
+    } catch {
+      target = null;
+    }
+
+    targetCache.set(normalizedHash, target);
+    return target;
+  }
+
   const sectionTargets = navLinks
     .map((link) => {
-      const href = link.getAttribute("href");
-      if (!href?.startsWith("#")) return null;
-      const target = href === "#home" ? document.querySelector(".hero-panel") : document.querySelector(href);
+      const href = normalizeHash(link.getAttribute("href"));
+      const target = resolveHashTarget(href);
       return target ? { href, target } : null;
     })
     .filter(Boolean);
 
+  function getTargetTop(target, href) {
+    if (href === "#home" || target.classList.contains("hero-panel")) return 0;
+    const rawTop = target.getBoundingClientRect().top + window.scrollY;
+    return Math.max(0, Math.round(rawTop - getCurrentHeaderOffset()));
+  }
+
+  function setActiveHref(activeHref) {
+    navLinks.forEach((link) => {
+      link.classList.toggle("active", normalizeHash(link.getAttribute("href")) === activeHref);
+    });
+  }
+
   function updateActiveNav() {
-    const marker = window.scrollY + window.innerHeight * 0.46;
+    const marker = window.scrollY + getCurrentHeaderOffset() + 6;
     let activeHref = "#home";
 
     sectionTargets.forEach(({ href, target }) => {
@@ -382,26 +446,229 @@ function setupNavigation() {
       if (marker >= top) activeHref = href;
     });
 
-    navLinks.forEach((link) => {
-      link.classList.toggle("active", link.getAttribute("href") === activeHref);
+    setActiveHref(activeHref);
+  }
+
+  function getScrollBehavior(behavior) {
+    const reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    return reducedMotion ? "auto" : behavior;
+  }
+
+  function updateHash(hash, replace) {
+    if (!hash) return;
+
+    if (replace || window.location.hash === hash) {
+      window.history.replaceState(null, "", hash);
+      return;
+    }
+
+    window.history.pushState(null, "", hash);
+  }
+
+  function scrollToHash(hash, options = {}) {
+    const normalizedHash = normalizeHash(hash);
+    const target = resolveHashTarget(normalizedHash);
+    if (!target) return false;
+
+    syncScrollOffset();
+    setActiveHref(normalizedHash);
+
+    window.scrollTo({
+      top: getTargetTop(target, normalizedHash),
+      behavior: getScrollBehavior(options.behavior || "smooth")
+    });
+
+    if (options.updateHistory !== false) {
+      updateHash(normalizedHash, options.replace);
+    }
+
+    window.setTimeout(updateActiveNav, options.behavior === "auto" ? 0 : 360);
+    return true;
+  }
+
+  function handleAnchorClick(event) {
+    if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+    const href = event.currentTarget.getAttribute("href");
+    if (!href?.startsWith("#") || href === "#") return;
+    if (!resolveHashTarget(href)) return;
+
+    event.preventDefault();
+    scrollToHash(href, { behavior: "smooth" });
+  }
+
+  function settleInitialHash() {
+    syncScrollOffset();
+
+    if (!window.location.hash) {
+      updateActiveNav();
+      return;
+    }
+
+    const correctLanding = () => {
+      scrollToHash(window.location.hash, { behavior: "auto", replace: true });
+    };
+
+    window.requestAnimationFrame(correctLanding);
+    window.setTimeout(correctLanding, 120);
+    window.setTimeout(correctLanding, 420);
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener("click", handleAnchorClick);
+  });
+
+  function scheduleNavUpdate() {
+    if (navFrame) return;
+
+    navFrame = window.requestAnimationFrame(() => {
+      navFrame = 0;
+      updateActiveNav();
+      backTop?.classList.toggle("is-visible", window.scrollY > 560);
     });
   }
 
   window.addEventListener("scroll", () => {
-    updateActiveNav();
-    backTop?.classList.toggle("is-visible", window.scrollY > 560);
+    scheduleNavUpdate();
   }, { passive: true });
-  window.addEventListener("resize", updateActiveNav, { passive: true });
-  window.addEventListener("load", updateActiveNav, { passive: true });
 
-  backTop?.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+  window.addEventListener("resize", () => {
+    targetCache.clear();
+    syncScrollOffset();
+    updateActiveNav();
+  }, { passive: true });
+
+  window.addEventListener("load", settleInitialHash, { passive: true });
+  window.addEventListener("hashchange", () => {
+    if (window.location.hash) {
+      scrollToHash(window.location.hash, { behavior: "smooth", updateHistory: false });
+    }
+  });
+  window.addEventListener("popstate", () => {
+    if (window.location.hash) {
+      scrollToHash(window.location.hash, { behavior: "smooth", updateHistory: false });
+    } else {
+      scrollToHash("#home", { behavior: "smooth", updateHistory: false });
+    }
   });
 
-  updateActiveNav();
+  backTop?.addEventListener("click", () => {
+    scrollToHash("#home", { behavior: "smooth" });
+  });
+
+  settleInitialHash();
+}
+
+function setupContactJourney() {
+  const copyTargets = [...document.querySelectorAll(".contact-journey-item[data-copy]")];
+  const downloadButton = document.querySelector(".contact-journey-download");
+
+  async function copyToClipboard(text) {
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(text);
+      return;
+    }
+
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    textarea.setAttribute("readonly", "");
+    textarea.style.position = "fixed";
+    textarea.style.left = "-9999px";
+    textarea.style.top = "0";
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    textarea.remove();
+  }
+
+  function flashCopyTarget(target) {
+    target.classList.add("is-copied");
+
+    window.clearTimeout(target._copyTimer);
+    target._copyTimer = window.setTimeout(() => {
+      target.classList.remove("is-copied");
+    }, 1300);
+  }
+
+  async function handleCopy(target) {
+    const value = target.dataset.copy || "";
+    if (!value) return;
+
+    try {
+      await copyToClipboard(value);
+      flashCopyTarget(target);
+    } catch {
+      target.classList.add("is-copied");
+      window.clearTimeout(target._copyTimer);
+      target._copyTimer = window.setTimeout(() => target.classList.remove("is-copied"), 700);
+    }
+  }
+
+  copyTargets.forEach((target) => {
+    target.addEventListener("click", () => {
+      handleCopy(target);
+    });
+
+    target.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      event.preventDefault();
+      handleCopy(target);
+    });
+
+    target.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+      });
+    });
+  });
+
+  document.querySelectorAll(".contact-copy-button").forEach((button) => {
+    button.addEventListener("click", async () => {
+      const value = button.dataset.copy || "";
+      if (!value) return;
+
+      try {
+        await copyToClipboard(value);
+        button.classList.add("is-copied");
+      } catch {
+        button.classList.add("is-copied");
+      }
+    });
+  });
+
+  downloadButton?.addEventListener("click", async (event) => {
+    const href = downloadButton.getAttribute("href");
+    if (!href || href === "#") return;
+
+    event.preventDefault();
+
+    try {
+      const response = await fetch(href, { method: "HEAD", cache: "no-store" });
+      if (!response.ok) throw new Error("CV PDF missing");
+
+      const link = document.createElement("a");
+      link.href = href;
+      link.download = downloadButton.getAttribute("download") || "tiemadelong-cv.pdf";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    } catch {
+      const label = downloadButton.querySelector("small");
+      const original = label?.textContent || "";
+      if (label) label.textContent = "PLEASE ADD PDF";
+      downloadButton.classList.add("is-missing");
+
+      window.clearTimeout(downloadButton._downloadTimer);
+      downloadButton._downloadTimer = window.setTimeout(() => {
+        if (label) label.textContent = original;
+        downloadButton.classList.remove("is-missing");
+      }, 1800);
+    }
+  });
 }
 
 renderIcons();
 setupTheme();
 setupCarousel();
 setupNavigation();
+setupContactJourney();
