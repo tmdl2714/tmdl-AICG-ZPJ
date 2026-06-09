@@ -1,5 +1,13 @@
 ﻿const FEATURED_VERSION = "featured-scale-up-20260606";
 
+const FEATURED_CSS_ASSET_VERSIONS = {
+  "./assets/featured-ad-page-strict-reference.png": "featured-no-layer-20260606",
+  "./assets/featured-banner-bg-frost.png": "frost-bg-20260605",
+  "./assets/featured-poster-bg-frost.png": "frost-bg-20260605",
+  "./assets/featured-ui-bg-frost.png": "frost-bg-20260605",
+  "./assets/featured-ip-bg-frost.png": "ip-bg-replaced-20260606"
+};
+
 const featuredProjects = [
   { slug: "ad", nav: "01 广告", next: "banner", tone: "deep" },
   { slug: "banner", nav: "02 Banner", next: "poster", tone: "light" },
@@ -17,8 +25,41 @@ function getFeaturedProject() {
   return featuredProjectMap.get(slug) || featuredProjects[0];
 }
 
-function asset(path) {
-  return `${path}?v=${FEATURED_VERSION}`;
+function asset(path, version = FEATURED_VERSION) {
+  return `${path}?v=${version}`;
+}
+
+function cssAsset(path) {
+  return asset(path, FEATURED_CSS_ASSET_VERSIONS[path] || FEATURED_VERSION);
+}
+
+function imageAttrs({ loading = "lazy", fetchpriority = "low", hidden = false } = {}) {
+  return `${hidden ? " aria-hidden=\"true\"" : ""} loading="${loading}" decoding="async" fetchpriority="${fetchpriority}"`;
+}
+
+const primaryImageAttrs = imageAttrs({ loading: "eager", fetchpriority: "high" });
+const deferredImageAttrs = imageAttrs({ loading: "lazy", fetchpriority: "low", hidden: true });
+
+function setupDeferredVideos(root) {
+  root.querySelectorAll("video[data-src]").forEach((video) => {
+    let loaded = false;
+    const loadVideo = () => {
+      if (loaded) return;
+      loaded = true;
+      video.src = video.dataset.src;
+      video.load();
+    };
+
+    video.addEventListener("error", () => {
+      video.removeAttribute("src");
+      video.load();
+    }, { once: true });
+
+    ["pointerenter", "focus", "pointerdown"].forEach((eventName) => {
+      video.addEventListener(eventName, loadVideo, { once: true });
+    });
+    video.addEventListener("touchstart", loadVideo, { once: true, passive: true });
+  });
 }
 
 function renderFrostNav(activeSlug) {
@@ -70,9 +111,9 @@ function renderDarkNav(activeSlug, prefix) {
 function renderAdReferencePage() {
   return `
     <div class="featured-ad-reference-page" aria-label="01广告精品项目二级页面">
-      <img class="featured-ad-reference-art" src="${asset("./assets/featured-ad-page-strict-reference.png")}" alt="01广告精品项目二级页面最终效果">
+      <img class="featured-ad-reference-art" src="${cssAsset("./assets/featured-ad-page-strict-reference.png")}" alt="01广告精品项目二级页面最终效果"${primaryImageAttrs}>
       <div class="ad-work-video-frame" aria-label="01广告视频作品">
-        <video class="ad-work-video" src="${asset("./assets/featured-ad-video-baijiu.mp4")}" controls preload="metadata" playsinline></video>
+        <video class="ad-work-video" data-src="${asset("./assets/featured-ad-video-baijiu.mp4")}" controls preload="metadata" playsinline></video>
       </div>
       ${renderDarkNav("ad", "ad-ref")}
       <section class="project-process-reserved" hidden aria-hidden="true"></section>
@@ -90,11 +131,11 @@ function renderAdReferencePage() {
 function renderBannerReferencePage() {
   return `
     <div class="featured-frost-page featured-banner-frost-page" aria-label="02 Banner精品项目二级页面">
-      <img class="featured-frost-bg" src="${asset("./assets/featured-banner-bg-frost.png")}" alt="">
+      <img class="featured-frost-bg" src="${cssAsset("./assets/featured-banner-bg-frost.png")}" alt=""${deferredImageAttrs}>
       ${renderFrostNav("banner")}
       <section class="featured-frost-stage" aria-label="02 Banner作品展示">
         <div class="featured-frost-panel banner-frost-panel">
-          <img class="banner-frost-art" src="${asset("./assets/featured-banner-art-baijiu.jpeg")}" alt="02 Banner精品项目作品展示">
+          <img class="banner-frost-art" src="${asset("./assets/featured-banner-art-baijiu.jpeg")}" alt="02 Banner精品项目作品展示"${primaryImageAttrs}>
         </div>
       </section>
       <section class="project-process-reserved" hidden aria-hidden="true"></section>
@@ -105,11 +146,11 @@ function renderBannerReferencePage() {
 function renderPosterReferencePage() {
   return `
     <div class="featured-frost-page featured-poster-frost-page" aria-label="03竖版海报精品项目二级页面">
-      <img class="featured-frost-bg" src="${asset("./assets/featured-poster-bg-frost.png")}" alt="">
+      <img class="featured-frost-bg" src="${cssAsset("./assets/featured-poster-bg-frost.png")}" alt=""${deferredImageAttrs}>
       ${renderFrostNav("poster")}
       <section class="featured-frost-stage" aria-label="03竖版海报作品展示">
         <div class="featured-frost-panel poster-frost-panel">
-          <img class="poster-frost-art" src="${asset("./assets/featured-poster-art-bridge.png")}" alt="03竖版海报精品项目作品展示">
+          <img class="poster-frost-art" src="${asset("./assets/featured-poster-art-bridge.png")}" alt="03竖版海报精品项目作品展示"${primaryImageAttrs}>
         </div>
       </section>
       <section class="project-process-reserved" hidden aria-hidden="true"></section>
@@ -121,7 +162,7 @@ function renderDramaReferencePage() {
   return `
     <div class="featured-drama-reference-page" aria-label="04动漫短剧精品项目二级页面">
       <div class="featured-drama-player-shell" aria-label="04动漫短剧视频模块">
-        <img class="featured-drama-player-art" src="${asset("./assets/featured-drama-player-crop.png")}" alt="04动漫短剧播放器模块">
+        <img class="featured-drama-player-art" src="${asset("./assets/featured-drama-player-crop.png")}" alt="04动漫短剧播放器模块"${primaryImageAttrs}>
       </div>
       ${renderDarkNav("drama", "drama-ref")}
       <section class="project-process-reserved" hidden aria-hidden="true"></section>
@@ -132,11 +173,11 @@ function renderDramaReferencePage() {
 function renderUiReferencePage() {
   return `
     <div class="featured-frost-page featured-ui-frost-page" aria-label="05 UI启动页精品项目二级页面">
-      <img class="featured-frost-bg" src="${asset("./assets/featured-ui-bg-frost.png")}" alt="">
+      <img class="featured-frost-bg" src="${cssAsset("./assets/featured-ui-bg-frost.png")}" alt=""${deferredImageAttrs}>
       ${renderFrostNav("ui")}
       <section class="featured-frost-stage" aria-label="05 UI启动页作品展示">
         <div class="featured-frost-panel ui-frost-panel">
-          <img class="ui-frost-art" src="${asset("./assets/featured-ui-card-reference.png")}" alt="05 UI启动页精品项目作品展示">
+          <img class="ui-frost-art" src="${asset("./assets/featured-ui-card-reference.png")}" alt="05 UI启动页精品项目作品展示"${primaryImageAttrs}>
         </div>
       </section>
       <section class="project-process-reserved" hidden aria-hidden="true"></section>
@@ -147,10 +188,10 @@ function renderUiReferencePage() {
 function renderIpReferencePage() {
   return `
     <div class="featured-frost-page featured-ip-frost-page" aria-label="06 IP设计精品项目二级页面">
-      <img class="featured-frost-bg" src="${asset("./assets/featured-ip-bg-frost.png")}" alt="">
+      <img class="featured-frost-bg" src="${cssAsset("./assets/featured-ip-bg-frost.png")}" alt=""${deferredImageAttrs}>
       ${renderFrostNav("ip")}
       <section class="featured-frost-stage" aria-label="06 IP设计作品展示">
-        <img class="ip-placement-art" src="${asset("./assets/featured-ip-art-reference.png")}" alt="06 IP设计精品项目作品展示">
+        <img class="ip-placement-art" src="${asset("./assets/featured-ip-art-reference.png")}" alt="06 IP设计精品项目作品展示"${primaryImageAttrs}>
       </section>
       <section class="project-process-reserved" hidden aria-hidden="true"></section>
     </div>
@@ -172,6 +213,8 @@ function renderFeaturedPage() {
   if (project.slug === "drama") root.innerHTML = renderDramaReferencePage();
   if (project.slug === "ui") root.innerHTML = renderUiReferencePage();
   if (project.slug === "ip") root.innerHTML = renderIpReferencePage();
+
+  setupDeferredVideos(root);
 }
 
 renderFeaturedPage();
