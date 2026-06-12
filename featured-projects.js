@@ -29,11 +29,24 @@ function cssAsset(path) {
   return asset(path, FEATURED_CSS_ASSET_VERSIONS[path] || FEATURED_VERSION);
 }
 
-function imageAttrs({ loading = "lazy", fetchpriority = "low", hidden = false } = {}) {
-  return `${hidden ? " aria-hidden=\"true\"" : ""} loading="${loading}" decoding="async" fetchpriority="${fetchpriority}"`;
+function imageAttrs({ loading = "lazy", decoding = "async", fetchpriority = "", hidden = false, width, height } = {}) {
+  return [
+    hidden ? "aria-hidden=\"true\"" : "",
+    loading ? `loading="${loading}"` : "",
+    decoding ? `decoding="${decoding}"` : "",
+    fetchpriority ? `fetchpriority="${fetchpriority}"` : "",
+    width ? `width="${width}"` : "",
+    height ? `height="${height}"` : ""
+  ].filter(Boolean).join(" ");
 }
 
-const primaryImageAttrs = imageAttrs({ loading: "eager", fetchpriority: "high" });
+const featuredImageAttrs = {
+  banner: imageAttrs({ width: 1600, height: 900 }),
+  poster: imageAttrs({ width: 900, height: 1200 }),
+  drama: imageAttrs({ width: 1672, height: 941 }),
+  ui: imageAttrs({ width: 900, height: 1260 }),
+  ip: imageAttrs({ width: 1500, height: 1000 })
+};
 
 function setupDeferredVideos(root) {
   root.querySelectorAll("video[data-src]").forEach((video) => {
@@ -107,7 +120,7 @@ function renderAdReferencePage() {
   return `
     <div class="featured-ad-reference-page" aria-label="01广告精品项目二级页面">
       <div class="ad-work-video-frame" aria-label="01广告视频作品">
-        <video class="ad-work-video" data-src="${asset("./video-02.mp4", "featured-ad-video-20260612")}" controls preload="metadata" playsinline></video>
+        <video class="ad-work-video" data-src="${asset("./video-02.mp4", "featured-ad-video-20260612")}" controls preload="metadata" playsinline width="1600" height="900"></video>
       </div>
       ${renderDarkNav("ad", "ad-ref")}
       <a class="ad-ref-hotspot ad-ref-back" href="./index.html#projects" aria-label="返回首页"></a>
@@ -127,7 +140,7 @@ function renderBannerReferencePage() {
       ${renderFrostNav("banner")}
       <section class="featured-frost-stage" aria-label="02 Banner作品展示">
         <div class="featured-frost-panel banner-frost-panel">
-          <img class="banner-frost-art" src="${asset("./assets/featured-banner-art-baijiu.jpeg")}" alt="02 Banner精品项目作品展示"${primaryImageAttrs}>
+          <img class="banner-frost-art" src="${asset("./assets/featured-banner-art-baijiu.jpeg")}" alt="02 Banner精品项目作品展示" ${featuredImageAttrs.banner}>
         </div>
       </section>
     </div>
@@ -140,7 +153,7 @@ function renderPosterReferencePage() {
       ${renderFrostNav("poster")}
       <section class="featured-frost-stage" aria-label="03竖版海报作品展示">
         <div class="featured-frost-panel poster-frost-panel">
-          <img class="poster-frost-art" src="${asset("./assets/featured-poster-art-bridge.png")}" alt="03竖版海报精品项目作品展示"${primaryImageAttrs}>
+          <img class="poster-frost-art" src="${asset("./assets/featured-poster-art-bridge.png")}" alt="03竖版海报精品项目作品展示" ${featuredImageAttrs.poster}>
         </div>
       </section>
     </div>
@@ -151,7 +164,7 @@ function renderDramaReferencePage() {
   return `
     <div class="featured-drama-reference-page" aria-label="04动漫短剧精品项目二级页面">
       <a class="featured-drama-player-shell" href="https://www.bilibili.com/video/BV1XZEe6KE9Z/" target="_blank" rel="noopener noreferrer" aria-label="打开《重生后，我撕了白莲妹妹》作品网页">
-        <img class="featured-drama-player-art" src="${asset("./封面.png", "featured-drama-rebirth-20260612")}" alt="重生后，我撕了白莲妹妹"${primaryImageAttrs}>
+        <img class="featured-drama-player-art" src="${asset("./封面.png", "featured-drama-rebirth-20260612")}" alt="重生后，我撕了白莲妹妹" ${featuredImageAttrs.drama}>
       </a>
       ${renderDarkNav("drama", "drama-ref")}
     </div>
@@ -164,7 +177,7 @@ function renderUiReferencePage() {
       ${renderFrostNav("ui")}
       <section class="featured-frost-stage" aria-label="05 UI启动页作品展示">
         <div class="featured-frost-panel ui-frost-panel">
-          <img class="ui-frost-art" src="${asset("./assets/featured-ui-card-reference.png")}" alt="05 UI启动页精品项目作品展示"${primaryImageAttrs}>
+          <img class="ui-frost-art" src="${asset("./assets/featured-ui-card-reference.png")}" alt="05 UI启动页精品项目作品展示" ${featuredImageAttrs.ui}>
         </div>
       </section>
     </div>
@@ -176,7 +189,7 @@ function renderIpReferencePage() {
     <div class="featured-frost-page featured-ip-frost-page" aria-label="06 IP设计精品项目二级页面">
       ${renderFrostNav("ip")}
       <section class="featured-frost-stage" aria-label="06 IP设计作品展示">
-        <img class="ip-placement-art" src="${asset("./assets/featured-ip-art-reference.png")}" alt="06 IP设计精品项目作品展示"${primaryImageAttrs}>
+        <img class="ip-placement-art" src="${asset("./assets/featured-ip-art-reference.png")}" alt="06 IP设计精品项目作品展示" ${featuredImageAttrs.ip}>
       </section>
     </div>
   `;
