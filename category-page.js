@@ -1,3 +1,8 @@
+const processStyleLink = document.createElement("link");
+processStyleLink.rel = "stylesheet";
+processStyleLink.href = "./category-process.css?v=unified-process-20260612";
+document.head.appendChild(processStyleLink);
+
 const pageRoot = document.querySelector("[data-category-page]");
 const requestedSlug = new URLSearchParams(window.location.search).get("cat") || document.body.dataset.category || "portrait";
 const current = CATEGORY_DATA[requestedSlug] ? requestedSlug : "portrait";
