@@ -63,6 +63,35 @@
       top: calc(var(--ref-stage-y) + var(--ref-stage-h) * 0.152) !important;
     }
 
+    body.featured-page[data-featured="ui"] .ui-frost-panel.ui-frost-gallery {
+      display: grid !important;
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+      align-items: start !important;
+      gap: clamp(10px, 1.25vw, 18px) !important;
+      width: calc(var(--ref-stage-w) * 0.72) !important;
+      max-width: min(1120px, 88vw) !important;
+      overflow: visible !important;
+    }
+
+    body.featured-page[data-featured="ui"] .ui-frost-work {
+      margin: 0 !important;
+      padding: clamp(5px, 0.55vw, 8px) !important;
+      border: 1px solid rgba(194, 224, 245, 0.42) !important;
+      border-radius: 24px !important;
+      background: rgba(238, 247, 253, 0.42) !important;
+      box-shadow: 0 18px 42px rgba(52, 88, 124, 0.2), inset 0 1px rgba(255, 255, 255, 0.58) !important;
+      backdrop-filter: blur(12px) saturate(1.1) !important;
+      -webkit-backdrop-filter: blur(12px) saturate(1.1) !important;
+    }
+
+    body.featured-page[data-featured="ui"] .ui-frost-gallery .ui-frost-art {
+      width: 100% !important;
+      height: auto !important;
+      border-radius: 18px !important;
+      object-fit: contain !important;
+      filter: drop-shadow(0 18px 28px rgba(46, 70, 104, 0.26)) !important;
+    }
+
     @media (max-width: 820px) {
       body.featured-page[data-featured="ad"] .ad-work-video-frame {
         top: 56% !important;
@@ -74,6 +103,20 @@
       body.featured-page[data-featured="drama"] .featured-drama-player-shell,
       body.featured-page[data-featured="ui"] .ui-frost-panel {
         top: max(118px, calc(var(--ref-stage-y) + var(--ref-stage-h) * 0.14)) !important;
+      }
+
+      body.featured-page[data-featured="ui"] .ui-frost-panel.ui-frost-gallery {
+        width: min(92vw, 720px) !important;
+        gap: 8px !important;
+      }
+
+      body.featured-page[data-featured="ui"] .ui-frost-work {
+        border-radius: 16px !important;
+        padding: 4px !important;
+      }
+
+      body.featured-page[data-featured="ui"] .ui-frost-gallery .ui-frost-art {
+        border-radius: 12px !important;
       }
     }
   </style>
@@ -89,7 +132,7 @@
   </script>
   <main data-featured-page></main>
 
-  <script src="./featured-projects.js?v=featured-ip-shanhai-20260612" defer></script>
+  <script src="./featured-projects.js?v=featured-ui-startup-20260612" defer></script>
   <script>
     (() => {
       const loadAdVideo = () => {
