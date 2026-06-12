@@ -167,6 +167,7 @@ function renderDramaReferencePage() {
     <div class="featured-drama-reference-page" aria-label="04动漫短剧精品项目二级页面">
       <a class="featured-drama-player-shell" href="https://www.bilibili.com/video/BV1XZEe6KE9Z/" target="_blank" rel="noopener noreferrer" aria-label="打开《重生后，我撕了白莲妹妹》作品网页">
         <img class="featured-drama-player-art" src="${asset("./封面.png", "featured-drama-rebirth-20260612")}" alt="重生后，我撕了白莲妹妹" ${featuredImageAttrs.drama}>
+        <span class="featured-drama-play-overlay" aria-hidden="true"><span></span></span>
       </a>
       ${renderDarkNav("drama", "drama-ref")}
     </div>
