@@ -68,11 +68,16 @@ const CATEGORY_DATA = {
     worksTitle: "案例展示",
     worksEn: "CASE STUDY",
     works: [
-      { type: "image", src: "./2-电商模特换装/换装作品/2-0.png", title: "换装案例 01", orientation: "outfit-work" },
-      { type: "image", src: "./2-电商模特换装/换装作品/2-3AI.jpg", title: "换装案例 02", orientation: "outfit-work" },
-      { type: "image", src: "./2-电商模特换装/换装作品/2-5AI.jpg", title: "换装案例 03", orientation: "outfit-work" },
-      { type: "image", src: "./2-电商模特换装/换装作品/2-7AI.jpeg", title: "换装案例 04", orientation: "outfit-work" },
-      { type: "image", src: "./2-电商模特换装/换装作品/2-12AI.jpeg", title: "换装案例 05", orientation: "outfit-work" }
+      { type: "image", src: "./2-电商模特换装/34cf39674ea047179e9a53663e1454b9.jpeg~tplv-a9rns2rl98-downsize_watermark_1_5_b.png", title: "AI换装 01", orientation: "outfit-work" },
+      { type: "image", src: "./2-电商模特换装/b50aaade3ad341a885ee0651f0d11164.jpeg~tplv-a9rns2rl98-downsize_watermark_1_5_b.png", title: "AI换装 02", orientation: "outfit-work" },
+      { type: "image", src: "./2-电商模特换装/b67598d46645401d949af9567fa7a49e.jpeg~tplv-a9rns2rl98-downsize_watermark_1_5_b.png", title: "AI换装 03", orientation: "outfit-work" },
+      { type: "image", src: "./2-电商模特换装/d49bfc380a7d48f7a6d9ed1f6f7a62ae.jpeg~tplv-a9rns2rl98-downsize_watermark_1_5_b.png", title: "AI换装 04", orientation: "outfit-work" },
+      { type: "image", src: "./2-电商模特换装/d634b2a1819740938b5897eece937163.jpeg~tplv-a9rns2rl98-downsize_watermark_1_5_b.png", title: "AI换装 05", orientation: "outfit-work" },
+      { type: "image", src: "./2-电商模特换装/1ffafcee4edb41d6adfa599ea929584b.jpeg~tplv-a9rns2rl98-downsize_watermark_1_5_b.png", title: "AI换装 06", orientation: "outfit-work" },
+      { type: "image", src: "./2-电商模特换装/3ca1b55ad36f403ca1dfc06bfeb0b487.jpeg~tplv-a9rns2rl98-downsize_watermark_1_5_b.png", title: "AI换装 07", orientation: "outfit-work" },
+      { type: "image", src: "./2-电商模特换装/4d7a2732a63b43758bbb98b20400846f.jpeg~tplv-a9rns2rl98-downsize_watermark_1_5_b.png", title: "AI换装 08", orientation: "outfit-work" },
+      { type: "image", src: "./2-电商模特换装/5c1856aff8b445209efc5f5230209064.jpeg~tplv-a9rns2rl98-downsize_watermark_1_5_b.png", title: "AI换装 09", orientation: "outfit-work" },
+      { type: "image", src: "./2-电商模特换装/17bb927e3f6543ed9694647423c5fdda.jpeg~tplv-a9rns2rl98-downsize_watermark_1_5_b.png", title: "AI换装 10", orientation: "outfit-work" }
     ],
     process: [
       { icon: "user-round", title: "01 模特素材", desc: "统一模特姿态与视觉方向" },
