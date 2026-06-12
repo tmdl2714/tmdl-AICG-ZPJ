@@ -44,9 +44,9 @@ const featuredImageAttrs = {
   banner: imageAttrs({ width: 1600, height: 900 }),
   poster: imageAttrs({ width: 900, height: 1200 }),
   drama: imageAttrs({ width: 1672, height: 941 }),
-  uiDm: imageAttrs({ width: 941, height: 1672 }),
-  uiDanmu: imageAttrs({ width: 853, height: 1844 }),
-  uiSky: imageAttrs({ width: 853, height: 1844 }),
+  uiDm: imageAttrs({ loading: "eager", width: 941, height: 1672 }),
+  uiDanmu: imageAttrs({ loading: "eager", width: 853, height: 1844 }),
+  uiSky: imageAttrs({ loading: "eager", width: 853, height: 1844 }),
   ip: imageAttrs({ width: 1536, height: 1024 })
 };
 
