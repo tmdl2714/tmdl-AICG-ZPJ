@@ -12,11 +12,28 @@ function nextSlug(slug) {
   return CATEGORY_NAV[(index + 1) % CATEGORY_NAV.length].slug;
 }
 
+function mediaDimensions(item) {
+  const orientation = item.orientation || "square";
+  if (["banner", "video-landscape", "video-link", "retouch-board", "ip-board", "symbol-board"].includes(orientation)) {
+    return { width: 1600, height: 900 };
+  }
+  if (["vertical", "outfit-work", "ui-launch"].includes(orientation) || current === "portrait") {
+    return { width: 900, height: 1200 };
+  }
+  return { width: 1000, height: 1000 };
+}
+
+function imageLoadingAttrs(item, extraAttrs = "") {
+  const { width, height } = mediaDimensions(item);
+  return `loading="lazy" decoding="async" width="${width}" height="${height}" ${extraAttrs}`.trim();
+}
+
 function mediaMarkup(item, extra = "") {
   if (item.type === "video") {
-    return `<video src="${item.src}" muted playsinline preload="metadata" ${extra}></video>`;
+    const { width, height } = mediaDimensions(item);
+    return `<video src="${item.src}" muted playsinline preload="metadata" width="${width}" height="${height}" ${extra}></video>`;
   }
-  return `<img src="${item.src}" alt="${item.title}" ${extra}>`;
+  return `<img src="${item.src}" alt="${item.title}" ${imageLoadingAttrs(item, extra)}>`;
 }
 
 function workCardMarkup(item, index) {
@@ -101,14 +118,14 @@ function renderCategoryPage() {
   const heroDesc = bannerCopy?.desc || category.desc;
   const heroSubtitle = usesTemplateBanner ? "" : `<strong>${category.subtitle}</strong>`;
   const portraitHeroFigure = isPortrait && category.hero
-    ? `<div class="portrait-hero-figure" aria-hidden="true"><img src="${category.hero}" alt=""></div>`
+    ? `<div class="portrait-hero-figure" aria-hidden="true"><img src="${category.hero}" alt="" loading="lazy" decoding="async" width="900" height="1200"></div>`
     : "";
   const posterHeroStage = isPoster && !usesTemplateBanner && category.heroWorks?.length
     ? `
       <div class="poster-hero-stage" aria-hidden="true">
         ${category.heroWorks.map((src, index) => `
           <figure class="${index === 0 ? "is-main" : ""}">
-            <img src="${src}" alt="">
+            <img src="${src}" alt="" loading="lazy" decoding="async" width="1600" height="900">
           </figure>
         `).join("")}
       </div>
