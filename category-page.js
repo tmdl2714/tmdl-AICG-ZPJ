@@ -19,6 +19,28 @@ function mediaMarkup(item, extra = "") {
   return `<img src="${item.src}" alt="${item.title}" ${extra}>`;
 }
 
+function workCardMarkup(item, index) {
+  const className = `work-card${item.orientation ? ` is-${item.orientation}` : ""}`;
+  const content = `
+            ${mediaMarkup(item)}
+            <span>${item.title}</span>
+          `;
+
+  if (item.href) {
+    return `
+          <a class="${className}" href="${item.href}" target="_blank" rel="noopener noreferrer" data-work-index="${index}" aria-label="打开${item.title}作品页">
+            ${content}
+          </a>
+        `;
+  }
+
+  return `
+          <button class="${className}" type="button" data-work-index="${index}">
+            ${content}
+          </button>
+        `;
+}
+
 const CATEGORY_BANNER_COPY = {
   outfit: {
     title: "模特换装",
@@ -172,12 +194,7 @@ function renderCategoryPage() {
         <p>${category.worksEn || "VISUAL WORKS"}</p>
       </div>
       <div class="category-work-grid">
-        ${category.works.map((item, index) => `
-          <button class="work-card${item.orientation ? ` is-${item.orientation}` : ""}" type="button" data-work-index="${index}">
-            ${mediaMarkup(item)}
-            <span>${item.title}</span>
-          </button>
-        `).join("")}
+        ${category.works.map((item, index) => workCardMarkup(item, index)).join("")}
       </div>
     </section>
 
@@ -234,6 +251,7 @@ function setupWorkPreview() {
   }
 
   cards.forEach((card) => {
+    if (card.matches("a[href]")) return;
     card.addEventListener("click", () => show(Number(card.dataset.workIndex)));
   });
 
