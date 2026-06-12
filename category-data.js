@@ -67,10 +67,13 @@ const CATEGORY_DATA = {
     banner: "./assets/category-banners/outfit-final.png",
     worksTitle: "案例展示",
     worksEn: "CASE STUDY",
-    works: imageSeries("outfit", Array.from({ length: 10 }, () => "png")).map((item, index) => ({
-      ...item,
-      title: `换装案例 ${String(index + 1).padStart(2, "0")}`
-    })),
+    works: [
+      { type: "image", src: "./2-电商模特换装/换装作品/2-0.png", title: "换装案例 01", orientation: "outfit-work" },
+      { type: "image", src: "./2-电商模特换装/换装作品/2-3AI.jpg", title: "换装案例 02", orientation: "outfit-work" },
+      { type: "image", src: "./2-电商模特换装/换装作品/2-5AI.jpg", title: "换装案例 03", orientation: "outfit-work" },
+      { type: "image", src: "./2-电商模特换装/换装作品/2-7AI.jpeg", title: "换装案例 04", orientation: "outfit-work" },
+      { type: "image", src: "./2-电商模特换装/换装作品/2-12AI.jpeg", title: "换装案例 05", orientation: "outfit-work" }
+    ],
     process: [
       { icon: "user-round", title: "01 模特素材", desc: "统一模特姿态与视觉方向" },
       { icon: "shopping-bag", title: "02 服装参考", desc: "整理目标服饰与造型风格" },
@@ -187,7 +190,22 @@ const CATEGORY_DATA = {
     accent: "#336ff0",
     hero: "./assets/categories/typography/proto-hero.png",
     banner: "./assets/category-banners/typography-final.png",
-    works: prototypeSeries("typography", 6),
+    works: [
+      { type: "image", src: "./6-字体设计/36fc2684-c1ab-489e-acbd-785b4afe57dc.png", title: "艺术字体 01", orientation: "typography-work" },
+      { type: "image", src: "./6-字体设计/ChatGPT Image 2026年6月2日 19_11_37.png", title: "艺术字体 02", orientation: "typography-work" },
+      { type: "image", src: "./6-字体设计/ChatGPT Image 2026年6月2日 19_11_40.png", title: "艺术字体 03", orientation: "typography-work" },
+      { type: "image", src: "./6-字体设计/ChatGPT Image 2026年6月2日 19_11_43.png", title: "艺术字体 04", orientation: "typography-work" },
+      { type: "image", src: "./6-字体设计/ChatGPT Image 2026年6月2日 19_11_46.png", title: "艺术字体 05", orientation: "typography-work" },
+      { type: "image", src: "./6-字体设计/ChatGPT Image 2026年6月2日 19_11_50.png", title: "艺术字体 06", orientation: "typography-work" },
+      { type: "image", src: "./6-字体设计/ChatGPT Image 2026年6月2日 19_12_01.png", title: "艺术字体 07", orientation: "typography-work" },
+      { type: "image", src: "./6-字体设计/ChatGPT Image 2026年6月2日 19_12_07.png", title: "艺术字体 08", orientation: "typography-work" },
+      { type: "image", src: "./6-字体设计/ChatGPT Image 2026年6月2日 19_12_10.png", title: "艺术字体 09", orientation: "typography-work" },
+      { type: "image", src: "./6-字体设计/ChatGPT Image 2026年6月2日 19_12_15.png", title: "艺术字体 10", orientation: "typography-work" },
+      { type: "image", src: "./6-字体设计/ChatGPT Image 2026年6月2日 19_12_19.png", title: "艺术字体 11", orientation: "typography-work" },
+      { type: "image", src: "./6-字体设计/ChatGPT Image 2026年6月2日 19_12_22.png", title: "艺术字体 12", orientation: "typography-work" },
+      { type: "image", src: "./6-字体设计/ChatGPT Image 2026年6月2日 19_12_24.png", title: "艺术字体 13", orientation: "typography-work" },
+      { type: "image", src: "./6-字体设计/ChatGPT Image 2026年6月2日 19_12_28.png", title: "艺术字体 14", orientation: "typography-work" }
+    ],
     process: ["灵感构思", "草图设计", "细节打磨", "色彩与质感", "成品输出"]
   },
   symbol: {
@@ -242,7 +260,20 @@ const CATEGORY_DATA = {
     accent: "#3158ff",
     hero: "./assets/categories/icon/proto-hero.png",
     banner: "./assets/category-banners/icon-final.png",
-    works: prototypeSeries("icon", 10),
+    works: [
+      { type: "image", src: "./9-ICON/1f287988-d307-42c2-a04f-92c9741b27ad.png", title: "ICON设计 01", orientation: "icon-work" },
+      { type: "image", src: "./9-ICON/3adae0bd-1f12-450a-a855-fa82d1e19aad.png", title: "ICON设计 02", orientation: "icon-work" },
+      { type: "image", src: "./9-ICON/6e0e42b4-00e1-437b-a06e-b3fe232661a7.png", title: "ICON设计 03", orientation: "icon-work" },
+      { type: "image", src: "./9-ICON/28abb13b-e8e5-47d0-822f-b0fd4047af47.png", title: "ICON设计 04", orientation: "icon-work" },
+      { type: "image", src: "./9-ICON/41f95525-d0c5-4b37-84ca-d1853195f241.png", title: "ICON设计 05", orientation: "icon-work" },
+      { type: "image", src: "./9-ICON/308ae02f-b7f3-45c5-85ec-2462dbc61ab1.png", title: "ICON设计 06", orientation: "icon-work" },
+      { type: "image", src: "./9-ICON/a65d121d-ea45-474b-8f0e-09659be66a28.png", title: "ICON设计 07", orientation: "icon-work" },
+      { type: "image", src: "./9-ICON/c625349d-9880-4ece-a11f-9601588b1e85.png", title: "ICON设计 08", orientation: "icon-work" },
+      { type: "image", src: "./9-ICON/e1fd8c75-e844-4fe3-bbfb-2392d28502f7.png", title: "ICON设计 09", orientation: "icon-work" },
+      { type: "image", src: "./9-ICON/fb80319d-4d1d-46ac-a5e6-428094c0814b.png", title: "ICON设计 10", orientation: "icon-work" },
+      { type: "image", src: "./9-ICON/ff567a90-1559-4b08-b4f5-57bcb6f93f44.png", title: "ICON设计 11", orientation: "icon-work" },
+      { type: "image", src: "./9-ICON/TyH4-3NQ0_AFh9uakupRiWLSJ6Rq599ZLeo_Kkeq3mfWbwt5iFS-2SrZYBF1Fs28Ws3caHvWwY4YpdZnZuFUCELTtQWYQlZ6c-iWwoZXmhxVKpiosWkB-1ABSB0Vli1GF-NZb7Blwx_SHfVFXJEu8oo02OJNEHS3ZeUW1U7GWgB1dZhKO5Lf5VMqefj_dLeG.jpg", title: "ICON设计 12", orientation: "icon-work" }
+    ],
     process: ["需求分析", "概念构思", "草图绘制", "精细设计", "应用输出"]
   },
   video: {
