@@ -45,7 +45,7 @@ const featuredImageAttrs = {
   poster: imageAttrs({ width: 900, height: 1200 }),
   drama: imageAttrs({ width: 1672, height: 941 }),
   ui: imageAttrs({ width: 900, height: 1260 }),
-  ip: imageAttrs({ width: 1500, height: 1000 })
+  ip: imageAttrs({ width: 1536, height: 1024 })
 };
 
 function setupDeferredVideos(root) {
@@ -189,7 +189,7 @@ function renderIpReferencePage() {
     <div class="featured-frost-page featured-ip-frost-page" aria-label="06 IP设计精品项目二级页面">
       ${renderFrostNav("ip")}
       <section class="featured-frost-stage" aria-label="06 IP设计作品展示">
-        <img class="ip-placement-art" src="${asset("./assets/featured-ip-art-reference.png")}" alt="06 IP设计精品项目作品展示" ${featuredImageAttrs.ip}>
+        <img class="ip-placement-art" src="${asset("./山海月IP.png", "featured-ip-shanhai-20260612")}" alt="06 IP设计精品项目作品展示" ${featuredImageAttrs.ip}>
       </section>
     </div>
   `;
