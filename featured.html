@@ -73,5 +73,15 @@
   <main data-featured-page></main>
 
   <script src="./featured-projects.js?v=featured-ad-bg-video-20260612"></script>
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      requestAnimationFrame(() => {
+        document.querySelectorAll('body[data-featured="ad"] video[data-src]').forEach((video) => {
+          video.src = video.dataset.src;
+          video.load();
+        });
+      });
+    });
+  </script>
 </body>
 </html>
