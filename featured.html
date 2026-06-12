@@ -59,6 +59,11 @@
       top: calc(var(--ref-stage-y) + var(--ref-stage-h) * 0.148) !important;
     }
 
+    body.featured-page[data-featured="poster"] .poster-frost-panel {
+      top: max(104px, calc(var(--ref-stage-y) + var(--ref-stage-h) * 0.122)) !important;
+      width: min(calc(var(--ref-stage-w) * 0.338), 43vw, calc(100vh - 148px) * 0.75) !important;
+    }
+
     body.featured-page[data-featured="drama"] .featured-drama-play-overlay {
       position: absolute !important;
       top: 50% !important;
@@ -142,10 +147,14 @@
       }
 
       body.featured-page[data-featured="banner"] .banner-frost-panel,
-      body.featured-page[data-featured="poster"] .poster-frost-panel,
       body.featured-page[data-featured="drama"] .featured-drama-player-shell,
       body.featured-page[data-featured="ui"] .ui-frost-panel {
         top: max(118px, calc(var(--ref-stage-y) + var(--ref-stage-h) * 0.14)) !important;
+      }
+
+      body.featured-page[data-featured="poster"] .poster-frost-panel {
+        top: max(118px, calc(var(--ref-stage-y) + var(--ref-stage-h) * 0.13)) !important;
+        width: min(60vw, calc(100vh - 150px) * 0.75) !important;
       }
 
       body.featured-page[data-featured="ui"] .ui-frost-panel.ui-frost-gallery {
@@ -175,7 +184,7 @@
   </script>
   <main data-featured-page></main>
 
-  <script src="./featured-projects.js?v=featured-drama-play-20260612" defer></script>
+  <script src="./featured-projects.js?v=featured-poster-scale-20260612" defer></script>
   <script>
     (() => {
       const loadAdVideo = () => {
