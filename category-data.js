@@ -109,12 +109,12 @@ const CATEGORY_DATA = {
     desc: "面向商业传播、品牌塑造与活动视觉的横幅作品集合。",
     tone: "sky",
     accent: "#3e80a8",
-    hero: "./assets/categories/poster/banner-03.jpg",
+    hero: "./assets/category-banners/poster-final.png",
     banner: "./assets/category-banners/poster-final.png",
     heroWorks: [
-      "./assets/categories/poster/banner-03.jpg",
-      "./assets/categories/poster/banner-02.png",
-      "./assets/categories/poster/banner-01.png"
+      "./d15079c8-14f0-47b8-864b-dd47c04d6d66.png",
+      "./ac6fe018-f7f3-4ffa-b677-e88fb228d2eb.png",
+      "./制作海报 (4).png"
     ],
     heroFeatures: [
       { icon: "feather", title: "商业宣传", desc: "COMMERCIAL" },
@@ -126,33 +126,31 @@ const CATEGORY_DATA = {
     worksTitle: "作品展示",
     worksEn: "VISUAL WORKS",
     works: [
-      { type: "image", src: "./assets/categories/poster/works/poster-work-01.png", title: "海报 Banner 01", orientation: "banner" },
-      { type: "image", src: "./assets/categories/poster/works/poster-work-02.png", title: "海报 Banner 02", orientation: "banner" },
-      { type: "image", src: "./assets/categories/poster/works/poster-work-03.png", title: "竖版海报 01", orientation: "vertical" },
-      { type: "image", src: "./assets/categories/poster/works/poster-work-04.png", title: "竖版海报 02", orientation: "vertical" },
-      { type: "image", src: "./assets/categories/poster/works/poster-work-05.png", title: "竖版海报 03", orientation: "vertical" },
-      { type: "image", src: "./assets/categories/poster/works/poster-work-06.png", title: "竖版海报 04", orientation: "vertical" },
-      { type: "image", src: "./assets/categories/poster/works/poster-work-07.png", title: "竖版海报 05", orientation: "vertical" },
-      { type: "image", src: "./assets/categories/poster/works/poster-work-08.png", title: "竖版海报 06", orientation: "vertical" },
-      { type: "image", src: "./assets/categories/poster/works/poster-work-09.png", title: "竖版海报 07", orientation: "vertical" },
-      { type: "image", src: "./assets/categories/poster/works/poster-work-10.png", title: "竖版海报 08", orientation: "vertical" },
-      { type: "image", src: "./assets/categories/poster/works/poster-work-11.png", title: "竖版海报 09", orientation: "vertical" },
-      { type: "image", src: "./assets/categories/poster/works/poster-work-12.png", title: "竖版海报 10", orientation: "vertical" },
-      { type: "image", src: "./assets/categories/poster/works/poster-work-13.png", title: "竖版海报 11", orientation: "vertical" },
-      { type: "image", src: "./assets/categories/poster/works/poster-work-14.png", title: "竖版海报 12", orientation: "vertical" },
-      { type: "image", src: "./assets/categories/poster/works/poster-work-15.png", title: "竖版海报 13", orientation: "vertical" },
-      { type: "image", src: "./assets/categories/poster/works/poster-work-16.png", title: "竖版海报 14", orientation: "vertical" },
-      { type: "image", src: "./assets/categories/poster/works/poster-work-17.png", title: "竖版海报 15", orientation: "vertical" },
-      { type: "image", src: "./assets/categories/poster/works/poster-work-18.png", title: "竖版海报 16", orientation: "vertical" },
-      { type: "image", src: "./assets/categories/poster/works/poster-work-19.png", title: "竖版海报 17", orientation: "vertical" },
-      { type: "image", src: "./assets/categories/poster/works/poster-work-20.png", title: "竖版海报 18", orientation: "vertical" },
-      { type: "image", src: "./assets/categories/poster/works/poster-work-21.png", title: "竖版海报 19", orientation: "vertical" },
-      { type: "image", src: "./assets/categories/poster/works/poster-work-22.png", title: "竖版海报 20", orientation: "vertical" },
-      { type: "image", src: "./assets/categories/poster/works/poster-work-23.png", title: "竖版海报 21", orientation: "vertical" },
-      { type: "image", src: "./assets/categories/poster/works/poster-work-24.png", title: "竖版海报 22", orientation: "vertical" },
-      { type: "image", src: "./assets/categories/poster/works/poster-work-25.png", title: "竖版海报 23", orientation: "vertical" },
-      { type: "image", src: "./assets/categories/poster/works/poster-work-26.png", title: "竖版海报 24", orientation: "vertical" },
-      { type: "image", src: "./assets/categories/poster/works/poster-work-27.jpeg", title: "海报 Banner 03", orientation: "banner" }
+      { type: "image", src: "./ac6fe018-f7f3-4ffa-b677-e88fb228d2eb.png", title: "海报 Banner 01", orientation: "banner" },
+      { type: "image", src: "./d15079c8-14f0-47b8-864b-dd47c04d6d66.png", title: "海报 Banner 02", orientation: "banner" },
+      { type: "image", src: "./30cb955e-0822-43f3-98d9-4ba484c120d2.png", title: "海报 Banner 03", orientation: "banner" },
+      { type: "image", src: "./4cca3669-f0f0-4b6e-8557-176422ad07b2.png", title: "海报 Banner 04", orientation: "banner" },
+      { type: "image", src: "./e607c69f-7930-43c3-9774-86b421ee205b (1).png", title: "竖版海报 01", orientation: "vertical" },
+      { type: "image", src: "./d2977236-d08b-41b3-b595-7e07d9005e6f.png", title: "竖版海报 02", orientation: "vertical" },
+      { type: "image", src: "./b6a25755-6b4e-4a4a-9d1c-54a714fd7af5.png", title: "竖版海报 03", orientation: "vertical" },
+      { type: "image", src: "./hp耳机2.png", title: "竖版海报 04", orientation: "vertical" },
+      { type: "image", src: "./小水库8.png", title: "竖版海报 05", orientation: "vertical" },
+      { type: "image", src: "./小水库10.png", title: "竖版海报 06", orientation: "vertical" },
+      { type: "image", src: "./hp耳机4.1.png", title: "竖版海报 07", orientation: "vertical" },
+      { type: "image", src: "./b64cc7fb-e4b1-4c98-8b1c-e6c5c0eaea00.png", title: "竖版海报 08", orientation: "vertical" },
+      { type: "image", src: "./3b157685-11e4-44e0-b277-f60f370a452a.png", title: "竖版海报 09", orientation: "vertical" },
+      { type: "image", src: "./1e8a75ec-0c7a-4906-8e73-032495bc0edf (1).png", title: "竖版海报 10", orientation: "vertical" },
+      { type: "image", src: "./0ef45b3b-e083-49ce-a8f5-1a270e8b5662.png", title: "竖版海报 11", orientation: "vertical" },
+      { type: "image", src: "./6e143708-8fcf-43d4-a238-808aaf208d1d.png", title: "竖版海报 12", orientation: "vertical" },
+      { type: "image", src: "./b3b353e8-14ec-4ee0-a6a1-996110964114.png", title: "竖版海报 13", orientation: "vertical" },
+      { type: "image", src: "./904f694f-8f4d-438f-bd72-7c43f7b049fd.png", title: "竖版海报 14", orientation: "vertical" },
+      { type: "image", src: "./85a1d84b-234c-4be8-86c2-496943bfdc4c.png", title: "竖版海报 15", orientation: "vertical" },
+      { type: "image", src: "./1d58b1b7-e127-477a-8c24-cc76162c61c4.png", title: "竖版海报 16", orientation: "vertical" },
+      { type: "image", src: "./hp耳机10.1.png", title: "竖版海报 17", orientation: "vertical" },
+      { type: "image", src: "./hp耳机7.png", title: "竖版海报 18", orientation: "vertical" },
+      { type: "image", src: "./小水库5.png", title: "竖版海报 19", orientation: "vertical" },
+      { type: "image", src: "./制作海报 (2).png", title: "竖版海报 20", orientation: "vertical" },
+      { type: "image", src: "./制作海报 (4).png", title: "竖版海报 21", orientation: "vertical" }
     ],
     process: [
       { icon: "badge", title: "产品定位", desc: "明确商品目标与投放场景" },
@@ -225,7 +223,14 @@ const CATEGORY_DATA = {
     accent: "#3067dd",
     hero: "./assets/categories/ui/proto-hero.png",
     banner: "./assets/category-banners/ui-final.png",
-    works: prototypeSeries("ui", 10),
+    works: [
+      { type: "image", src: "./ui启动页/62005ee6-8217-4247-bfc0-a3f515374dc7.png", title: "UI启动页 01", orientation: "ui-launch" },
+      { type: "image", src: "./ui启动页/6a996e38-9282-400d-8ac5-867325edf4ce.png", title: "UI启动页 02", orientation: "ui-launch" },
+      { type: "image", src: "./ui启动页/ba0879ce-7225-4b52-99b6-ea06a398726d.png", title: "UI启动页 03", orientation: "ui-launch" },
+      { type: "image", src: "./ui启动页/e065b2f1-7625-4b6f-8500-ff998ba77a77.png", title: "UI启动页 04", orientation: "ui-launch" },
+      { type: "image", src: "./ui启动页/e3a6819e-e4f6-4372-a9f9-4911d43bd73b.png", title: "UI启动页 05", orientation: "ui-launch" },
+      { type: "image", src: "./ui启动页/光遇1.2.png", title: "UI启动页 06", orientation: "ui-launch" }
+    ],
     process: ["灵感关键词", "世界观设定", "氛围构建", "细节打磨", "启动页输出"]
   },
   icon: {
@@ -247,13 +252,24 @@ const CATEGORY_DATA = {
     desc: "用影像记录文明，用故事连接未来。",
     tone: "deep",
     accent: "#d6a35f",
-    hero: "./assets/categories/video/proto-hero.png",
+    hero: "./assets/category-banners/video-final.png",
     banner: "./assets/category-banners/video-final.png",
-    works: [1, 2, 3].map((num) => ({
-      type: "video",
-      src: `./assets/categories/video/video-${String(num).padStart(2, "0")}.mp4`,
-      title: `视频作品 ${String(num).padStart(2, "0")}`
-    })),
+    works: [
+      {
+        type: "image",
+        src: "./封面.png",
+        title: "重生后，我撕了白莲妹妹",
+        orientation: "video-link",
+        href: "https://www.bilibili.com/video/BV12TVF6yEuD/?spm_id_from=333.1387.homepage.video_card.click"
+      },
+      {
+        type: "image",
+        src: "./assets/categories/video/works/video-destiny-cover.svg",
+        title: "天命不接",
+        orientation: "video-link",
+        href: "https://www.bilibili.com/video/BV11TVF6yEQo/?spm_id_from=333.1387.homepage.video_card.click"
+      }
+    ],
     process: ["灵感脚本", "镜头设计", "AI辅助生成", "后期剪辑", "调色音效", "成片输出"]
   }
 };
