@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>分类项目 - 铁马德龙作品集</title>
   <meta name="description" content="铁马德龙作品集分类项目二级页面。">
-  <link rel="stylesheet" href="./styles.css?v=classification-next-card-20260612">
+  <link rel="stylesheet" href="./styles.css?v=classification-next-card-ui-dm-20260612">
   <style>
     body.category-page[data-category="video"] .category-work-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -390,8 +390,27 @@
         icon: "ICON",
         video: "视频 / 漫剧"
       };
+      const oldUiArtwork = "6a996e38-9282-400d-8ac5-867325edf4ce.png";
+      const newUiArtwork = "./ui启动页/DM助手.png?v=category-ui-dm-assistant-20260612";
+      const patchUiArtwork = () => {
+        if (window.CATEGORY_DATA?.ui?.works) {
+          window.CATEGORY_DATA.ui.works.forEach((work) => {
+            if (work.src && work.src.includes(oldUiArtwork)) {
+              work.src = newUiArtwork;
+              work.title = "UI启动页 02";
+            }
+          });
+        }
+        document.querySelectorAll(`img[src*="${oldUiArtwork}"]`).forEach((image) => {
+          image.src = newUiArtwork;
+          image.width = 852;
+          image.height = 1846;
+          image.decoding = "async";
+        });
+      };
 
       requestAnimationFrame(() => {
+        patchUiArtwork();
         const current = document.body.dataset.category || new URLSearchParams(window.location.search).get("cat") || "portrait";
         const next = nextMap[current] || "portrait";
         const card = document.querySelector(".category-next");
