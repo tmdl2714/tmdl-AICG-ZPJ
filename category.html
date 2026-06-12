@@ -6,6 +6,32 @@
   <title>分类项目 - 铁马德龙作品集</title>
   <meta name="description" content="铁马德龙作品集分类项目二级页面。">
   <link rel="stylesheet" href="./styles.css?v=symbol-works-grid-20260602">
+  <style>
+    body.category-page[data-category="video"] .category-work-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(16px, 2vw, 24px);
+    }
+
+    body.category-page[data-category="video"] .work-card {
+      aspect-ratio: 16 / 9;
+      min-height: 0;
+    }
+
+    body.category-page[data-category="video"] .work-card img,
+    body.category-page[data-category="video"] .work-card video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center center;
+      background: #07131f;
+    }
+
+    @media (max-width: 760px) {
+      body.category-page[data-category="video"] .category-work-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body class="category-page">
   <main class="category-detail" data-category-page></main>
@@ -22,7 +48,7 @@
   </div>
 
   <script src="./script.js"></script>
-  <script src="./category-data.js?v=category-assets-20260612"></script>
+  <script src="./category-data.js?v=video-works-20260612"></script>
   <script src="./category-page.js?v=symbol-works-grid-20260602"></script>
 </body>
 </html>
