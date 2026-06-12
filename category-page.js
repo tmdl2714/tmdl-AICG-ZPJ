@@ -106,10 +106,87 @@ const CATEGORY_BANNER_COPY = {
   }
 };
 
+const CATEGORY_PROCESS_STEPS = {
+  portrait: [
+    { icon: "user-round", title: "01 确定模特", desc: "确定人物气质 / 统一视觉方向" },
+    { icon: "lightbulb", title: "02 灵感构思", desc: "构思主题风格 / 收集灵感参考" },
+    { icon: "sparkles", title: "03 AI生成", desc: "多模型生成 / 探索更多可能" },
+    { icon: "scan", title: "04 细节精修", desc: "光影色彩优化 / 统一整体质感" },
+    { icon: "download", title: "05 成品输出", desc: "输出高品质成品 / 完成最终呈现" }
+  ],
+  outfit: [
+    { icon: "user-round", title: "01 锁定模特", desc: "选择优质模特照片 / 统一拍摄风格" },
+    { icon: "shopping-bag", title: "02 服装参考", desc: "提供服装参考图 / 确定换装方向" },
+    { icon: "sparkles", title: "03 AI换装", desc: "AI智能换装生成 / 多种造型方案" },
+    { icon: "scan", title: "04 细节精修", desc: "优化细节与质感 / 提升画面品质" },
+    { icon: "download", title: "05 商业输出", desc: "输出高品质成片 / 满足商业需求" }
+  ],
+  retouch: [
+    { icon: "image", title: "01 原图分析", desc: "分析光影与材质问题 / 确定优化方向" },
+    { icon: "sun", title: "02 光影重建", desc: "修正光影与明暗关系 / 重塑立体感" },
+    { icon: "box", title: "03 材质优化", desc: "增强纹理与细节质感 / 提升真实表现" },
+    { icon: "scan", title: "04 细节精修", desc: "优化边缘与结构 / 去瑕疵与杂点" },
+    { icon: "download", title: "05 商业输出", desc: "输出高质量成片 / 满足商业需求" }
+  ],
+  poster: [
+    { icon: "badge", title: "01 主题定位", desc: "明确传播目标 / 分析受众需求" },
+    { icon: "lightbulb", title: "02 视觉概念", desc: "创意构思 / 确定视觉方向" },
+    { icon: "sparkles", title: "03 AI生成", desc: "多方案生成 / 探索更多可能" },
+    { icon: "package", title: "04 商业合成", desc: "精修画面 / 统一视觉风格" },
+    { icon: "type", title: "05 字体排版", desc: "信息层级梳理 / 强化视觉表达" },
+    { icon: "share", title: "06 成品输出", desc: "多尺寸适配 / 输出成品应用" }
+  ],
+  ip: [
+    { icon: "smile", title: "01 角色定位", desc: "确定角色性格 / 分析受众需求" },
+    { icon: "edit", title: "02 草图设定", desc: "创意草图 / 构建造型" },
+    { icon: "box", title: "03 三视图完善", desc: "标准三视图绘制 / 确定比例细节" },
+    { icon: "package", title: "04 周边延展", desc: "构建产品体系 / 丰富应用场景" },
+    { icon: "badge", title: "05 品牌应用", desc: "统一视觉规范 / 落地多场景应用" }
+  ],
+  typography: [
+    { icon: "lightbulb", title: "01 灵感构思", desc: "从主题与情绪中 / 汲取视觉灵感" },
+    { icon: "edit", title: "02 草图设计", desc: "手绘构思字体 / 结构与笔画" },
+    { icon: "scan", title: "03 细节打磨", desc: "优化笔画细节 / 调整光影与节奏" },
+    { icon: "sparkles", title: "04 色彩质感", desc: "搭配材质与光效 / 增强画面表现" },
+    { icon: "download", title: "05 成品输出", desc: "输出多格式文件 / 应用于多场景" }
+  ],
+  symbol: [
+    { icon: "box", title: "01 基础图形", desc: "构建视觉骨架 / 统一稳定方向" },
+    { icon: "scan", title: "02 元素提取", desc: "提炼关键元素 / 提纯核心特征" },
+    { icon: "network", title: "03 结构融合", desc: "组合与结构构建 / 平衡与统一" },
+    { icon: "sparkles", title: "04 细节优化", desc: "强化细节与层次 / 提升精致度" },
+    { icon: "share", title: "05 统一应用", desc: "建立规范与应用 / 赋能多场景落地" }
+  ],
+  ui: [
+    { icon: "scan", title: "01 关键词定位", desc: "提炼核心关键词 / 明确视觉方向" },
+    { icon: "panel", title: "02 视觉设定", desc: "构建设计语言 / 确定风格基调" },
+    { icon: "sun", title: "03 氛围构建", desc: "色彩 光影 构图 / 营造整体氛围" },
+    { icon: "sparkles", title: "04 细节打磨", desc: "界面 交互 动效 / 提升设计精度" },
+    { icon: "download", title: "05 启动页输出", desc: "多端适配 / 最终呈现" }
+  ],
+  icon: [
+    { icon: "badge", title: "01 需求分析", desc: "明确功能与目标 / 分析用户与场景" },
+    { icon: "lightbulb", title: "02 概念构思", desc: "提炼关键词 / 构建图形方向" },
+    { icon: "edit", title: "03 草图绘制", desc: "多方案草图 / 确定图形语言" },
+    { icon: "scan", title: "04 精细设计", desc: "细化图形细节 / 统一视觉规范" },
+    { icon: "download", title: "05 应用输出", desc: "多尺寸输出 / 适配不同场景" }
+  ],
+  video: [
+    { icon: "badge", title: "01 项目大纲", desc: "梳理创作方向 / 明确核心主题" },
+    { icon: "edit", title: "02 脚本设定", desc: "构建故事脉络 / 设定角色与情节" },
+    { icon: "tv", title: "03 镜头设计", desc: "分镜脚本规划 / 镜头语言预设" },
+    { icon: "sparkles", title: "04 AI生成", desc: "多模型生成 / 探索更多可能" },
+    { icon: "image", title: "05 后期剪辑", desc: "剪辑节奏 / 画面合成" },
+    { icon: "sun", title: "06 调色音效", desc: "色彩调校 / 音效与配乐" },
+    { icon: "download", title: "07 成片输出", desc: "输出成片 / 多平台发布" }
+  ]
+};
+
 function renderCategoryPage() {
   const next = CATEGORY_DATA[nextSlug(current)];
   const isPortrait = current === "portrait";
   const isPoster = current === "poster";
+  const processSteps = CATEGORY_PROCESS_STEPS[current] || category.process;
   const usesTemplateBanner = !isPortrait && Boolean(category.banner);
   const heroAttributes = usesTemplateBanner ? ` data-template-banner="true" style="--category-banner: url('${category.banner}');"` : "";
   const bannerCopy = usesTemplateBanner ? CATEGORY_BANNER_COPY[current] : null;
@@ -221,7 +298,7 @@ function renderCategoryPage() {
         <p>CREATION PROCESS</p>
       </div>
       <ol>
-        ${category.process.map((step) => `
+        ${processSteps.map((step) => `
           <li>
             <span class="process-dot">${typeof step === "string" || !step.icon ? "" : `<span class="icon" data-icon="${step.icon}"></span>`}</span>
             <strong>${typeof step === "string" ? step : step.title}</strong>
