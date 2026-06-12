@@ -6,6 +6,60 @@
   <title>未来东方 AI 数字艺术馆</title>
   <meta name="description" content="铁马德龙作品集精品项目二级页面，未来东方 AI 数字艺术馆展厅。">
   <link rel="stylesheet" href="./styles.css?v=ad-hide-next-20260606">
+  <style>
+    body.featured-page[data-featured="ad"] .featured-ad-reference-page {
+      position: relative !important;
+      width: 100vw !important;
+      min-width: 0 !important;
+      min-height: 100vh !important;
+      height: 100vh !important;
+      overflow: hidden !important;
+      background: url("./01.2.png?v=featured-ad-bg-20260612") center center / cover no-repeat #020913 !important;
+      isolation: isolate !important;
+    }
+
+    body.featured-page[data-featured="ad"] .featured-ad-reference-page::before,
+    body.featured-page[data-featured="ad"] .featured-ad-reference-page::after,
+    body.featured-page[data-featured="ad"] .featured-ad-reference-art {
+      display: none !important;
+      content: none !important;
+    }
+
+    body.featured-page[data-featured="ad"] .ad-work-video-frame {
+      position: absolute !important;
+      top: 55% !important;
+      left: 50% !important;
+      z-index: 4 !important;
+      width: min(74vw, 1120px) !important;
+      aspect-ratio: 16 / 9 !important;
+      overflow: hidden !important;
+      border: 1px solid rgba(194, 226, 255, 0.38) !important;
+      border-radius: 10px !important;
+      background: rgba(2, 8, 18, 0.58) !important;
+      box-shadow: 0 30px 88px rgba(0, 8, 22, 0.46), 0 0 42px rgba(89, 164, 255, 0.2) !important;
+      transform: translate(-50%, -50%) !important;
+    }
+
+    body.featured-page[data-featured="ad"] .ad-work-video {
+      display: block !important;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: contain !important;
+      object-position: center center !important;
+      background: #020812 !important;
+    }
+
+    body.featured-page[data-featured="ad"] .ad-ref-crisp-nav {
+      z-index: 6 !important;
+    }
+
+    @media (max-width: 820px) {
+      body.featured-page[data-featured="ad"] .ad-work-video-frame {
+        top: 56% !important;
+        width: min(88vw, 760px) !important;
+      }
+    }
+  </style>
 </head>
 <body class="featured-page">
   <script>
@@ -18,6 +72,6 @@
   </script>
   <main data-featured-page></main>
 
-  <script src="./featured-projects.js?v=smooth-lite-20260610"></script>
+  <script src="./featured-projects.js?v=featured-ad-bg-video-20260612"></script>
 </body>
 </html>
