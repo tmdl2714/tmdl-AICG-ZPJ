@@ -44,7 +44,7 @@ const featuredImageAttrs = {
   banner: imageAttrs({ width: 1600, height: 900 }),
   poster: imageAttrs({ width: 900, height: 1200 }),
   drama: imageAttrs({ width: 1672, height: 941 }),
-  uiDm: imageAttrs({ loading: "eager", width: 941, height: 1672 }),
+  uiDm: imageAttrs({ loading: "eager", width: 852, height: 1846 }),
   uiDanmu: imageAttrs({ loading: "eager", width: 853, height: 1844 }),
   uiSky: imageAttrs({ loading: "eager", width: 853, height: 1844 }),
   ip: imageAttrs({ width: 1536, height: 1024 })
@@ -181,7 +181,7 @@ function renderUiReferencePage() {
       <section class="featured-frost-stage" aria-label="05 UI启动页作品展示">
         <div class="featured-frost-panel ui-frost-panel ui-frost-gallery">
           <figure class="ui-frost-work ui-frost-work-dm">
-            <img class="ui-frost-art" src="${asset("./ui启动页/6a996e38-9282-400d-8ac5-867325edf4ce.png", "featured-ui-startup-20260612")}" alt="05 UI启动页作品展示：须尽欢 DM助手" ${featuredImageAttrs.uiDm}>
+            <img class="ui-frost-art" src="${asset("./ui启动页/DM助手.png", "featured-ui-dm-assistant-20260612")}" alt="05 UI启动页作品展示：须尽欢 DM助手" ${featuredImageAttrs.uiDm}>
           </figure>
           <figure class="ui-frost-work ui-frost-work-danmu">
             <img class="ui-frost-art" src="${asset("./ui启动页/62005ee6-8217-4247-bfc0-a3f515374dc7.png", "featured-ui-startup-20260612")}" alt="05 UI启动页作品展示：精彩弹幕 不止视频" ${featuredImageAttrs.uiDanmu}>
