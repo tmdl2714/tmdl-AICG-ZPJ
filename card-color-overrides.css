@@ -1,0 +1,49 @@
+/* Unified card colors: deep-sea blue glass + cloud-white border + subtle warm gold. */
+:root {
+  --card-deep-a: rgba(18, 45, 72, 0.46);
+  --card-deep-b: rgba(55, 92, 110, 0.24);
+  --card-line: rgba(220, 240, 245, 0.28);
+  --card-line-hover: rgba(226, 244, 248, 0.42);
+  --card-gold: rgba(226, 190, 118, 0.92);
+}
+
+body #projects .project-item,
+body #projects .project-item-wide,
+body #projects .project-item-medium,
+body #projects .project-item-narrow,
+body.category-page .work-card,
+body.category-page .category-next,
+body.featured-page .workflow-step,
+body.featured-page .next-project {
+  border-color: var(--card-line) !important;
+  background: linear-gradient(135deg, var(--card-deep-a), var(--card-deep-b)) !important;
+  box-shadow: 0 22px 56px rgba(4, 18, 34, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+}
+
+body #projects .project-item:hover,
+body #projects .project-item:focus-visible,
+body.category-page .work-card:hover,
+body.category-page .work-card:focus-visible,
+body.category-page .category-next:hover,
+body.featured-page .workflow-step:hover,
+body.featured-page .next-project:hover {
+  border-color: var(--card-line-hover) !important;
+  box-shadow: 0 24px 62px rgba(4, 18, 34, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+}
+
+body #projects .project-number,
+body #projects .project-item small,
+body.category-page .work-card span,
+body.category-page .category-next small,
+body.featured-page .workflow-step small,
+body.featured-page .next-project small {
+  color: var(--card-gold) !important;
+}
+
+body #projects .project-item::before,
+body #projects .project-item-wide::before,
+body #projects .project-item-medium::before,
+body #projects .project-item-narrow::before {
+  background: linear-gradient(90deg, transparent, rgba(226, 190, 118, 0.34), transparent) !important;
+  opacity: 0.48 !important;
+}
