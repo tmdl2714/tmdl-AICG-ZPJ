@@ -106,9 +106,8 @@ function renderDarkNav(activeSlug, prefix) {
 function renderAdReferencePage() {
   return `
     <div class="featured-ad-reference-page" aria-label="01广告精品项目二级页面">
-      <img class="featured-ad-reference-art" src="${cssAsset("./assets/featured-ad-page-strict-reference.png")}" alt="01广告精品项目二级页面最终效果"${primaryImageAttrs}>
       <div class="ad-work-video-frame" aria-label="01广告视频作品">
-        <video class="ad-work-video" data-src="${asset("./assets/featured-ad-video-baijiu.mp4")}" controls preload="metadata" playsinline></video>
+        <video class="ad-work-video" data-src="${asset("./video-02.mp4", "featured-ad-video-20260612")}" controls preload="metadata" playsinline></video>
       </div>
       ${renderDarkNav("ad", "ad-ref")}
       <a class="ad-ref-hotspot ad-ref-back" href="./index.html#projects" aria-label="返回首页"></a>
