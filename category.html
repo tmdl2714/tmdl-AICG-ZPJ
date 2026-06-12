@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>分类项目 - 铁马德龙作品集</title>
   <meta name="description" content="铁马德龙作品集分类项目二级页面。">
-  <link rel="stylesheet" href="./styles.css?v=symbol-works-grid-20260602">
+  <link rel="stylesheet" href="./styles.css?v=classification-layout-20260612">
   <style>
     body.category-page[data-category="video"] .category-work-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -53,6 +53,162 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* Final classification gallery rules: ordered, complete, uncropped works. */
+    body.category-page .category-work-grid {
+      display: grid !important;
+      grid-template-columns: repeat(10, minmax(0, 1fr)) !important;
+      grid-auto-flow: row dense !important;
+      grid-auto-rows: auto !important;
+      align-items: start !important;
+      gap: clamp(12px, 1.6vw, 20px) !important;
+    }
+
+    body.category-page .work-card,
+    body.category-page .work-card:nth-child(n) {
+      grid-column: span 2 !important;
+      grid-row: auto !important;
+      display: block !important;
+      width: 100% !important;
+      height: auto !important;
+      min-width: 0 !important;
+      min-height: 0 !important;
+      aspect-ratio: 1 / 1 !important;
+      overflow: hidden !important;
+      border-radius: 10px !important;
+    }
+
+    body.category-page .work-card img,
+    body.category-page .work-card video,
+    body.category-page .work-card:nth-child(n) img,
+    body.category-page .work-card:nth-child(n) video {
+      display: block !important;
+      width: 100% !important;
+      height: 100% !important;
+      min-height: 0 !important;
+      max-width: 100% !important;
+      object-fit: contain !important;
+      object-position: center center !important;
+      background: #07131f !important;
+      transform: none !important;
+    }
+
+    body.category-page .work-card.is-banner,
+    body.category-page .work-card.is-video-landscape,
+    body.category-page .work-card.is-video-link,
+    body.category-page .work-card.is-retouch-board,
+    body.category-page .work-card.is-ip-board,
+    body.category-page .work-card.is-symbol-board,
+    body.category-page .work-card.is-banner:nth-child(n),
+    body.category-page .work-card.is-video-landscape:nth-child(n),
+    body.category-page .work-card.is-video-link:nth-child(n),
+    body.category-page .work-card.is-retouch-board:nth-child(n),
+    body.category-page .work-card.is-ip-board:nth-child(n),
+    body.category-page .work-card.is-symbol-board:nth-child(n) {
+      grid-column: span 5 !important;
+      aspect-ratio: 16 / 9 !important;
+    }
+
+    body.category-page .work-card.is-vertical,
+    body.category-page .work-card.is-outfit-work,
+    body.category-page .work-card.is-ui-launch,
+    body.category-page[data-category="portrait"] .work-card,
+    body.category-page .work-card.is-vertical:nth-child(n),
+    body.category-page .work-card.is-outfit-work:nth-child(n),
+    body.category-page .work-card.is-ui-launch:nth-child(n),
+    body.category-page[data-category="portrait"] .work-card:nth-child(n) {
+      grid-column: span 2 !important;
+      aspect-ratio: 3 / 4 !important;
+    }
+
+    body.category-page .work-card.is-typography-work,
+    body.category-page .work-card.is-icon-work,
+    body.category-page .work-card.is-typography-work:nth-child(n),
+    body.category-page .work-card.is-icon-work:nth-child(n) {
+      grid-column: span 2 !important;
+      aspect-ratio: 1 / 1 !important;
+    }
+
+    body.category-page .work-card span {
+      pointer-events: none;
+    }
+
+    @media (max-width: 1180px) {
+      body.category-page .category-work-grid {
+        grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+      }
+
+      body.category-page .work-card,
+      body.category-page .work-card:nth-child(n),
+      body.category-page .work-card.is-vertical,
+      body.category-page .work-card.is-outfit-work,
+      body.category-page .work-card.is-ui-launch,
+      body.category-page .work-card.is-typography-work,
+      body.category-page .work-card.is-icon-work,
+      body.category-page[data-category="portrait"] .work-card,
+      body.category-page .work-card.is-vertical:nth-child(n),
+      body.category-page .work-card.is-outfit-work:nth-child(n),
+      body.category-page .work-card.is-ui-launch:nth-child(n),
+      body.category-page .work-card.is-typography-work:nth-child(n),
+      body.category-page .work-card.is-icon-work:nth-child(n),
+      body.category-page[data-category="portrait"] .work-card:nth-child(n) {
+        grid-column: span 2 !important;
+      }
+
+      body.category-page .work-card.is-banner,
+      body.category-page .work-card.is-video-landscape,
+      body.category-page .work-card.is-video-link,
+      body.category-page .work-card.is-retouch-board,
+      body.category-page .work-card.is-ip-board,
+      body.category-page .work-card.is-symbol-board,
+      body.category-page .work-card.is-banner:nth-child(n),
+      body.category-page .work-card.is-video-landscape:nth-child(n),
+      body.category-page .work-card.is-video-link:nth-child(n),
+      body.category-page .work-card.is-retouch-board:nth-child(n),
+      body.category-page .work-card.is-ip-board:nth-child(n),
+      body.category-page .work-card.is-symbol-board:nth-child(n) {
+        grid-column: span 3 !important;
+      }
+    }
+
+    @media (max-width: 760px) {
+      body.category-page .category-work-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+
+      body.category-page .work-card,
+      body.category-page .work-card:nth-child(n),
+      body.category-page .work-card.is-vertical,
+      body.category-page .work-card.is-outfit-work,
+      body.category-page .work-card.is-ui-launch,
+      body.category-page .work-card.is-typography-work,
+      body.category-page .work-card.is-icon-work,
+      body.category-page[data-category="portrait"] .work-card,
+      body.category-page .work-card.is-vertical:nth-child(n),
+      body.category-page .work-card.is-outfit-work:nth-child(n),
+      body.category-page .work-card.is-ui-launch:nth-child(n),
+      body.category-page .work-card.is-typography-work:nth-child(n),
+      body.category-page .work-card.is-icon-work:nth-child(n),
+      body.category-page[data-category="portrait"] .work-card:nth-child(n) {
+        grid-column: span 1 !important;
+      }
+
+      body.category-page .work-card.is-banner,
+      body.category-page .work-card.is-video-landscape,
+      body.category-page .work-card.is-video-link,
+      body.category-page .work-card.is-retouch-board,
+      body.category-page .work-card.is-ip-board,
+      body.category-page .work-card.is-symbol-board,
+      body.category-page .work-card.is-banner:nth-child(n),
+      body.category-page .work-card.is-video-landscape:nth-child(n),
+      body.category-page .work-card.is-video-link:nth-child(n),
+      body.category-page .work-card.is-retouch-board:nth-child(n),
+      body.category-page .work-card.is-ip-board:nth-child(n),
+      body.category-page .work-card.is-symbol-board:nth-child(n) {
+        grid-column: span 2 !important;
+      }
+    }
+
   </style>
 </head>
 <body class="category-page">
@@ -70,7 +226,7 @@
   </div>
 
   <script src="./script.js"></script>
-  <script src="./category-data.js?v=category-works-20260612"></script>
-  <script src="./category-page.js?v=category-works-20260612"></script>
+  <script src="./category-data.js?v=classification-layout-20260612"></script>
+  <script src="./category-page.js?v=classification-layout-20260612"></script>
 </body>
 </html>
