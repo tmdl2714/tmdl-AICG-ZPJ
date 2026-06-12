@@ -53,10 +53,27 @@
       z-index: 6 !important;
     }
 
+    body.featured-page[data-featured="banner"] .banner-frost-panel,
+    body.featured-page[data-featured="poster"] .poster-frost-panel,
+    body.featured-page[data-featured="drama"] .featured-drama-player-shell {
+      top: calc(var(--ref-stage-y) + var(--ref-stage-h) * 0.148) !important;
+    }
+
+    body.featured-page[data-featured="ui"] .ui-frost-panel {
+      top: calc(var(--ref-stage-y) + var(--ref-stage-h) * 0.152) !important;
+    }
+
     @media (max-width: 820px) {
       body.featured-page[data-featured="ad"] .ad-work-video-frame {
         top: 56% !important;
         width: min(88vw, 760px) !important;
+      }
+
+      body.featured-page[data-featured="banner"] .banner-frost-panel,
+      body.featured-page[data-featured="poster"] .poster-frost-panel,
+      body.featured-page[data-featured="drama"] .featured-drama-player-shell,
+      body.featured-page[data-featured="ui"] .ui-frost-panel {
+        top: max(118px, calc(var(--ref-stage-y) + var(--ref-stage-h) * 0.14)) !important;
       }
     }
   </style>
