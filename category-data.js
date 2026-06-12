@@ -256,6 +256,24 @@ const CATEGORY_DATA = {
     banner: "./assets/category-banners/video-final.png",
     works: [
       {
+        type: "video",
+        src: "./assets/categories/video/video-01.mp4",
+        title: "窖藏酒CG动画",
+        orientation: "video-landscape"
+      },
+      {
+        type: "video",
+        src: "./assets/categories/video/video-02.mp4",
+        title: "白酒广告短片",
+        orientation: "video-landscape"
+      },
+      {
+        type: "video",
+        src: "./assets/categories/video/video-03.mp4",
+        title: "护肤品精华水广告",
+        orientation: "video-landscape"
+      },
+      {
         type: "image",
         src: "./封面.png",
         title: "重生后，我撕了白莲妹妹",
