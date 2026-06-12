@@ -278,14 +278,14 @@ const CATEGORY_DATA = {
         src: "./封面.png",
         title: "重生后，我撕了白莲妹妹",
         orientation: "video-link",
-        href: "https://www.bilibili.com/video/BV12TVF6yEuD/?spm_id_from=333.1387.homepage.video_card.click"
+        href: "https://www.bilibili.com/video/BV1XZEe6KE9Z/"
       },
       {
         type: "image",
         src: "./assets/categories/video/works/video-destiny-cover.svg",
         title: "天命不接",
         orientation: "video-link",
-        href: "https://www.bilibili.com/video/BV11TVF6yEQo/?spm_id_from=333.1387.homepage.video_card.click"
+        href: "https://www.bilibili.com/video/BV11TVF6yEQo/"
       }
     ],
     process: ["灵感脚本", "镜头设计", "AI辅助生成", "后期剪辑", "调色音效", "成片输出"]
