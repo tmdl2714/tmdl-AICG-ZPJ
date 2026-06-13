@@ -6,6 +6,18 @@ document.head.appendChild(processStyleLink);
 const pageRoot = document.querySelector("[data-category-page]");
 const requestedSlug = new URLSearchParams(window.location.search).get("cat") || document.body.dataset.category || "portrait";
 const current = CATEGORY_DATA[requestedSlug] ? requestedSlug : "portrait";
+
+const legacyUiDmArtwork = "6a996e38-9282-400d-8ac5-867325edf4ce.png";
+const rootUiDmArtwork = "./DM助手.png?v=category-ui-dm-assistant-20260613";
+if (CATEGORY_DATA.ui?.works) {
+  CATEGORY_DATA.ui.works.forEach((work) => {
+    if (work.src && work.src.includes(legacyUiDmArtwork)) {
+      work.src = rootUiDmArtwork;
+      work.title = "UI启动页 02";
+    }
+  });
+}
+
 const category = CATEGORY_DATA[current];
 
 function categoryUrl(slug) {
@@ -18,6 +30,9 @@ function nextSlug(slug) {
 }
 
 function mediaDimensions(item) {
+  if (item.src && item.src.includes("DM助手.png")) {
+    return { width: 852, height: 1846 };
+  }
   const orientation = item.orientation || "square";
   if (["banner", "video-landscape", "video-link", "retouch-board", "ip-board", "symbol-board"].includes(orientation)) {
     return { width: 1600, height: 900 };
