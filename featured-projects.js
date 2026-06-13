@@ -181,7 +181,7 @@ function renderUiReferencePage() {
       <section class="featured-frost-stage" aria-label="05 UI启动页作品展示">
         <div class="featured-frost-panel ui-frost-panel ui-frost-gallery">
           <figure class="ui-frost-work ui-frost-work-dm">
-            <img class="ui-frost-art" src="${asset("./ui启动页/DM助手.png", "featured-ui-dm-assistant-20260612")}" alt="05 UI启动页作品展示：须尽欢 DM助手" ${featuredImageAttrs.uiDm}>
+            <img class="ui-frost-art" src="${asset("./DM助手.png", "featured-ui-dm-assistant-20260613")}" alt="05 UI启动页作品展示：须尽欢 DM助手" ${featuredImageAttrs.uiDm}>
           </figure>
           <figure class="ui-frost-work ui-frost-work-danmu">
             <img class="ui-frost-art" src="${asset("./ui启动页/62005ee6-8217-4247-bfc0-a3f515374dc7.png", "featured-ui-startup-20260612")}" alt="05 UI启动页作品展示：精彩弹幕 不止视频" ${featuredImageAttrs.uiDanmu}>
