@@ -47,3 +47,22 @@ body #projects .project-item-narrow::before {
   background: linear-gradient(90deg, transparent, rgba(226, 190, 118, 0.34), transparent) !important;
   opacity: 0.48 !important;
 }
+
+/* Homepage category directory replacement: match 分类项目目录1.1.png proportions and hotspots. */
+.category-hall {
+  width: min(1755px, calc(100vw - 36px)) !important;
+}
+
+.category-hall .category-grid {
+  top: 26% !important;
+  right: 7% !important;
+  bottom: 18.8% !important;
+  left: 7.6% !important;
+  gap: 0.52% !important;
+}
+
+@media (max-width: 760px) {
+  .category-hall {
+    min-width: 980px !important;
+  }
+}
