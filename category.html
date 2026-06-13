@@ -228,7 +228,7 @@
       display: block !important;
       width: 100% !important;
       height: auto !important;
-      aspect-ratio: 2048 / 320 !important;
+      aspect-ratio: 1920 / 300 !important;
       object-fit: contain !important;
       object-position: center center !important;
       border-radius: inherit !important;
@@ -355,7 +355,7 @@
 
   <script src="./script.js?v=perf-loading-20260612" defer></script>
   <script src="./category-data.js?v=next-banner-aspect-20260612" defer></script>
-  <script src="./category-page.js?v=next-card-fallback-20260612" defer></script>
+  <script src="./category-page.js?v=next-card-folder-20260613" defer></script>
   <script>
     window.addEventListener("DOMContentLoaded", () => {
       const nextMap = {
@@ -381,6 +381,18 @@
         ui: "UI启动页",
         icon: "ICON",
         video: "视频 / 漫剧"
+      };
+      const nextImages = {
+        outfit: "./下一项/ChatGPT Image 2026年6月12日 19_41_24.png",
+        portrait: "./下一项/ChatGPT Image 2026年6月12日 19_46_19.png",
+        retouch: "./下一项/ChatGPT Image 2026年6月12日 19_48_41 (2).png",
+        poster: "./下一项/ChatGPT Image 2026年6月12日 19_48_42 (3).png",
+        ip: "./下一项/ChatGPT Image 2026年6月12日 19_48_42 (4).png",
+        typography: "./下一项/ChatGPT Image 2026年6月12日 19_48_42 (5).png",
+        symbol: "./下一项/ChatGPT Image 2026年6月12日 19_48_43 (6).png",
+        ui: "./下一项/ChatGPT Image 2026年6月12日 19_48_43 (7).png",
+        icon: "./下一项/ChatGPT Image 2026年6月12日 19_48_43 (8).png",
+        video: "./下一项/ChatGPT Image 2026年6月12日 19_48_44 (9).png"
       };
       const oldUiArtwork = "6a996e38-9282-400d-8ac5-867325edf4ce.png";
       const newUiArtwork = "./ui启动页/DM助手.png?v=category-ui-dm-assistant-20260612";
@@ -408,7 +420,7 @@
         const card = document.querySelector(".category-next");
         if (!card) return;
 
-        const imageSrc = `./assets/next/next-${next}.png`;
+        const imageSrc = nextImages[next];
         const preload = new Image();
         preload.onload = () => {
           const image = document.createElement("img");
@@ -417,8 +429,8 @@
           image.alt = labels[next] || "下一项目";
           image.loading = "lazy";
           image.decoding = "async";
-          image.width = 2048;
-          image.height = 320;
+          image.width = 1920;
+          image.height = 300;
 
           card.classList.add("category-next-card");
           card.href = `./category.html?cat=${encodeURIComponent(next)}`;
