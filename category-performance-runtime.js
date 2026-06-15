@@ -1,4 +1,12 @@
 (() => {
+  const appendChild = Element.prototype.appendChild;
+  Element.prototype.appendChild = function appendChildOnce(node) {
+    if (this === document.head && node?.tagName === "LINK" && node.href?.includes("category-process.css") && document.querySelector('link[href*="category-process.css"]')) {
+      return node;
+    }
+    return appendChild.call(this, node);
+  };
+
   const NEXT_MAP = {
     portrait: "outfit",
     outfit: "retouch",
@@ -64,7 +72,6 @@
         video.removeAttribute("src");
       }
       video.preload = "none";
-      video.decoding = "async";
       const card = video.closest(".work-card");
       const warm = () => loadVideo(video);
       card?.addEventListener("pointerenter", warm, { once: true, passive: true });
