@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>分类项目 - 铁马德龙作品集</title>
   <meta name="description" content="铁马德龙作品集分类项目二级页面。">
-  <link rel="stylesheet" href="./styles.css?v=classification-next-card-fallback-20260612">
+  <link rel="stylesheet" href="./styles.css?v=category-performance-20260615">
+  <link rel="stylesheet" href="./category-process.css?v=category-performance-20260615">
   <style>
     body.category-page[data-category="video"] .category-work-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -353,98 +354,9 @@
     </button>
   </div>
 
-  <script src="./script.js?v=perf-loading-20260612" defer></script>
-  <script src="./category-data.js?v=next-banner-aspect-20260612" defer></script>
-  <script src="./category-page.js?v=next-card-folder-20260613" defer></script>
-  <script>
-    window.addEventListener("DOMContentLoaded", () => {
-      const nextMap = {
-        portrait: "outfit",
-        outfit: "retouch",
-        retouch: "poster",
-        poster: "ip",
-        ip: "typography",
-        typography: "symbol",
-        symbol: "ui",
-        ui: "icon",
-        icon: "video",
-        video: "portrait"
-      };
-      const labels = {
-        portrait: "AI写真",
-        outfit: "电商模特换装",
-        retouch: "产品精修",
-        poster: "海报Banner",
-        ip: "IP设计",
-        typography: "字体设计",
-        symbol: "超级符号",
-        ui: "UI启动页",
-        icon: "ICON",
-        video: "视频 / 漫剧"
-      };
-      const nextImages = {
-        outfit: "./下一项/ChatGPT Image 2026年6月12日 19_41_24.png",
-        portrait: "./下一项/ChatGPT Image 2026年6月12日 19_46_19.png",
-        retouch: "./下一项/ChatGPT Image 2026年6月12日 19_48_41 (2).png",
-        poster: "./下一项/ChatGPT Image 2026年6月12日 19_48_42 (3).png",
-        ip: "./下一项/ChatGPT Image 2026年6月12日 19_48_42 (4).png",
-        typography: "./下一项/ChatGPT Image 2026年6月12日 19_48_42 (5).png",
-        symbol: "./下一项/ChatGPT Image 2026年6月12日 19_48_43 (6).png",
-        ui: "./下一项/ChatGPT Image 2026年6月12日 19_48_43 (7).png",
-        icon: "./下一项/ChatGPT Image 2026年6月12日 19_48_43 (8).png",
-        video: "./下一项/ChatGPT Image 2026年6月12日 19_48_44 (9).png"
-      };
-      const oldUiArtwork = "6a996e38-9282-400d-8ac5-867325edf4ce.png";
-      const newUiArtwork = "./ui启动页/DM助手.png?v=category-ui-dm-assistant-20260612";
-      const patchUiArtwork = () => {
-        if (window.CATEGORY_DATA?.ui?.works) {
-          window.CATEGORY_DATA.ui.works.forEach((work) => {
-            if (work.src && work.src.includes(oldUiArtwork)) {
-              work.src = newUiArtwork;
-              work.title = "UI启动页 02";
-            }
-          });
-        }
-        document.querySelectorAll(`img[src*="${oldUiArtwork}"]`).forEach((image) => {
-          image.src = newUiArtwork;
-          image.width = 852;
-          image.height = 1846;
-          image.decoding = "async";
-        });
-      };
-
-      requestAnimationFrame(() => {
-        patchUiArtwork();
-        const current = document.body.dataset.category || new URLSearchParams(window.location.search).get("cat") || "portrait";
-        const next = nextMap[current] || "portrait";
-        const card = document.querySelector(".category-next");
-        if (!card) return;
-
-        const imageSrc = nextImages[next];
-        const preload = new Image();
-        preload.onload = () => {
-          const image = document.createElement("img");
-          image.className = "category-next-image";
-          image.src = imageSrc;
-          image.alt = labels[next] || "下一项目";
-          image.loading = "lazy";
-          image.decoding = "async";
-          image.width = 1920;
-          image.height = 300;
-
-          card.classList.add("category-next-card");
-          card.href = `./category.html?cat=${encodeURIComponent(next)}`;
-          card.setAttribute("aria-label", `下一项目：${labels[next] || next}`);
-          card.replaceChildren(image);
-        };
-        preload.onerror = () => {
-          card.classList.remove("category-next-card");
-          card.href = `./category.html?cat=${encodeURIComponent(next)}`;
-          card.setAttribute("aria-label", `下一项目：${labels[next] || next}`);
-        };
-        preload.src = imageSrc;
-      });
-    });
-  </script>
+  <script src="./script.js?v=category-performance-20260615" defer></script>
+  <script src="./category-data.js?v=category-performance-20260615" defer></script>
+  <script src="./category-performance-runtime.js?v=category-performance-20260615" defer></script>
+  <script src="./category-page.js?v=category-performance-20260615" defer></script>
 </body>
 </html>
