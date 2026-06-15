@@ -1,4 +1,4 @@
-const FEATURED_VERSION = "featured-performance-20260615";
+const FEATURED_VERSION = "featured-ad-gallery-20260615";
 
 const FEATURED_CSS_ASSET_VERSIONS = {
   "./assets/featured-ad-page-strict-reference.png": "featured-no-layer-20260606"
@@ -11,6 +11,21 @@ const featuredProjects = [
   { slug: "drama", nav: "04 动漫短剧", tone: "deep" },
   { slug: "ui", nav: "05 UI启动页", tone: "light" },
   { slug: "ip", nav: "06 IP设计", tone: "light" }
+];
+
+const featuredAdWorks = [
+  {
+    title: "窖藏酒CG动画",
+    src: "./assets/categories/video/video-01.mp4"
+  },
+  {
+    title: "白酒广告短片",
+    src: "./assets/categories/video/video-02.mp4"
+  },
+  {
+    title: "护肤品精华水广告",
+    src: "./assets/categories/video/video-03.mp4"
+  }
 ];
 
 const featuredProjectMap = new Map(featuredProjects.map((project) => [project.slug, project]));
@@ -72,6 +87,194 @@ function setupDeferredVideos(root) {
   });
 }
 
+function injectFeaturedAdGalleryStyles() {
+  if (document.getElementById("featured-ad-gallery-styles")) return;
+  const style = document.createElement("style");
+  style.id = "featured-ad-gallery-styles";
+  style.textContent = `
+    body.featured-page[data-featured="ad"] .featured-ad-reference-page {
+      min-height: 100vh !important;
+      height: auto !important;
+      overflow-x: hidden !important;
+      overflow-y: auto !important;
+      padding: clamp(106px, 9vw, 136px) 0 clamp(38px, 5vw, 68px) !important;
+    }
+
+    body.featured-page[data-featured="ad"] .featured-ad-gallery {
+      position: relative;
+      z-index: 4;
+      width: min(78vw, 1180px);
+      margin: 0 auto;
+    }
+
+    body.featured-page[data-featured="ad"] .ad-work-video-frame {
+      position: relative !important;
+      top: auto !important;
+      left: auto !important;
+      width: 100% !important;
+      transform: none !important;
+      border: 1px solid rgba(223, 236, 255, 0.52) !important;
+      border-radius: 12px !important;
+      box-shadow: 0 0 0 1px rgba(104, 164, 232, 0.16), 0 0 34px rgba(75, 143, 226, 0.24), 0 28px 72px rgba(0, 8, 22, 0.5) !important;
+      transition: box-shadow 260ms ease, border-color 260ms ease !important;
+    }
+
+    body.featured-page[data-featured="ad"] .ad-work-video-frame.is-switching {
+      border-color: rgba(255, 222, 161, 0.82) !important;
+      box-shadow: 0 0 0 1px rgba(255, 204, 126, 0.26), 0 0 46px rgba(255, 190, 96, 0.28), 0 28px 72px rgba(0, 8, 22, 0.5) !important;
+    }
+
+    body.featured-page[data-featured="ad"] .featured-ad-thumbs {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(14px, 1.7vw, 24px);
+      margin-top: clamp(20px, 2.4vw, 30px);
+    }
+
+    body.featured-page[data-featured="ad"] .featured-ad-thumb {
+      position: relative;
+      display: block;
+      width: 100%;
+      padding: 0;
+      overflow: hidden;
+      border: 1px solid rgba(183, 213, 248, 0.28);
+      border-radius: 10px;
+      background: rgba(2, 9, 20, 0.72);
+      box-shadow: 0 14px 30px rgba(0, 8, 22, 0.28);
+      cursor: pointer;
+      transform: scale(1);
+      transition: transform 240ms ease, border-color 240ms ease, box-shadow 240ms ease, filter 240ms ease;
+    }
+
+    body.featured-page[data-featured="ad"] .featured-ad-thumb::after {
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(180deg, transparent 46%, rgba(1, 7, 16, 0.82) 100%);
+      pointer-events: none;
+      content: "";
+    }
+
+    body.featured-page[data-featured="ad"] .featured-ad-thumb:hover,
+    body.featured-page[data-featured="ad"] .featured-ad-thumb:focus-visible {
+      transform: translateY(-2px) scale(1.018);
+      border-color: rgba(207, 228, 255, 0.6);
+      outline: none;
+    }
+
+    body.featured-page[data-featured="ad"] .featured-ad-thumb.is-active {
+      z-index: 2;
+      transform: scale(1.04);
+      border-color: rgba(255, 220, 157, 0.9);
+      box-shadow: 0 0 0 1px rgba(255, 204, 121, 0.3), 0 0 30px rgba(255, 185, 83, 0.34), 0 18px 40px rgba(0, 8, 22, 0.42);
+      filter: brightness(1.05);
+    }
+
+    body.featured-page[data-featured="ad"] .featured-ad-thumb video {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      background: #020812;
+      pointer-events: none;
+    }
+
+    body.featured-page[data-featured="ad"] .featured-ad-thumb-title {
+      position: absolute;
+      left: 16px;
+      right: 48px;
+      bottom: 13px;
+      z-index: 2;
+      color: rgba(246, 239, 223, 0.94);
+      font-size: clamp(13px, 1vw, 16px);
+      line-height: 1.35;
+      text-align: left;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.76);
+    }
+
+    body.featured-page[data-featured="ad"] .featured-ad-thumb-play {
+      position: absolute;
+      right: 14px;
+      bottom: 12px;
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      width: 28px;
+      aspect-ratio: 1;
+      border: 1px solid rgba(255, 236, 200, 0.76);
+      border-radius: 50%;
+      background: rgba(2, 9, 20, 0.42);
+      color: rgba(255, 246, 226, 0.96);
+      font-size: 11px;
+      line-height: 1;
+    }
+
+    @media (max-width: 820px) {
+      body.featured-page[data-featured="ad"] .featured-ad-reference-page {
+        padding-top: 116px !important;
+      }
+
+      body.featured-page[data-featured="ad"] .featured-ad-gallery {
+        width: min(92vw, 760px);
+      }
+
+      body.featured-page[data-featured="ad"] .featured-ad-thumbs {
+        gap: 9px;
+      }
+
+      body.featured-page[data-featured="ad"] .featured-ad-thumb-title {
+        left: 9px;
+        right: 34px;
+        bottom: 8px;
+        font-size: 11px;
+      }
+
+      body.featured-page[data-featured="ad"] .featured-ad-thumb-play {
+        right: 8px;
+        bottom: 7px;
+        width: 23px;
+        font-size: 9px;
+      }
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+function setupFeaturedAdGallery(root) {
+  const player = root.querySelector("[data-ad-player]");
+  const frame = root.querySelector(".ad-work-video-frame");
+  const thumbs = [...root.querySelectorAll("[data-ad-work]")];
+  if (!player || !frame || !thumbs.length) return;
+
+  const selectWork = (index, autoplay = false) => {
+    const work = featuredAdWorks[index];
+    if (!work) return;
+
+    thumbs.forEach((thumb, thumbIndex) => {
+      const active = thumbIndex === index;
+      thumb.classList.toggle("is-active", active);
+      thumb.setAttribute("aria-pressed", active ? "true" : "false");
+    });
+
+    frame.classList.add("is-switching");
+    player.pause();
+    player.src = asset(work.src, "featured-ad-work-20260615");
+    player.setAttribute("aria-label", work.title);
+    player.load();
+
+    window.setTimeout(() => frame.classList.remove("is-switching"), 320);
+    if (autoplay) {
+      player.play().catch(() => {});
+    }
+  };
+
+  thumbs.forEach((thumb, index) => {
+    thumb.addEventListener("click", () => selectWork(index, true));
+  });
+
+  selectWork(0, false);
+}
+
 function renderFrostNav(activeSlug) {
   const links = featuredProjects.map((project) => {
     const [number, ...labelParts] = project.nav.split(" ");
@@ -119,10 +322,23 @@ function renderDarkNav(activeSlug, prefix) {
 }
 
 function renderAdReferencePage() {
+  const thumbs = featuredAdWorks.map((work, index) => `
+    <button class="featured-ad-thumb${index === 0 ? " is-active" : ""}" type="button" data-ad-work="${index}" aria-label="播放${work.title}" aria-pressed="${index === 0 ? "true" : "false"}">
+      <video src="${asset(work.src, "featured-ad-thumb-20260615")}" muted playsinline preload="metadata" width="640" height="360"></video>
+      <span class="featured-ad-thumb-title">${work.title}</span>
+      <span class="featured-ad-thumb-play" aria-hidden="true">▶</span>
+    </button>
+  `).join("");
+
   return `
     <div class="featured-ad-reference-page" aria-label="01广告精品项目二级页面">
-      <div class="ad-work-video-frame" aria-label="01广告视频作品">
-        <video class="ad-work-video" data-video-src="${asset("./video-02.mp4", "featured-ad-video-20260612")}" controls preload="none" playsinline width="1600" height="900"></video>
+      <div class="featured-ad-gallery">
+        <div class="ad-work-video-frame" aria-label="01广告视频作品">
+          <video class="ad-work-video" data-ad-player controls preload="metadata" playsinline width="1600" height="900"></video>
+        </div>
+        <div class="featured-ad-thumbs" aria-label="广告作品列表">
+          ${thumbs}
+        </div>
       </div>
       ${renderDarkNav("ad", "ad-ref")}
       <a class="ad-ref-hotspot ad-ref-back" href="./index.html#projects" aria-label="返回首页"></a>
@@ -215,7 +431,11 @@ function renderFeaturedPage() {
   document.body.dataset.tone = project.tone;
   document.title = `${project.nav} - 未来东方 AI 数字艺术馆`;
 
-  if (project.slug === "ad") root.innerHTML = renderAdReferencePage();
+  if (project.slug === "ad") {
+    injectFeaturedAdGalleryStyles();
+    root.innerHTML = renderAdReferencePage();
+    setupFeaturedAdGallery(root);
+  }
   if (project.slug === "banner") root.innerHTML = renderBannerReferencePage();
   if (project.slug === "poster") root.innerHTML = renderPosterReferencePage();
   if (project.slug === "drama") root.innerHTML = renderDramaReferencePage();
