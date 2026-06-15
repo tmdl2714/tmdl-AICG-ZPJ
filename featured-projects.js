@@ -1,4 +1,4 @@
-const FEATURED_VERSION = "featured-banner-gallery-20260615";
+const FEATURED_VERSION = "featured-ip-flip-20260615";
 
 const featuredProjects = [
   { slug: "ad", nav: "01 广告", tone: "deep" },
@@ -53,6 +53,178 @@ const featuredImageAttrs = {
   uiSky: imageAttrs({ loading: "lazy", width: 853, height: 1844 }),
   ip: imageAttrs({ loading: "eager", fetchpriority: "high", width: 1536, height: 1024 })
 };
+
+function injectFeaturedIpFlipStyles() {
+  if (document.getElementById("featured-ip-flip-styles")) return;
+  const style = document.createElement("style");
+  style.id = "featured-ip-flip-styles";
+  style.textContent = `
+    body.featured-page[data-featured="ip"] .ip-flip-stage {
+      aspect-ratio: 3 / 2;
+      pointer-events: auto;
+      perspective: 1280px;
+      perspective-origin: center center;
+      cursor: pointer;
+    }
+
+    body.featured-page[data-featured="ip"] .ip-flip-card {
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      transform: rotateY(var(--ip-flip-rotation, 0deg));
+      transform-origin: center center;
+      transform-style: preserve-3d;
+      transition: transform 780ms cubic-bezier(0.22, 0.72, 0.2, 1);
+      will-change: transform;
+    }
+
+    body.featured-page[data-featured="ip"] .ip-flip-face {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border-radius: inherit;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+
+    body.featured-page[data-featured="ip"] .ip-flip-face-back {
+      transform: rotateY(180deg);
+    }
+
+    body.featured-page[data-featured="ip"] .ip-flip-face img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      object-fit: cover;
+      object-position: center center;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    body.featured-page[data-featured="ip"] .ip-flip-hit {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      z-index: 3;
+      display: block;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    body.featured-page[data-featured="ip"] .ip-flip-hit-left {
+      left: 0;
+      width: 50%;
+    }
+
+    body.featured-page[data-featured="ip"] .ip-flip-hit-right {
+      right: 0;
+      width: 50%;
+    }
+
+    body.featured-page[data-featured="ip"] .ip-flip-arrow {
+      position: absolute;
+      top: 50%;
+      z-index: 4;
+      display: grid;
+      place-items: center;
+      width: clamp(34px, 3.1vw, 48px);
+      aspect-ratio: 1;
+      padding: 0;
+      border: 1px solid rgba(221, 242, 255, 0.36);
+      border-radius: 50%;
+      background: linear-gradient(145deg, rgba(10, 36, 64, 0.38), rgba(222, 243, 255, 0.12));
+      box-shadow: 0 10px 28px rgba(12, 35, 64, 0.2), inset 0 1px rgba(255, 255, 255, 0.38);
+      color: rgba(246, 253, 255, 0.78);
+      opacity: 0.46;
+      cursor: pointer;
+      transform: translateY(-50%);
+      transition: opacity 180ms ease, border-color 180ms ease, box-shadow 180ms ease, color 180ms ease;
+      backdrop-filter: blur(12px) saturate(1.1);
+      -webkit-backdrop-filter: blur(12px) saturate(1.1);
+    }
+
+    body.featured-page[data-featured="ip"] .ip-flip-arrow-left {
+      left: max(-64px, -4.4vw);
+    }
+
+    body.featured-page[data-featured="ip"] .ip-flip-arrow-right {
+      right: max(-64px, -4.4vw);
+    }
+
+    body.featured-page[data-featured="ip"] .ip-flip-arrow::before {
+      width: 30%;
+      height: 30%;
+      border-top: 1.8px solid currentColor;
+      border-left: 1.8px solid currentColor;
+      content: "";
+    }
+
+    body.featured-page[data-featured="ip"] .ip-flip-arrow-left::before {
+      transform: translateX(12%) rotate(-45deg);
+    }
+
+    body.featured-page[data-featured="ip"] .ip-flip-arrow-right::before {
+      transform: translateX(-12%) rotate(135deg);
+    }
+
+    body.featured-page[data-featured="ip"] .ip-flip-arrow:hover,
+    body.featured-page[data-featured="ip"] .ip-flip-arrow:focus-visible {
+      border-color: rgba(238, 249, 255, 0.74);
+      box-shadow: 0 12px 30px rgba(12, 35, 64, 0.24), 0 0 20px rgba(174, 223, 255, 0.28), inset 0 1px rgba(255, 255, 255, 0.58);
+      color: rgba(255, 255, 255, 0.96);
+      opacity: 0.86;
+      outline: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      body.featured-page[data-featured="ip"] .ip-flip-card {
+        transition-duration: 120ms;
+      }
+    }
+
+    @media (max-width: 820px) {
+      body.featured-page[data-featured="ip"] .ip-flip-arrow {
+        width: 34px;
+        opacity: 0.58;
+      }
+
+      body.featured-page[data-featured="ip"] .ip-flip-arrow-left {
+        left: max(-42px, -6vw);
+      }
+
+      body.featured-page[data-featured="ip"] .ip-flip-arrow-right {
+        right: max(-42px, -6vw);
+      }
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+function setupFeaturedIpFlip(root) {
+  const stage = root.querySelector("[data-ip-flip-stage]");
+  const card = root.querySelector("[data-ip-flip-card]");
+  if (!stage || !card) return;
+
+  let rotation = 0;
+  const rotate = (direction) => {
+    rotation += direction === "left" ? -180 : 180;
+    card.style.setProperty("--ip-flip-rotation", `${rotation}deg`);
+  };
+
+  stage.querySelectorAll("[data-ip-flip]").forEach((control) => {
+    control.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      rotate(control.dataset.ipFlip);
+    });
+  });
+}
 
 function renderFrostNav(activeSlug) {
   const links = featuredProjects.map((project) => {
@@ -205,7 +377,7 @@ function renderUiReferencePage() {
   return `<div class="featured-frost-page featured-ui-frost-page" aria-label="05 UI启动页精品项目二级页面">${renderFrostNav("ui")}<section class="featured-frost-stage"><div class="featured-frost-panel ui-frost-panel ui-frost-gallery"><figure class="ui-frost-work ui-frost-work-dm"><img class="ui-frost-art" src="${asset("./DM助手.png","featured-ui-dm-assistant-20260613")}" alt="须尽欢 DM助手" ${featuredImageAttrs.uiDm}></figure><figure class="ui-frost-work ui-frost-work-danmu"><img class="ui-frost-art" src="${asset("./ui启动页/62005ee6-8217-4247-bfc0-a3f515374dc7.png","featured-ui-startup-20260612")}" alt="精彩弹幕 不止视频" ${featuredImageAttrs.uiDanmu}></figure><figure class="ui-frost-work ui-frost-work-sky"><img class="ui-frost-art" src="${asset("./ui启动页/光遇1.2.png","featured-ui-startup-20260612")}" alt="光遇" ${featuredImageAttrs.uiSky}></figure></div></section></div>`;
 }
 function renderIpReferencePage() {
-  return `<div class="featured-frost-page featured-ip-frost-page" aria-label="06 IP设计精品项目二级页面">${renderFrostNav("ip")}<section class="featured-frost-stage"><img class="ip-placement-art" src="${asset("./山海月IP.png","featured-ip-shanhai-20260612")}" alt="06 IP设计精品项目作品展示" ${featuredImageAttrs.ip}></section></div>`;
+  return `<div class="featured-frost-page featured-ip-frost-page" aria-label="06 IP设计精品项目二级页面">${renderFrostNav("ip")}<section class="featured-frost-stage"><div class="ip-placement-art ip-flip-stage" data-ip-flip-stage aria-label="06 IP设计双面作品展示"><div class="ip-flip-card" data-ip-flip-card><figure class="ip-flip-face ip-flip-face-front"><img src="${asset("./山海月IP.png","featured-ip-shanhai-20260612")}" alt="06 IP设计精品项目作品展示正面" ${featuredImageAttrs.ip}></figure><figure class="ip-flip-face ip-flip-face-back"><img src="${asset("./IP综合1.0.png","featured-ip-back-huanhu-20260615")}" alt="06 IP设计精品项目作品展示背面" ${imageAttrs({ loading: "lazy", width: 1536, height: 1024 })}></figure></div><button class="ip-flip-hit ip-flip-hit-left" type="button" data-ip-flip="left" aria-label="向左旋转 IP 作品"></button><button class="ip-flip-hit ip-flip-hit-right" type="button" data-ip-flip="right" aria-label="向右旋转 IP 作品"></button><button class="ip-flip-arrow ip-flip-arrow-left" type="button" data-ip-flip="left" aria-label="向左旋转"></button><button class="ip-flip-arrow ip-flip-arrow-right" type="button" data-ip-flip="right" aria-label="向右旋转"></button></div></section></div>`;
 }
 
 function renderFeaturedPage() {
@@ -220,7 +392,11 @@ function renderFeaturedPage() {
   else if (project.slug === "poster") root.innerHTML = renderPosterReferencePage();
   else if (project.slug === "drama") root.innerHTML = renderDramaReferencePage();
   else if (project.slug === "ui") root.innerHTML = renderUiReferencePage();
-  else if (project.slug === "ip") root.innerHTML = renderIpReferencePage();
+  else if (project.slug === "ip") {
+    injectFeaturedIpFlipStyles();
+    root.innerHTML = renderIpReferencePage();
+    setupFeaturedIpFlip(root);
+  }
 }
 
 renderFeaturedPage();
