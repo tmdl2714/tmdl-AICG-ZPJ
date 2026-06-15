@@ -1,4 +1,4 @@
-const FEATURED_VERSION = "featured-ad-performance-20260615";
+const FEATURED_VERSION = "featured-banner-gallery-20260615";
 
 const featuredProjects = [
   { slug: "ad", nav: "01 广告", tone: "deep" },
@@ -13,6 +13,13 @@ const featuredAdWorks = [
   { title: "窖藏酒CG动画", src: "./assets/categories/video/video-01.mp4" },
   { title: "白酒广告短片", src: "./assets/categories/video/video-02.mp4" },
   { title: "护肤品精华水广告", src: "./assets/categories/video/video-03.mp4" }
+];
+
+const featuredBannerWorks = [
+  { title: "窖藏白酒", src: "./assets/featured-banner-art-baijiu.jpeg" },
+  { title: "定格每一道光", src: "./30cb955e-0822-43f3-98d9-4ba484c120d2.png" },
+  { title: "新本上架", src: "./d15079c8-14f0-47b8-864b-dd47c04d6d66.png" },
+  { title: "今日上新", src: "./4cca3669-f0f0-4b6e-8557-176422ad07b2.png" }
 ];
 
 const featuredProjectMap = new Map(featuredProjects.map((project) => [project.slug, project]));
@@ -53,13 +60,7 @@ function renderFrostNav(activeSlug) {
     const label = labelParts.join(" ") || project.nav.replace(number, "").trim();
     return `<a class="${project.slug === activeSlug ? "is-active" : ""}" href="./featured.html?project=${project.slug}"><span>${number}</span> ${label}</a>`;
   }).join("");
-
-  return `
-    <nav class="frost-ref-nav" aria-label="精品项目导航">
-      <a class="frost-ref-back" href="./index.html#projects"><span class="frost-ref-chevron" aria-hidden="true"></span><span>返回首页</span></a>
-      <div class="frost-ref-tabs" aria-label="精品项目分类">${links}</div>
-      <button class="frost-ref-menu" type="button" aria-label="菜单"><span></span><span></span></button>
-    </nav>`;
+  return `<nav class="frost-ref-nav" aria-label="精品项目导航"><a class="frost-ref-back" href="./index.html#projects"><span class="frost-ref-chevron" aria-hidden="true"></span><span>返回首页</span></a><div class="frost-ref-tabs" aria-label="精品项目分类">${links}</div><button class="frost-ref-menu" type="button" aria-label="菜单"><span></span><span></span></button></nav>`;
 }
 
 function renderDarkNav(activeSlug, prefix) {
@@ -68,13 +69,7 @@ function renderDarkNav(activeSlug, prefix) {
     const label = labelParts.join(" ") || project.nav.replace(number, "").trim();
     return `<a class="${project.slug === activeSlug ? "is-active" : ""}" href="./featured.html?project=${project.slug}"><span>${number}</span> ${label}</a>`;
   }).join("");
-
-  return `
-    <nav class="${prefix}-crisp-nav" aria-label="精品项目导航">
-      <a class="${prefix}-crisp-back" href="./index.html#projects"><span class="${prefix}-crisp-chevron" aria-hidden="true"></span><span>返回首页</span></a>
-      <div class="${prefix}-crisp-tabs" aria-label="精品项目分类">${links}</div>
-      <button class="${prefix}-crisp-menu" type="button" aria-label="菜单"><span></span><span></span></button>
-    </nav>`;
+  return `<nav class="${prefix}-crisp-nav" aria-label="精品项目导航"><a class="${prefix}-crisp-back" href="./index.html#projects"><span class="${prefix}-crisp-chevron" aria-hidden="true"></span><span>返回首页</span></a><div class="${prefix}-crisp-tabs" aria-label="精品项目分类">${links}</div><button class="${prefix}-crisp-menu" type="button" aria-label="菜单"><span></span><span></span></button></nav>`;
 }
 
 function injectFeaturedAdGalleryStyles() {
@@ -84,126 +79,144 @@ function injectFeaturedAdGalleryStyles() {
   style.textContent = `
     body.featured-page[data-featured="ad"] .featured-ad-reference-page{min-height:100vh!important;height:auto!important;overflow-x:hidden!important;overflow-y:auto!important;padding:clamp(106px,9vw,136px) 0 clamp(38px,5vw,68px)!important}
     body.featured-page[data-featured="ad"] .featured-ad-gallery{position:relative;z-index:4;width:min(78vw,1180px);margin:0 auto}
-    body.featured-page[data-featured="ad"] .ad-work-video-frame{position:relative!important;top:auto!important;left:auto!important;width:100%!important;transform:none!important;border:1px solid rgba(223,236,255,.52)!important;border-radius:12px!important;box-shadow:0 0 0 1px rgba(104,164,232,.16),0 0 34px rgba(75,143,226,.24),0 28px 72px rgba(0,8,22,.5)!important;transition:box-shadow .26s ease,border-color .26s ease!important}
-    body.featured-page[data-featured="ad"] .ad-work-video-frame.is-switching{border-color:rgba(255,222,161,.82)!important;box-shadow:0 0 0 1px rgba(255,204,126,.26),0 0 46px rgba(255,190,96,.28),0 28px 72px rgba(0,8,22,.5)!important}
+    body.featured-page[data-featured="ad"] .ad-work-video-frame{position:relative!important;top:auto!important;left:auto!important;width:100%!important;transform:none!important;border:1px solid rgba(223,236,255,.52)!important;border-radius:12px!important;box-shadow:0 0 0 1px rgba(104,164,232,.16),0 0 34px rgba(75,143,226,.24),0 28px 72px rgba(0,8,22,.5)!important}
     body.featured-page[data-featured="ad"] .featured-ad-thumbs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,1.7vw,24px);margin-top:clamp(20px,2.4vw,30px)}
-    body.featured-page[data-featured="ad"] .featured-ad-thumb{position:relative;display:block;width:100%;padding:0;overflow:hidden;border:1px solid rgba(183,213,248,.28);border-radius:10px;background:linear-gradient(145deg,#0b1d35,#020812);box-shadow:0 14px 30px rgba(0,8,22,.28);cursor:pointer;transform:scale(1);transition:transform .24s ease,border-color .24s ease,box-shadow .24s ease,filter .24s ease}
-    body.featured-page[data-featured="ad"] .featured-ad-thumb::after{position:absolute;inset:0;border-radius:inherit;background:linear-gradient(180deg,transparent 46%,rgba(1,7,16,.82) 100%);pointer-events:none;content:""}
-    body.featured-page[data-featured="ad"] .featured-ad-thumb:hover,body.featured-page[data-featured="ad"] .featured-ad-thumb:focus-visible{transform:translateY(-2px) scale(1.018);border-color:rgba(207,228,255,.6);outline:none}
-    body.featured-page[data-featured="ad"] .featured-ad-thumb.is-active{z-index:2;transform:scale(1.04);border-color:rgba(255,220,157,.9);box-shadow:0 0 0 1px rgba(255,204,121,.3),0 0 30px rgba(255,185,83,.34),0 18px 40px rgba(0,8,22,.42);filter:brightness(1.05)}
-    body.featured-page[data-featured="ad"] .featured-ad-thumb video{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:transparent;pointer-events:none}
-    body.featured-page[data-featured="ad"] .featured-ad-thumb-title{position:absolute;left:16px;right:48px;bottom:13px;z-index:2;color:rgba(246,239,223,.94);font-size:clamp(13px,1vw,16px);line-height:1.35;text-align:left;text-shadow:0 2px 10px rgba(0,0,0,.76)}
-    body.featured-page[data-featured="ad"] .featured-ad-thumb-play{position:absolute;right:14px;bottom:12px;z-index:2;display:grid;place-items:center;width:28px;aspect-ratio:1;border:1px solid rgba(255,236,200,.76);border-radius:50%;background:rgba(2,9,20,.42);color:rgba(255,246,226,.96);font-size:11px;line-height:1}
-    @media(max-width:820px){body.featured-page[data-featured="ad"] .featured-ad-reference-page{padding-top:116px!important}body.featured-page[data-featured="ad"] .featured-ad-gallery{width:min(92vw,760px)}body.featured-page[data-featured="ad"] .featured-ad-thumbs{gap:9px}body.featured-page[data-featured="ad"] .featured-ad-thumb-title{left:9px;right:34px;bottom:8px;font-size:11px}body.featured-page[data-featured="ad"] .featured-ad-thumb-play{right:8px;bottom:7px;width:23px;font-size:9px}}
-  `;
+    body.featured-page[data-featured="ad"] .featured-ad-thumb{position:relative;display:block;width:100%;padding:0;overflow:hidden;border:1px solid rgba(183,213,248,.28);border-radius:10px;background:linear-gradient(145deg,#0b1d35,#020812);box-shadow:0 14px 30px rgba(0,8,22,.28);cursor:pointer;transition:transform .24s ease,border-color .24s ease,box-shadow .24s ease}
+    body.featured-page[data-featured="ad"] .featured-ad-thumb:hover{transform:translateY(-2px)}
+    body.featured-page[data-featured="ad"] .featured-ad-thumb.is-active{border-color:rgba(255,220,157,.9);box-shadow:0 0 30px rgba(255,185,83,.34)}
+    body.featured-page[data-featured="ad"] .featured-ad-thumb video{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;pointer-events:none}
+    body.featured-page[data-featured="ad"] .featured-ad-thumb-title{position:absolute;left:16px;bottom:13px;color:#fff;text-shadow:0 2px 10px #000}
+    body.featured-page[data-featured="ad"] .featured-ad-thumb-play{position:absolute;right:14px;bottom:12px;color:#fff}
+    @media(max-width:820px){body.featured-page[data-featured="ad"] .featured-ad-gallery{width:min(92vw,760px)}}`;
   document.head.appendChild(style);
 }
 
 function setupFeaturedAdGallery(root) {
   const player = root.querySelector("[data-ad-player]");
-  const frame = root.querySelector(".ad-work-video-frame");
   const thumbs = [...root.querySelectorAll("[data-ad-work]")];
-  if (!player || !frame || !thumbs.length) return;
-
-  let activeIndex = -1;
-  const loadedThumbs = new Set();
-
-  const loadThumb = (index) => {
-    if (loadedThumbs.has(index)) return;
-    const thumbVideo = thumbs[index]?.querySelector("video[data-thumb-src]");
-    if (!thumbVideo) return;
-    loadedThumbs.add(index);
-    thumbVideo.src = thumbVideo.dataset.thumbSrc;
-    thumbVideo.load();
-  };
-
+  if (!player || !thumbs.length) return;
   const selectWork = (index, autoplay = false) => {
     const work = featuredAdWorks[index];
-    if (!work || activeIndex === index) {
-      if (autoplay && player.paused) player.play().catch(() => {});
-      return;
-    }
-
-    activeIndex = index;
-    thumbs.forEach((thumb, thumbIndex) => {
-      const active = thumbIndex === index;
-      thumb.classList.toggle("is-active", active);
-      thumb.setAttribute("aria-pressed", active ? "true" : "false");
-    });
-
-    loadThumb(index);
-    frame.classList.add("is-switching");
+    if (!work) return;
+    thumbs.forEach((thumb, i) => thumb.classList.toggle("is-active", i === index));
     player.pause();
-    player.preload = "metadata";
     player.src = asset(work.src, "featured-ad-work-20260615");
-    player.setAttribute("aria-label", work.title);
     player.load();
-    window.setTimeout(() => frame.classList.remove("is-switching"), 320);
-
     if (autoplay) player.play().catch(() => {});
   };
-
-  thumbs.forEach((thumb, index) => {
-    thumb.addEventListener("pointerenter", () => loadThumb(index), { once: true });
-    thumb.addEventListener("focus", () => loadThumb(index), { once: true });
-    thumb.addEventListener("click", () => selectWork(index, true));
-  });
-
+  thumbs.forEach((thumb, index) => thumb.addEventListener("click", () => selectWork(index, true)));
   selectWork(0, false);
 }
 
-function renderAdReferencePage() {
-  const thumbs = featuredAdWorks.map((work, index) => `
-    <button class="featured-ad-thumb${index === 0 ? " is-active" : ""}" type="button" data-ad-work="${index}" aria-label="播放${work.title}" aria-pressed="${index === 0 ? "true" : "false"}">
-      <video data-thumb-src="${asset(work.src, "featured-ad-thumb-20260615")}" muted playsinline preload="none" width="640" height="360"></video>
-      <span class="featured-ad-thumb-title">${work.title}</span>
-      <span class="featured-ad-thumb-play" aria-hidden="true">▶</span>
-    </button>`).join("");
+function injectFeaturedBannerGalleryStyles() {
+  if (document.getElementById("featured-banner-gallery-styles")) return;
+  const style = document.createElement("style");
+  style.id = "featured-banner-gallery-styles";
+  style.textContent = `
+    body.featured-page[data-featured="banner"] .featured-frost-stage{overflow:hidden!important}
+    .featured-banner-grid{position:absolute;left:50%;top:54%;z-index:3;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(18px,2.2vw,34px);width:min(70vw,1080px);transform:translate(-50%,-50%);perspective:1400px}
+    .featured-banner-card{position:relative;display:block;width:100%;padding:0;overflow:hidden;border:1px solid rgba(160,196,226,.34);border-radius:10px;background:rgba(240,248,255,.18);box-shadow:0 18px 40px rgba(52,91,126,.18),0 0 24px rgba(170,216,250,.16);cursor:pointer;animation:bannerFloat 4.8s ease-in-out infinite;transition:border-color .28s ease,box-shadow .28s ease,filter .28s ease,opacity .22s ease}
+    .featured-banner-card:nth-child(2){animation-delay:-1.2s}.featured-banner-card:nth-child(3){animation-delay:-2.4s}.featured-banner-card:nth-child(4){animation-delay:-3.6s}
+    .featured-banner-card:hover,.featured-banner-card:focus-visible{border-color:rgba(212,166,85,.72);box-shadow:0 22px 50px rgba(52,91,126,.24),0 0 28px rgba(225,177,91,.2);outline:none}
+    .featured-banner-card.is-source-hidden{opacity:0;pointer-events:none}
+    .featured-banner-card img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;pointer-events:none}
+    .featured-banner-focus{position:fixed;z-index:80;display:none;overflow:hidden;border:1px solid rgba(195,220,240,.72);border-radius:10px;background:#eef6fb;box-shadow:0 32px 90px rgba(45,76,109,.32),0 0 42px rgba(210,166,84,.22);cursor:zoom-out;transform-origin:center center;will-change:left,top,width,height}
+    .featured-banner-focus.is-visible{display:block}
+    .featured-banner-focus img{display:block;width:100%;height:100%;object-fit:cover}
+    .featured-banner-focus::after{position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(255,255,255,.45);pointer-events:none;content:""}
+    @keyframes bannerFloat{0%,100%{transform:translateY(-4px)}50%{transform:translateY(4px)}}
+    @media(max-width:820px){.featured-banner-grid{top:53%;width:min(88vw,720px);gap:10px}.featured-banner-card{border-radius:7px}.featured-banner-focus{border-radius:8px}}
+    @media(prefers-reduced-motion:reduce){.featured-banner-card{animation:none}.featured-banner-focus{transition:none}}`;
+  document.head.appendChild(style);
+}
 
-  return `
-    <div class="featured-ad-reference-page" aria-label="01广告精品项目二级页面">
-      <div class="featured-ad-gallery">
-        <div class="ad-work-video-frame" aria-label="01广告视频作品"><video class="ad-work-video" data-ad-player controls preload="none" playsinline width="1600" height="900"></video></div>
-        <div class="featured-ad-thumbs" aria-label="广告作品列表">${thumbs}</div>
-      </div>
-      ${renderDarkNav("ad", "ad-ref")}
-    </div>`;
+function setupFeaturedBannerGallery(root) {
+  const cards = [...root.querySelectorAll("[data-banner-work]")];
+  const focus = root.querySelector("[data-banner-focus]");
+  const focusImage = focus?.querySelector("img");
+  if (!cards.length || !focus || !focusImage) return;
+  let activeCard = null;
+  let animating = false;
+
+  const targetRect = () => {
+    const width = Math.min(window.innerWidth * .70, 1120);
+    const height = width * 9 / 16;
+    return { left:(window.innerWidth-width)/2, top:Math.max(104,(window.innerHeight-height)/2+20), width, height };
+  };
+
+  const setRect = (rect) => {
+    focus.style.left = `${rect.left}px`; focus.style.top = `${rect.top}px`;
+    focus.style.width = `${rect.width}px`; focus.style.height = `${rect.height}px`;
+  };
+
+  const closeFocus = () => {
+    if (!activeCard || animating) return;
+    animating = true;
+    const from = focus.getBoundingClientRect();
+    const to = activeCard.getBoundingClientRect();
+    const animation = focus.animate([
+      { left:`${from.left}px`,top:`${from.top}px`,width:`${from.width}px`,height:`${from.height}px` },
+      { left:`${to.left}px`,top:`${to.top}px`,width:`${to.width}px`,height:`${to.height}px` }
+    ], { duration:520, easing:"cubic-bezier(.22,.72,.2,1)", fill:"forwards" });
+    animation.onfinish = () => { activeCard.classList.remove("is-source-hidden"); focus.classList.remove("is-visible"); focus.getAnimations().forEach(a=>a.cancel()); activeCard=null; animating=false; };
+  };
+
+  const openCard = (card) => {
+    if (animating) return;
+    if (activeCard === card) { closeFocus(); return; }
+    if (activeCard) activeCard.classList.remove("is-source-hidden");
+    activeCard = card;
+    const image = card.querySelector("img");
+    focusImage.src = image.src; focusImage.alt = image.alt;
+    const from = card.getBoundingClientRect();
+    const to = targetRect();
+    setRect(from); focus.classList.add("is-visible"); card.classList.add("is-source-hidden");
+    animating = true;
+    const animation = focus.animate([
+      { left:`${from.left}px`,top:`${from.top}px`,width:`${from.width}px`,height:`${from.height}px` },
+      { left:`${to.left}px`,top:`${to.top}px`,width:`${to.width}px`,height:`${to.height}px` }
+    ], { duration:620, easing:"cubic-bezier(.18,.78,.18,1)", fill:"forwards" });
+    animation.onfinish = () => { setRect(to); focus.getAnimations().forEach(a=>a.cancel()); animating=false; };
+  };
+
+  cards.forEach(card => card.addEventListener("click", () => openCard(card)));
+  focus.addEventListener("click", closeFocus);
+  document.addEventListener("keydown", event => { if (event.key === "Escape") closeFocus(); });
+  root.querySelector(".featured-frost-stage")?.addEventListener("click", event => { if (activeCard && event.target === event.currentTarget) closeFocus(); });
+}
+
+function renderAdReferencePage() {
+  const thumbs = featuredAdWorks.map((work,index)=>`<button class="featured-ad-thumb${index===0?" is-active":""}" type="button" data-ad-work="${index}"><video muted playsinline preload="none"></video><span class="featured-ad-thumb-title">${work.title}</span><span class="featured-ad-thumb-play">▶</span></button>`).join("");
+  return `<div class="featured-ad-reference-page" aria-label="01广告精品项目二级页面"><div class="featured-ad-gallery"><div class="ad-work-video-frame"><video class="ad-work-video" data-ad-player controls preload="none" playsinline width="1600" height="900"></video></div><div class="featured-ad-thumbs">${thumbs}</div></div>${renderDarkNav("ad","ad-ref")}</div>`;
 }
 
 function renderBannerReferencePage() {
-  return `<div class="featured-frost-page featured-banner-frost-page" aria-label="02 Banner精品项目二级页面">${renderFrostNav("banner")}<section class="featured-frost-stage" aria-label="02 Banner作品展示"><div class="featured-frost-panel banner-frost-panel"><img class="banner-frost-art" src="${asset("./assets/featured-banner-art-baijiu.jpeg")}" alt="02 Banner精品项目作品展示" ${featuredImageAttrs.banner}></div></section></div>`;
+  const cards = featuredBannerWorks.map((work,index)=>`<button class="featured-banner-card" type="button" data-banner-work="${index}" aria-label="查看${work.title}"><img src="${asset(work.src)}" alt="${work.title}" ${featuredImageAttrs.banner}></button>`).join("");
+  return `<div class="featured-frost-page featured-banner-frost-page" aria-label="02 Banner精品项目二级页面">${renderFrostNav("banner")}<section class="featured-frost-stage" aria-label="02 Banner作品展示"><div class="featured-banner-grid">${cards}</div><button class="featured-banner-focus" type="button" data-banner-focus aria-label="关闭当前Banner展示"><img alt=""></button></section></div>`;
 }
 
 function renderPosterReferencePage() {
-  return `<div class="featured-frost-page featured-poster-frost-page" aria-label="03竖版海报精品项目二级页面">${renderFrostNav("poster")}<section class="featured-frost-stage" aria-label="03竖版海报作品展示"><div class="featured-frost-panel poster-frost-panel"><img class="poster-frost-art" src="${asset("./assets/featured-poster-art-bridge.png")}" alt="03竖版海报精品项目作品展示" ${featuredImageAttrs.poster}></div></section></div>`;
+  return `<div class="featured-frost-page featured-poster-frost-page" aria-label="03竖版海报精品项目二级页面">${renderFrostNav("poster")}<section class="featured-frost-stage"><div class="featured-frost-panel poster-frost-panel"><img class="poster-frost-art" src="${asset("./assets/featured-poster-art-bridge.png")}" alt="03竖版海报精品项目作品展示" ${featuredImageAttrs.poster}></div></section></div>`;
 }
-
 function renderDramaReferencePage() {
-  return `<div class="featured-drama-reference-page" aria-label="04动漫短剧精品项目二级页面"><a class="featured-drama-player-shell" href="https://www.bilibili.com/video/BV1XZEe6KE9Z/" target="_blank" rel="noopener noreferrer" aria-label="打开《重生后，我撕了白莲妹妹》作品网页"><img class="featured-drama-player-art" src="${asset("./封面.png", "featured-drama-rebirth-20260612")}" alt="重生后，我撕了白莲妹妹" ${featuredImageAttrs.drama}><span class="featured-drama-play-overlay" aria-hidden="true"><span></span></span></a>${renderDarkNav("drama", "drama-ref")}</div>`;
+  return `<div class="featured-drama-reference-page" aria-label="04动漫短剧精品项目二级页面"><a class="featured-drama-player-shell" href="https://www.bilibili.com/video/BV1XZEe6KE9Z/" target="_blank" rel="noopener noreferrer"><img class="featured-drama-player-art" src="${asset("./封面.png","featured-drama-rebirth-20260612")}" alt="重生后，我撕了白莲妹妹" ${featuredImageAttrs.drama}><span class="featured-drama-play-overlay"><span></span></span></a>${renderDarkNav("drama","drama-ref")}</div>`;
 }
-
 function renderUiReferencePage() {
-  return `<div class="featured-frost-page featured-ui-frost-page" aria-label="05 UI启动页精品项目二级页面">${renderFrostNav("ui")}<section class="featured-frost-stage" aria-label="05 UI启动页作品展示"><div class="featured-frost-panel ui-frost-panel ui-frost-gallery"><figure class="ui-frost-work ui-frost-work-dm"><img class="ui-frost-art" src="${asset("./DM助手.png", "featured-ui-dm-assistant-20260613")}" alt="05 UI启动页作品展示：须尽欢 DM助手" ${featuredImageAttrs.uiDm}></figure><figure class="ui-frost-work ui-frost-work-danmu"><img class="ui-frost-art" src="${asset("./ui启动页/62005ee6-8217-4247-bfc0-a3f515374dc7.png", "featured-ui-startup-20260612")}" alt="05 UI启动页作品展示：精彩弹幕 不止视频" ${featuredImageAttrs.uiDanmu}></figure><figure class="ui-frost-work ui-frost-work-sky"><img class="ui-frost-art" src="${asset("./ui启动页/光遇1.2.png", "featured-ui-startup-20260612")}" alt="05 UI启动页作品展示：光遇" ${featuredImageAttrs.uiSky}></figure></div></section></div>`;
+  return `<div class="featured-frost-page featured-ui-frost-page" aria-label="05 UI启动页精品项目二级页面">${renderFrostNav("ui")}<section class="featured-frost-stage"><div class="featured-frost-panel ui-frost-panel ui-frost-gallery"><figure class="ui-frost-work ui-frost-work-dm"><img class="ui-frost-art" src="${asset("./DM助手.png","featured-ui-dm-assistant-20260613")}" alt="须尽欢 DM助手" ${featuredImageAttrs.uiDm}></figure><figure class="ui-frost-work ui-frost-work-danmu"><img class="ui-frost-art" src="${asset("./ui启动页/62005ee6-8217-4247-bfc0-a3f515374dc7.png","featured-ui-startup-20260612")}" alt="精彩弹幕 不止视频" ${featuredImageAttrs.uiDanmu}></figure><figure class="ui-frost-work ui-frost-work-sky"><img class="ui-frost-art" src="${asset("./ui启动页/光遇1.2.png","featured-ui-startup-20260612")}" alt="光遇" ${featuredImageAttrs.uiSky}></figure></div></section></div>`;
 }
-
 function renderIpReferencePage() {
-  return `<div class="featured-frost-page featured-ip-frost-page" aria-label="06 IP设计精品项目二级页面">${renderFrostNav("ip")}<section class="featured-frost-stage" aria-label="06 IP设计作品展示"><img class="ip-placement-art" src="${asset("./山海月IP.png", "featured-ip-shanhai-20260612")}" alt="06 IP设计精品项目作品展示" ${featuredImageAttrs.ip}></section></div>`;
+  return `<div class="featured-frost-page featured-ip-frost-page" aria-label="06 IP设计精品项目二级页面">${renderFrostNav("ip")}<section class="featured-frost-stage"><img class="ip-placement-art" src="${asset("./山海月IP.png","featured-ip-shanhai-20260612")}" alt="06 IP设计精品项目作品展示" ${featuredImageAttrs.ip}></section></div>`;
 }
 
 function renderFeaturedPage() {
   const root = document.querySelector("[data-featured-page]");
   if (!root) return;
-
   const project = getFeaturedProject();
   document.body.dataset.featured = project.slug;
   document.body.dataset.tone = project.tone;
   document.title = `${project.nav} - 未来东方 AI 数字艺术馆`;
-
-  if (project.slug === "ad") {
-    injectFeaturedAdGalleryStyles();
-    root.innerHTML = renderAdReferencePage();
-    setupFeaturedAdGallery(root);
-  } else if (project.slug === "banner") root.innerHTML = renderBannerReferencePage();
+  if (project.slug === "ad") { injectFeaturedAdGalleryStyles(); root.innerHTML = renderAdReferencePage(); setupFeaturedAdGallery(root); }
+  else if (project.slug === "banner") { injectFeaturedBannerGalleryStyles(); root.innerHTML = renderBannerReferencePage(); setupFeaturedBannerGallery(root); }
   else if (project.slug === "poster") root.innerHTML = renderPosterReferencePage();
   else if (project.slug === "drama") root.innerHTML = renderDramaReferencePage();
   else if (project.slug === "ui") root.innerHTML = renderUiReferencePage();
