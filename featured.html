@@ -51,8 +51,30 @@
 
     body.featured-page[data-featured="ad"] .ad-ref-crisp-nav {
       z-index: 6 !important;
-      height: 52px !important;
-      min-height: 52px !important;
+      grid-template-columns: minmax(112px, 12%) minmax(0, 1fr) minmax(48px, 8%) !important;
+      height: 7.8% !important;
+      min-height: 0 !important;
+      padding: 0 clamp(24px, 2.2vw, 36px) !important;
+    }
+
+    body.featured-page[data-featured="ad"] .ad-ref-crisp-tabs {
+      width: min(830px, 70vw) !important;
+      height: 100% !important;
+    }
+
+    body.featured-page[data-featured="ad"] .ad-ref-crisp-back {
+      font-size: clamp(13px, 0.98vw, 16px) !important;
+    }
+
+    body.featured-page[data-featured="ad"] .ad-ref-crisp-tabs a {
+      font-size: clamp(13px, 1vw, 16px) !important;
+      padding: 0 8px !important;
+    }
+
+    body.featured-page[data-featured="ad"] .ad-ref-crisp-menu {
+      width: clamp(34px, 2.9vw, 42px) !important;
+      height: clamp(34px, 2.9vw, 42px) !important;
+      aspect-ratio: auto !important;
     }
 
     body.featured-page[data-featured="banner"] .banner-frost-panel,
