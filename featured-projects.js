@@ -1,4 +1,4 @@
-const FEATURED_VERSION = "featured-poster-wall-20260615";
+const FEATURED_VERSION = "featured-banner-fit-20260615";
 
 const featuredProjects = [
   { slug: "ad", nav: "01 广告", tone: "deep" },
@@ -20,13 +20,6 @@ const featuredBannerWorks = [
   { title: "定格每一道光", src: "./30cb955e-0822-43f3-98d9-4ba484c120d2.png" },
   { title: "新本上架", src: "./d15079c8-14f0-47b8-864b-dd47c04d6d66.png" },
   { title: "今日上新", src: "./4cca3669-f0f0-4b6e-8557-176422ad07b2.png" }
-];
-
-const featuredPosterWorks = [
-  { title: "Long Bridge System", src: "./assets/featured-poster-art-bridge.png" },
-  { title: "Xu Jin Huan New Arrival", src: "./b64cc7fb-e4b1-4c98-8b1c-e6c5c0eaea00.png" },
-  { title: "Lao You Ji", src: "./3b157685-11e4-44e0-b277-f60f370a452a.png" },
-  { title: "Luxury Business", src: "./制作海报 (4).png" }
 ];
 
 const featuredProjectMap = new Map(featuredProjects.map((project) => [project.slug, project]));
@@ -66,150 +59,23 @@ function injectFeaturedIpFlipStyles() {
   const style = document.createElement("style");
   style.id = "featured-ip-flip-styles";
   style.textContent = `
-    body.featured-page[data-featured="ip"] .ip-flip-stage {
-      aspect-ratio: 3 / 2;
-      pointer-events: auto;
-      perspective: 1280px;
-      perspective-origin: center center;
-      cursor: pointer;
-    }
-
-    body.featured-page[data-featured="ip"] .ip-flip-card {
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      transform: rotateY(var(--ip-flip-rotation, 0deg));
-      transform-origin: center center;
-      transform-style: preserve-3d;
-      transition: transform 780ms cubic-bezier(0.22, 0.72, 0.2, 1);
-      will-change: transform;
-    }
-
-    body.featured-page[data-featured="ip"] .ip-flip-face {
-      position: absolute;
-      inset: 0;
-      display: block;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      border-radius: inherit;
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
-    }
-
-    body.featured-page[data-featured="ip"] .ip-flip-face-back {
-      transform: rotateY(180deg);
-    }
-
-    body.featured-page[data-featured="ip"] .ip-flip-face img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      border-radius: inherit;
-      object-fit: cover;
-      object-position: center center;
-      user-select: none;
-      -webkit-user-drag: none;
-    }
-
-    body.featured-page[data-featured="ip"] .ip-flip-hit {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      z-index: 3;
-      display: block;
-      padding: 0;
-      border: 0;
-      background: transparent;
-      cursor: pointer;
-    }
-
-    body.featured-page[data-featured="ip"] .ip-flip-hit-left {
-      left: 0;
-      width: 50%;
-    }
-
-    body.featured-page[data-featured="ip"] .ip-flip-hit-right {
-      right: 0;
-      width: 50%;
-    }
-
-    body.featured-page[data-featured="ip"] .ip-flip-arrow {
-      position: absolute;
-      top: 50%;
-      z-index: 4;
-      display: grid;
-      place-items: center;
-      width: clamp(34px, 3.1vw, 48px);
-      aspect-ratio: 1;
-      padding: 0;
-      border: 1px solid rgba(221, 242, 255, 0.36);
-      border-radius: 50%;
-      background: linear-gradient(145deg, rgba(10, 36, 64, 0.38), rgba(222, 243, 255, 0.12));
-      box-shadow: 0 10px 28px rgba(12, 35, 64, 0.2), inset 0 1px rgba(255, 255, 255, 0.38);
-      color: rgba(246, 253, 255, 0.78);
-      opacity: 0.46;
-      cursor: pointer;
-      transform: translateY(-50%);
-      transition: opacity 180ms ease, border-color 180ms ease, box-shadow 180ms ease, color 180ms ease;
-      backdrop-filter: blur(12px) saturate(1.1);
-      -webkit-backdrop-filter: blur(12px) saturate(1.1);
-    }
-
-    body.featured-page[data-featured="ip"] .ip-flip-arrow-left {
-      left: max(-64px, -4.4vw);
-    }
-
-    body.featured-page[data-featured="ip"] .ip-flip-arrow-right {
-      right: max(-64px, -4.4vw);
-    }
-
-    body.featured-page[data-featured="ip"] .ip-flip-arrow::before {
-      width: 30%;
-      height: 30%;
-      border-top: 1.8px solid currentColor;
-      border-left: 1.8px solid currentColor;
-      content: "";
-    }
-
-    body.featured-page[data-featured="ip"] .ip-flip-arrow-left::before {
-      transform: translateX(12%) rotate(-45deg);
-    }
-
-    body.featured-page[data-featured="ip"] .ip-flip-arrow-right::before {
-      transform: translateX(-12%) rotate(135deg);
-    }
-
-    body.featured-page[data-featured="ip"] .ip-flip-arrow:hover,
-    body.featured-page[data-featured="ip"] .ip-flip-arrow:focus-visible {
-      border-color: rgba(238, 249, 255, 0.74);
-      box-shadow: 0 12px 30px rgba(12, 35, 64, 0.24), 0 0 20px rgba(174, 223, 255, 0.28), inset 0 1px rgba(255, 255, 255, 0.58);
-      color: rgba(255, 255, 255, 0.96);
-      opacity: 0.86;
-      outline: none;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      body.featured-page[data-featured="ip"] .ip-flip-card {
-        transition-duration: 120ms;
-      }
-    }
-
-    @media (max-width: 820px) {
-      body.featured-page[data-featured="ip"] .ip-flip-arrow {
-        width: 34px;
-        opacity: 0.58;
-      }
-
-      body.featured-page[data-featured="ip"] .ip-flip-arrow-left {
-        left: max(-42px, -6vw);
-      }
-
-      body.featured-page[data-featured="ip"] .ip-flip-arrow-right {
-        right: max(-42px, -6vw);
-      }
-    }
-  `;
+    body.featured-page[data-featured="ip"] .ip-flip-stage{aspect-ratio:3/2;pointer-events:auto;perspective:1280px;perspective-origin:center;cursor:pointer}
+    body.featured-page[data-featured="ip"] .ip-flip-card{position:absolute;inset:0;border-radius:inherit;transform:rotateY(var(--ip-flip-rotation,0deg));transform-origin:center;transform-style:preserve-3d;transition:transform 780ms cubic-bezier(.22,.72,.2,1);will-change:transform}
+    body.featured-page[data-featured="ip"] .ip-flip-face{position:absolute;inset:0;display:block;width:100%;height:100%;overflow:hidden;border-radius:inherit;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+    body.featured-page[data-featured="ip"] .ip-flip-face-back{transform:rotateY(180deg)}
+    body.featured-page[data-featured="ip"] .ip-flip-face img{display:block;width:100%;height:100%;border-radius:inherit;object-fit:cover;object-position:center;user-select:none;-webkit-user-drag:none}
+    body.featured-page[data-featured="ip"] .ip-flip-hit{position:absolute;top:0;bottom:0;z-index:3;display:block;padding:0;border:0;background:transparent;cursor:pointer}
+    body.featured-page[data-featured="ip"] .ip-flip-hit-left{left:0;width:50%}
+    body.featured-page[data-featured="ip"] .ip-flip-hit-right{right:0;width:50%}
+    body.featured-page[data-featured="ip"] .ip-flip-arrow{position:absolute;top:50%;z-index:4;display:grid;place-items:center;width:clamp(34px,3.1vw,48px);aspect-ratio:1;padding:0;border:1px solid rgba(221,242,255,.36);border-radius:50%;background:linear-gradient(145deg,rgba(10,36,64,.38),rgba(222,243,255,.12));box-shadow:0 10px 28px rgba(12,35,64,.2),inset 0 1px rgba(255,255,255,.38);color:rgba(246,253,255,.78);opacity:.46;cursor:pointer;transform:translateY(-50%);transition:opacity 180ms ease,border-color 180ms ease,box-shadow 180ms ease,color 180ms ease;backdrop-filter:blur(12px) saturate(1.1);-webkit-backdrop-filter:blur(12px) saturate(1.1)}
+    body.featured-page[data-featured="ip"] .ip-flip-arrow-left{left:max(-64px,-4.4vw)}
+    body.featured-page[data-featured="ip"] .ip-flip-arrow-right{right:max(-64px,-4.4vw)}
+    body.featured-page[data-featured="ip"] .ip-flip-arrow::before{width:30%;height:30%;border-top:1.8px solid currentColor;border-left:1.8px solid currentColor;content:""}
+    body.featured-page[data-featured="ip"] .ip-flip-arrow-left::before{transform:translateX(12%) rotate(-45deg)}
+    body.featured-page[data-featured="ip"] .ip-flip-arrow-right::before{transform:translateX(-12%) rotate(135deg)}
+    body.featured-page[data-featured="ip"] .ip-flip-arrow:hover,body.featured-page[data-featured="ip"] .ip-flip-arrow:focus-visible{border-color:rgba(238,249,255,.74);box-shadow:0 12px 30px rgba(12,35,64,.24),0 0 20px rgba(174,223,255,.28),inset 0 1px rgba(255,255,255,.58);color:#fff;opacity:.86;outline:none}
+    @media(prefers-reduced-motion:reduce){body.featured-page[data-featured="ip"] .ip-flip-card{transition-duration:120ms}}
+    @media(max-width:820px){body.featured-page[data-featured="ip"] .ip-flip-arrow{width:34px;opacity:.58}body.featured-page[data-featured="ip"] .ip-flip-arrow-left{left:max(-42px,-6vw)}body.featured-page[data-featured="ip"] .ip-flip-arrow-right{right:max(-42px,-6vw)}}`;
   document.head.appendChild(style);
 }
 
@@ -217,13 +83,11 @@ function setupFeaturedIpFlip(root) {
   const stage = root.querySelector("[data-ip-flip-stage]");
   const card = root.querySelector("[data-ip-flip-card]");
   if (!stage || !card) return;
-
   let rotation = 0;
   const rotate = (direction) => {
     rotation += direction === "left" ? -180 : 180;
     card.style.setProperty("--ip-flip-rotation", `${rotation}deg`);
   };
-
   stage.querySelectorAll("[data-ip-flip]").forEach((control) => {
     control.addEventListener("click", (event) => {
       event.preventDefault();
@@ -293,18 +157,19 @@ function injectFeaturedBannerGalleryStyles() {
   style.id = "featured-banner-gallery-styles";
   style.textContent = `
     body.featured-page[data-featured="banner"] .featured-frost-stage{overflow:hidden!important}
-    .featured-banner-grid{position:absolute;left:50%;top:54%;z-index:3;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(18px,2.2vw,34px);width:min(70vw,1080px);transform:translate(-50%,-50%);perspective:1400px}
-    .featured-banner-card{position:relative;display:block;width:100%;padding:0;overflow:hidden;border:1px solid rgba(160,196,226,.34);border-radius:10px;background:rgba(240,248,255,.18);box-shadow:0 18px 40px rgba(52,91,126,.18),0 0 24px rgba(170,216,250,.16);cursor:pointer;animation:bannerFloat 4.8s ease-in-out infinite;transition:border-color .28s ease,box-shadow .28s ease,filter .28s ease,opacity .22s ease}
+    .featured-banner-grid{position:absolute;left:50%;top:55%;z-index:3;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,1.6vw,24px);width:min(64vw,900px);max-height:calc(100vh - 150px);transform:translate(-50%,-50%);perspective:1400px}
+    .featured-banner-card{position:relative;display:grid;place-items:center;width:100%;aspect-ratio:16/9;padding:0;overflow:visible;border:1px solid rgba(160,196,226,.34);border-radius:9px;background:rgba(240,248,255,.16);box-shadow:0 16px 34px rgba(52,91,126,.16),0 0 20px rgba(170,216,250,.14);cursor:pointer;animation:bannerFloat 4.8s ease-in-out infinite;transition:border-color .28s ease,box-shadow .28s ease,filter .28s ease,opacity .22s ease}
     .featured-banner-card:nth-child(2){animation-delay:-1.2s}.featured-banner-card:nth-child(3){animation-delay:-2.4s}.featured-banner-card:nth-child(4){animation-delay:-3.6s}
-    .featured-banner-card:hover,.featured-banner-card:focus-visible{border-color:rgba(212,166,85,.72);box-shadow:0 22px 50px rgba(52,91,126,.24),0 0 28px rgba(225,177,91,.2);outline:none}
+    .featured-banner-card:hover,.featured-banner-card:focus-visible{border-color:rgba(212,166,85,.72);box-shadow:0 20px 42px rgba(52,91,126,.22),0 0 26px rgba(225,177,91,.18);outline:none}
     .featured-banner-card.is-source-hidden{opacity:0;pointer-events:none}
-    .featured-banner-card img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;pointer-events:none}
-    .featured-banner-focus{position:fixed;z-index:80;display:none;overflow:hidden;border:1px solid rgba(195,220,240,.72);border-radius:10px;background:#eef6fb;box-shadow:0 32px 90px rgba(45,76,109,.32),0 0 42px rgba(210,166,84,.22);cursor:zoom-out;transform-origin:center center;will-change:left,top,width,height}
+    .featured-banner-card img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;pointer-events:none;border-radius:inherit;background:transparent}
+    .featured-banner-focus{position:fixed;z-index:80;display:none;overflow:hidden;border:1px solid rgba(195,220,240,.72);border-radius:10px;background:rgba(238,246,251,.96);box-shadow:0 32px 90px rgba(45,76,109,.32),0 0 42px rgba(210,166,84,.22);cursor:zoom-out;transform-origin:center;will-change:left,top,width,height}
     .featured-banner-focus.is-visible{display:block}
-    .featured-banner-focus img{display:block;width:100%;height:100%;object-fit:cover}
+    .featured-banner-focus img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;background:transparent}
     .featured-banner-focus::after{position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(255,255,255,.45);pointer-events:none;content:""}
-    @keyframes bannerFloat{0%,100%{transform:translateY(-4px)}50%{transform:translateY(4px)}}
-    @media(max-width:820px){.featured-banner-grid{top:53%;width:min(88vw,720px);gap:10px}.featured-banner-card{border-radius:7px}.featured-banner-focus{border-radius:8px}}
+    @keyframes bannerFloat{0%,100%{transform:translateY(-3px)}50%{transform:translateY(3px)}}
+    @media(max-width:1180px){.featured-banner-grid{width:min(72vw,820px)}}
+    @media(max-width:820px){.featured-banner-grid{top:54%;width:min(90vw,700px);gap:10px}.featured-banner-card{border-radius:7px}.featured-banner-focus{border-radius:8px}}
     @media(prefers-reduced-motion:reduce){.featured-banner-card{animation:none}.featured-banner-focus{transition:none}}`;
   document.head.appendChild(style);
 }
@@ -318,14 +183,17 @@ function setupFeaturedBannerGallery(root) {
   let animating = false;
 
   const targetRect = () => {
-    const width = Math.min(window.innerWidth * .70, 1120);
+    const maxWidthByHeight = Math.max(320, (window.innerHeight - 150) * 16 / 9);
+    const width = Math.min(window.innerWidth * .62, 980, maxWidthByHeight);
     const height = width * 9 / 16;
-    return { left:(window.innerWidth-width)/2, top:Math.max(104,(window.innerHeight-height)/2+20), width, height };
+    return { left:(window.innerWidth-width)/2, top:Math.max(96,(window.innerHeight-height)/2+8), width, height };
   };
 
   const setRect = (rect) => {
-    focus.style.left = `${rect.left}px`; focus.style.top = `${rect.top}px`;
-    focus.style.width = `${rect.width}px`; focus.style.height = `${rect.height}px`;
+    focus.style.left = `${rect.left}px`;
+    focus.style.top = `${rect.top}px`;
+    focus.style.width = `${rect.width}px`;
+    focus.style.height = `${rect.height}px`;
   };
 
   const closeFocus = () => {
@@ -337,7 +205,13 @@ function setupFeaturedBannerGallery(root) {
       { left:`${from.left}px`,top:`${from.top}px`,width:`${from.width}px`,height:`${from.height}px` },
       { left:`${to.left}px`,top:`${to.top}px`,width:`${to.width}px`,height:`${to.height}px` }
     ], { duration:520, easing:"cubic-bezier(.22,.72,.2,1)", fill:"forwards" });
-    animation.onfinish = () => { activeCard.classList.remove("is-source-hidden"); focus.classList.remove("is-visible"); focus.getAnimations().forEach(a=>a.cancel()); activeCard=null; animating=false; };
+    animation.onfinish = () => {
+      activeCard.classList.remove("is-source-hidden");
+      focus.classList.remove("is-visible");
+      focus.getAnimations().forEach((item) => item.cancel());
+      activeCard = null;
+      animating = false;
+    };
   };
 
   const openCard = (card) => {
@@ -346,22 +220,31 @@ function setupFeaturedBannerGallery(root) {
     if (activeCard) activeCard.classList.remove("is-source-hidden");
     activeCard = card;
     const image = card.querySelector("img");
-    focusImage.src = image.src; focusImage.alt = image.alt;
+    focusImage.src = image.src;
+    focusImage.alt = image.alt;
     const from = card.getBoundingClientRect();
     const to = targetRect();
-    setRect(from); focus.classList.add("is-visible"); card.classList.add("is-source-hidden");
+    setRect(from);
+    focus.classList.add("is-visible");
+    card.classList.add("is-source-hidden");
     animating = true;
     const animation = focus.animate([
       { left:`${from.left}px`,top:`${from.top}px`,width:`${from.width}px`,height:`${from.height}px` },
       { left:`${to.left}px`,top:`${to.top}px`,width:`${to.width}px`,height:`${to.height}px` }
     ], { duration:620, easing:"cubic-bezier(.18,.78,.18,1)", fill:"forwards" });
-    animation.onfinish = () => { setRect(to); focus.getAnimations().forEach(a=>a.cancel()); animating=false; };
+    animation.onfinish = () => {
+      setRect(to);
+      focus.getAnimations().forEach((item) => item.cancel());
+      animating = false;
+    };
   };
 
-  cards.forEach(card => card.addEventListener("click", () => openCard(card)));
+  cards.forEach((card) => card.addEventListener("click", () => openCard(card)));
   focus.addEventListener("click", closeFocus);
-  document.addEventListener("keydown", event => { if (event.key === "Escape") closeFocus(); });
-  root.querySelector(".featured-frost-stage")?.addEventListener("click", event => { if (activeCard && event.target === event.currentTarget) closeFocus(); });
+  document.addEventListener("keydown", (event) => { if (event.key === "Escape") closeFocus(); });
+  root.querySelector(".featured-frost-stage")?.addEventListener("click", (event) => {
+    if (activeCard && event.target === event.currentTarget) closeFocus();
+  });
 }
 
 function renderAdReferencePage() {
@@ -374,89 +257,18 @@ function renderBannerReferencePage() {
   return `<div class="featured-frost-page featured-banner-frost-page" aria-label="02 Banner精品项目二级页面">${renderFrostNav("banner")}<section class="featured-frost-stage" aria-label="02 Banner作品展示"><div class="featured-banner-grid">${cards}</div><button class="featured-banner-focus" type="button" data-banner-focus aria-label="关闭当前Banner展示"><img alt=""></button></section></div>`;
 }
 
-function injectFeaturedPosterWallStyles() {
-  if (document.getElementById("featured-poster-wall-styles")) return;
-  const style = document.createElement("style");
-  style.id = "featured-poster-wall-styles";
-  style.textContent = `
-    body.featured-page[data-featured="poster"] .poster-wall-layout {
-      position: absolute;
-      inset: 0;
-      z-index: 3;
-      pointer-events: none;
-    }
-    body.featured-page[data-featured="poster"] .poster-wall-side {
-      position: absolute;
-      top: calc(var(--ref-stage-y) + var(--ref-stage-h) * 0.15);
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: clamp(12px, 1.05vw, 20px);
-      width: min(26vw, calc(var(--ref-stage-w) * 0.245));
-      pointer-events: auto;
-    }
-    body.featured-page[data-featured="poster"] .poster-wall-left {
-      left: calc(var(--ref-stage-x) + var(--ref-stage-w) * 0.075);
-    }
-    body.featured-page[data-featured="poster"] .poster-wall-right {
-      right: calc(var(--ref-stage-x) + var(--ref-stage-w) * 0.075);
-    }
-    body.featured-page[data-featured="poster"] .poster-wall-item {
-      display: block;
-      margin: 0;
-      padding: clamp(4px, 0.38vw, 7px);
-      border: 1px solid rgba(226, 242, 255, 0.42);
-      border-radius: 9px;
-      background: linear-gradient(180deg, rgba(244, 250, 255, 0.22), rgba(160, 192, 218, 0.08));
-      box-shadow: 0 14px 26px rgba(54, 82, 112, 0.16), 0 0 18px rgba(214, 232, 246, 0.12);
-      transform: none;
-      transition: filter 180ms ease, box-shadow 180ms ease;
-    }
-    body.featured-page[data-featured="poster"] .poster-wall-item:hover {
-      filter: brightness(1.035);
-      box-shadow: 0 16px 30px rgba(54, 82, 112, 0.2), 0 0 20px rgba(214, 232, 246, 0.16);
-    }
-    body.featured-page[data-featured="poster"] .poster-wall-item img {
-      display: block;
-      width: 100%;
-      aspect-ratio: 3 / 4;
-      height: auto;
-      object-fit: contain;
-      object-position: center center;
-      border-radius: 5px;
-      background: rgba(236, 244, 250, 0.2);
-      box-shadow: 0 6px 14px rgba(49, 69, 96, 0.16);
-      user-select: none;
-    }
-    @media (max-width: 820px) {
-      body.featured-page[data-featured="poster"] .poster-wall-side {
-        top: max(118px, calc(var(--ref-stage-y) + var(--ref-stage-h) * 0.15));
-        grid-template-columns: 1fr;
-        gap: 8px;
-        width: 32vw;
-      }
-      body.featured-page[data-featured="poster"] .poster-wall-left {
-        left: 4vw;
-      }
-      body.featured-page[data-featured="poster"] .poster-wall-right {
-        right: 4vw;
-      }
-    }
-  `;
-  document.head.appendChild(style);
+function renderPosterReferencePage() {
+  return `<div class="featured-frost-page featured-poster-frost-page" aria-label="03竖版海报精品项目二级页面">${renderFrostNav("poster")}<section class="featured-frost-stage"><div class="featured-frost-panel poster-frost-panel"><img class="poster-frost-art" src="${asset("./assets/featured-poster-art-bridge.png")}" alt="03竖版海报精品项目作品展示" ${featuredImageAttrs.poster}></div></section></div>`;
 }
 
-function renderPosterReferencePage() {
-  const renderPoster = (work) => `<figure class="poster-wall-item"><img src="${asset(work.src)}" alt="${work.title}" ${featuredImageAttrs.poster}></figure>`;
-  const leftPosters = featuredPosterWorks.slice(0, 2).map(renderPoster).join("");
-  const rightPosters = featuredPosterWorks.slice(2, 4).map(renderPoster).join("");
-  return `<div class="featured-frost-page featured-poster-frost-page" aria-label="03竖版海报精品项目二级页面">${renderFrostNav("poster")}<section class="featured-frost-stage" aria-label="03竖版海报左右贴墙展示"><div class="poster-wall-layout"><div class="poster-wall-side poster-wall-left">${leftPosters}</div><div class="poster-wall-side poster-wall-right">${rightPosters}</div></div></section></div>`;
-}
 function renderDramaReferencePage() {
   return `<div class="featured-drama-reference-page" aria-label="04动漫短剧精品项目二级页面"><a class="featured-drama-player-shell" href="https://www.bilibili.com/video/BV1XZEe6KE9Z/" target="_blank" rel="noopener noreferrer"><img class="featured-drama-player-art" src="${asset("./封面.png","featured-drama-rebirth-20260612")}" alt="重生后，我撕了白莲妹妹" ${featuredImageAttrs.drama}><span class="featured-drama-play-overlay"><span></span></span></a>${renderDarkNav("drama","drama-ref")}</div>`;
 }
+
 function renderUiReferencePage() {
   return `<div class="featured-frost-page featured-ui-frost-page" aria-label="05 UI启动页精品项目二级页面">${renderFrostNav("ui")}<section class="featured-frost-stage"><div class="featured-frost-panel ui-frost-panel ui-frost-gallery"><figure class="ui-frost-work ui-frost-work-dm"><img class="ui-frost-art" src="${asset("./DM助手.png","featured-ui-dm-assistant-20260613")}" alt="须尽欢 DM助手" ${featuredImageAttrs.uiDm}></figure><figure class="ui-frost-work ui-frost-work-danmu"><img class="ui-frost-art" src="${asset("./ui启动页/62005ee6-8217-4247-bfc0-a3f515374dc7.png","featured-ui-startup-20260612")}" alt="精彩弹幕 不止视频" ${featuredImageAttrs.uiDanmu}></figure><figure class="ui-frost-work ui-frost-work-sky"><img class="ui-frost-art" src="${asset("./ui启动页/光遇1.2.png","featured-ui-startup-20260612")}" alt="光遇" ${featuredImageAttrs.uiSky}></figure></div></section></div>`;
 }
+
 function renderIpReferencePage() {
   return `<div class="featured-frost-page featured-ip-frost-page" aria-label="06 IP设计精品项目二级页面">${renderFrostNav("ip")}<section class="featured-frost-stage"><div class="ip-placement-art ip-flip-stage" data-ip-flip-stage aria-label="06 IP设计双面作品展示"><div class="ip-flip-card" data-ip-flip-card><figure class="ip-flip-face ip-flip-face-front"><img src="${asset("./山海月IP.png","featured-ip-shanhai-20260612")}" alt="06 IP设计精品项目作品展示正面" ${featuredImageAttrs.ip}></figure><figure class="ip-flip-face ip-flip-face-back"><img src="${asset("./IP综合1.0.png","featured-ip-back-huanhu-20260615")}" alt="06 IP设计精品项目作品展示背面" ${imageAttrs({ loading: "lazy", width: 1536, height: 1024 })}></figure></div><button class="ip-flip-hit ip-flip-hit-left" type="button" data-ip-flip="left" aria-label="向左旋转 IP 作品"></button><button class="ip-flip-hit ip-flip-hit-right" type="button" data-ip-flip="right" aria-label="向右旋转 IP 作品"></button><button class="ip-flip-arrow ip-flip-arrow-left" type="button" data-ip-flip="left" aria-label="向左旋转"></button><button class="ip-flip-arrow ip-flip-arrow-right" type="button" data-ip-flip="right" aria-label="向右旋转"></button></div></section></div>`;
 }
@@ -468,12 +280,15 @@ function renderFeaturedPage() {
   document.body.dataset.featured = project.slug;
   document.body.dataset.tone = project.tone;
   document.title = `${project.nav} - 未来东方 AI 数字艺术馆`;
-  if (project.slug === "ad") { injectFeaturedAdGalleryStyles(); root.innerHTML = renderAdReferencePage(); setupFeaturedAdGallery(root); }
-  else if (project.slug === "banner") { injectFeaturedBannerGalleryStyles(); root.innerHTML = renderBannerReferencePage(); setupFeaturedBannerGallery(root); }
-  else if (project.slug === "poster") {
-    injectFeaturedPosterWallStyles();
-    root.innerHTML = renderPosterReferencePage();
-  }
+  if (project.slug === "ad") {
+    injectFeaturedAdGalleryStyles();
+    root.innerHTML = renderAdReferencePage();
+    setupFeaturedAdGallery(root);
+  } else if (project.slug === "banner") {
+    injectFeaturedBannerGalleryStyles();
+    root.innerHTML = renderBannerReferencePage();
+    setupFeaturedBannerGallery(root);
+  } else if (project.slug === "poster") root.innerHTML = renderPosterReferencePage();
   else if (project.slug === "drama") root.innerHTML = renderDramaReferencePage();
   else if (project.slug === "ui") root.innerHTML = renderUiReferencePage();
   else if (project.slug === "ip") {
