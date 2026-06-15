@@ -1,4 +1,24 @@
 (() => {
+  const innerHTMLDescriptor = Object.getOwnPropertyDescriptor(Element.prototype, "innerHTML");
+  if (innerHTMLDescriptor?.set && innerHTMLDescriptor?.get) {
+    Object.defineProperty(Element.prototype, "innerHTML", {
+      configurable: true,
+      enumerable: innerHTMLDescriptor.enumerable,
+      get() {
+        return innerHTMLDescriptor.get.call(this);
+      },
+      set(value) {
+        let nextValue = value;
+        if (typeof nextValue === "string" && this.matches?.("[data-category-page]")) {
+          nextValue = nextValue
+            .replace(/<video\s+src="([^"]+)"/g, '<video data-src="$1"')
+            .replace(/preload="metadata"/g, 'preload="none"');
+        }
+        innerHTMLDescriptor.set.call(this, nextValue);
+      }
+    });
+  }
+
   const appendChild = Element.prototype.appendChild;
   Element.prototype.appendChild = function appendChildOnce(node) {
     if (this === document.head && node?.tagName === "LINK" && node.href?.includes("category-process.css") && document.querySelector('link[href*="category-process.css"]')) {
