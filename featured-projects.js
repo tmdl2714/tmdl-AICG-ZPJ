@@ -1,4 +1,4 @@
-const FEATURED_VERSION = "featured-scale-up-20260606";
+const FEATURED_VERSION = "featured-performance-20260615";
 
 const FEATURED_CSS_ASSET_VERSIONS = {
   "./assets/featured-ad-page-strict-reference.png": "featured-no-layer-20260606"
@@ -41,22 +41,22 @@ function imageAttrs({ loading = "lazy", decoding = "async", fetchpriority = "", 
 }
 
 const featuredImageAttrs = {
-  banner: imageAttrs({ width: 1600, height: 900 }),
-  poster: imageAttrs({ width: 900, height: 1200 }),
-  drama: imageAttrs({ width: 1672, height: 941 }),
-  uiDm: imageAttrs({ loading: "eager", width: 852, height: 1846 }),
-  uiDanmu: imageAttrs({ loading: "eager", width: 853, height: 1844 }),
-  uiSky: imageAttrs({ loading: "eager", width: 853, height: 1844 }),
-  ip: imageAttrs({ width: 1536, height: 1024 })
+  banner: imageAttrs({ loading: "eager", fetchpriority: "high", width: 1600, height: 900 }),
+  poster: imageAttrs({ loading: "eager", fetchpriority: "high", width: 900, height: 1200 }),
+  drama: imageAttrs({ loading: "eager", fetchpriority: "high", width: 1672, height: 941 }),
+  uiDm: imageAttrs({ loading: "lazy", width: 852, height: 1846 }),
+  uiDanmu: imageAttrs({ loading: "eager", fetchpriority: "high", width: 853, height: 1844 }),
+  uiSky: imageAttrs({ loading: "lazy", width: 853, height: 1844 }),
+  ip: imageAttrs({ loading: "eager", fetchpriority: "high", width: 1536, height: 1024 })
 };
 
 function setupDeferredVideos(root) {
-  root.querySelectorAll("video[data-src]").forEach((video) => {
+  root.querySelectorAll("video[data-video-src]").forEach((video) => {
     let loaded = false;
     const loadVideo = () => {
       if (loaded) return;
       loaded = true;
-      video.src = video.dataset.src;
+      video.src = video.dataset.videoSrc;
       video.load();
     };
 
@@ -122,7 +122,7 @@ function renderAdReferencePage() {
   return `
     <div class="featured-ad-reference-page" aria-label="01广告精品项目二级页面">
       <div class="ad-work-video-frame" aria-label="01广告视频作品">
-        <video class="ad-work-video" data-src="${asset("./video-02.mp4", "featured-ad-video-20260612")}" controls preload="metadata" playsinline width="1600" height="900"></video>
+        <video class="ad-work-video" data-video-src="${asset("./video-02.mp4", "featured-ad-video-20260612")}" controls preload="none" playsinline width="1600" height="900"></video>
       </div>
       ${renderDarkNav("ad", "ad-ref")}
       <a class="ad-ref-hotspot ad-ref-back" href="./index.html#projects" aria-label="返回首页"></a>
