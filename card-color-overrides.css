@@ -128,7 +128,7 @@ body #projects .project-item-narrow::before {
 .about-card.about-visual::before {
   position: absolute;
   top: 14.2%;
-  left: 33.2%;
+  left: 31.6%;
   z-index: 4;
   width: clamp(154px, 13.4vw, 218px);
   aspect-ratio: 1;
@@ -181,7 +181,7 @@ body #projects .project-item-narrow::before {
 
   .about-card.about-visual::before {
     top: 15%;
-    left: 33.5%;
+    left: 31.8%;
     width: clamp(124px, 15vw, 170px);
   }
 }
