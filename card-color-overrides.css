@@ -124,6 +124,25 @@ body #projects .project-item-narrow::before {
   border-radius: 16px !important;
 }
 
+/* Homepage profile avatar: use the uploaded 网页作品集头像01 image without altering the base artwork. */
+.about-card.about-visual::before {
+  position: absolute;
+  top: 14.2%;
+  left: 33.2%;
+  z-index: 4;
+  width: clamp(154px, 13.4vw, 218px);
+  aspect-ratio: 1;
+  border: 2px solid rgba(126, 211, 255, 0.9);
+  border-radius: 50%;
+  background: #071a39 url("./网页作品集头像01.png") center / cover no-repeat;
+  box-shadow:
+    0 0 0 5px rgba(33, 119, 232, 0.18),
+    0 0 24px rgba(75, 181, 255, 0.62),
+    0 16px 38px rgba(0, 18, 55, 0.42);
+  content: "";
+  pointer-events: none;
+}
+
 @media (max-width: 760px) {
   .category-hall {
     min-width: 980px !important;
@@ -158,5 +177,11 @@ body #projects .project-item-narrow::before {
 
   .contact-art-stage .contact-art-hotspot:active {
     transform: scale(0.992) !important;
+  }
+
+  .about-card.about-visual::before {
+    top: 15%;
+    left: 33.5%;
+    width: clamp(124px, 15vw, 170px);
   }
 }
