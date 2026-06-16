@@ -1,4 +1,4 @@
-const FEATURED_VERSION = "featured-banner-fit-20260615";
+const FEATURED_VERSION = "featured-banner-swap-20260616";
 
 const featuredProjects = [
   { slug: "ad", nav: "01 广告", tone: "deep" },
@@ -16,8 +16,8 @@ const featuredAdWorks = [
 ];
 
 const featuredBannerWorks = [
-  { title: "窖藏白酒", src: "./assets/featured-banner-art-baijiu.jpeg" },
   { title: "定格每一道光", src: "./30cb955e-0822-43f3-98d9-4ba484c120d2.png" },
+  { title: "窖藏白酒", src: "./assets/featured-banner-art-baijiu.jpeg" },
   { title: "新本上架", src: "./d15079c8-14f0-47b8-864b-dd47c04d6d66.png" },
   { title: "今日上新", src: "./4cca3669-f0f0-4b6e-8557-176422ad07b2.png" }
 ];
