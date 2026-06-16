@@ -119,7 +119,7 @@
         const style=document.createElement("style");
         style.id="featured-ip-overview-focus-styles";
         style.textContent=`
-          body.featured-page[data-featured="ip"] .featured-frost-stage{overflow:hidden!important;perspective:1400px!important;perspective-origin:50% 52%!important}
+          body.featured-page[data-featured="ip"] .featured-frost-stage{overflow:hidden!important;pointer-events:auto!important;perspective:1400px!important;perspective-origin:50% 52%!important}
           body.featured-page[data-featured="ip"] .featured-frost-stage::before{opacity:0!important;transition:opacity .42s ease!important}
           body.featured-page[data-featured="ip"] .featured-frost-stage.ip-is-focused::before{opacity:1!important}
           .ip-overview-focus{position:absolute;inset:0;z-index:4;pointer-events:auto!important;perspective:1400px;transform-style:preserve-3d}
@@ -147,13 +147,15 @@
         `;
         document.head.appendChild(style);
         stage.setAttribute("aria-label","06 IP设计作品展示，初始双图双光环，点击后放大并旋转交换");
-        stage.innerHTML=`<div class="ip-overview-focus" data-ip-layout><div class="ip-overview"><button class="ip-overview-card" type="button" data-ip-open="0" aria-label="放大山海月IP"><img src="./山海月IP.png?v=featured-ip-click-fix-20260616" alt="山海月IP" loading="eager" decoding="async" fetchpriority="high"></button><button class="ip-overview-card" type="button" data-ip-open="1" aria-label="放大欢狐IP"><img src="./IP综合1.0.png?v=featured-ip-click-fix-20260616" alt="欢狐IP综合设计" loading="eager" decoding="async"></button></div><div class="ip-focus-shell"><div class="ip-focus-card" data-ip-card><figure class="ip-focus-face ip-focus-face-front"><img src="./山海月IP.png?v=featured-ip-click-fix-20260616" alt="山海月IP"></figure><figure class="ip-focus-face ip-focus-face-back"><img src="./IP综合1.0.png?v=featured-ip-click-fix-20260616" alt="欢狐IP综合设计"></figure></div><button class="ip-focus-arrow ip-focus-arrow-left" type="button" data-ip-rotate="left" aria-label="向左旋转交换作品"></button><button class="ip-focus-arrow ip-focus-arrow-right" type="button" data-ip-rotate="right" aria-label="向右旋转交换作品"></button></div></div>`;
+        stage.innerHTML=`<div class="ip-overview-focus" data-ip-layout><div class="ip-overview"><button class="ip-overview-card" type="button" data-ip-open="0" aria-label="放大山海月IP"><img src="./山海月IP.png?v=featured-ip-click-capture-20260616" alt="山海月IP" loading="eager" decoding="async" fetchpriority="high"></button><button class="ip-overview-card" type="button" data-ip-open="1" aria-label="放大欢狐IP"><img src="./IP综合1.0.png?v=featured-ip-click-capture-20260616" alt="欢狐IP综合设计" loading="eager" decoding="async"></button></div><div class="ip-focus-shell"><div class="ip-focus-card" data-ip-card><figure class="ip-focus-face ip-focus-face-front"><img src="./山海月IP.png?v=featured-ip-click-capture-20260616" alt="山海月IP"></figure><figure class="ip-focus-face ip-focus-face-back"><img src="./IP综合1.0.png?v=featured-ip-click-capture-20260616" alt="欢狐IP综合设计"></figure></div><button class="ip-focus-arrow ip-focus-arrow-left" type="button" data-ip-rotate="left" aria-label="向左旋转交换作品"></button><button class="ip-focus-arrow ip-focus-arrow-right" type="button" data-ip-rotate="right" aria-label="向右旋转交换作品"></button></div></div>`;
         const layout=stage.querySelector("[data-ip-layout]");
         const card=stage.querySelector("[data-ip-card]");
+        const overviewButtons=[...stage.querySelectorAll("[data-ip-open]")];
         let rotation=0;
         const openFocus=index=>{rotation=index===1?180:0;card.style.setProperty("--ip-rotation",`${rotation}deg`);layout.classList.add("is-focused");stage.classList.add("ip-is-focused")};
         const closeFocus=()=>{layout.classList.remove("is-focused");stage.classList.remove("ip-is-focused")};
-        stage.querySelectorAll("[data-ip-open]").forEach(button=>button.addEventListener("click",event=>{event.preventDefault();event.stopPropagation();openFocus(Number(button.dataset.ipOpen))}));
+        overviewButtons.forEach(button=>button.addEventListener("click",event=>{event.preventDefault();event.stopPropagation();openFocus(Number(button.dataset.ipOpen))}));
+        stage.addEventListener("click",event=>{if(layout.classList.contains("is-focused"))return;const hit=overviewButtons.findIndex(button=>{const rect=button.getBoundingClientRect();return event.clientX>=rect.left&&event.clientX<=rect.right&&event.clientY>=rect.top&&event.clientY<=rect.bottom});if(hit>=0){event.preventDefault();event.stopPropagation();openFocus(hit)}},true);
         stage.querySelectorAll("[data-ip-rotate]").forEach(button=>button.addEventListener("click",event=>{event.preventDefault();event.stopPropagation();rotation+=button.dataset.ipRotate==="left"?-180:180;card.style.setProperty("--ip-rotation",`${rotation}deg`)}));
         stage.addEventListener("click",event=>{if(layout.classList.contains("is-focused")&&(event.target===stage||event.target===layout))closeFocus()});
         document.addEventListener("keydown",event=>{if(event.key==="Escape")closeFocus()});
