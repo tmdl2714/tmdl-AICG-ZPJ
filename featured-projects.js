@@ -1,4 +1,4 @@
-const FEATURED_VERSION = "featured-banner-spacing-radius-20260616";
+const FEATURED_VERSION = "featured-banner-scale-radius-20260616";
 
 const featuredProjects = [
   { slug: "ad", nav: "01 广告", tone: "deep" },
@@ -157,21 +157,24 @@ function injectFeaturedBannerGalleryStyles() {
   style.id = "featured-banner-gallery-styles";
   style.textContent = `
     body.featured-page[data-featured="banner"] .featured-frost-stage{overflow:hidden!important}
-    .featured-banner-grid{position:absolute;left:50%;top:55%;z-index:3;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,1.6vw,24px);width:min(64vw,900px);max-height:calc(100vh - 150px);transform:translate(-50%,-50%);perspective:1400px}
-    .featured-banner-card{position:relative;display:grid;place-items:center;width:100%;aspect-ratio:16/9;padding:0;overflow:visible;border:1px solid rgba(160,196,226,.34);border-radius:9px;background:rgba(240,248,255,.16);box-shadow:0 16px 34px rgba(52,91,126,.16),0 0 20px rgba(170,216,250,.14);cursor:pointer;animation:bannerFloat 4.8s ease-in-out infinite;transition:border-color .28s ease,box-shadow .28s ease,filter .28s ease,opacity .22s ease,top .28s ease}
+    .featured-banner-grid{position:absolute;left:50%;top:55%;z-index:3;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,1.55vw,26px);width:min(72vw,1040px);max-height:calc(100vh - 150px);pointer-events:auto;transform:translate(-50%,-50%);perspective:1400px}
+    .featured-banner-card{position:relative;display:grid;place-items:center;width:100%;min-width:0;min-height:0;aspect-ratio:16/9;padding:0;overflow:visible;border:1px solid rgba(160,196,226,.34);border-radius:9px;background:rgba(240,248,255,.16);box-shadow:0 16px 34px rgba(52,91,126,.16),0 0 20px rgba(170,216,250,.14);cursor:pointer;pointer-events:auto;animation:bannerFloat 4.8s ease-in-out infinite;transition:border-color .28s ease,box-shadow .28s ease,filter .28s ease,opacity .22s ease,top .28s ease}
     .featured-banner-card:nth-child(2){animation-delay:-1.2s}.featured-banner-card:nth-child(3){animation-delay:-2.4s;top:-20px}.featured-banner-card:nth-child(4){animation-delay:-3.6s}
     .featured-banner-card:hover,.featured-banner-card:focus-visible{border-color:rgba(212,166,85,.72);box-shadow:0 20px 42px rgba(52,91,126,.22),0 0 26px rgba(225,177,91,.18);outline:none}
-    .featured-banner-card-camera{top:-12px;overflow:hidden;border-color:transparent;border-radius:9px;background:transparent;box-shadow:none}
-    .featured-banner-card-camera img{border-radius:9px;clip-path:inset(0 round 9px)}
+    .featured-banner-card-camera{top:-12px;border-color:transparent;background:transparent;box-shadow:none}
+    .featured-banner-camera-clip{display:block;width:100%;aspect-ratio:1774/887;overflow:hidden;border-radius:9px;clip-path:inset(0 round 9px);-webkit-clip-path:inset(0 round 9px)}
+    .featured-banner-card-camera img{width:100%;height:100%;border-radius:9px;clip-path:inset(0 round 9px);-webkit-clip-path:inset(0 round 9px)}
     .featured-banner-card-camera:hover,.featured-banner-card-camera:focus-visible{border-color:transparent;box-shadow:none;filter:brightness(1.03);outline:none}
     .featured-banner-card.is-source-hidden{opacity:0;pointer-events:none}
-    .featured-banner-card img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;pointer-events:none;border-radius:inherit;background:transparent}
-    .featured-banner-focus{position:fixed;z-index:80;display:none;overflow:hidden;border:1px solid rgba(195,220,240,.72);border-radius:10px;background:rgba(238,246,251,.96);box-shadow:0 32px 90px rgba(45,76,109,.32),0 0 42px rgba(210,166,84,.22);cursor:zoom-out;transform-origin:center;will-change:left,top,width,height}
+    .featured-banner-card img{display:block;width:100%;height:100%;min-width:0;min-height:0;object-fit:contain;object-position:center;pointer-events:none;border-radius:inherit;background:transparent}
+    .featured-banner-focus{position:fixed;z-index:80;display:none;overflow:hidden;border:1px solid rgba(195,220,240,.72);border-radius:10px;background:rgba(238,246,251,.96);box-shadow:0 32px 90px rgba(45,76,109,.32),0 0 42px rgba(210,166,84,.22);cursor:zoom-out;pointer-events:auto;transform-origin:center;will-change:left,top,width,height}
     .featured-banner-focus.is-visible{display:block}
     .featured-banner-focus img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;background:transparent}
+    .featured-banner-focus.is-camera{border-color:transparent;border-radius:9px;background:transparent;box-shadow:none}
+    .featured-banner-focus.is-camera img{border-radius:9px;clip-path:inset(0 round 9px);-webkit-clip-path:inset(0 round 9px)}
     .featured-banner-focus::after{position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(255,255,255,.45);pointer-events:none;content:""}
     @keyframes bannerFloat{0%,100%{transform:translateY(-3px)}50%{transform:translateY(3px)}}
-    @media(max-width:1180px){.featured-banner-grid{width:min(72vw,820px)}}
+    @media(max-width:1180px){.featured-banner-grid{width:min(78vw,920px)}}
     @media(max-width:820px){.featured-banner-grid{top:54%;width:min(90vw,700px);gap:10px}.featured-banner-card{border-radius:7px}.featured-banner-focus{border-radius:8px}}
     @media(prefers-reduced-motion:reduce){.featured-banner-card{animation:none}.featured-banner-focus{transition:none}}`;
   document.head.appendChild(style);
@@ -186,9 +189,11 @@ function setupFeaturedBannerGallery(root) {
   let animating = false;
 
   const targetRect = () => {
-    const maxWidthByHeight = Math.max(320, (window.innerHeight - 150) * 16 / 9);
-    const width = Math.min(window.innerWidth * .62, 980, maxWidthByHeight);
-    const height = width * 9 / 16;
+    const isCamera = activeCard?.classList.contains("featured-banner-card-camera");
+    const aspect = isCamera ? 1774 / 887 : 16 / 9;
+    const maxWidthByHeight = Math.max(320, (window.innerHeight - 150) * aspect);
+    const width = Math.min(window.innerWidth * .62, isCamera ? 980 : 1040, maxWidthByHeight);
+    const height = width / aspect;
     return { left:(window.innerWidth-width)/2, top:Math.max(96,(window.innerHeight-height)/2+8), width, height };
   };
 
@@ -208,13 +213,16 @@ function setupFeaturedBannerGallery(root) {
       { left:`${from.left}px`,top:`${from.top}px`,width:`${from.width}px`,height:`${from.height}px` },
       { left:`${to.left}px`,top:`${to.top}px`,width:`${to.width}px`,height:`${to.height}px` }
     ], { duration:520, easing:"cubic-bezier(.22,.72,.2,1)", fill:"forwards" });
-    animation.onfinish = () => {
+    const finishClose = () => {
+      if (!animating) return;
       activeCard.classList.remove("is-source-hidden");
       focus.classList.remove("is-visible");
-      focus.getAnimations().forEach((item) => item.cancel());
+      (focus.getAnimations?.() || []).forEach((item) => item.cancel());
       activeCard = null;
       animating = false;
     };
+    animation.onfinish = finishClose;
+    window.setTimeout(finishClose, 560);
   };
 
   const openCard = (card) => {
@@ -222,6 +230,7 @@ function setupFeaturedBannerGallery(root) {
     if (activeCard === card) { closeFocus(); return; }
     if (activeCard) activeCard.classList.remove("is-source-hidden");
     activeCard = card;
+    focus.classList.toggle("is-camera", card.classList.contains("featured-banner-card-camera"));
     const image = card.querySelector("img");
     focusImage.src = image.src;
     focusImage.alt = image.alt;
@@ -235,11 +244,14 @@ function setupFeaturedBannerGallery(root) {
       { left:`${from.left}px`,top:`${from.top}px`,width:`${from.width}px`,height:`${from.height}px` },
       { left:`${to.left}px`,top:`${to.top}px`,width:`${to.width}px`,height:`${to.height}px` }
     ], { duration:620, easing:"cubic-bezier(.18,.78,.18,1)", fill:"forwards" });
-    animation.onfinish = () => {
+    const finishOpen = () => {
+      if (!animating || activeCard !== card) return;
       setRect(to);
-      focus.getAnimations().forEach((item) => item.cancel());
+      (focus.getAnimations?.() || []).forEach((item) => item.cancel());
       animating = false;
     };
+    animation.onfinish = finishOpen;
+    window.setTimeout(finishOpen, 680);
   };
 
   cards.forEach((card) => card.addEventListener("click", () => openCard(card)));
@@ -256,7 +268,10 @@ function renderAdReferencePage() {
 }
 
 function renderBannerReferencePage() {
-  const cards = featuredBannerWorks.map((work,index)=>`<button class="featured-banner-card${index === 0 ? " featured-banner-card-camera" : ""}" type="button" data-banner-work="${index}" aria-label="查看${work.title}"><img src="${asset(work.src)}" alt="${work.title}" ${featuredImageAttrs.banner}></button>`).join("");
+  const cards = featuredBannerWorks.map((work,index)=>{
+    const image = `<img src="${asset(work.src)}" alt="${work.title}" ${featuredImageAttrs.banner}>`;
+    return `<button class="featured-banner-card${index === 0 ? " featured-banner-card-camera" : ""}" type="button" data-banner-work="${index}" aria-label="查看${work.title}">${index === 0 ? `<span class="featured-banner-camera-clip">${image}</span>` : image}</button>`;
+  }).join("");
   return `<div class="featured-frost-page featured-banner-frost-page" aria-label="02 Banner精品项目二级页面">${renderFrostNav("banner")}<section class="featured-frost-stage" aria-label="02 Banner作品展示"><div class="featured-banner-grid">${cards}</div><button class="featured-banner-focus" type="button" data-banner-focus aria-label="关闭当前Banner展示"><img alt=""></button></section></div>`;
 }
 
