@@ -162,7 +162,7 @@ function injectFeaturedBannerGalleryStyles() {
     .featured-banner-card:nth-child(2){animation-delay:-1.2s}.featured-banner-card:nth-child(3){animation-delay:-2.4s;top:-20px}.featured-banner-card:nth-child(4){animation-delay:-3.6s}
     .featured-banner-card:hover,.featured-banner-card:focus-visible{border-color:rgba(212,166,85,.72);box-shadow:0 20px 42px rgba(52,91,126,.22),0 0 26px rgba(225,177,91,.18);outline:none}
     .featured-banner-card-camera{top:-12px;overflow:hidden;border-color:transparent;border-radius:9px;background:transparent;box-shadow:none}
-    .featured-banner-card-camera img{border-radius:inherit}
+    .featured-banner-card-camera img{border-radius:9px;clip-path:inset(0 round 9px)}
     .featured-banner-card-camera:hover,.featured-banner-card-camera:focus-visible{border-color:transparent;box-shadow:none;filter:brightness(1.03);outline:none}
     .featured-banner-card.is-source-hidden{opacity:0;pointer-events:none}
     .featured-banner-card img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;pointer-events:none;border-radius:inherit;background:transparent}
