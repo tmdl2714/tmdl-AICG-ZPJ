@@ -1,5 +1,5 @@
 (()=>{
-  const VERSION="featured-ip-focus-no-yellow-frame-20260616";
+  const VERSION="featured-ip-focus-glow-resized-20260616";
   const works=[
     {title:"山海月IP",src:"./山海月IP.png"},
     {title:"欢狐IP综合设计",src:"./IP综合1.0.png"}
@@ -20,6 +20,7 @@
       .featured-ip-overview-card:hover,.featured-ip-overview-card:focus-visible{transform:translateY(-5px);border-color:rgba(218,170,86,.72);box-shadow:0 28px 66px rgba(49,82,116,.28),0 0 32px rgba(218,170,86,.18);outline:none}
       .featured-ip-overview-card img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;pointer-events:none;user-select:none;-webkit-user-drag:none}
       .featured-ip-focus{position:absolute;left:50%;top:46%;width:min(61vw,930px);aspect-ratio:3/2;opacity:0;pointer-events:none;transform:translate(-50%,-50%) scale(.78);transition:opacity .28s ease,transform .62s cubic-bezier(.18,.78,.18,1);transform-style:preserve-3d}
+      .featured-ip-focus::before{position:absolute;left:50%;bottom:0;z-index:-1;width:calc(100% + 34px);height:calc(100% + 22px);border:1px solid rgba(218,240,255,.72);border-radius:20px;background:rgba(225,243,255,.04);box-shadow:0 0 0 1px rgba(255,255,255,.18),0 0 28px rgba(145,205,245,.34),0 0 58px rgba(121,188,235,.2),inset 0 0 24px rgba(232,247,255,.1);content:"";pointer-events:none;transform:translateX(-50%)}
       .featured-ip-focus-card{position:absolute;inset:0;border-radius:12px;transform:rotateY(var(--ip-rotation,0deg));transform-style:preserve-3d;transition:transform 780ms cubic-bezier(.22,.72,.2,1);will-change:transform}
       .featured-ip-face{position:absolute;inset:0;margin:0;overflow:hidden;border:1px solid rgba(198,224,243,.62);border-radius:12px;background:rgba(235,247,255,.35);box-shadow:0 28px 70px rgba(45,76,110,.28),0 0 32px rgba(174,220,250,.18);backface-visibility:hidden;-webkit-backface-visibility:hidden}
       .featured-ip-face-back{transform:rotateY(180deg)}
@@ -33,7 +34,7 @@
       .featured-ip-arrow:hover,.featured-ip-arrow:focus-visible{border-color:rgba(255,255,255,.82);box-shadow:0 12px 30px rgba(12,35,64,.26),0 0 22px rgba(174,223,255,.32);opacity:1;outline:none}
       .featured-ip-layout.is-focused .featured-ip-overview{opacity:0;pointer-events:none;transform:translate(-50%,-50%) scale(.84)}
       .featured-ip-layout.is-focused .featured-ip-focus{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
-      @media(max-width:820px){.featured-ip-overview{top:54%;width:min(90vw,700px);gap:12px}.featured-ip-overview-card{border-radius:8px}.featured-ip-focus{top:48%;width:min(80vw,680px)}.featured-ip-arrow{width:36px}.featured-ip-arrow-left{left:max(-46px,-6vw)}.featured-ip-arrow-right{right:max(-46px,-6vw)}}
+      @media(max-width:820px){.featured-ip-overview{top:54%;width:min(90vw,700px);gap:12px}.featured-ip-overview-card{border-radius:8px}.featured-ip-focus{top:48%;width:min(80vw,680px)}.featured-ip-focus::before{width:calc(100% + 22px);height:calc(100% + 14px);border-radius:15px}.featured-ip-arrow{width:36px}.featured-ip-arrow-left{left:max(-46px,-6vw)}.featured-ip-arrow-right{right:max(-46px,-6vw)}}
       @media(prefers-reduced-motion:reduce){.featured-ip-overview,.featured-ip-focus,.featured-ip-focus-card{transition-duration:.01ms!important}}
     `;
     document.head.appendChild(style);
