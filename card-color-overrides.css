@@ -61,6 +61,37 @@ body #projects .project-item-narrow::before {
   gap: 0.52% !important;
 }
 
+/* Homepage category directory and workflow: true edge-to-edge width. */
+body #categories.category-hall-section,
+body #workflow.workflow-visual-section {
+  width: 100vw !important;
+  max-width: none !important;
+  margin-right: calc(50% - 50vw) !important;
+  margin-left: calc(50% - 50vw) !important;
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+  overflow: hidden !important;
+  border-radius: 0 !important;
+}
+
+body #categories .category-hall-scroll,
+body #categories .category-hall {
+  width: 100vw !important;
+  max-width: none !important;
+  margin: 0 !important;
+}
+
+body #categories .category-hall > img,
+body #workflow .workflow-visual {
+  display: block !important;
+  width: 100vw !important;
+  max-width: none !important;
+  height: auto !important;
+  margin: 0 !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+}
+
 /* Contact finish: keep the new 1672x941 artwork complete so hotspots stay aligned. */
 .contact-journey {
   display: block !important;
@@ -146,6 +177,21 @@ body #projects .project-item-narrow::before {
 @media (max-width: 760px) {
   .category-hall {
     min-width: 980px !important;
+  }
+
+  body #categories .category-hall-scroll {
+    overflow-x: auto !important;
+    scrollbar-width: none !important;
+  }
+
+  body #categories .category-hall-scroll::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  body #categories .category-hall,
+  body #categories .category-hall > img {
+    width: 980px !important;
+    max-width: none !important;
   }
 
   .contact-journey {
