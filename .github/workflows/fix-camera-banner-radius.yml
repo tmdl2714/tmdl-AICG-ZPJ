@@ -14,22 +14,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Refresh featured script cache
+      - name: Force camera banner radius in page CSS
         run: |
           python - <<'PY'
           from pathlib import Path
           path = Path('featured.html')
           text = path.read_text(encoding='utf-8')
-          old = './featured-projects.js?v=featured-ip-overview-focus-20260616'
-          new = './featured-projects.js?v=featured-banner-camera-radius-20260616-2'
-          if old not in text:
-              raise SystemExit('Target script version not found')
-          path.write_text(text.replace(old, new, 1), encoding='utf-8')
+          rule = '    body.featured-page[data-featured="banner"] .featured-banner-card-camera img{border-radius:12px!important;clip-path:inset(0 round 12px)!important;-webkit-clip-path:inset(0 round 12px)!important}\n'
+          if rule not in text:
+              text = text.replace('  </style>', rule + '  </style>', 1)
+          path.write_text(text, encoding='utf-8')
           PY
-      - name: Commit cache refresh
+      - name: Commit page override
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add featured.html
-          git commit -m "fix: refresh featured script cache for camera radius"
+          git commit -m "fix: force rounded corners on camera banner"
           git push
