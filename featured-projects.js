@@ -1,4 +1,4 @@
-const FEATURED_VERSION = "featured-banner-camera-float-20260616";
+const FEATURED_VERSION = "featured-banner-camera-spacing-20260616";
 
 const featuredProjects = [
   { slug: "ad", nav: "01 广告", tone: "deep" },
@@ -159,9 +159,10 @@ function injectFeaturedBannerGalleryStyles() {
     body.featured-page[data-featured="banner"] .featured-frost-stage{overflow:hidden!important}
     .featured-banner-grid{position:absolute;left:50%;top:55%;z-index:3;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,1.6vw,24px);width:min(64vw,900px);max-height:calc(100vh - 150px);transform:translate(-50%,-50%);perspective:1400px}
     .featured-banner-card{position:relative;display:grid;place-items:center;width:100%;aspect-ratio:16/9;padding:0;overflow:visible;border:1px solid rgba(160,196,226,.34);border-radius:9px;background:rgba(240,248,255,.16);box-shadow:0 16px 34px rgba(52,91,126,.16),0 0 20px rgba(170,216,250,.14);cursor:pointer;animation:bannerFloat 4.8s ease-in-out infinite;transition:border-color .28s ease,box-shadow .28s ease,filter .28s ease,opacity .22s ease,top .28s ease}
-    .featured-banner-card:nth-child(2){animation-delay:-1.2s}.featured-banner-card:nth-child(3){animation-delay:-2.4s}.featured-banner-card:nth-child(4){animation-delay:-3.6s}
+    .featured-banner-card:nth-child(2){animation-delay:-1.2s}.featured-banner-card:nth-child(3){animation-delay:-2.4s;top:-12px}.featured-banner-card:nth-child(4){animation-delay:-3.6s}
     .featured-banner-card:hover,.featured-banner-card:focus-visible{border-color:rgba(212,166,85,.72);box-shadow:0 20px 42px rgba(52,91,126,.22),0 0 26px rgba(225,177,91,.18);outline:none}
-    .featured-banner-card-camera{top:-6px;border-color:transparent;background:transparent;box-shadow:none}
+    .featured-banner-card-camera{top:-12px;border-color:transparent;border-radius:9px;background:transparent;box-shadow:none}
+    .featured-banner-card-camera img{border-radius:9px}
     .featured-banner-card-camera:hover,.featured-banner-card-camera:focus-visible{border-color:transparent;box-shadow:none;filter:brightness(1.03);outline:none}
     .featured-banner-card.is-source-hidden{opacity:0;pointer-events:none}
     .featured-banner-card img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;pointer-events:none;border-radius:inherit;background:transparent}
