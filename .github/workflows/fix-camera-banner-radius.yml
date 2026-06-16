@@ -1,0 +1,37 @@
+name: Fix camera banner radius
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/fix-camera-banner-radius.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fix camera banner clipping
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('featured-projects.js')
+          text = path.read_text(encoding='utf-8')
+          old = '.featured-banner-card-camera{top:-12px;border-color:transparent;border-radius:9px;background:transparent;box-shadow:none}'
+          new = '.featured-banner-card-camera{top:-12px;overflow:hidden;border-color:transparent;border-radius:9px;background:transparent;box-shadow:none}'
+          if old not in text:
+              raise SystemExit('Target camera banner style not found')
+          text = text.replace(old, new, 1)
+          text = text.replace('.featured-banner-card-camera img{border-radius:9px}', '.featured-banner-card-camera img{border-radius:inherit}', 1)
+          path.write_text(text, encoding='utf-8')
+          PY
+      - name: Commit fix
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add featured-projects.js
+          git commit -m "fix: clip camera banner to rounded corners"
+          git push
