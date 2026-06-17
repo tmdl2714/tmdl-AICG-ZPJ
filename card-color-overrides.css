@@ -200,6 +200,30 @@ body #contact .contact-art-image {
   line-height: normal !important;
 }
 
+/* Performance: skip layout and paint work for modules far below the viewport. */
+body #about,
+body #projects,
+body #categories,
+body #workflow,
+body #contact {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
+
+body #categories,
+body #workflow,
+body #contact {
+  contain-intrinsic-size: auto 56vw;
+}
+
+body img {
+  content-visibility: auto;
+}
+
+body #projects .project-item {
+  will-change: transform;
+}
+
 @media (max-width: 760px) {
   .category-hall { min-width: 980px !important; }
   body #categories.category-hall-section,
