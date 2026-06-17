@@ -174,6 +174,14 @@ body #workflow .workflow-visual {
   pointer-events: none;
 }
 
+/* Homepage: remove all vertical gaps from featured projects through contact. */
+body #projects,
+body #categories,
+body #workflow,
+body #contact {
+  margin-top: 0 !important;
+}
+
 @media (max-width: 760px) {
   .category-hall {
     min-width: 980px !important;
