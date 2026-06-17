@@ -48,7 +48,6 @@ body #projects .project-item-narrow::before {
   opacity: 0.48 !important;
 }
 
-/* Homepage category directory replacement: match 分类项目目录1.1.png proportions and hotspots. */
 .category-hall {
   width: min(1755px, calc(100vw - 36px)) !important;
 }
@@ -61,7 +60,6 @@ body #projects .project-item-narrow::before {
   gap: 0.52% !important;
 }
 
-/* Homepage category directory and workflow: true edge-to-edge width. */
 body #categories.category-hall-section,
 body #workflow.workflow-visual-section {
   width: 100vw !important;
@@ -92,7 +90,6 @@ body #workflow .workflow-visual {
   object-position: center center !important;
 }
 
-/* Contact finish: keep the new 1672x941 artwork complete so hotspots stay aligned. */
 .contact-journey {
   display: block !important;
   min-height: 0 !important;
@@ -129,33 +126,12 @@ body #workflow .workflow-visual {
   transform: none !important;
 }
 
-.contact-art-phone {
-  top: 30.25% !important;
-  height: 7.4% !important;
-}
+.contact-art-phone { top: 30.25% !important; height: 7.4% !important; }
+.contact-art-wechat { top: 40.1% !important; height: 7.5% !important; }
+.contact-art-mail { top: 51% !important; height: 8.3% !important; }
+.contact-art-bili { top: 62.6% !important; height: 7% !important; }
+.contact-art-download { top: 71.8% !important; height: 7.8% !important; border-radius: 16px !important; }
 
-.contact-art-wechat {
-  top: 40.1% !important;
-  height: 7.5% !important;
-}
-
-.contact-art-mail {
-  top: 51% !important;
-  height: 8.3% !important;
-}
-
-.contact-art-bili {
-  top: 62.6% !important;
-  height: 7% !important;
-}
-
-.contact-art-download {
-  top: 71.8% !important;
-  height: 7.8% !important;
-  border-radius: 16px !important;
-}
-
-/* Homepage profile avatar: use the uploaded 网页作品集头像01 image without altering the base artwork. */
 .about-card.about-visual::before {
   position: absolute;
   top: 14.2%;
@@ -166,76 +142,47 @@ body #workflow .workflow-visual {
   border: 2px solid rgba(126, 211, 255, 0.9);
   border-radius: 50%;
   background: #071a39 url("./网页作品集头像01.png") center / cover no-repeat;
-  box-shadow:
-    0 0 0 5px rgba(33, 119, 232, 0.18),
-    0 0 24px rgba(75, 181, 255, 0.62),
-    0 16px 38px rgba(0, 18, 55, 0.42);
+  box-shadow: 0 0 0 5px rgba(33, 119, 232, 0.18), 0 0 24px rgba(75, 181, 255, 0.62), 0 16px 38px rgba(0, 18, 55, 0.42);
   content: "";
   pointer-events: none;
 }
 
-/* Homepage: remove all vertical gaps from featured projects through contact. */
+/* Force seamless stacking from featured projects to contact. */
 body #projects,
 body #categories,
 body #workflow,
 body #contact {
   margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+body #categories,
+body #workflow,
+body #contact {
+  position: relative;
+  top: -1px;
+  margin-bottom: -1px !important;
 }
 
 @media (max-width: 760px) {
-  .category-hall {
-    min-width: 980px !important;
-  }
-
-  body #categories .category-hall-scroll {
-    overflow-x: auto !important;
-    scrollbar-width: none !important;
-  }
-
-  body #categories .category-hall-scroll::-webkit-scrollbar {
-    display: none !important;
-  }
-
+  .category-hall { min-width: 980px !important; }
+  body #categories .category-hall-scroll { overflow-x: auto !important; scrollbar-width: none !important; }
+  body #categories .category-hall-scroll::-webkit-scrollbar { display: none !important; }
   body #categories .category-hall,
-  body #categories .category-hall > img {
-    width: 980px !important;
-    max-width: none !important;
-  }
-
-  .contact-journey {
-    overflow-x: auto !important;
-    scrollbar-width: none !important;
-  }
-
-  .contact-journey::-webkit-scrollbar {
-    display: none !important;
-  }
-
-  .contact-art-stage {
-    width: max(100vw, 980px) !important;
-  }
-
-  .contact-art-image {
-    object-position: center center !important;
-  }
-
+  body #categories .category-hall > img { width: 980px !important; max-width: none !important; }
+  .contact-journey { overflow-x: auto !important; scrollbar-width: none !important; }
+  .contact-journey::-webkit-scrollbar { display: none !important; }
+  .contact-art-stage { width: max(100vw, 980px) !important; }
+  .contact-art-image { object-position: center center !important; }
   .contact-art-phone,
   .contact-art-wechat,
   .contact-art-mail,
   .contact-art-bili,
-  .contact-art-download {
-    left: 72.25% !important;
-    width: 18.1% !important;
-    transform: none !important;
-  }
-
-  .contact-art-stage .contact-art-hotspot:active {
-    transform: scale(0.992) !important;
-  }
-
-  .about-card.about-visual::before {
-    top: 15%;
-    left: 30%;
-    width: clamp(124px, 15vw, 170px);
-  }
+  .contact-art-download { left: 72.25% !important; width: 18.1% !important; transform: none !important; }
+  .contact-art-stage .contact-art-hotspot:active { transform: scale(0.992) !important; }
+  .about-card.about-visual::before { top: 15%; left: 30%; width: clamp(124px, 15vw, 170px); }
 }
