@@ -168,8 +168,24 @@ body #contact {
   margin-bottom: -1px !important;
 }
 
+/* Remove vertical letterbox bands inside full-image homepage modules. */
+body #categories.category-hall-section,
+body #workflow.workflow-visual-section {
+  min-height: 0 !important;
+  align-content: start !important;
+  align-items: start !important;
+  justify-items: center !important;
+}
+
+body #categories .category-hall-scroll,
+body #workflow .workflow-visual {
+  align-self: start !important;
+}
+
 @media (max-width: 760px) {
   .category-hall { min-width: 980px !important; }
+  body #categories.category-hall-section,
+  body #workflow.workflow-visual-section { min-height: 0 !important; }
   body #categories .category-hall-scroll { overflow-x: auto !important; scrollbar-width: none !important; }
   body #categories .category-hall-scroll::-webkit-scrollbar { display: none !important; }
   body #categories .category-hall,
