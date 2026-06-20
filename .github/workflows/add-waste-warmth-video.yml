@@ -1,10 +1,7 @@
 name: Add Waste Warmth Video
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/add-waste-warmth-video.yml'
+  workflow_dispatch:
 
 permissions:
   contents: write
