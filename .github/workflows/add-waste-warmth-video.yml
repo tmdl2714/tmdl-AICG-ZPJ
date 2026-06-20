@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - '.github/video-update-trigger.txt'
+      - 'video-update-trigger.txt'
 
 permissions:
   contents: write
