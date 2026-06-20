@@ -29,13 +29,9 @@ function prototypeSeries(slug, count) {
 
 const CATEGORY_DATA = {
   portrait: {
-    title: "AI写真",
-    en: "AI PORTRAIT",
-    subtitle: "数字生命观测区",
+    title: "AI写真", en: "AI PORTRAIT", subtitle: "数字生命观测区",
     desc: "基于AIGC的人像视觉创作，探索光影、情绪与美的更多可能。",
-    tone: "mist",
-    accent: "#287cff",
-    hero: "./assets/categories/portrait/proto-hero.png",
+    tone: "mist", accent: "#287cff", hero: "./assets/categories/portrait/proto-hero.png",
     works: [
       { type: "image", src: "./assets/categories/portrait/portrait-01.jpg", title: "AI写真 01" },
       { type: "image", src: "./assets/categories/portrait/portrait-02.jpeg", title: "AI写真 02" },
@@ -56,17 +52,12 @@ const CATEGORY_DATA = {
       { icon: "download", title: "05 成品输出", desc: "输出高品质成片" }
     ]
   },
+
   outfit: {
-    title: "模特换装",
-    en: "MODEL OUTFIT TRANSFORMATION",
-    subtitle: "未来文明服饰实验室",
+    title: "模特换装", en: "MODEL OUTFIT TRANSFORMATION", subtitle: "未来文明服饰实验室",
     desc: "基于AIGC的模特换装方案，高效生成多种风格造型。",
-    tone: "warm",
-    accent: "#c99a42",
-    hero: "./assets/categories/outfit/proto-hero.png",
-    banner: "./assets/category-banners/outfit-final.png",
-    worksTitle: "案例展示",
-    worksEn: "CASE STUDY",
+    tone: "warm", accent: "#c99a42", hero: "./assets/categories/outfit/proto-hero.png",
+    banner: "./assets/category-banners/outfit-final.png", worksTitle: "案例展示", worksEn: "CASE STUDY",
     works: [
       { type: "image", src: "./2-电商模特换装/34cf39674ea047179e9a53663e1454b9.jpeg~tplv-a9rns2rl98-downsize_watermark_1_5_b.png", title: "AI换装 01", orientation: "outfit-work" },
       { type: "image", src: "./2-电商模特换装/b50aaade3ad341a885ee0651f0d11164.jpeg~tplv-a9rns2rl98-downsize_watermark_1_5_b.png", title: "AI换装 02", orientation: "outfit-work" },
@@ -87,43 +78,25 @@ const CATEGORY_DATA = {
       { icon: "download", title: "05 商业输出", desc: "输出高品质成片" }
     ]
   },
+
   retouch: {
-    title: "产品精修",
-    en: "PRODUCT RETOUCH",
-    subtitle: "文明器物研究区",
+    title: "产品精修", en: "PRODUCT RETOUCH", subtitle: "文明器物研究区",
     desc: "重建光影、优化材质与细节，提升产品商业质感。",
-    tone: "warm",
-    accent: "#b58a4a",
-    hero: "./assets/categories/retouch/proto-hero.png",
+    tone: "warm", accent: "#b58a4a", hero: "./assets/categories/retouch/proto-hero.png",
     banner: "./assets/category-banners/retouch-final.png",
-    works: [
-      { type: "image", src: "./assets/categories/retouch/works/retouch-work-01.png", title: "产品精修 01", orientation: "retouch-board" },
-      { type: "image", src: "./assets/categories/retouch/works/retouch-work-02.png", title: "产品精修 02", orientation: "retouch-board" },
-      { type: "image", src: "./assets/categories/retouch/works/retouch-work-03.png", title: "产品精修 03", orientation: "retouch-board" },
-      { type: "image", src: "./assets/categories/retouch/works/retouch-work-04.png", title: "产品精修 04", orientation: "retouch-board" },
-      { type: "image", src: "./assets/categories/retouch/works/retouch-work-05.png", title: "产品精修 05", orientation: "retouch-board" },
-      { type: "image", src: "./assets/categories/retouch/works/retouch-work-06.png", title: "产品精修 06", orientation: "retouch-board" },
-      { type: "image", src: "./assets/categories/retouch/works/retouch-work-07.png", title: "产品精修 07", orientation: "retouch-board" },
-      { type: "image", src: "./assets/categories/retouch/works/retouch-work-08.png", title: "产品精修 08", orientation: "retouch-board" },
-      { type: "image", src: "./assets/categories/retouch/works/retouch-work-09.png", title: "产品精修 09", orientation: "retouch-board" },
-      { type: "image", src: "./assets/categories/retouch/works/retouch-work-10.png", title: "产品精修 10", orientation: "retouch-board" }
-    ],
+    works: Array.from({ length: 10 }, (_, i) => ({
+      type: "image", src: `./assets/categories/retouch/works/retouch-work-${String(i + 1).padStart(2, "0")}.png`,
+      title: `产品精修 ${String(i + 1).padStart(2, "0")}`, orientation: "retouch-board"
+    })),
     process: ["原图分析", "光影重建", "材质优化", "细节精修", "商业输出"]
   },
+
   poster: {
-    title: "文明视觉档案馆",
-    en: "POSTER / BANNER",
-    subtitle: "记录文明的视觉表达，传递思想与未来。",
+    title: "文明视觉档案馆", en: "POSTER / BANNER", subtitle: "记录文明的视觉表达，传递思想与未来。",
     desc: "面向商业传播、品牌塑造与活动视觉的横幅作品集合。",
-    tone: "sky",
-    accent: "#3e80a8",
-    hero: "./assets/category-banners/poster-final.png",
+    tone: "sky", accent: "#3e80a8", hero: "./assets/category-banners/poster-final.png",
     banner: "./assets/category-banners/poster-final.png",
-    heroWorks: [
-      "./d15079c8-14f0-47b8-864b-dd47c04d6d66.png",
-      "./ac6fe018-f7f3-4ffa-b677-e88fb228d2eb.png",
-      "./制作海报 (4).png"
-    ],
+    heroWorks: ["./d15079c8-14f0-47b8-864b-dd47c04d6d66.png", "./ac6fe018-f7f3-4ffa-b677-e88fb228d2eb.png", "./制作海报 (4).png"],
     heroFeatures: [
       { icon: "feather", title: "商业宣传", desc: "COMMERCIAL" },
       { icon: "badge", title: "活动视觉", desc: "ACTIVITY" },
@@ -131,8 +104,7 @@ const CATEGORY_DATA = {
       { icon: "network", title: "概念海报", desc: "CONCEPT" }
     ],
     filters: ["全部作品", "商业宣传", "活动视觉", "品牌塑造", "概念海报", "科技视觉", "文化传播"],
-    worksTitle: "作品展示",
-    worksEn: "VISUAL WORKS",
+    worksTitle: "作品展示", worksEn: "VISUAL WORKS",
     works: [
       { type: "image", src: "./ac6fe018-f7f3-4ffa-b677-e88fb228d2eb.png", title: "海报 Banner 01", orientation: "banner" },
       { type: "image", src: "./d15079c8-14f0-47b8-864b-dd47c04d6d66.png", title: "海报 Banner 02", orientation: "banner" },
@@ -169,15 +141,11 @@ const CATEGORY_DATA = {
       { icon: "share", title: "成品输出", desc: "适配多尺寸与交付规格" }
     ]
   },
+
   ip: {
-    title: "IP设计",
-    en: "IP DESIGN",
-    subtitle: "文明生命样本库",
+    title: "IP设计", en: "IP DESIGN", subtitle: "文明生命样本库",
     desc: "用角色形象承载品牌记忆，形成可延展的视觉体系。",
-    tone: "aqua",
-    accent: "#14a9b8",
-    hero: "./assets/categories/ip/proto-hero.png",
-    banner: "./assets/category-banners/ip-final.png",
+    tone: "aqua", accent: "#14a9b8", hero: "./assets/categories/ip/proto-hero.png", banner: "./assets/category-banners/ip-final.png",
     works: [
       { type: "image", src: "./assets/categories/ip/works/ip-work-01.png", title: "PENGU IP 角色与周边", orientation: "ip-board" },
       { type: "image", src: "./assets/categories/ip/works/ip-work-02.png", title: "ROBO IP 角色与周边", orientation: "ip-board" },
@@ -186,143 +154,67 @@ const CATEGORY_DATA = {
     ],
     process: ["角色定位", "草图设定", "AI建模", "三视图完善", "周边延展", "品牌应用"]
   },
+
   typography: {
-    title: "字体设计",
-    en: "FONT DESIGN",
-    subtitle: "文明语言研究区",
-    desc: "探索文字的视觉生命力，形成可感知的字体风格。",
-    tone: "mist",
-    accent: "#336ff0",
-    hero: "./assets/categories/typography/proto-hero.png",
-    banner: "./assets/category-banners/typography-final.png",
+    title: "字体设计", en: "FONT DESIGN", subtitle: "文明语言研究区", desc: "探索文字的视觉生命力，形成可感知的字体风格。",
+    tone: "mist", accent: "#336ff0", hero: "./assets/categories/typography/proto-hero.png", banner: "./assets/category-banners/typography-final.png",
     works: [
-      { type: "image", src: "./6-字体设计/36fc2684-c1ab-489e-acbd-785b4afe57dc.png", title: "艺术字体 01", orientation: "typography-work" },
-      { type: "image", src: "./6-字体设计/ChatGPT Image 2026年6月2日 19_11_37.png", title: "艺术字体 02", orientation: "typography-work" },
-      { type: "image", src: "./6-字体设计/ChatGPT Image 2026年6月2日 19_11_40.png", title: "艺术字体 03", orientation: "typography-work" },
-      { type: "image", src: "./6-字体设计/ChatGPT Image 2026年6月2日 19_11_43.png", title: "艺术字体 04", orientation: "typography-work" },
-      { type: "image", src: "./6-字体设计/ChatGPT Image 2026年6月2日 19_11_46.png", title: "艺术字体 05", orientation: "typography-work" },
-      { type: "image", src: "./6-字体设计/ChatGPT Image 2026年6月2日 19_11_50.png", title: "艺术字体 06", orientation: "typography-work" },
-      { type: "image", src: "./6-字体设计/ChatGPT Image 2026年6月2日 19_12_01.png", title: "艺术字体 07", orientation: "typography-work" },
-      { type: "image", src: "./6-字体设计/ChatGPT Image 2026年6月2日 19_12_07.png", title: "艺术字体 08", orientation: "typography-work" },
-      { type: "image", src: "./6-字体设计/ChatGPT Image 2026年6月2日 19_12_10.png", title: "艺术字体 09", orientation: "typography-work" },
-      { type: "image", src: "./6-字体设计/ChatGPT Image 2026年6月2日 19_12_15.png", title: "艺术字体 10", orientation: "typography-work" },
-      { type: "image", src: "./6-字体设计/ChatGPT Image 2026年6月2日 19_12_19.png", title: "艺术字体 11", orientation: "typography-work" },
-      { type: "image", src: "./6-字体设计/ChatGPT Image 2026年6月2日 19_12_22.png", title: "艺术字体 12", orientation: "typography-work" },
-      { type: "image", src: "./6-字体设计/ChatGPT Image 2026年6月2日 19_12_24.png", title: "艺术字体 13", orientation: "typography-work" },
-      { type: "image", src: "./6-字体设计/ChatGPT Image 2026年6月2日 19_12_28.png", title: "艺术字体 14", orientation: "typography-work" }
-    ],
+      "36fc2684-c1ab-489e-acbd-785b4afe57dc.png", "ChatGPT Image 2026年6月2日 19_11_37.png", "ChatGPT Image 2026年6月2日 19_11_40.png",
+      "ChatGPT Image 2026年6月2日 19_11_43.png", "ChatGPT Image 2026年6月2日 19_11_46.png", "ChatGPT Image 2026年6月2日 19_11_50.png",
+      "ChatGPT Image 2026年6月2日 19_12_01.png", "ChatGPT Image 2026年6月2日 19_12_07.png", "ChatGPT Image 2026年6月2日 19_12_10.png",
+      "ChatGPT Image 2026年6月2日 19_12_15.png", "ChatGPT Image 2026年6月2日 19_12_19.png", "ChatGPT Image 2026年6月2日 19_12_22.png",
+      "ChatGPT Image 2026年6月2日 19_12_24.png", "ChatGPT Image 2026年6月2日 19_12_28.png"
+    ].map((name, i) => ({ type: "image", src: `./6-字体设计/${name}`, title: `艺术字体 ${String(i + 1).padStart(2, "0")}`, orientation: "typography-work" })),
     process: ["灵感构思", "草图设计", "细节打磨", "色彩与质感", "成品输出"]
   },
+
   symbol: {
-    title: "超级符号",
-    en: "SUPER SYMBOL",
-    subtitle: "文明标识系统",
-    desc: "提炼核心视觉语言，构建简洁有力的符号体系。",
-    tone: "dark",
-    accent: "#d98535",
-    hero: "./assets/categories/symbol/proto-hero.png",
-    banner: "./assets/category-banners/symbol-final.png",
-    works: [
-      { type: "image", src: "./assets/categories/symbol/works/symbol-work-01.png", title: "超级符号 01", orientation: "symbol-board" },
-      { type: "image", src: "./assets/categories/symbol/works/symbol-work-02.png", title: "超级符号 02", orientation: "symbol-board" },
-      { type: "image", src: "./assets/categories/symbol/works/symbol-work-03.png", title: "超级符号 03", orientation: "symbol-board" },
-      { type: "image", src: "./assets/categories/symbol/works/symbol-work-04.jpeg", title: "超级符号 04", orientation: "symbol-board" },
-      { type: "image", src: "./assets/categories/symbol/works/symbol-work-05.jpeg", title: "超级符号 05", orientation: "symbol-board" },
-      { type: "image", src: "./assets/categories/symbol/works/symbol-work-06.jpeg", title: "超级符号 06", orientation: "symbol-board" },
-      { type: "image", src: "./assets/categories/symbol/works/symbol-work-07.jpeg", title: "超级符号 07", orientation: "symbol-board" },
-      { type: "image", src: "./assets/categories/symbol/works/symbol-work-08.jpeg", title: "超级符号 08", orientation: "symbol-board" },
-      { type: "image", src: "./assets/categories/symbol/works/symbol-work-09.jpeg", title: "超级符号 09", orientation: "symbol-board" },
-      { type: "image", src: "./assets/categories/symbol/works/symbol-work-10.png", title: "超级符号 10", orientation: "symbol-board" },
-      { type: "image", src: "./assets/categories/symbol/works/symbol-work-11.png", title: "超级符号 11", orientation: "symbol-board" }
-    ],
+    title: "超级符号", en: "SUPER SYMBOL", subtitle: "文明标识系统", desc: "提炼核心视觉语言，构建简洁有力的符号体系。",
+    tone: "dark", accent: "#d98535", hero: "./assets/categories/symbol/proto-hero.png", banner: "./assets/category-banners/symbol-final.png",
+    works: ["png", "png", "png", "jpeg", "jpeg", "jpeg", "jpeg", "jpeg", "jpeg", "png", "png"].map((ext, i) => ({
+      type: "image", src: `./assets/categories/symbol/works/symbol-work-${String(i + 1).padStart(2, "0")}.${ext}`,
+      title: `超级符号 ${String(i + 1).padStart(2, "0")}`, orientation: "symbol-board"
+    })),
     process: ["基础图形", "元素提取", "结构融合", "细节优化", "超级符号"]
   },
+
   ui: {
-    title: "UI启动页",
-    en: "UI SPLASH SCREEN",
-    subtitle: "文明交互系统",
-    desc: "面向未来文明入口的界面视觉探索。",
-    tone: "sky",
-    accent: "#3067dd",
-    hero: "./assets/categories/ui/proto-hero.png",
-    banner: "./assets/category-banners/ui-final.png",
+    title: "UI启动页", en: "UI SPLASH SCREEN", subtitle: "文明交互系统", desc: "面向未来文明入口的界面视觉探索。",
+    tone: "sky", accent: "#3067dd", hero: "./assets/categories/ui/proto-hero.png", banner: "./assets/category-banners/ui-final.png",
     works: [
-      { type: "image", src: "./ui启动页/62005ee6-8217-4247-bfc0-a3f515374dc7.png", title: "UI启动页 01", orientation: "ui-launch" },
-      { type: "image", src: "./ui启动页/6a996e38-9282-400d-8ac5-867325edf4ce.png", title: "UI启动页 02", orientation: "ui-launch" },
-      { type: "image", src: "./ui启动页/ba0879ce-7225-4b52-99b6-ea06a398726d.png", title: "UI启动页 03", orientation: "ui-launch" },
-      { type: "image", src: "./ui启动页/e065b2f1-7625-4b6f-8500-ff998ba77a77.png", title: "UI启动页 04", orientation: "ui-launch" },
-      { type: "image", src: "./ui启动页/e3a6819e-e4f6-4372-a9f9-4911d43bd73b.png", title: "UI启动页 05", orientation: "ui-launch" },
-      { type: "image", src: "./ui启动页/光遇1.2.png", title: "UI启动页 06", orientation: "ui-launch" }
-    ],
+      "62005ee6-8217-4247-bfc0-a3f515374dc7.png", "6a996e38-9282-400d-8ac5-867325edf4ce.png", "ba0879ce-7225-4b52-99b6-ea06a398726d.png",
+      "e065b2f1-7625-4b6f-8500-ff998ba77a77.png", "e3a6819e-e4f6-4372-a9f9-4911d43bd73b.png", "光遇1.2.png"
+    ].map((name, i) => ({ type: "image", src: `./ui启动页/${name}`, title: `UI启动页 ${String(i + 1).padStart(2, "0")}`, orientation: "ui-launch" })),
     process: ["灵感关键词", "世界观设定", "氛围构建", "细节打磨", "启动页输出"]
   },
+
   icon: {
-    title: "ICON设计",
-    en: "ICON DESIGN",
-    subtitle: "文明图腾系统",
-    desc: "通过图形语言构建清晰直观的视觉体验。",
-    tone: "mist",
-    accent: "#3158ff",
-    hero: "./assets/categories/icon/proto-hero.png",
-    banner: "./assets/category-banners/icon-final.png",
+    title: "ICON设计", en: "ICON DESIGN", subtitle: "文明图腾系统", desc: "通过图形语言构建清晰直观的视觉体验。",
+    tone: "mist", accent: "#3158ff", hero: "./assets/categories/icon/proto-hero.png", banner: "./assets/category-banners/icon-final.png",
     works: [
-      { type: "image", src: "./9-ICON/1f287988-d307-42c2-a04f-92c9741b27ad.png", title: "ICON设计 01", orientation: "icon-work" },
-      { type: "image", src: "./9-ICON/3adae0bd-1f12-450a-a855-fa82d1e19aad.png", title: "ICON设计 02", orientation: "icon-work" },
-      { type: "image", src: "./9-ICON/6e0e42b4-00e1-437b-a06e-b3fe232661a7.png", title: "ICON设计 03", orientation: "icon-work" },
-      { type: "image", src: "./9-ICON/28abb13b-e8e5-47d0-822f-b0fd4047af47.png", title: "ICON设计 04", orientation: "icon-work" },
-      { type: "image", src: "./9-ICON/41f95525-d0c5-4b37-84ca-d1853195f241.png", title: "ICON设计 05", orientation: "icon-work" },
-      { type: "image", src: "./9-ICON/308ae02f-b7f3-45c5-85ec-2462dbc61ab1.png", title: "ICON设计 06", orientation: "icon-work" },
-      { type: "image", src: "./9-ICON/a65d121d-ea45-474b-8f0e-09659be66a28.png", title: "ICON设计 07", orientation: "icon-work" },
-      { type: "image", src: "./9-ICON/c625349d-9880-4ece-a11f-9601588b1e85.png", title: "ICON设计 08", orientation: "icon-work" },
-      { type: "image", src: "./9-ICON/e1fd8c75-e844-4fe3-bbfb-2392d28502f7.png", title: "ICON设计 09", orientation: "icon-work" },
-      { type: "image", src: "./9-ICON/fb80319d-4d1d-46ac-a5e6-428094c0814b.png", title: "ICON设计 10", orientation: "icon-work" },
-      { type: "image", src: "./9-ICON/ff567a90-1559-4b08-b4f5-57bcb6f93f44.png", title: "ICON设计 11", orientation: "icon-work" },
-      { type: "image", src: "./9-ICON/TyH4-3NQ0_AFh9uakupRiWLSJ6Rq599ZLeo_Kkeq3mfWbwt5iFS-2SrZYBF1Fs28Ws3caHvWwY4YpdZnZuFUCELTtQWYQlZ6c-iWwoZXmhxVKpiosWkB-1ABSB0Vli1GF-NZb7Blwx_SHfVFXJEu8oo02OJNEHS3ZeUW1U7GWgB1dZhKO5Lf5VMqefj_dLeG.jpg", title: "ICON设计 12", orientation: "icon-work" }
-    ],
+      "1f287988-d307-42c2-a04f-92c9741b27ad.png", "3adae0bd-1f12-450a-a855-fa82d1e19aad.png", "6e0e42b4-00e1-437b-a06e-b3fe232661a7.png",
+      "28abb13b-e8e5-47d0-822f-b0fd4047af47.png", "41f95525-d0c5-4b37-84ca-d1853195f241.png", "308ae02f-b7f3-45c5-85ec-2462dbc61ab1.png",
+      "a65d121d-ea45-474b-8f0e-09659be66a28.png", "c625349d-9880-4ece-a11f-9601588b1e85.png", "e1fd8c75-e844-4fe3-bbfb-2392d28502f7.png",
+      "fb80319d-4d1d-46ac-a5e6-428094c0814b.png", "ff567a90-1559-4b08-b4f5-57bcb6f93f44.png",
+      "TyH4-3NQ0_AFh9uakupRiWLSJ6Rq599ZLeo_Kkeq3mfWbwt5iFS-2SrZYBF1Fs28Ws3caHvWwY4YpdZnZuFUCELTtQWYQlZ6c-iWwoZXmhxVKpiosWkB-1ABSB0Vli1GF-NZb7Blwx_SHfVFXJEu8oo02OJNEHS3ZeUW1U7GWgB1dZhKO5Lf5VMqefj_dLeG.jpg"
+    ].map((name, i) => ({ type: "image", src: `./9-ICON/${name}`, title: `ICON设计 ${String(i + 1).padStart(2, "0")}`, orientation: "icon-work" })),
     process: ["需求分析", "概念构思", "草图绘制", "精细设计", "应用输出"]
   },
+
   video: {
-    title: "视频 / 漫剧",
-    en: "VIDEO / ANIMATION DRAMA",
-    subtitle: "文明影像记录区",
+    title: "视频 / 漫剧", en: "VIDEO / ANIMATION DRAMA", subtitle: "文明影像记录区",
     desc: "用影像记录文明，用故事连接未来。",
-    tone: "deep",
-    accent: "#d6a35f",
-    hero: "./assets/category-banners/video-final.png",
-    banner: "./assets/category-banners/video-final.png",
+    tone: "deep", accent: "#d6a35f", hero: "./assets/category-banners/video-final.png", banner: "./assets/category-banners/video-final.png",
     works: [
-      {
-        type: "video",
-        src: "./assets/categories/video/video-01.mp4",
-        title: "窖藏酒CG动画",
-        orientation: "video-landscape"
-      },
-      {
-        type: "video",
-        src: "./assets/categories/video/video-02.mp4",
-        title: "白酒广告短片",
-        orientation: "video-landscape"
-      },
-      {
-        type: "video",
-        src: "./assets/categories/video/video-03.mp4",
-        title: "护肤品精华水广告",
-        orientation: "video-landscape"
-      },
-      {
-        type: "image",
-        src: "./封面.png",
-        title: "重生后，我撕了白莲妹妹",
-        orientation: "video-link",
-        href: "https://www.bilibili.com/video/BV1XZEe6KE9Z/"
-      },
-      {
-        type: "image",
-        src: "./assets/categories/video/works/video-destiny-cover.svg",
-        title: "天命不接",
-        orientation: "video-link",
-        href: "https://www.bilibili.com/video/BV11TVF6yEQo/"
-      }
+      { type: "video", src: "./assets/categories/video/video-01.mp4", title: "窖藏酒CG动画", orientation: "video-landscape" },
+      { type: "video", src: "./assets/categories/video/video-02.mp4", title: "白酒广告短片", orientation: "video-landscape" },
+      { type: "video", src: "./assets/categories/video/video-03.mp4", title: "护肤品精华水广告", orientation: "video-landscape" },
+      { type: "video", src: "./废土温情_25MB版.mp4", title: "废土温情", orientation: "video-landscape" },
+      { type: "video", src: "./猫粮广告_25MB版.mp4", title: "猫粮广告", orientation: "video-landscape" },
+      { type: "video", src: "./耳机广告_25MB版.mp4", title: "耳机广告", orientation: "video-landscape" },
+      { type: "video", src: "./香水广告.mp4", title: "香水广告", orientation: "video-landscape" },
+      { type: "image", src: "./封面.png", title: "重生后，我撕了白莲妹妹", orientation: "video-link", href: "https://www.bilibili.com/video/BV1XZEe6KE9Z/" },
+      { type: "image", src: "./assets/categories/video/works/video-destiny-cover.svg", title: "天命不接", orientation: "video-link", href: "https://www.bilibili.com/video/BV11TVF6yEQo/" }
     ],
     process: ["灵感脚本", "镜头设计", "AI辅助生成", "后期剪辑", "调色音效", "成片输出"]
   }
