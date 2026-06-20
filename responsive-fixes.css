@@ -1,0 +1,244 @@
+/* Responsive and rendering fixes — 2026-06-20 */
+
+/* Prevent viewport-unit overflow on desktop browsers with visible scrollbars. */
+body #projects.project-card,
+body #categories.category-hall-section,
+body #workflow.workflow-visual-section,
+body #contact.contact-journey,
+body #categories .category-hall-scroll,
+body #categories .category-hall,
+body #categories .category-hall > img,
+body #workflow .workflow-visual,
+.contact-art-stage {
+  max-width: 100% !important;
+}
+
+/* Stable modern viewport heights. */
+body #projects.project-card {
+  min-height: 100svh !important;
+  min-height: 100dvh !important;
+}
+
+/* Reduce expensive paint work and avoid permanent GPU promotion off-screen. */
+body #projects .project-item {
+  will-change: auto !important;
+  backface-visibility: hidden;
+}
+
+body #projects .project-item.is-active,
+body #projects .project-item:hover,
+body #projects .project-item:focus-visible {
+  will-change: transform, opacity;
+}
+
+/* Portrait artwork should remain readable inside landscape cards. */
+body #projects [data-featured="poster"] img,
+body #projects [data-featured="ui"] img,
+body #projects [data-featured="ip"] img {
+  object-fit: contain !important;
+  background: #06152f;
+}
+
+/* Tablet: keep the exhibition wall centered without oversized fixed geometry. */
+@media (min-width: 768px) and (max-width: 1120px) {
+  body #projects.project-card {
+    padding-right: 16px !important;
+    padding-left: 16px !important;
+  }
+
+  body #projects .featured-arc-carousel,
+  body #projects .project-stage {
+    width: 100% !important;
+  }
+
+  body #projects .project-stage::before,
+  body #projects .project-stage::after {
+    min-width: 1100px !important;
+  }
+}
+
+/* Real mobile layout: scale modules to the viewport instead of forcing 980px canvases. */
+@media (max-width: 767px) {
+  :root {
+    --anchor-offset: 76px;
+  }
+
+  body #projects.project-card {
+    width: 100% !important;
+    min-height: auto !important;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+    padding: 56px 12px 44px !important;
+  }
+
+  body #projects .section-heading {
+    padding: 0 8px !important;
+  }
+
+  body #projects .section-heading h2 {
+    font-size: clamp(26px, 8vw, 32px) !important;
+    letter-spacing: 0.1em !important;
+    white-space: nowrap;
+  }
+
+  body #projects .section-heading h2::before,
+  body #projects .section-heading h2::after {
+    width: 6px !important;
+    height: 6px !important;
+    margin-right: 9px !important;
+    margin-left: 9px !important;
+  }
+
+  body #projects .section-heading > div > p,
+  body #projects .section-heading p {
+    font-size: 10px !important;
+    letter-spacing: 0.16em !important;
+  }
+
+  body #projects .section-heading > div::after {
+    max-width: 92vw;
+    font-size: 12px !important;
+    line-height: 1.6;
+    text-align: center;
+  }
+
+  body #projects .featured-arc-carousel,
+  body #projects .carousel,
+  body #projects .project-stage {
+    width: 100% !important;
+    min-height: 360px !important;
+    height: 360px !important;
+  }
+
+  body #projects .project-stage {
+    overflow: hidden !important;
+    perspective: none !important;
+  }
+
+  body #projects .project-stage::before,
+  body #projects .project-stage::after {
+    width: 150vw !important;
+    min-width: 0 !important;
+  }
+
+  /* Override JS-provided card variables so the visual ratio remains stable on phones. */
+  body #projects .project-item,
+  body #projects .project-item-wide,
+  body #projects .project-item-medium,
+  body #projects .project-item-narrow {
+    top: 0 !important;
+    width: min(76vw, 292px) !important;
+    height: min(50.7vw, 195px) !important;
+    max-height: 195px !important;
+    border-radius: 5px !important;
+    filter: none !important;
+  }
+
+  body #projects .project-track {
+    margin-top: 2px !important;
+    font-size: 11px !important;
+    letter-spacing: 0.08em !important;
+  }
+
+  body #projects .project-dots {
+    margin-top: 14px !important;
+  }
+
+  body #categories.category-hall-section,
+  body #workflow.workflow-visual-section,
+  body #contact.contact-journey {
+    width: 100% !important;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+    overflow: hidden !important;
+  }
+
+  body #categories .category-hall-scroll {
+    width: 100% !important;
+    overflow: hidden !important;
+  }
+
+  body #categories .category-hall,
+  body #categories .category-hall > img,
+  body #workflow .workflow-visual,
+  .contact-art-stage {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+
+  body #categories .category-hall,
+  .contact-art-stage {
+    height: auto !important;
+  }
+
+  body #categories .category-hall > img,
+  body #workflow .workflow-visual,
+  .contact-art-image {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+
+  .contact-art-stage {
+    aspect-ratio: 1672 / 941 !important;
+    overflow: hidden !important;
+  }
+
+  .about-card.about-visual::before {
+    top: 14.5% !important;
+    left: 29.5% !important;
+    width: clamp(72px, 15vw, 118px) !important;
+  }
+}
+
+/* Small phones. */
+@media (max-width: 390px) {
+  body #projects.project-card {
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+  }
+
+  body #projects .featured-arc-carousel,
+  body #projects .carousel,
+  body #projects .project-stage {
+    min-height: 330px !important;
+    height: 330px !important;
+  }
+
+  body #projects .project-item,
+  body #projects .project-item-wide,
+  body #projects .project-item-medium,
+  body #projects .project-item-narrow {
+    width: min(78vw, 276px) !important;
+    height: min(52vw, 184px) !important;
+  }
+}
+
+/* Landscape phones: avoid tall empty sections. */
+@media (max-width: 900px) and (orientation: landscape) {
+  body #projects.project-card {
+    min-height: 520px !important;
+    padding-top: 36px !important;
+    padding-bottom: 30px !important;
+  }
+
+  body #projects .featured-arc-carousel,
+  body #projects .carousel,
+  body #projects .project-stage {
+    min-height: 280px !important;
+    height: 280px !important;
+  }
+}
+
+/* Respect accessibility and reduce battery use. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  body #projects .project-item {
+    transition-duration: 1ms !important;
+    filter: none !important;
+  }
+}
