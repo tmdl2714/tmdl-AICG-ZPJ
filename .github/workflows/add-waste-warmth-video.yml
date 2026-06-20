@@ -1,4 +1,4 @@
-name: Add Waste Warmth Video
+name: Add Portfolio Videos
 
 on:
   push:
@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Add video entry
+      - name: Add video entries
         shell: python
         run: |
           from pathlib import Path
@@ -31,18 +31,29 @@ jobs:
         href: "https://www.bilibili.com/video/BV1XZEe6KE9Z/"
       },'''
 
-          entry = '''      {
-        type: "video",
-        src: "./废土温情_25MB版.mp4",
-        title: "废土温情",
-        orientation: "video-landscape"
-      },
-'''
+          entries = [
+              ("废土温情", "./废土温情_25MB版.mp4"),
+              ("猫粮广告", "./猫粮广告_25MB版.mp4"),
+              ("耳机广告", "./耳机广告_25MB版.mp4"),
+              ("香水广告", "./香水广告.mp4"),
+          ]
 
-          if 'title: "废土温情"' not in text:
-              if marker not in text:
-                  raise SystemExit('未找到视频分类插入位置')
-              text = text.replace(marker, entry + marker, 1)
+          if marker not in text:
+              raise SystemExit('未找到视频分类插入位置')
+
+          blocks = []
+          for title, src in entries:
+              if f'title: "{title}"' not in text:
+                  blocks.append(f'''      {{
+        type: "video",
+        src: "{src}",
+        title: "{title}",
+        orientation: "video-landscape"
+      }},
+''')
+
+          if blocks:
+              text = text.replace(marker, ''.join(blocks) + marker, 1)
               path.write_text(text, encoding='utf-8')
 
       - name: Commit changes
@@ -54,5 +65,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add category-data.js
-          git commit -m "添加废土温情到视频分类"
+          git commit -m "添加全部视频作品到视频分类"
           git push
