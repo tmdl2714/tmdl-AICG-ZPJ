@@ -1,0 +1,58 @@
+name: Add Waste Warmth Video
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/add-waste-warmth-video.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch-video-category:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Add video entry
+        shell: python
+        run: |
+          from pathlib import Path
+
+          path = Path('category-data.js')
+          text = path.read_text(encoding='utf-8')
+
+          marker = '''      {
+        type: "image",
+        src: "./封面.png",
+        title: "重生后，我撕了白莲妹妹",
+        orientation: "video-link",
+        href: "https://www.bilibili.com/video/BV1XZEe6KE9Z/"
+      },'''
+
+          entry = '''      {
+        type: "video",
+        src: "./废土温情_25MB版.mp4",
+        title: "废土温情",
+        orientation: "video-landscape"
+      },
+'''
+
+          if 'title: "废土温情"' not in text:
+              if marker not in text:
+                  raise SystemExit('未找到视频分类插入位置')
+              text = text.replace(marker, entry + marker, 1)
+              path.write_text(text, encoding='utf-8')
+
+      - name: Commit changes
+        run: |
+          if git diff --quiet; then
+            echo "No changes needed"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add category-data.js
+          git commit -m "添加废土温情到视频分类"
+          git push
