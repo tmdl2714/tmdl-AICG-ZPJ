@@ -1,4 +1,28 @@
 (() => {
+  const appendUniqueWorks = (category, works) => {
+    if (!window.CATEGORY_DATA?.[category]?.works) return;
+    const currentWorks = window.CATEGORY_DATA[category].works;
+    works.forEach((work) => {
+      if (!currentWorks.some((item) => item.src === work.src)) currentWorks.push(work);
+    });
+  };
+
+  appendUniqueWorks("icon", [
+    { type: "image", src: "./01_拼车.png", title: "拼车", orientation: "icon-work" },
+    { type: "image", src: "./02_剧本简介.png", title: "剧本简介", orientation: "icon-work" },
+    { type: "image", src: "./03_会员.png", title: "会员", orientation: "icon-work" },
+    { type: "image", src: "./04_杂谈.png", title: "杂谈", orientation: "icon-work" }
+  ]);
+
+  appendUniqueWorks("poster", [
+    { type: "image", src: "./01_拼车计划.png", title: "拼车计划", orientation: "banner" },
+    { type: "image", src: "./02_周末狂欢夜.png", title: "周末狂欢夜", orientation: "banner" },
+    { type: "image", src: "./03_城限专场.png", title: "城限专场", orientation: "banner" },
+    { type: "image", src: "./04_DM严选.png", title: "DM严选", orientation: "banner" },
+    { type: "image", src: "./05_周年庆典.png", title: "周年庆典", orientation: "banner" },
+    { type: "image", src: "./06_未知剧场.png", title: "未知剧场", orientation: "banner" }
+  ]);
+
   const innerHTMLDescriptor = Object.getOwnPropertyDescriptor(Element.prototype, "innerHTML");
   if (innerHTMLDescriptor?.set && innerHTMLDescriptor?.get) {
     Object.defineProperty(Element.prototype, "innerHTML", {
