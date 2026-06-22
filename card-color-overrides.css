@@ -49,15 +49,72 @@ body #projects .project-item-narrow::before {
 }
 
 .category-hall {
+  position: relative !important;
   width: min(1755px, calc(100vw - 36px)) !important;
 }
 
 .category-hall .category-grid {
+  position: absolute !important;
   top: 26% !important;
   right: 7% !important;
   bottom: 18.8% !important;
   left: 7.6% !important;
+  z-index: 3 !important;
+  display: grid !important;
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  grid-template-rows: repeat(2, minmax(0, 1fr)) !important;
   gap: 0.52% !important;
+  width: auto !important;
+  height: auto !important;
+  padding: 0 !important;
+}
+
+/* Homepage image-map hotspots: keep glow locked to the real clickable area. */
+.category-hall .category-grid a {
+  position: relative !important;
+  display: block !important;
+  min-height: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  border: 0 !important;
+  border-radius: 12px !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+.category-hall .category-grid a::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 4% 3.6% !important;
+  border: 1px solid rgba(126, 211, 255, 0) !important;
+  border-radius: 12px !important;
+  background: rgba(88, 190, 255, 0) !important;
+  box-shadow: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: none !important;
+  transition: opacity 160ms ease, border-color 160ms ease, background 160ms ease, box-shadow 160ms ease !important;
+}
+
+.category-hall .category-grid a:hover,
+.category-hall .category-grid a:focus-visible {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  transform: none !important;
+  outline: none !important;
+}
+
+.category-hall .category-grid a:hover::before,
+.category-hall .category-grid a:focus-visible::before {
+  border-color: rgba(126, 211, 255, 0.62) !important;
+  background: rgba(71, 165, 255, 0.08) !important;
+  box-shadow: inset 0 0 18px rgba(100, 200, 255, 0.16), 0 0 22px rgba(80, 185, 255, 0.22) !important;
+  opacity: 1 !important;
 }
 
 body #categories.category-hall-section,
@@ -121,6 +178,7 @@ body #workflow .workflow-visual {
 .contact-art-mail,
 .contact-art-bili,
 .contact-art-download {
+  position: absolute !important;
   left: 72.25% !important;
   width: 18.1% !important;
   transform: none !important;
@@ -131,6 +189,53 @@ body #workflow .workflow-visual {
 .contact-art-mail { top: 51% !important; height: 8.3% !important; }
 .contact-art-bili { top: 62.6% !important; height: 7% !important; }
 .contact-art-download { top: 71.8% !important; height: 7.8% !important; border-radius: 16px !important; }
+
+.contact-art-stage .contact-art-hotspot {
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  outline: none !important;
+  cursor: pointer !important;
+  transition: none !important;
+}
+
+.contact-art-stage .contact-art-hotspot::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  border: 1px solid rgba(126, 211, 255, 0) !important;
+  border-radius: inherit !important;
+  background: rgba(88, 190, 255, 0) !important;
+  box-shadow: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: none !important;
+  transition: opacity 160ms ease, border-color 160ms ease, background 160ms ease, box-shadow 160ms ease !important;
+}
+
+.contact-art-stage .contact-art-hotspot:hover,
+.contact-art-stage .contact-art-hotspot:focus-visible,
+.contact-art-stage .contact-art-hotspot:active,
+.contact-art-stage .contact-art-hotspot.is-copied,
+.contact-art-stage .contact-art-hotspot.is-missing {
+  transform: none !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.contact-art-stage .contact-art-hotspot:hover::before,
+.contact-art-stage .contact-art-hotspot:focus-visible::before,
+.contact-art-stage .contact-art-hotspot.is-copied::before,
+.contact-art-stage .contact-art-hotspot.is-missing::before {
+  border-color: rgba(126, 211, 255, 0.56) !important;
+  background: rgba(71, 165, 255, 0.07) !important;
+  box-shadow: inset 0 0 18px rgba(100, 200, 255, 0.14), 0 0 20px rgba(80, 185, 255, 0.2) !important;
+  opacity: 1 !important;
+}
 
 .about-card.about-visual::before {
   position: absolute;
@@ -242,6 +347,6 @@ body #projects .project-item {
   .contact-art-mail,
   .contact-art-bili,
   .contact-art-download { left: 72.25% !important; width: 18.1% !important; transform: none !important; }
-  .contact-art-stage .contact-art-hotspot:active { transform: scale(0.992) !important; }
+  .contact-art-stage .contact-art-hotspot:active { transform: none !important; }
   .about-card.about-visual::before { top: 15%; left: 30%; width: clamp(124px, 15vw, 170px); }
 }
