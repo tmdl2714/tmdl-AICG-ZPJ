@@ -138,6 +138,29 @@ body.category-page[data-category="video"] .category-process {
   box-shadow: 0 20px 48px rgba(0, 10, 24, 0.26), inset 0 1px rgba(255, 213, 145, 0.12) !important;
 }
 
+/* Poster gallery Scheme A: remove pale glass frames and keep only clean artwork shadows. */
+body.category-page[data-category="poster"] .work-card,
+body.category-page[data-category="poster"] .work-card:nth-child(n),
+body.category-page[data-category="poster"] .work-card.is-vertical,
+body.category-page[data-category="poster"] .work-card.is-banner {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+body.category-page[data-category="poster"] .work-card img,
+body.category-page[data-category="poster"] .work-card:nth-child(n) img {
+  background: transparent !important;
+  border-radius: 4px !important;
+  box-shadow: 0 10px 26px rgba(20, 48, 84, 0.16) !important;
+}
+
+body.category-page[data-category="poster"] .work-card.is-banner img {
+  border-radius: 8px !important;
+  box-shadow: 0 12px 30px rgba(20, 48, 84, 0.16) !important;
+}
+
 /* Full image preview: hard reset inherited category artwork positioning. */
 body.category-page .work-viewer,
 body.category-page .work-viewer.is-open {
