@@ -81,6 +81,25 @@
   padding-top: 70px;
 }
 
+.contact-art-phone,
+.contact-art-wechat,
+.contact-art-mail,
+.contact-art-bili,
+.contact-art-download {
+  left: 70.6% !important;
+  width: 21.3% !important;
+}
+
+.contact-art-phone { top: 29.8% !important; height: 8.2% !important; }
+.contact-art-wechat { top: 40% !important; height: 8.2% !important; }
+.contact-art-mail { top: 50.8% !important; height: 8.6% !important; }
+.contact-art-bili { top: 62.4% !important; height: 8.2% !important; }
+.contact-art-download { top: 71.6% !important; height: 8.7% !important; border-radius: 18px !important; }
+
+.contact-art-stage .contact-art-hotspot::before {
+  inset: 2% 1.5% !important;
+}
+
 @media (max-width: 1100px) {
   .site-header {
     width: min(100% - 40px, 940px);
