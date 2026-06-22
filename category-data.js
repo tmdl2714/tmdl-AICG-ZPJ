@@ -106,6 +106,12 @@ const CATEGORY_DATA = {
     filters: ["全部作品", "商业宣传", "活动视觉", "品牌塑造", "概念海报", "科技视觉", "文化传播"],
     worksTitle: "作品展示", worksEn: "VISUAL WORKS",
     works: [
+      { type: "image", src: "./01_拼车计划.png", title: "拼车计划", orientation: "vertical" },
+      { type: "image", src: "./02_周末狂欢夜.png", title: "周末狂欢夜", orientation: "vertical" },
+      { type: "image", src: "./03_城限专场.png", title: "城限专场", orientation: "vertical" },
+      { type: "image", src: "./04_DM严选.png", title: "DM严选", orientation: "vertical" },
+      { type: "image", src: "./05_周年庆典.png", title: "周年庆典", orientation: "vertical" },
+      { type: "image", src: "./06_未知剧场.png", title: "未知剧场", orientation: "vertical" },
       { type: "image", src: "./ac6fe018-f7f3-4ffa-b677-e88fb228d2eb.png", title: "海报 Banner 01", orientation: "banner" },
       { type: "image", src: "./d15079c8-14f0-47b8-864b-dd47c04d6d66.png", title: "海报 Banner 02", orientation: "banner" },
       { type: "image", src: "./30cb955e-0822-43f3-98d9-4ba484c120d2.png", title: "海报 Banner 03", orientation: "banner" },
@@ -192,12 +198,18 @@ const CATEGORY_DATA = {
     title: "ICON设计", en: "ICON DESIGN", subtitle: "文明图腾系统", desc: "通过图形语言构建清晰直观的视觉体验。",
     tone: "mist", accent: "#3158ff", hero: "./assets/categories/icon/proto-hero.png", banner: "./assets/category-banners/icon-final.png",
     works: [
+      { type: "image", src: "./01_拼车.png", title: "拼车", orientation: "icon-work" },
+      { type: "image", src: "./02_剧本简介.png", title: "剧本简介", orientation: "icon-work" },
+      { type: "image", src: "./03_会员.png", title: "会员", orientation: "icon-work" },
+      { type: "image", src: "./04_杂谈.png", title: "杂谈", orientation: "icon-work" },
       "1f287988-d307-42c2-a04f-92c9741b27ad.png", "3adae0bd-1f12-450a-a855-fa82d1e19aad.png", "6e0e42b4-00e1-437b-a06e-b3fe232661a7.png",
       "28abb13b-e8e5-47d0-822f-b0fd4047af47.png", "41f95525-d0c5-4b37-84ca-d1853195f241.png", "308ae02f-b7f3-45c5-85ec-2462dbc61ab1.png",
       "a65d121d-ea45-474b-8f0e-09659be66a28.png", "c625349d-9880-4ece-a11f-9601588b1e85.png", "e1fd8c75-e844-4fe3-bbfb-2392d28502f7.png",
       "fb80319d-4d1d-46ac-a5e6-428094c0814b.png", "ff567a90-1559-4b08-b4f5-57bcb6f93f44.png",
       "TyH4-3NQ0_AFh9uakupRiWLSJ6Rq599ZLeo_Kkeq3mfWbwt5iFS-2SrZYBF1Fs28Ws3caHvWwY4YpdZnZuFUCELTtQWYQlZ6c-iWwoZXmhxVKpiosWkB-1ABSB0Vli1GF-NZb7Blwx_SHfVFXJEu8oo02OJNEHS3ZeUW1U7GWgB1dZhKO5Lf5VMqefj_dLeG.jpg"
-    ].map((name, i) => ({ type: "image", src: `./9-ICON/${name}`, title: `ICON设计 ${String(i + 1).padStart(2, "0")}`, orientation: "icon-work" })),
+    ].map((item, i) => typeof item === "string"
+      ? { type: "image", src: `./9-ICON/${item}`, title: `ICON设计 ${String(i + 1).padStart(2, "0")}`, orientation: "icon-work" }
+      : item),
     process: ["需求分析", "概念构思", "草图绘制", "精细设计", "应用输出"]
   },
 
