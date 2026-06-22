@@ -138,27 +138,32 @@ body.category-page[data-category="video"] .category-process {
   box-shadow: 0 20px 48px rgba(0, 10, 24, 0.26), inset 0 1px rgba(255, 213, 145, 0.12) !important;
 }
 
-/* Poster gallery Scheme A: remove pale glass frames and keep only clean artwork shadows. */
+/* Poster gallery soft support: subtle backing, not glass. */
 body.category-page[data-category="poster"] .work-card,
 body.category-page[data-category="poster"] .work-card:nth-child(n),
 body.category-page[data-category="poster"] .work-card.is-vertical,
 body.category-page[data-category="poster"] .work-card.is-banner {
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  padding: 0 !important;
+  background: rgba(248, 251, 255, 0.72) !important;
+  border: 1px solid rgba(150, 176, 205, 0.18) !important;
+  box-shadow: 0 8px 22px rgba(20, 48, 84, 0.08) !important;
+  padding: 6px !important;
+  border-radius: 8px !important;
 }
 
 body.category-page[data-category="poster"] .work-card img,
 body.category-page[data-category="poster"] .work-card:nth-child(n) img {
   background: transparent !important;
   border-radius: 4px !important;
-  box-shadow: 0 10px 26px rgba(20, 48, 84, 0.16) !important;
+  box-shadow: none !important;
+}
+
+body.category-page[data-category="poster"] .work-card.is-banner {
+  padding: 8px !important;
+  border-radius: 10px !important;
 }
 
 body.category-page[data-category="poster"] .work-card.is-banner img {
-  border-radius: 8px !important;
-  box-shadow: 0 12px 30px rgba(20, 48, 84, 0.16) !important;
+  border-radius: 6px !important;
 }
 
 /* Full image preview: hard reset inherited category artwork positioning. */
