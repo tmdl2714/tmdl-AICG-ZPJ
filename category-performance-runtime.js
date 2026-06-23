@@ -118,9 +118,33 @@
   }
 
   function loadVideo(video) {
-    if (!video || video.src || !video.dataset.src) return;
-    video.src = video.dataset.src;
+    if (!video) return;
+    if (!video.src && video.dataset.src) {
+      video.src = video.dataset.src;
+    }
+    video.preload = "auto";
     video.load();
+  }
+
+  function playVideo(video) {
+    if (!video) return;
+    loadVideo(video);
+    video.muted = false;
+    video.controls = true;
+    video.playsInline = true;
+    const started = video.play();
+    if (started?.catch) {
+      started.catch(() => {
+        video.muted = true;
+        video.play().catch(() => {});
+      });
+    }
+  }
+
+  function pauseViewerVideos() {
+    document.querySelectorAll(".work-viewer-media video").forEach((video) => {
+      video.pause();
+    });
   }
 
   function deferWorkVideos() {
@@ -134,6 +158,7 @@
         video.removeAttribute("src");
       }
       video.preload = "none";
+      video.controls = false;
       const card = video.closest(".work-card");
       const warm = () => loadVideo(video);
       card?.addEventListener("pointerenter", warm, { once: true, passive: true });
@@ -162,10 +187,27 @@
     if (!mediaHost || !("MutationObserver" in window)) return;
     new MutationObserver(() => {
       mediaHost.querySelectorAll("video").forEach((video) => {
-        video.preload = "none";
-        if (!video.src && video.dataset.src) loadVideo(video);
+        if (video.dataset.autoplayReady === "1") return;
+        video.dataset.autoplayReady = "1";
+        playVideo(video);
       });
     }).observe(mediaHost, { childList: true, subtree: true });
+  }
+
+  function bindVideoCardAutoplay() {
+    document.addEventListener("click", () => {
+      window.setTimeout(() => {
+        document.querySelectorAll(".work-viewer-media video").forEach(playVideo);
+      }, 0);
+    }, true);
+
+    document.querySelectorAll("[data-preview-close], .viewer-close").forEach((button) => {
+      button.addEventListener("click", pauseViewerVideos, true);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") pauseViewerVideos();
+    });
   }
 
   function renderNextCard() {
@@ -210,6 +252,7 @@
       tuneWorkImages();
       deferWorkVideos();
       interceptViewerVideos();
+      bindVideoCardAutoplay();
       renderNextCard();
       tuneDeferredSections();
     });
