@@ -1,6 +1,6 @@
 (() => {
   const BANNER_BLUR_IMAGES = [
-    "./ac6fe018-f7f3-98d9-4ba484c120d2.png",
+    "./ac6fe018-f7f3-4ffa-b677-e88fb228d2eb.png",
     "./d15079c8-14f0-47b8-864b-dd47c04d6d66.png",
     "./30cb955e-0822-43f3-98d9-4ba484c120d2.png",
     "./4cca3669-f0f0-4b6e-8557-176422ad07b2.png"
