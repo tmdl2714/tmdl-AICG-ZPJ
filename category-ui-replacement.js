@@ -2,12 +2,6 @@
   const data = typeof CATEGORY_DATA !== "undefined" ? CATEGORY_DATA : window.CATEGORY_DATA;
   if (!data) return;
 
-  if (data.ui?.works?.[2]) {
-    data.ui.works[2].src = "./象棋.png";
-    data.ui.works[2].title = "象棋启动页";
-    data.ui.works[2].orientation = "ui-launch";
-  }
-
   if (data.ip) {
     const ipWorks = [
       ["IP综合1.0.png", "IP综合展示"],
