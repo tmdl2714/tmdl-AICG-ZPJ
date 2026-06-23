@@ -5,22 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>分类项目 - 铁马德龙作品集</title>
   <meta name="description" content="铁马德龙作品集分类项目二级页面。">
-  <link rel="stylesheet" href="./styles.css?v=poster-width-20260623">
-  <link rel="stylesheet" href="./category-process.css?v=poster-width-20260623">
+  <link rel="stylesheet" href="./styles.css?v=restore-shared-20260623">
+  <link rel="stylesheet" href="./category-process.css?v=restore-shared-20260623">
 </head>
 <body class="category-page">
   <main class="category-detail" data-category-page></main>
+
   <div class="work-viewer" aria-hidden="true">
     <button class="viewer-close" type="button" data-preview-close aria-label="关闭预览">×</button>
     <button class="viewer-nav viewer-prev" type="button" data-preview-prev aria-label="上一个作品"><span class="icon" data-icon="chevron-left"></span></button>
     <div class="work-viewer-media" role="dialog" aria-modal="true" aria-label="作品预览"></div>
     <button class="viewer-nav viewer-next" type="button" data-preview-next aria-label="下一个作品"><span class="icon" data-icon="chevron-right"></span></button>
   </div>
-  <script src="./script.js?v=poster-width-20260623" defer></script>
-  <script src="./category-data.js?v=poster-width-20260623" defer></script>
-  <script src="./category-performance-runtime.js?v=poster-width-20260623" defer></script>
-  <script src="./category-poster-root-fix.js?v=poster-width-20260623" defer></script>
-  <script src="./category-page.js?v=poster-width-20260623" defer></script>
-  <script src="./category-poster-layout-final.js?v=poster-width-20260623" defer></script>
+
+  <script src="./script.js?v=restore-shared-20260623" defer></script>
+  <script src="./category-data.js?v=restore-shared-20260623" defer></script>
+  <script src="./category-ui-replacement.js?v=restore-shared-20260623" defer></script>
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      if (!window.CATEGORY_DATA?.video?.works) return;
+      const wasteWork = window.CATEGORY_DATA.video.works.find((work) => work.title === "废土温情");
+      if (wasteWork) wasteWork.poster = "./废土温情.png";
+      const earWork = window.CATEGORY_DATA.video.works.find((work) => work.title === "耳机广告");
+      if (earWork) earWork.poster = "./小耳机.png";
+      window.CATEGORY_DATA.video.works.splice(-2, 2,
+        { type: "video", src: "./渡鸦的礼物.mp4", title: "渡鸦的礼物", orientation: "video-landscape", poster: "./渡鸦的礼物.png" },
+        { type: "video", src: "./山海镖局_GitHub_25MB内.mp4", title: "山海镖局", orientation: "video-landscape", poster: "./山海镖局.png" }
+      );
+    }, { once: true });
+  </script>
+  <script src="./category-performance-runtime.js?v=restore-shared-20260623" defer></script>
+  <script src="./category-page.js?v=restore-shared-20260623" defer></script>
+  <script src="./category-poster-banner-blur.js?v=restore-shared-20260623" defer></script>
+  <script src="./category-video-posters.js?v=restore-shared-20260623" defer></script>
+  <script src="./category-video-click-play.js?v=restore-shared-20260623" defer></script>
+  <script src="./category-poster-layout-final.js?v=restore-shared-20260623" defer></script>
 </body>
 </html>
