@@ -53,8 +53,37 @@
   <script src="./script.js?v=category-ui-third-size-20260623" defer></script>
   <script src="./category-data.js?v=video-data-latest-20260624" defer></script>
   <script src="./category-performance-runtime.js?v=category-runtime-revert-20260624" defer></script>
-  <script src="./category-video-rollback.js?v=video-latest-assets-20260624" defer></script>
-  <script src="./category-page.js?v=category-ui-third-size-20260623" defer></script>
+  <script>
+    (() => {
+      const currentCategory = new URLSearchParams(window.location.search).get("cat") || document.body.dataset.category || "portrait";
+      if (currentCategory !== "video") return;
+      window.CATEGORY_DATA = window.CATEGORY_DATA || {};
+      window.CATEGORY_DATA.video = {
+        title: "视频 / 漫剧",
+        en: "VIDEO / ANIMATION DRAMA",
+        subtitle: "文明影像记录区",
+        desc: "用影像记录文明，用故事连接未来。",
+        tone: "deep",
+        accent: "#d6a35f",
+        hero: "./assets/category-banners/video-final.png",
+        banner: "./assets/category-banners/video-final.png",
+        worksTitle: "视频作品",
+        worksEn: "VIDEO WORKS",
+        works: [
+          { type: "video", src: "./assets/categories/video/video-01.mp4", title: "窖藏酒CG动画", orientation: "video-landscape" },
+          { type: "video", src: "./assets/categories/video/video-02.mp4", title: "白酒广告短片", orientation: "video-landscape" },
+          { type: "video", src: "./assets/categories/video/video-03.mp4", title: "护肤品精华水广告", orientation: "video-landscape" },
+          { type: "video", src: "./废土温情_25MB版.mp4", title: "废土温情", orientation: "video-landscape", poster: "./废土温情.png" },
+          { type: "video", src: "./猫粮广告_25MB版.mp4", title: "猫粮广告", orientation: "video-landscape" },
+          { type: "video", src: "./耳机广告_25MB版.mp4", title: "耳机广告", orientation: "video-landscape", poster: "./小耳机.png" },
+          { type: "video", src: "./渡鸦的礼物.mp4", title: "渡鸦的礼物", orientation: "video-landscape", poster: "./渡鸦的礼物.png" },
+          { type: "video", src: "./山海镖局_GitHub_25MB内.mp4", title: "山海镖局", orientation: "video-landscape", poster: "./山海镖局.png" }
+        ],
+        process: ["灵感脚本", "镜头设计", "AI辅助生成", "后期剪辑", "调色音效", "成片输出"]
+      };
+    })();
+  </script>
+  <script src="./category-page.js?v=video-inline-latest-20260624" defer></script>
   <script src="./category-video-posters.js?v=category-ui-third-size-20260623" defer></script>
   <script src="./category-video-click-play.js?v=category-ui-third-size-20260623" defer></script>
 </body>
