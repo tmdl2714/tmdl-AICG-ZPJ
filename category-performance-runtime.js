@@ -23,15 +23,6 @@
     { type: "image", src: "./04_杂谈.png", title: "杂谈", orientation: "icon-work" }
   ]);
 
-  appendUniqueWorks("poster", [
-    { type: "image", src: "./01_拼车计划.png", title: "拼车计划", orientation: "banner" },
-    { type: "image", src: "./02_周末狂欢夜.png", title: "周末狂欢夜", orientation: "banner" },
-    { type: "image", src: "./03_城限专场.png", title: "城限专场", orientation: "banner" },
-    { type: "image", src: "./04_DM严选.png", title: "DM严选", orientation: "banner" },
-    { type: "image", src: "./05_周年庆典.png", title: "周年庆典", orientation: "banner" },
-    { type: "image", src: "./06_未知剧场.png", title: "未知剧场", orientation: "banner" }
-  ]);
-
   replaceVideoEndingWorks();
 
   const VIDEO_POSTERS = {
@@ -119,9 +110,7 @@
 
   function loadVideo(video) {
     if (!video) return;
-    if (!video.src && video.dataset.src) {
-      video.src = video.dataset.src;
-    }
+    if (!video.src && video.dataset.src) video.src = video.dataset.src;
     video.preload = "auto";
     video.load();
   }
@@ -142,15 +131,12 @@
   }
 
   function pauseViewerVideos() {
-    document.querySelectorAll(".work-viewer-media video").forEach((video) => {
-      video.pause();
-    });
+    document.querySelectorAll(".work-viewer-media video").forEach((video) => video.pause());
   }
 
   function deferWorkVideos() {
     const videos = [...document.querySelectorAll(".category-work-grid .work-card video")];
     if (!videos.length) return;
-
     videos.forEach((video) => {
       const originalSrc = video.getAttribute("src");
       if (originalSrc) {
@@ -164,7 +150,6 @@
       card?.addEventListener("pointerenter", warm, { once: true, passive: true });
       card?.addEventListener("focus", warm, { once: true });
     });
-
     if (!("IntersectionObserver" in window)) return;
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -173,13 +158,9 @@
         observer.unobserve(entry.target);
       });
     }, { rootMargin: "220px 0px", threshold: 0.01 });
-
     const start = () => videos.forEach((video) => observer.observe(video));
-    if ("requestIdleCallback" in window) {
-      requestIdleCallback(start, { timeout: 1600 });
-    } else {
-      window.setTimeout(start, 900);
-    }
+    if ("requestIdleCallback" in window) requestIdleCallback(start, { timeout: 1600 });
+    else window.setTimeout(start, 900);
   }
 
   function interceptViewerVideos() {
@@ -200,11 +181,9 @@
         document.querySelectorAll(".work-viewer-media video").forEach(playVideo);
       }, 0);
     }, true);
-
     document.querySelectorAll("[data-preview-close], .viewer-close").forEach((button) => {
       button.addEventListener("click", pauseViewerVideos, true);
     });
-
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape") pauseViewerVideos();
     });
@@ -217,7 +196,6 @@
     const next = NEXT_MAP[current] || "portrait";
     const imageSrc = NEXT_IMAGES[next];
     if (!imageSrc) return;
-
     const fallback = [...card.childNodes].map((node) => node.cloneNode(true));
     const image = document.createElement("img");
     image.className = "category-next-image";
@@ -233,7 +211,6 @@
       card.replaceChildren(...fallback.map((node) => node.cloneNode(true)));
       window.renderIcons?.(card);
     };
-
     card.classList.add("category-next-card");
     card.href = `./category.html?cat=${encodeURIComponent(next)}`;
     card.setAttribute("aria-label", `下一项目：${labelFor(next)}`);
