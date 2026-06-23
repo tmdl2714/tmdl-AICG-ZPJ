@@ -50,7 +50,7 @@
       { type: "image", src: "./ui启动页/6a996e38-9282-400d-8ac5-867325edf4ce.png", title: "UI启动页 02", orientation: "ui-launch" },
       { type: "image", src: "./象棋.png", title: "象棋启动页", orientation: "ui-launch" },
       { type: "image", src: "./ui启动页/e065b2f1-7625-4b6f-8500-ff998ba77a77.png", title: "UI启动页 04", orientation: "ui-launch" },
-      { type: "image", src: "./ui启动页/e3a6819e-e4f6-4372-a9f9-49111d43bd73b.png", title: "UI启动页 05", orientation: "ui-launch" },
+      { type: "image", src: "./ui启动页/e3a6819e-e4f6-4372-a9f9-4911d43bd73b.png", title: "UI启动页 05", orientation: "ui-launch" },
       { type: "image", src: "./ui启动页/光遇1.2.png", title: "UI启动页 06", orientation: "ui-launch" }
     ],
     process: ["灵感关键词", "世界观设定", "氛围构建", "细节打磨", "启动页输出"]
