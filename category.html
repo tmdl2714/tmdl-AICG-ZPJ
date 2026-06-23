@@ -5,23 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>分类项目 - 铁马德龙作品集</title>
   <meta name="description" content="铁马德龙作品集分类项目二级页面。">
-  <link rel="stylesheet" href="./styles.css?v=poster-narrow-card-20260623">
-  <link rel="stylesheet" href="./category-process.css?v=poster-narrow-card-20260623">
+  <link rel="stylesheet" href="./styles.css?v=poster-narrow-force-20260623">
+  <link rel="stylesheet" href="./category-process.css?v=poster-narrow-force-20260623">
   <style>
     body.category-page[data-category="poster"] .category-work-grid{
       grid-template-columns:repeat(12,minmax(0,1fr))!important;
       gap:clamp(12px,1.45vw,20px)!important;
       align-items:start!important;
     }
-    body.category-page[data-category="poster"] .work-card.is-banner,
-    body.category-page[data-category="poster"] .work-card.is-banner:nth-child(n){
+    body.category-page[data-category="poster"] .category-work-grid .work-card.is-banner,
+    body.category-page[data-category="poster"] .category-work-grid .work-card.is-banner:nth-child(n){
       grid-column:span 6!important;
       aspect-ratio:16/9!important;
     }
-    body.category-page[data-category="poster"] .work-card.is-poster-row,
-    body.category-page[data-category="poster"] .work-card.is-poster-row:nth-child(n){
+    body.category-page[data-category="poster"] .category-work-grid .work-card.is-poster-row,
+    body.category-page[data-category="poster"] .category-work-grid .work-card.is-poster-row:nth-child(n),
+    body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(5),
+    body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(6),
+    body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(7),
+    body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(8),
+    body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(9),
+    body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(10){
       grid-column:span 2!important;
       aspect-ratio:4/9!important;
+      height:auto!important;
+      min-height:0!important;
       padding:clamp(2px,.35vw,5px)!important;
       border:1px solid rgba(175,214,255,.52)!important;
       border-radius:12px!important;
@@ -29,18 +37,13 @@
       box-shadow:inset 0 1px 0 rgba(255,255,255,.78),0 10px 24px rgba(23,62,108,.12),0 0 0 1px rgba(255,255,255,.16)!important;
       overflow:hidden!important;
     }
-    body.category-page[data-category="poster"] .work-card.is-poster-row::before{
-      content:""!important;
-      position:absolute!important;
-      inset:0!important;
-      z-index:0!important;
-      border-radius:inherit!important;
-      background:linear-gradient(135deg,rgba(255,255,255,.34),rgba(255,255,255,0) 44%,rgba(116,190,255,.08))!important;
-      pointer-events:none!important;
-    }
-    body.category-page[data-category="poster"] .work-card.is-poster-row img{
-      position:relative!important;
-      z-index:1!important;
+    body.category-page[data-category="poster"] .category-work-grid .work-card.is-poster-row img,
+    body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(5) img,
+    body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(6) img,
+    body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(7) img,
+    body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(8) img,
+    body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(9) img,
+    body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(10) img{
       width:100%!important;
       height:100%!important;
       max-width:none!important;
@@ -49,24 +52,40 @@
       object-position:center center!important;
       border-radius:9px!important;
       background:transparent!important;
-      filter:drop-shadow(0 4px 8px rgba(26,62,100,.1))!important;
+      transform:none!important;
     }
-    body.category-page[data-category="poster"] .work-card.is-poster-row span{
-      display:none!important;
-    }
+    body.category-page[data-category="poster"] .category-work-grid .work-card.is-poster-row span,
+    body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(5) span,
+    body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(6) span,
+    body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(7) span,
+    body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(8) span,
+    body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(9) span,
+    body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(10) span{display:none!important;}
     @media(max-width:1180px){
       body.category-page[data-category="poster"] .category-work-grid{grid-template-columns:repeat(6,minmax(0,1fr))!important;}
-      body.category-page[data-category="poster"] .work-card.is-banner,
-      body.category-page[data-category="poster"] .work-card.is-banner:nth-child(n){grid-column:span 3!important;}
-      body.category-page[data-category="poster"] .work-card.is-poster-row,
-      body.category-page[data-category="poster"] .work-card.is-poster-row:nth-child(n){grid-column:span 1!important;}
+      body.category-page[data-category="poster"] .category-work-grid .work-card.is-banner,
+      body.category-page[data-category="poster"] .category-work-grid .work-card.is-banner:nth-child(n){grid-column:span 3!important;}
+      body.category-page[data-category="poster"] .category-work-grid .work-card.is-poster-row,
+      body.category-page[data-category="poster"] .category-work-grid .work-card.is-poster-row:nth-child(n),
+      body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(5),
+      body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(6),
+      body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(7),
+      body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(8),
+      body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(9),
+      body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(10){grid-column:span 1!important;}
     }
     @media(max-width:760px){
       body.category-page[data-category="poster"] .category-work-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;}
-      body.category-page[data-category="poster"] .work-card.is-banner,
-      body.category-page[data-category="poster"] .work-card.is-banner:nth-child(n){grid-column:span 2!important;}
-      body.category-page[data-category="poster"] .work-card.is-poster-row,
-      body.category-page[data-category="poster"] .work-card.is-poster-row:nth-child(n){grid-column:span 1!important;}
+      body.category-page[data-category="poster"] .category-work-grid .work-card.is-banner,
+      body.category-page[data-category="poster"] .category-work-grid .work-card.is-banner:nth-child(n){grid-column:span 2!important;}
+      body.category-page[data-category="poster"] .category-work-grid .work-card.is-poster-row,
+      body.category-page[data-category="poster"] .category-work-grid .work-card.is-poster-row:nth-child(n),
+      body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(5),
+      body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(6),
+      body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(7),
+      body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(8),
+      body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(9),
+      body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(10){grid-column:span 1!important;}
     }
   </style>
 </head>
@@ -80,9 +99,9 @@
     <button class="viewer-nav viewer-next" type="button" data-preview-next aria-label="下一个作品"><span class="icon" data-icon="chevron-right"></span></button>
   </div>
 
-  <script src="./script.js?v=poster-narrow-card-20260623" defer></script>
-  <script src="./category-data.js?v=poster-narrow-card-20260623" defer></script>
-  <script src="./category-ui-replacement.js?v=poster-narrow-card-20260623" defer></script>
+  <script src="./script.js?v=poster-narrow-force-20260623" defer></script>
+  <script src="./category-data.js?v=poster-narrow-force-20260623" defer></script>
+  <script src="./category-ui-replacement.js?v=poster-narrow-force-20260623" defer></script>
   <script>
     window.addEventListener("DOMContentLoaded", () => {
       if (!window.CATEGORY_DATA?.video?.works) return;
@@ -96,10 +115,10 @@
       );
     }, { once: true });
   </script>
-  <script src="./category-performance-runtime.js?v=poster-narrow-card-20260623" defer></script>
-  <script src="./category-page.js?v=poster-narrow-card-20260623" defer></script>
-  <script src="./category-poster-banner-blur.js?v=poster-narrow-card-20260623" defer></script>
-  <script src="./category-video-posters.js?v=poster-narrow-card-20260623" defer></script>
-  <script src="./category-video-click-play.js?v=poster-narrow-card-20260623" defer></script>
+  <script src="./category-performance-runtime.js?v=poster-narrow-force-20260623" defer></script>
+  <script src="./category-page.js?v=poster-narrow-force-20260623" defer></script>
+  <script src="./category-poster-banner-blur.js?v=poster-narrow-force-20260623" defer></script>
+  <script src="./category-video-posters.js?v=poster-narrow-force-20260623" defer></script>
+  <script src="./category-video-click-play.js?v=poster-narrow-force-20260623" defer></script>
 </body>
 </html>
