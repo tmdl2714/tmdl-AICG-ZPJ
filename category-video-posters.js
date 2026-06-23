@@ -4,6 +4,9 @@
     { video: "耳机广告_25MB版.mp4", poster: "./小耳机.png" }
   ];
 
+  const CHESS_UI_ORIGINAL = "ba0879ce-7225-4b52-99b6-ea06a398726d.png";
+  const CHESS_UI_REPLACEMENT = "./象棋.png";
+
   function applyVideoPosters(root = document) {
     POSTERS.forEach(({ video, poster }) => {
       root.querySelectorAll(`video[src*="${video}"]`).forEach((videoEl) => {
@@ -26,11 +29,24 @@
     });
   }
 
-  function run() {
+  function applyChessUiReplacement(root = document) {
+    root.querySelectorAll(`img[src*="${CHESS_UI_ORIGINAL}"]`).forEach((img) => {
+      img.src = CHESS_UI_REPLACEMENT;
+      img.width = 900;
+      img.height = 1200;
+    });
+  }
+
+  function applyAll() {
     applyVideoPosters();
-    requestAnimationFrame(applyVideoPosters);
-    setTimeout(applyVideoPosters, 300);
-    setTimeout(applyVideoPosters, 1000);
+    applyChessUiReplacement();
+  }
+
+  function run() {
+    applyAll();
+    requestAnimationFrame(applyAll);
+    setTimeout(applyAll, 300);
+    setTimeout(applyAll, 1000);
   }
 
   if (document.readyState === "loading") {
@@ -39,6 +55,6 @@
     run();
   }
 
-  const observer = new MutationObserver(() => applyVideoPosters());
+  const observer = new MutationObserver(() => applyAll());
   observer.observe(document.documentElement, { childList: true, subtree: true });
 })();
