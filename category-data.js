@@ -55,13 +55,32 @@ const CATEGORY_DATA = {
       ["./d15079c8-14f0-47b8-864b-dd47c04d6d66.png", "海报 Banner 02", "banner"],
       ["./30cb955e-0822-43f3-98d9-4ba484c120d2.png", "海报 Banner 03", "banner"],
       ["./4cca3669-f0f0-4b6e-8557-176422ad07b2.png", "海报 Banner 04", "banner"],
-      ["./01_拼车计划.png", "拼车计划", "vertical"],
-      ["./02_周末狂欢夜.png", "周末狂欢夜", "vertical"],
-      ["./03_城限专场.png", "城限专场", "vertical"],
-      ["./04_DM严选.png", "DM严选", "vertical"],
-      ["./05_周年庆典.png", "周年庆典", "vertical"],
-      ["./06_未知剧场.png", "未知剧场", "vertical"],
-      ["./制作海报 (4).png", "竖版海报", "vertical"]
+      ["./01_拼车计划.png", "拼车计划", "activity-poster"],
+      ["./02_周末狂欢夜.png", "周末狂欢夜", "activity-poster"],
+      ["./03_城限专场.png", "城限专场", "activity-poster"],
+      ["./04_DM严选.png", "DM严选", "activity-poster"],
+      ["./05_周年庆典.png", "周年庆典", "activity-poster"],
+      ["./06_未知剧场.png", "未知剧场", "activity-poster"],
+      ["./e607c69f-7930-43c3-9774-86b421ee205b (1).png", "竖版海报 01", "vertical"],
+      ["./d2977236-d08b-41b3-b595-7e07d9005e6f.png", "竖版海报 02", "vertical"],
+      ["./b6a25755-6b4e-4a4a-9d1c-54a714fd7af5.png", "竖版海报 03", "vertical"],
+      ["./hp耳机2.png", "竖版海报 04", "vertical"],
+      ["./小水库8.png", "竖版海报 05", "vertical"],
+      ["./小水库10.png", "竖版海报 06", "vertical"],
+      ["./hp耳机4.1.png", "竖版海报 07", "vertical"],
+      ["./b64cc7fb-e4b1-4c98-8b1c-e6c5c0eaea00.png", "竖版海报 08", "vertical"],
+      ["./3b157685-11e4-44e0-b277-f60f370a452a.png", "竖版海报 09", "vertical"],
+      ["./1e8a75ec-0c7a-4906-8e73-032495bc0edf (1).png", "竖版海报 10", "vertical"],
+      ["./0ef45b3b-e083-49ce-a8f5-1a270e8b5662.png", "竖版海报 11", "vertical"],
+      ["./6e143708-8fcf-43d4-a238-808aaf208d1d.png", "竖版海报 12", "vertical"],
+      ["./b3b353e8-14ec-4ee0-a6a1-996110964114.png", "竖版海报 13", "vertical"],
+      ["./904f694f-8f4d-438f-bd72-7c43f7b049fd.png", "竖版海报 14", "vertical"],
+      ["./85a1d84b-234c-4be8-86c2-496943bfdc4c.png", "竖版海报 15", "vertical"],
+      ["./hp耳机10.1.png", "竖版海报 17", "vertical"],
+      ["./hp耳机7.png", "竖版海报 18", "vertical"],
+      ["./小水库5.png", "竖版海报 19", "vertical"],
+      ["./制作海报 (2).png", "竖版海报 20", "vertical"],
+      ["./制作海报 (4).png", "竖版海报 21", "vertical"]
     ].map(([src, title, orientation]) => imageWork(src, title, orientation)),
     process: ["主题定位", "视觉概念", "AI生成", "商业合成", "字体排版", "成品输出"]
   },
@@ -154,3 +173,81 @@ const CATEGORY_DATA = {
 
 window.CATEGORY_NAV = CATEGORY_NAV;
 window.CATEGORY_DATA = CATEGORY_DATA;
+
+(() => {
+  const style = document.createElement("style");
+  style.textContent = `
+    body.category-page[data-category="poster"] .category-work-grid {
+      grid-template-columns: repeat(30, minmax(0, 1fr)) !important;
+      gap: clamp(12px, 1.4vw, 18px) !important;
+      align-items: start !important;
+    }
+    body.category-page[data-category="poster"] .work-card.is-banner,
+    body.category-page[data-category="poster"] .work-card.is-banner:nth-child(n) {
+      grid-column: span 15 !important;
+      aspect-ratio: 16 / 9 !important;
+      padding: 0 !important;
+      border-radius: 10px !important;
+    }
+    body.category-page[data-category="poster"] .work-card.is-activity-poster,
+    body.category-page[data-category="poster"] .work-card.is-activity-poster:nth-child(n) {
+      grid-column: span 5 !important;
+      aspect-ratio: 4 / 9 !important;
+      min-height: 0 !important;
+      padding: clamp(3px, .45vw, 6px) !important;
+      border: 1px solid rgba(175, 214, 255, .58) !important;
+      border-radius: 14px !important;
+      background: linear-gradient(145deg, rgba(255,255,255,.68), rgba(226,240,255,.22)) !important;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.82), 0 12px 28px rgba(23,62,108,.13), 0 0 0 1px rgba(255,255,255,.18) !important;
+      backdrop-filter: blur(10px) saturate(1.05) !important;
+    }
+    body.category-page[data-category="poster"] .work-card.is-activity-poster img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: contain !important;
+      object-position: center center !important;
+      border-radius: 9px !important;
+      background: transparent !important;
+    }
+    body.category-page[data-category="poster"] .work-card.is-activity-poster span {
+      display: none !important;
+    }
+    body.category-page[data-category="poster"] .work-card.is-vertical,
+    body.category-page[data-category="poster"] .work-card.is-vertical:nth-child(n) {
+      grid-column: span 6 !important;
+      aspect-ratio: 3 / 4 !important;
+      min-height: 0 !important;
+    }
+    @media (max-width: 1180px) {
+      body.category-page[data-category="poster"] .category-work-grid {
+        grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+      }
+      body.category-page[data-category="poster"] .work-card.is-banner,
+      body.category-page[data-category="poster"] .work-card.is-banner:nth-child(n) {
+        grid-column: span 6 !important;
+      }
+      body.category-page[data-category="poster"] .work-card.is-activity-poster,
+      body.category-page[data-category="poster"] .work-card.is-activity-poster:nth-child(n),
+      body.category-page[data-category="poster"] .work-card.is-vertical,
+      body.category-page[data-category="poster"] .work-card.is-vertical:nth-child(n) {
+        grid-column: span 3 !important;
+      }
+    }
+    @media (max-width: 760px) {
+      body.category-page[data-category="poster"] .category-work-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+      body.category-page[data-category="poster"] .work-card.is-banner,
+      body.category-page[data-category="poster"] .work-card.is-banner:nth-child(n) {
+        grid-column: span 2 !important;
+      }
+      body.category-page[data-category="poster"] .work-card.is-activity-poster,
+      body.category-page[data-category="poster"] .work-card.is-activity-poster:nth-child(n),
+      body.category-page[data-category="poster"] .work-card.is-vertical,
+      body.category-page[data-category="poster"] .work-card.is-vertical:nth-child(n) {
+        grid-column: span 1 !important;
+      }
+    }
+  `;
+  document.head.appendChild(style);
+})();
