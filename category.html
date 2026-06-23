@@ -35,19 +35,23 @@
     <button class="viewer-nav viewer-next" type="button" data-preview-next aria-label="下一个作品"><span class="icon" data-icon="chevron-right"></span></button>
   </div>
 
-  <script src="./script.js?v=category-video-click-play-20260623" defer></script>
-  <script src="./category-data.js?v=category-video-click-play-20260623" defer></script>
+  <script src="./script.js?v=category-video-poster-20260623" defer></script>
+  <script src="./category-data.js?v=category-video-poster-20260623" defer></script>
   <script>
     window.addEventListener("DOMContentLoaded", () => {
       if (!window.CATEGORY_DATA?.video?.works) return;
+      const wasteWork = window.CATEGORY_DATA.video.works.find((work) => work.title === "废土温情");
+      if (wasteWork) wasteWork.poster = "./废土温情.png";
+      const earWork = window.CATEGORY_DATA.video.works.find((work) => work.title === "耳机广告");
+      if (earWork) earWork.poster = "./小耳机.png";
       window.CATEGORY_DATA.video.works.splice(-2, 2,
         { type: "video", src: "./渡鸦的礼物.mp4", title: "渡鸦的礼物", orientation: "video-landscape", poster: "./渡鸦的礼物.png" },
         { type: "video", src: "./山海镖局_GitHub_25MB内.mp4", title: "山海镖局", orientation: "video-landscape", poster: "./山海镖局.png" }
       );
     }, { once: true });
   </script>
-  <script src="./category-performance-runtime.js?v=category-video-click-play-20260623" defer></script>
-  <script src="./category-page.js?v=category-video-click-play-20260623" defer></script>
-  <script src="./category-video-click-play.js?v=category-video-click-play-20260623" defer></script>
+  <script src="./category-performance-runtime.js?v=category-video-poster-20260623" defer></script>
+  <script src="./category-page.js?v=category-video-poster-20260623" defer></script>
+  <script src="./category-video-click-play.js?v=category-video-poster-20260623" defer></script>
 </body>
 </html>
