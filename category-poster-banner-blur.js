@@ -2,7 +2,7 @@
   const applyPosterBannerBlur = () => {
     if (document.body.dataset.category !== "poster") return;
 
-    const bannerCards = [...document.querySelectorAll(".work-card.is-banner")].slice(0, 4);
+    const bannerCards = [...document.querySelectorAll(".work-card.is-banner")];
     if (!bannerCards.length) return;
 
     bannerCards.forEach((card) => {
