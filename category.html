@@ -49,29 +49,7 @@
   <script src="./script.js?v=category-ui-third-size-20260623" defer></script>
   <script src="./category-data.js?v=category-ui-third-size-20260623" defer></script>
   <script src="./category-performance-runtime.js?v=category-ui-third-size-20260623" defer></script>
-  <script>
-    window.addEventListener("DOMContentLoaded", () => {
-      const currentCategory = new URLSearchParams(window.location.search).get("cat") || document.body.dataset.category || "portrait";
-      if (currentCategory !== "video" || !window.CATEGORY_DATA?.video) return;
-      window.CATEGORY_DATA.video.title = "\u89c6\u9891 / \u6f2b\u5267";
-      window.CATEGORY_DATA.video.en = "VIDEO / ANIMATION DRAMA";
-      window.CATEGORY_DATA.video.subtitle = "\u6587\u660e\u5f71\u50cf\u8bb0\u5f55\u533a";
-      window.CATEGORY_DATA.video.desc = "\u7528\u5f71\u50cf\u8bb0\u5f55\u6587\u660e\uff0c\u7528\u6545\u4e8b\u8fde\u63a5\u672a\u6765\u3002";
-      window.CATEGORY_DATA.video.tone = "deep";
-      window.CATEGORY_DATA.video.accent = "#d6a35f";
-      window.CATEGORY_DATA.video.hero = "./assets/category-banners/video-final.png";
-      window.CATEGORY_DATA.video.banner = "./assets/category-banners/video-final.png";
-      window.CATEGORY_DATA.video.works = [
-        { type: "video", src: "./assets/categories/video/video-01.mp4", title: "\u7a96\u85cf\u9152CG\u52a8\u753b", orientation: "video-landscape" },
-        { type: "video", src: "./assets/categories/video/video-02.mp4", title: "\u767d\u9152\u5e7f\u544a\u77ed\u7247", orientation: "video-landscape" },
-        { type: "video", src: "./assets/categories/video/video-03.mp4", title: "\u62a4\u80a4\u54c1\u7cbe\u534e\u6c34\u5e7f\u544a", orientation: "video-landscape" },
-        { type: "video", src: "./废土温情_25MB版.mp4", title: "\u5e9f\u571f\u6e29\u60c5", orientation: "video-landscape" },
-        { type: "video", src: "./猫粮广告_25MB版.mp4", title: "\u732b\u7cae\u5e7f\u544a", orientation: "video-landscape" },
-        { type: "video", src: "./耳机广告_25MB版.mp4", title: "\u8033\u673a\u5e7f\u544a", orientation: "video-landscape" }
-      ];
-      window.CATEGORY_DATA.video.process = ["\u7075\u611f\u811a\u672c", "\u955c\u5934\u8bbe\u8ba1", "AI\u8f85\u52a9\u751f\u6210", "\u540e\u671f\u526a\u8f91", "\u8c03\u8272\u97f3\u6548", "\u6210\u7247\u8f93\u51fa"];
-    }, { once: true });
-  </script>
+  <script src="./category-video-rollback.js?v=video-rollback-20260624" defer></script>
   <script src="./category-page.js?v=category-ui-third-size-20260623" defer></script>
   <script src="./category-video-posters.js?v=category-ui-third-size-20260623" defer></script>
   <script src="./category-video-click-play.js?v=category-ui-third-size-20260623" defer></script>
