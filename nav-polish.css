@@ -113,8 +113,8 @@
 
 .contact-art-stage .contact-art-hotspot:not(.contact-art-download)::after {
   position: absolute;
-  left: 27%;
-  top: 63%;
+  left: 28.2%;
+  top: 80%;
   z-index: 2;
   display: block;
   min-width: 0;
@@ -139,9 +139,9 @@
 }
 
 .contact-art-stage .contact-art-phone::after { content: "188 0101 7679"; }
-.contact-art-stage .contact-art-wechat::after { content: "seerstar195810"; }
-.contact-art-stage .contact-art-mail::after { content: "tmdl@vip.sina.com"; }
-.contact-art-stage .contact-art-bili::after { content: "3546742668659042"; }
+.contact-art-stage .contact-art-wechat::after { content: "seerstar195810"; top: 94%; }
+.contact-art-stage .contact-art-mail::after { content: "tmdl@vip.sina.com"; top: 103%; }
+.contact-art-stage .contact-art-bili::after { content: "3546742668659042"; top: 112%; }
 
 .contact-art-stage .contact-art-hotspot:not(.contact-art-download):hover::after,
 .contact-art-stage .contact-art-hotspot:not(.contact-art-download):focus-visible::after {
