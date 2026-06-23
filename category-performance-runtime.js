@@ -11,7 +11,7 @@
     if (!window.CATEGORY_DATA?.video?.works) return;
     const currentWorks = window.CATEGORY_DATA.video.works;
     currentWorks.splice(-2, 2,
-      { type: "video", src: "./渡鸦.mp4", title: "渡鸦", orientation: "video-landscape", poster: "./渡鸦.png" },
+      { type: "video", src: "./raven.mp4", title: "渡鸦", orientation: "video-landscape", poster: "./raven.png" },
       { type: "video", src: "./山海镖局_GitHub_25MB内.mp4", title: "山海镖局", orientation: "video-landscape", poster: "./山海镖局.png" }
     );
   };
@@ -35,6 +35,7 @@
   replaceVideoEndingWorks();
 
   const VIDEO_POSTERS = {
+    "./raven.mp4": "./raven.png",
     "./渡鸦.mp4": "./渡鸦.png",
     "./山海镖局_GitHub_25MB内.mp4": "./山海镖局.png"
   };
