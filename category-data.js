@@ -157,17 +157,21 @@ const CATEGORY_DATA = {
   },
 
   video: {
-    title: "视频", en: "VIDEO", subtitle: "动态影像实验场",
-    desc: "将AI生成、分镜设计与后期剪辑结合，形成完整动态内容。",
-    tone: "deep", accent: "#6ab8ff", hero: "./assets/categories/video/proto-hero.png", banner: "./assets/category-banners/video-final.png",
+    title: "视频 / 漫剧", en: "VIDEO / ANIMATION DRAMA", subtitle: "文明影像记录区",
+    desc: "用影像记录文明，用故事连接未来。",
+    tone: "deep", accent: "#d6a35f", hero: "./assets/category-banners/video-final.png", banner: "./assets/category-banners/video-final.png",
     worksTitle: "视频作品", worksEn: "VIDEO WORKS",
     works: [
-      videoWork("./重生后.mp4", "重生后", "./重生后.jpg"),
-      videoWork("./山海镖局.mp4", "山海镖局", "./山海镖局.jpg"),
-      videoWork("./废土温情.mp4", "废土温情", "./废土温情.png"),
-      videoWork("./耳机广告.mp4", "耳机广告", "./小耳机.png")
+      videoWork("./assets/categories/video/video-01.mp4", "窖藏酒CG动画"),
+      videoWork("./assets/categories/video/video-02.mp4", "白酒广告短片"),
+      videoWork("./assets/categories/video/video-03.mp4", "护肤品精华水广告"),
+      videoWork("./废土温情_25MB版.mp4", "废土温情", "./废土温情.png"),
+      videoWork("./猫粮广告_25MB版.mp4", "猫粮广告"),
+      videoWork("./耳机广告_25MB版.mp4", "耳机广告", "./小耳机.png"),
+      videoWork("./渡鸦的礼物.mp4", "渡鸦的礼物", "./渡鸦的礼物.png"),
+      videoWork("./山海镖局_GitHub_25MB内.mp4", "山海镖局", "./山海镖局.png")
     ],
-    process: ["项目大纲", "脚本设定", "镜头设计", "AI生成", "后期剪辑", "调色音效"]
+    process: ["灵感脚本", "镜头设计", "AI辅助生成", "后期剪辑", "调色音效", "成片输出"]
   }
 };
 
