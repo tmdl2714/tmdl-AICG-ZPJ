@@ -94,7 +94,7 @@
 .contact-art-wechat { top: 39.95% !important; height: 9.9% !important; }
 .contact-art-mail { top: 50.75% !important; height: 10.6% !important; }
 .contact-art-bili { top: 62.35% !important; height: 10.65% !important; }
-.contact-art-download { top: 77.45% !important; height: 8.85% !important; border-radius: 18px !important; }
+.contact-art-download { top: 77.45% !important; left: 70.35% !important; width: 21.05% !important; height: 8.85% !important; border-radius: 18px !important; }
 
 /* Contact page hover: only glow the mapped row/button. Do not duplicate the text from the background image. */
 .contact-art-stage .contact-art-hotspot::after,
