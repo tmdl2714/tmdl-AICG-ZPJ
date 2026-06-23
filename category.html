@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>分类项目 - 铁马德龙作品集</title>
   <meta name="description" content="铁马德龙作品集分类项目二级页面。">
-  <link rel="stylesheet" href="./styles.css?v=category-poster-row-20260623">
-  <link rel="stylesheet" href="./category-process.css?v=category-poster-row-20260623">
+  <link rel="stylesheet" href="./styles.css?v=poster-banner-first-20260623">
+  <link rel="stylesheet" href="./category-process.css?v=poster-banner-first-20260623">
   <style>
     body.category-page .category-work-grid{display:grid!important;grid-template-columns:repeat(10,minmax(0,1fr))!important;grid-auto-flow:row dense!important;grid-auto-rows:auto!important;align-items:start!important;gap:clamp(12px,1.6vw,20px)!important}
     body.category-page .work-card,body.category-page .work-card:nth-child(n){grid-column:span 2!important;grid-row:auto!important;display:block!important;width:100%!important;height:auto!important;min-width:0!important;min-height:0!important;aspect-ratio:1/1!important;overflow:hidden!important;border-radius:10px!important;color:inherit;text-decoration:none}
@@ -22,8 +22,10 @@
     body.category-page .category-next.category-next-card::before,body.category-page .category-next.category-next-card>div,body.category-page .category-next.category-next-card .next-circle{display:none!important;content:none!important}
     body.category-page .category-next-image{display:block!important;width:100%!important;height:auto!important;aspect-ratio:1920/300!important;object-fit:contain!important;object-position:center center!important;border-radius:inherit!important;background:rgba(232,244,255,.45)!important}
     body.category-page[data-category="poster"] .category-work-grid{grid-template-columns:repeat(12,minmax(0,1fr))!important}
-    body.category-page[data-category="poster"] .work-card.is-poster-row,body.category-page[data-category="poster"] .work-card.is-poster-row:nth-child(n){grid-column:span 2!important;aspect-ratio:3/4!important;padding:clamp(6px,.65vw,10px)!important;border:1px solid rgba(190,218,245,.72)!important;border-radius:16px!important;background:linear-gradient(135deg,rgba(255,255,255,.82),rgba(225,239,255,.58))!important;box-shadow:0 12px 30px rgba(22,58,96,.13)!important}
-    body.category-page[data-category="poster"] .work-card.is-poster-row img{border-radius:12px!important;object-fit:contain!important;background:transparent!important}
+    body.category-page[data-category="poster"] .work-card.is-poster-row,body.category-page[data-category="poster"] .work-card.is-poster-row:nth-child(n){grid-column:span 2!important;aspect-ratio:3/4!important;padding:clamp(7px,.8vw,12px)!important;border:1px solid rgba(175,214,255,.62)!important;border-radius:20px!important;background:linear-gradient(145deg,rgba(255,255,255,.72),rgba(226,240,255,.34))!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.86),0 16px 34px rgba(23,62,108,.16),0 0 0 1px rgba(255,255,255,.22)!important;backdrop-filter:blur(12px) saturate(1.08)!important}
+    body.category-page[data-category="poster"] .work-card.is-poster-row::before{content:""!important;position:absolute!important;inset:0!important;z-index:0!important;border-radius:inherit!important;background:linear-gradient(135deg,rgba(255,255,255,.5),rgba(255,255,255,0) 42%,rgba(116,190,255,.14))!important;pointer-events:none!important}
+    body.category-page[data-category="poster"] .work-card.is-poster-row img{position:relative!important;z-index:1!important;border-radius:14px!important;object-fit:contain!important;background:transparent!important;filter:drop-shadow(0 8px 16px rgba(26,62,100,.16))!important}
+    body.category-page[data-category="poster"] .work-card.is-poster-row span{position:relative!important;z-index:2!important;font-size:clamp(11px,.9vw,13px)!important;letter-spacing:.06em!important;background:rgba(255,255,255,.58)!important;border:1px solid rgba(190,220,248,.42)!important;border-radius:999px!important;padding:4px 10px!important}
     body.category-page[data-category="icon"] .work-card.is-icon-work{box-sizing:border-box!important;padding:8px!important;background:#fff!important;border:1px solid rgba(218,226,238,.92)!important;border-radius:18px!important;box-shadow:0 10px 26px rgba(20,48,84,.12)!important}
     body.category-page[data-category="icon"] .work-card.is-icon-work img{border-radius:14px!important;background:#fff!important;box-shadow:none!important;transform:scale(var(--icon-zoom,1))!important;transform-origin:center center!important}
     body.category-page[data-category="icon"] .work-card.is-icon-work:nth-child(5){--icon-zoom:1.08}
@@ -51,9 +53,9 @@
     <button class="viewer-nav viewer-next" type="button" data-preview-next aria-label="下一个作品"><span class="icon" data-icon="chevron-right"></span></button>
   </div>
 
-  <script src="./script.js?v=category-poster-row-20260623" defer></script>
-  <script src="./category-data.js?v=category-poster-row-20260623" defer></script>
-  <script src="./category-ui-replacement.js?v=category-poster-row-20260623" defer></script>
+  <script src="./script.js?v=poster-banner-first-20260623" defer></script>
+  <script src="./category-data.js?v=poster-banner-first-20260623" defer></script>
+  <script src="./category-ui-replacement.js?v=poster-banner-first-20260623" defer></script>
   <script>
     window.addEventListener("DOMContentLoaded", () => {
       if (!window.CATEGORY_DATA?.video?.works) return;
@@ -67,9 +69,10 @@
       );
     }, { once: true });
   </script>
-  <script src="./category-performance-runtime.js?v=category-poster-row-20260623" defer></script>
-  <script src="./category-page.js?v=category-poster-row-20260623" defer></script>
-  <script src="./category-video-posters.js?v=category-poster-row-20260623" defer></script>
-  <script src="./category-video-click-play.js?v=category-poster-row-20260623" defer></script>
+  <script src="./category-performance-runtime.js?v=poster-banner-first-20260623" defer></script>
+  <script src="./category-page.js?v=poster-banner-first-20260623" defer></script>
+  <script src="./category-poster-banner-blur.js?v=poster-banner-first-20260623" defer></script>
+  <script src="./category-video-posters.js?v=poster-banner-first-20260623" defer></script>
+  <script src="./category-video-click-play.js?v=poster-banner-first-20260623" defer></script>
 </body>
 </html>
