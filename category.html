@@ -8,54 +8,6 @@
   <link rel="stylesheet" href="./styles.css?v=category-performance-20260615">
   <link rel="stylesheet" href="./category-process.css?v=category-performance-20260615">
   <style>
-    body.category-page[data-category="video"] .category-work-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: clamp(16px, 2vw, 24px);
-    }
-
-    body.category-page[data-category="video"] .work-card {
-      aspect-ratio: 16 / 9;
-      min-height: 0;
-    }
-
-    body.category-page[data-category="video"] .work-card img,
-    body.category-page[data-category="video"] .work-card video {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      object-position: center center;
-      background: transparent;
-    }
-
-    body.category-page[data-category="outfit"] .work-card,
-    body.category-page[data-category="typography"] .work-card,
-    body.category-page[data-category="icon"] .work-card {
-      min-height: 0;
-      aspect-ratio: 4 / 3;
-    }
-
-    body.category-page[data-category="outfit"] .work-card img,
-    body.category-page[data-category="typography"] .work-card img,
-    body.category-page[data-category="icon"] .work-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      object-position: center center;
-      background: transparent;
-    }
-
-    .category-work-grid a.work-card {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    @media (max-width: 760px) {
-      body.category-page[data-category="video"] .category-work-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* Final classification gallery rules: ordered, complete, uncropped works. */
     body.category-page .category-work-grid {
       display: grid !important;
       grid-template-columns: repeat(10, minmax(0, 1fr)) !important;
@@ -77,6 +29,8 @@
       aspect-ratio: 1 / 1 !important;
       overflow: hidden !important;
       border-radius: 10px !important;
+      color: inherit;
+      text-decoration: none;
     }
 
     body.category-page .work-card img,
@@ -134,33 +88,6 @@
       pointer-events: none;
     }
 
-    body.category-page[data-category="portrait"] .category-next { --category-banner: url("./assets/category-banners/outfit-final.png"); }
-    body.category-page[data-category="outfit"] .category-next { --category-banner: url("./assets/category-banners/retouch-final.png"); }
-    body.category-page[data-category="retouch"] .category-next { --category-banner: url("./assets/category-banners/poster-final.png"); }
-    body.category-page[data-category="poster"] .category-next { --category-banner: url("./assets/category-banners/ip-final.png"); }
-    body.category-page[data-category="ip"] .category-next { --category-banner: url("./assets/category-banners/typography-final.png"); }
-    body.category-page[data-category="typography"] .category-next { --category-banner: url("./assets/category-banners/symbol-final.png"); }
-    body.category-page[data-category="symbol"] .category-next { --category-banner: url("./assets/category-banners/ui-final.png"); }
-    body.category-page[data-category="ui"] .category-next { --category-banner: url("./assets/category-banners/icon-final.png"); }
-    body.category-page[data-category="icon"] .category-next { --category-banner: url("./assets/category-banners/video-final.png"); }
-    body.category-page[data-category="video"] .category-next { --category-banner: url("./assets/categories/portrait/proto-hero.png"); }
-
-    body.category-page .category-next::before {
-      background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.3)), var(--category-banner) !important;
-      background-position: center center, center center !important;
-      background-size: auto, contain !important;
-      background-repeat: no-repeat, no-repeat !important;
-    }
-
-    body.category-page[data-tone="dark"] .category-next::before,
-    body.category-page[data-tone="deep"] .category-next::before,
-    body.category-page[data-category="symbol"] .category-next::before {
-      background-image: linear-gradient(90deg, rgba(4, 11, 19, 0.82), rgba(4, 11, 19, 0.3)), var(--category-banner) !important;
-      background-position: center center, center center !important;
-      background-size: auto, contain !important;
-      background-repeat: no-repeat, no-repeat !important;
-    }
-
     body.category-page .work-viewer {
       box-sizing: border-box !important;
       overflow: hidden !important;
@@ -187,7 +114,6 @@
       transform: none !important;
     }
 
-    /* NEXT PROJECT image-card enhancement. Falls back to the original card if the image is missing. */
     body.category-page .category-next.category-next-card {
       display: block !important;
       width: min(100% - 36px, var(--max, 1216px)) !important;
@@ -203,26 +129,13 @@
       box-shadow: 0 14px 34px rgba(36, 88, 140, 0.16) !important;
       color: inherit !important;
       text-decoration: none !important;
-      transform: translateY(0) !important;
-      transition: transform 220ms ease, filter 220ms ease, box-shadow 220ms ease !important;
     }
 
-    body.category-page .category-next.category-next-card::before {
-      content: none !important;
-      display: none !important;
-      background: none !important;
-    }
-
+    body.category-page .category-next.category-next-card::before,
     body.category-page .category-next.category-next-card > div,
     body.category-page .category-next.category-next-card .next-circle {
       display: none !important;
-    }
-
-    body.category-page .category-next.category-next-card:hover,
-    body.category-page .category-next.category-next-card:focus-visible {
-      filter: brightness(1.035) !important;
-      transform: translateY(-2px) !important;
-      box-shadow: 0 18px 38px rgba(36, 88, 140, 0.2) !important;
+      content: none !important;
     }
 
     body.category-page .category-next-image {
@@ -234,32 +147,6 @@
       object-position: center center !important;
       border-radius: inherit !important;
       background: rgba(232, 244, 255, 0.45) !important;
-    }
-
-    @media (max-width: 760px) {
-      body.category-page .work-viewer {
-        padding: 18px !important;
-      }
-
-      body.category-page .work-viewer-media {
-        width: calc(100vw - 58px) !important;
-        height: calc(100dvh - 116px) !important;
-        max-width: calc(100vw - 58px) !important;
-        max-height: calc(100dvh - 116px) !important;
-      }
-
-      body.category-page .work-viewer-media img,
-      body.category-page .work-viewer-media video {
-        max-width: calc(100vw - 58px) !important;
-        max-height: calc(100dvh - 116px) !important;
-      }
-
-      body.category-page .category-next.category-next-card {
-        width: calc(100% - 28px) !important;
-        margin-top: 28px !important;
-        margin-bottom: 52px !important;
-        border-radius: 12px !important;
-      }
     }
 
     @media (max-width: 1180px) {
@@ -337,7 +224,6 @@
         grid-column: span 2 !important;
       }
     }
-
   </style>
 </head>
 <body class="category-page">
@@ -354,9 +240,9 @@
     </button>
   </div>
 
-  <script src="./script.js?v=category-performance-20260615" defer></script>
-  <script src="./category-data.js?v=split-works-20260622" defer></script>
-  <script src="./category-performance-runtime.js?v=split-works-20260622" defer></script>
-  <script src="./category-page.js?v=split-works-20260622" defer></script>
+  <script src="./script.js?v=category-video-fix-20260623-1310" defer></script>
+  <script src="./category-data.js?v=category-video-fix-20260623-1310" defer></script>
+  <script src="./category-performance-runtime.js?v=category-video-fix-20260623-1310" defer></script>
+  <script src="./category-page.js?v=category-video-fix-20260623-1310" defer></script>
 </body>
 </html>
