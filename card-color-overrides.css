@@ -55,10 +55,10 @@ body #projects .project-item-narrow::before {
 
 .category-hall .category-grid {
   position: absolute !important;
-  top: 23.65% !important;
+  top: 26.1% !important;
   right: 6.98% !important;
-  bottom: 26.25% !important;
-  left: 7.55% !important;
+  bottom: 19% !important;
+  left: 7.65% !important;
   z-index: 3 !important;
   display: grid !important;
   grid-template-columns: repeat(10, minmax(0, 1fr)) !important;
@@ -92,10 +92,10 @@ body #projects .project-item-narrow::before {
 .category-hall .category-grid a::before {
   content: "" !important;
   position: absolute !important;
-  top: 0.6% !important;
-  right: 1.7% !important;
-  bottom: 0.6% !important;
-  left: 1.7% !important;
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  left: 0 !important;
   width: auto !important;
   height: auto !important;
   aspect-ratio: auto !important;
