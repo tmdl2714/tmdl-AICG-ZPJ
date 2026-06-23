@@ -7,6 +7,15 @@
     });
   };
 
+  const replaceVideoEndingWorks = () => {
+    if (!window.CATEGORY_DATA?.video?.works) return;
+    const currentWorks = window.CATEGORY_DATA.video.works;
+    currentWorks.splice(-2, 2,
+      { type: "video", src: "./渡鸦.mp4", title: "渡鸦", orientation: "video-landscape", poster: "./渡鸦.png" },
+      { type: "video", src: "./山海镖局_GitHub_25MB内.mp4", title: "山海镖局", orientation: "video-landscape", poster: "./山海镖局.png" }
+    );
+  };
+
   appendUniqueWorks("icon", [
     { type: "image", src: "./01_拼车.png", title: "拼车", orientation: "icon-work" },
     { type: "image", src: "./02_剧本简介.png", title: "剧本简介", orientation: "icon-work" },
@@ -23,6 +32,13 @@
     { type: "image", src: "./06_未知剧场.png", title: "未知剧场", orientation: "banner" }
   ]);
 
+  replaceVideoEndingWorks();
+
+  const VIDEO_POSTERS = {
+    "./渡鸦.mp4": "./渡鸦.png",
+    "./山海镖局_GitHub_25MB内.mp4": "./山海镖局.png"
+  };
+
   const innerHTMLDescriptor = Object.getOwnPropertyDescriptor(Element.prototype, "innerHTML");
   if (innerHTMLDescriptor?.set && innerHTMLDescriptor?.get) {
     Object.defineProperty(Element.prototype, "innerHTML", {
@@ -35,7 +51,7 @@
         let nextValue = value;
         if (typeof nextValue === "string" && this.matches?.("[data-category-page]")) {
           nextValue = nextValue
-            .replace(/<video\s+src="([^"]+)"/g, '<video data-src="$1"')
+            .replace(/<video\s+src="([^"]+)"/g, (match, src) => `<video${VIDEO_POSTERS[src] ? ` poster="${VIDEO_POSTERS[src]}"` : ""} data-src="${src}"`)
             .replace(/preload="metadata"/g, 'preload="none"');
         }
         innerHTMLDescriptor.set.call(this, nextValue);
