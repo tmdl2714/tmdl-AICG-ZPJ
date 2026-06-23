@@ -5,43 +5,69 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>分类项目 - 铁马德龙作品集</title>
   <meta name="description" content="铁马德龙作品集分类项目二级页面。">
-  <link rel="stylesheet" href="./styles.css?v=poster-card-size-20260623">
-  <link rel="stylesheet" href="./category-process.css?v=poster-card-size-20260623">
+  <link rel="stylesheet" href="./styles.css?v=poster-card-local-20260623">
+  <link rel="stylesheet" href="./category-process.css?v=poster-card-local-20260623">
   <style>
-    body.category-page .category-work-grid{display:grid!important;grid-template-columns:repeat(10,minmax(0,1fr))!important;grid-auto-flow:row dense!important;grid-auto-rows:auto!important;align-items:start!important;gap:clamp(12px,1.6vw,20px)!important}
-    body.category-page .work-card,body.category-page .work-card:nth-child(n){grid-column:span 2!important;grid-row:auto!important;display:block!important;width:100%!important;height:auto!important;min-width:0!important;min-height:0!important;aspect-ratio:1/1!important;overflow:hidden!important;border-radius:10px!important;color:inherit;text-decoration:none}
-    body.category-page .work-card img,body.category-page .work-card video,body.category-page .work-card:nth-child(n) img,body.category-page .work-card:nth-child(n) video{display:block!important;width:100%!important;height:100%!important;min-height:0!important;max-width:100%!important;object-fit:contain!important;object-position:center center!important;background:transparent!important;transform:none!important}
-    body.category-page .work-card.is-banner,body.category-page .work-card.is-video-landscape,body.category-page .work-card.is-video-link,body.category-page .work-card.is-retouch-board,body.category-page .work-card.is-ip-board,body.category-page .work-card.is-symbol-board,body.category-page .work-card.is-banner:nth-child(n),body.category-page .work-card.is-video-landscape:nth-child(n),body.category-page .work-card.is-video-link:nth-child(n),body.category-page .work-card.is-retouch-board:nth-child(n),body.category-page .work-card.is-ip-board:nth-child(n),body.category-page .work-card.is-symbol-board:nth-child(n){grid-column:span 5!important;aspect-ratio:16/9!important}
-    body.category-page .work-card.is-vertical,body.category-page .work-card.is-outfit-work,body.category-page .work-card.is-ui-launch,body.category-page[data-category="portrait"] .work-card,body.category-page .work-card.is-vertical:nth-child(n),body.category-page .work-card.is-outfit-work:nth-child(n),body.category-page .work-card.is-ui-launch:nth-child(n),body.category-page[data-category="portrait"] .work-card:nth-child(n){grid-column:span 2!important;aspect-ratio:3/4!important}
-    body.category-page .work-card.is-poster-row,body.category-page .work-card.is-poster-row:nth-child(n){grid-column:span 2!important;aspect-ratio:9/16!important}
-    body.category-page .work-card.is-typography-work,body.category-page .work-card.is-icon-work,body.category-page .work-card.is-typography-work:nth-child(n),body.category-page .work-card.is-icon-work:nth-child(n){grid-column:span 2!important;aspect-ratio:1/1!important}
-    body.category-page .work-card span{pointer-events:none}
-    body.category-page .work-viewer{box-sizing:border-box!important;overflow:hidden!important}
-    body.category-page .work-viewer-media{width:min(86vw,1120px)!important;height:min(82dvh,780px)!important;max-width:calc(100vw - 144px)!important;max-height:calc(100dvh - 120px)!important;overflow:hidden!important;place-items:center!important}
-    body.category-page .work-viewer-media img,body.category-page .work-viewer-media video{display:block!important;width:auto!important;height:auto!important;max-width:min(100%,calc(100vw - 144px))!important;max-height:min(100%,calc(100dvh - 120px))!important;object-fit:contain!important;object-position:center center!important;transform:none!important}
-    body.category-page .category-next.category-next-card{display:block!important;width:min(100% - 36px,var(--max,1216px))!important;max-width:var(--max,1216px)!important;height:auto!important;min-height:0!important;margin:clamp(28px,5vw,56px) auto clamp(44px,7vw,76px)!important;padding:0!important;overflow:hidden!important;border:1px solid rgba(175,214,255,.38)!important;border-radius:14px!important;background:linear-gradient(135deg,rgba(244,250,255,.56),rgba(218,238,255,.26))!important;box-shadow:0 14px 34px rgba(36,88,140,.16)!important;color:inherit!important;text-decoration:none!important}
-    body.category-page .category-next.category-next-card::before,body.category-page .category-next.category-next-card>div,body.category-page .category-next.category-next-card .next-circle{display:none!important;content:none!important}
-    body.category-page .category-next-image{display:block!important;width:100%!important;height:auto!important;aspect-ratio:1920/300!important;object-fit:contain!important;object-position:center center!important;border-radius:inherit!important;background:rgba(232,244,255,.45)!important}
-    body.category-page[data-category="poster"] .category-work-grid{grid-template-columns:repeat(12,minmax(0,1fr))!important;gap:clamp(10px,1.25vw,18px)!important}
-    body.category-page[data-category="poster"] .work-card.is-poster-row,body.category-page[data-category="poster"] .work-card.is-poster-row:nth-child(n){grid-column:span 2!important;aspect-ratio:9/16!important;padding:clamp(3px,.45vw,6px)!important;border:1px solid rgba(175,214,255,.58)!important;border-radius:14px!important;background:linear-gradient(145deg,rgba(255,255,255,.68),rgba(226,240,255,.22))!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.82),0 12px 28px rgba(23,62,108,.13),0 0 0 1px rgba(255,255,255,.18)!important;backdrop-filter:blur(10px) saturate(1.05)!important}
-    body.category-page[data-category="poster"] .work-card.is-poster-row::before{content:""!important;position:absolute!important;inset:0!important;z-index:0!important;border-radius:inherit!important;background:linear-gradient(135deg,rgba(255,255,255,.42),rgba(255,255,255,0) 44%,rgba(116,190,255,.1))!important;pointer-events:none!important}
-    body.category-page[data-category="poster"] .work-card.is-poster-row img{position:relative!important;z-index:1!important;width:100%!important;height:100%!important;border-radius:10px!important;object-fit:contain!important;background:transparent!important;filter:drop-shadow(0 5px 10px rgba(26,62,100,.12))!important}
-    body.category-page[data-category="poster"] .work-card.is-poster-row span{display:none!important}
-    body.category-page[data-category="icon"] .work-card.is-icon-work{box-sizing:border-box!important;padding:8px!important;background:#fff!important;border:1px solid rgba(218,226,238,.92)!important;border-radius:18px!important;box-shadow:0 10px 26px rgba(20,48,84,.12)!important}
-    body.category-page[data-category="icon"] .work-card.is-icon-work img{border-radius:14px!important;background:#fff!important;box-shadow:none!important;transform:scale(var(--icon-zoom,1))!important;transform-origin:center center!important}
-    body.category-page[data-category="icon"] .work-card.is-icon-work:nth-child(5){--icon-zoom:1.08}
-    body.category-page[data-category="icon"] .work-card.is-icon-work:nth-child(6){--icon-zoom:.98}
-    body.category-page[data-category="icon"] .work-card.is-icon-work:nth-child(7){--icon-zoom:1}
-    body.category-page[data-category="icon"] .work-card.is-icon-work:nth-child(8){--icon-zoom:1.22}
-    body.category-page[data-category="icon"] .work-card.is-icon-work:nth-child(9){--icon-zoom:.96}
-    body.category-page[data-category="icon"] .work-card.is-icon-work:nth-child(10){--icon-zoom:1.02}
-    body.category-page[data-category="icon"] .work-card.is-icon-work:nth-child(11){--icon-zoom:1.12}
-    body.category-page[data-category="icon"] .work-card.is-icon-work:nth-child(12){--icon-zoom:.94}
-    body.category-page[data-category="icon"] .work-card.is-icon-work:nth-child(13){--icon-zoom:.88}
-    body.category-page[data-category="icon"] .work-card.is-icon-work:nth-child(14){--icon-zoom:1.03}
-    body.category-page[data-category="icon"] .work-card.is-icon-work:nth-child(15){--icon-zoom:1.28}
-    @media(max-width:1180px){body.category-page .category-work-grid{grid-template-columns:repeat(6,minmax(0,1fr))!important}body.category-page .work-card,body.category-page .work-card:nth-child(n),body.category-page .work-card.is-vertical,body.category-page .work-card.is-poster-row,body.category-page .work-card.is-outfit-work,body.category-page .work-card.is-ui-launch,body.category-page .work-card.is-typography-work,body.category-page .work-card.is-icon-work,body.category-page[data-category="portrait"] .work-card,body.category-page .work-card.is-vertical:nth-child(n),body.category-page .work-card.is-poster-row:nth-child(n),body.category-page .work-card.is-outfit-work:nth-child(n),body.category-page .work-card.is-ui-launch:nth-child(n),body.category-page .work-card.is-typography-work:nth-child(n),body.category-page .work-card.is-icon-work:nth-child(n),body.category-page[data-category="portrait"] .work-card:nth-child(n){grid-column:span 2!important}body.category-page .work-card.is-banner,body.category-page .work-card.is-video-landscape,body.category-page .work-card.is-video-link,body.category-page .work-card.is-retouch-board,body.category-page .work-card.is-ip-board,body.category-page .work-card.is-symbol-board,body.category-page .work-card.is-banner:nth-child(n),body.category-page .work-card.is-video-landscape:nth-child(n),body.category-page .work-card.is-video-link:nth-child(n),body.category-page .work-card.is-retouch-board:nth-child(n),body.category-page .work-card.is-ip-board:nth-child(n),body.category-page .work-card.is-symbol-board:nth-child(n){grid-column:span 3!important}body.category-page[data-category="poster"] .category-work-grid{grid-template-columns:repeat(6,minmax(0,1fr))!important}body.category-page[data-category="poster"] .work-card.is-poster-row,body.category-page[data-category="poster"] .work-card.is-poster-row:nth-child(n){grid-column:span 1!important}}
-    @media(max-width:760px){body.category-page .category-work-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}body.category-page .work-card,body.category-page .work-card:nth-child(n),body.category-page .work-card.is-vertical,body.category-page .work-card.is-poster-row,body.category-page .work-card.is-outfit-work,body.category-page .work-card.is-ui-launch,body.category-page .work-card.is-typography-work,body.category-page .work-card.is-icon-work,body.category-page[data-category="portrait"] .work-card,body.category-page .work-card.is-vertical:nth-child(n),body.category-page .work-card.is-poster-row:nth-child(n),body.category-page .work-card.is-outfit-work:nth-child(n),body.category-page .work-card.is-ui-launch:nth-child(n),body.category-page .work-card.is-typography-work:nth-child(n),body.category-page .work-card.is-icon-work:nth-child(n),body.category-page[data-category="portrait"] .work-card:nth-child(n){grid-column:span 1!important}body.category-page .work-card.is-banner,body.category-page .work-card.is-video-landscape,body.category-page .work-card.is-video-link,body.category-page .work-card.is-retouch-board,body.category-page .work-card.is-ip-board,body.category-page .work-card.is-symbol-board,body.category-page .work-card.is-banner:nth-child(n),body.category-page .work-card.is-video-landscape:nth-child(n),body.category-page .work-card.is-video-link:nth-child(n),body.category-page .work-card.is-retouch-board:nth-child(n),body.category-page .work-card.is-ip-board:nth-child(n),body.category-page .work-card.is-symbol-board:nth-child(n){grid-column:span 2!important}body.category-page[data-category="poster"] .category-work-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}body.category-page[data-category="poster"] .work-card.is-poster-row,body.category-page[data-category="poster"] .work-card.is-poster-row:nth-child(n){grid-column:span 1!important}}
+    body.category-page[data-category="poster"] .category-work-grid{
+      grid-template-columns:repeat(12,minmax(0,1fr))!important;
+      gap:clamp(12px,1.45vw,20px)!important;
+      align-items:start!important;
+    }
+    body.category-page[data-category="poster"] .work-card.is-banner,
+    body.category-page[data-category="poster"] .work-card.is-banner:nth-child(n){
+      grid-column:span 6!important;
+      aspect-ratio:16/9!important;
+    }
+    body.category-page[data-category="poster"] .work-card.is-poster-row,
+    body.category-page[data-category="poster"] .work-card.is-poster-row:nth-child(n){
+      grid-column:span 2!important;
+      aspect-ratio:9/16!important;
+      padding:clamp(3px,.45vw,6px)!important;
+      border:1px solid rgba(175,214,255,.58)!important;
+      border-radius:14px!important;
+      background:linear-gradient(145deg,rgba(255,255,255,.68),rgba(226,240,255,.22))!important;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.82),0 12px 28px rgba(23,62,108,.13),0 0 0 1px rgba(255,255,255,.18)!important;
+      overflow:hidden!important;
+    }
+    body.category-page[data-category="poster"] .work-card.is-poster-row::before{
+      content:""!important;
+      position:absolute!important;
+      inset:0!important;
+      z-index:0!important;
+      border-radius:inherit!important;
+      background:linear-gradient(135deg,rgba(255,255,255,.42),rgba(255,255,255,0) 44%,rgba(116,190,255,.1))!important;
+      pointer-events:none!important;
+    }
+    body.category-page[data-category="poster"] .work-card.is-poster-row img{
+      position:relative!important;
+      z-index:1!important;
+      width:100%!important;
+      height:100%!important;
+      max-width:none!important;
+      max-height:none!important;
+      object-fit:cover!important;
+      object-position:center center!important;
+      border-radius:10px!important;
+      background:transparent!important;
+      filter:drop-shadow(0 5px 10px rgba(26,62,100,.12))!important;
+    }
+    body.category-page[data-category="poster"] .work-card.is-poster-row span{
+      display:none!important;
+    }
+    @media(max-width:1180px){
+      body.category-page[data-category="poster"] .category-work-grid{grid-template-columns:repeat(6,minmax(0,1fr))!important;}
+      body.category-page[data-category="poster"] .work-card.is-banner,
+      body.category-page[data-category="poster"] .work-card.is-banner:nth-child(n){grid-column:span 3!important;}
+      body.category-page[data-category="poster"] .work-card.is-poster-row,
+      body.category-page[data-category="poster"] .work-card.is-poster-row:nth-child(n){grid-column:span 1!important;}
+    }
+    @media(max-width:760px){
+      body.category-page[data-category="poster"] .category-work-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;}
+      body.category-page[data-category="poster"] .work-card.is-banner,
+      body.category-page[data-category="poster"] .work-card.is-banner:nth-child(n){grid-column:span 2!important;}
+      body.category-page[data-category="poster"] .work-card.is-poster-row,
+      body.category-page[data-category="poster"] .work-card.is-poster-row:nth-child(n){grid-column:span 1!important;}
+    }
   </style>
 </head>
 <body class="category-page">
@@ -54,9 +80,9 @@
     <button class="viewer-nav viewer-next" type="button" data-preview-next aria-label="下一个作品"><span class="icon" data-icon="chevron-right"></span></button>
   </div>
 
-  <script src="./script.js?v=poster-card-size-20260623" defer></script>
-  <script src="./category-data.js?v=poster-card-size-20260623" defer></script>
-  <script src="./category-ui-replacement.js?v=poster-card-size-20260623" defer></script>
+  <script src="./script.js?v=poster-card-local-20260623" defer></script>
+  <script src="./category-data.js?v=poster-card-local-20260623" defer></script>
+  <script src="./category-ui-replacement.js?v=poster-card-local-20260623" defer></script>
   <script>
     window.addEventListener("DOMContentLoaded", () => {
       if (!window.CATEGORY_DATA?.video?.works) return;
@@ -70,10 +96,10 @@
       );
     }, { once: true });
   </script>
-  <script src="./category-performance-runtime.js?v=poster-card-size-20260623" defer></script>
-  <script src="./category-page.js?v=poster-card-size-20260623" defer></script>
-  <script src="./category-poster-banner-blur.js?v=poster-card-size-20260623" defer></script>
-  <script src="./category-video-posters.js?v=poster-card-size-20260623" defer></script>
-  <script src="./category-video-click-play.js?v=poster-card-size-20260623" defer></script>
+  <script src="./category-performance-runtime.js?v=poster-card-local-20260623" defer></script>
+  <script src="./category-page.js?v=poster-card-local-20260623" defer></script>
+  <script src="./category-poster-banner-blur.js?v=poster-card-local-20260623" defer></script>
+  <script src="./category-video-posters.js?v=poster-card-local-20260623" defer></script>
+  <script src="./category-video-click-play.js?v=poster-card-local-20260623" defer></script>
 </body>
 </html>
