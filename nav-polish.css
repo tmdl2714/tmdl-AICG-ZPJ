@@ -96,14 +96,10 @@
 .contact-art-bili { top: 62.35% !important; height: 10.65% !important; }
 .contact-art-download { top: 77.45% !important; left: 70.35% !important; width: 21.05% !important; height: 8.85% !important; border-radius: 18px !important; }
 
-/* Contact page hover: only glow the mapped row/button. Do not duplicate the text from the background image. */
-.contact-art-stage .contact-art-hotspot::after,
-.contact-art-stage .contact-art-hotspot:hover::after,
-.contact-art-stage .contact-art-hotspot:focus-visible::after,
-.contact-art-stage .contact-art-hotspot.is-copied::after,
-.contact-art-stage .contact-art-hotspot.is-missing::after {
-  content: none !important;
-  display: none !important;
+/* Contact copy rows: keep the large hit area, but glow only the text painted over the image. */
+.contact-art-stage .contact-art-hotspot::before,
+.contact-art-stage .contact-art-hotspot::after {
+  pointer-events: none !important;
 }
 
 .contact-art-stage .contact-art-hotspot::before {
@@ -115,9 +111,81 @@
   transform: none !important;
 }
 
-.contact-art-stage .contact-art-hotspot:not(.contact-art-download)::before {
-  inset: -4% -3% !important;
-  border-radius: 12px !important;
+.contact-art-stage .contact-art-hotspot:not(.contact-art-download)::before,
+.contact-art-stage .contact-art-hotspot:not(.contact-art-download):hover::before,
+.contact-art-stage .contact-art-hotspot:not(.contact-art-download):focus-visible::before,
+.contact-art-stage .contact-art-hotspot:not(.contact-art-download).is-copied::before,
+.contact-art-stage .contact-art-hotspot:not(.contact-art-download).is-missing::before {
+  border-color: rgba(126, 211, 255, 0) !important;
+  background: rgba(88, 190, 255, 0) !important;
+  box-shadow: none !important;
+  opacity: 0 !important;
+}
+
+.contact-art-stage .contact-art-hotspot:not(.contact-art-download)::after {
+  position: absolute !important;
+  z-index: 2 !important;
+  left: 28% !important;
+  display: block !important;
+  width: max-content !important;
+  max-width: none !important;
+  color: rgba(238, 250, 255, 0.74) !important;
+  font-family: Georgia, "Times New Roman", "Songti SC", "SimSun", serif !important;
+  font-size: clamp(15px, 1.55vw, 27px) !important;
+  font-weight: 400 !important;
+  line-height: 1 !important;
+  letter-spacing: 0.015em !important;
+  white-space: nowrap !important;
+  text-align: left !important;
+  text-shadow:
+    0 0 4px rgba(245, 252, 255, 0.9),
+    0 0 12px rgba(122, 220, 255, 0.74),
+    0 0 26px rgba(62, 172, 255, 0.58) !important;
+  opacity: 0 !important;
+  transform: translateY(-50%) !important;
+  transition: opacity 140ms ease, color 140ms ease, text-shadow 140ms ease !important;
+}
+
+.contact-art-stage .contact-art-phone::after {
+  content: "188 0101 7679" !important;
+  top: 79% !important;
+}
+
+.contact-art-stage .contact-art-wechat::after {
+  content: "seerstar195810" !important;
+  top: 78% !important;
+}
+
+.contact-art-stage .contact-art-mail::after {
+  content: "tmdl@vip.sina.com" !important;
+  top: 84% !important;
+}
+
+.contact-art-stage .contact-art-bili::after {
+  content: "3546742668659042" !important;
+  top: 87% !important;
+}
+
+.contact-art-stage .contact-art-hotspot:not(.contact-art-download):hover::after,
+.contact-art-stage .contact-art-hotspot:not(.contact-art-download):focus-visible::after,
+.contact-art-stage .contact-art-hotspot:not(.contact-art-download).is-copied::after {
+  opacity: 1 !important;
+}
+
+.contact-art-stage .contact-art-hotspot:not(.contact-art-download).is-copied::after {
+  color: rgba(255, 255, 255, 0.92) !important;
+  text-shadow:
+    0 0 5px rgba(255, 255, 255, 1),
+    0 0 18px rgba(156, 234, 255, 0.95),
+    0 0 34px rgba(88, 193, 255, 0.78) !important;
+}
+
+.contact-art-stage .contact-art-download::after,
+.contact-art-stage .contact-art-download:hover::after,
+.contact-art-stage .contact-art-download:focus-visible::after,
+.contact-art-stage .contact-art-download.is-missing::after {
+  content: none !important;
+  display: none !important;
 }
 
 .contact-art-stage .contact-art-download::before {
@@ -125,10 +193,10 @@
   border-radius: inherit !important;
 }
 
-.contact-art-stage .contact-art-hotspot:hover::before,
-.contact-art-stage .contact-art-hotspot:focus-visible::before,
-.contact-art-stage .contact-art-hotspot.is-copied::before,
-.contact-art-stage .contact-art-hotspot.is-missing::before {
+.contact-art-stage .contact-art-download:hover::before,
+.contact-art-stage .contact-art-download:focus-visible::before,
+.contact-art-stage .contact-art-download.is-copied::before,
+.contact-art-stage .contact-art-download.is-missing::before {
   border-color: rgba(126, 211, 255, 0.42) !important;
   background: rgba(71, 165, 255, 0.06) !important;
   box-shadow:
