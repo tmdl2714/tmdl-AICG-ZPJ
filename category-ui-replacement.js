@@ -8,6 +8,18 @@
     data.ui.works[2].orientation = "ui-launch";
   }
 
+  if (data.typography) {
+    data.typography.works = Array.from({ length: 14 }, (_, index) => ({
+      type: "image",
+      src: `./ztsj/字体设计-${String(index + 1).padStart(2, "0")}.png`,
+      title: `字体设计 ${String(index + 1).padStart(2, "0")}`,
+      orientation: "typography-work"
+    }));
+
+    data.typography.worksTitle = "字体展示";
+    data.typography.worksEn = "TYPOGRAPHY WORKS";
+  }
+
   if (data.symbol) {
     const symbolWorks = [
       ["cjfh-欢狐图标.png", "欢狐图标"],
@@ -38,6 +50,8 @@
 
   const style = document.createElement("style");
   style.textContent = `
+    body.category-page[data-category="typography"] .work-card.is-typography-work,
+    body.category-page[data-category="typography"] .work-card.is-typography-work:nth-child(n),
     body.category-page[data-category="symbol"] .work-card.is-symbol-board,
     body.category-page[data-category="symbol"] .work-card.is-symbol-board:nth-child(n) {
       grid-column: span 2 !important;
@@ -48,16 +62,20 @@
       background: linear-gradient(135deg, rgba(255,255,255,.82), rgba(225,239,255,.58)) !important;
       box-shadow: 0 12px 30px rgba(22,58,96,.13) !important;
     }
+    body.category-page[data-category="typography"] .work-card.is-typography-work img,
     body.category-page[data-category="symbol"] .work-card.is-symbol-board img {
       border-radius: 12px !important;
       object-fit: contain !important;
       background: transparent !important;
     }
+    body.category-page[data-category="typography"] .work-card.is-typography-work span,
     body.category-page[data-category="symbol"] .work-card.is-symbol-board span {
       font-size: clamp(12px, 1vw, 14px) !important;
       letter-spacing: .06em !important;
     }
     @media (max-width: 760px) {
+      body.category-page[data-category="typography"] .work-card.is-typography-work,
+      body.category-page[data-category="typography"] .work-card.is-typography-work:nth-child(n),
       body.category-page[data-category="symbol"] .work-card.is-symbol-board,
       body.category-page[data-category="symbol"] .work-card.is-symbol-board:nth-child(n) {
         grid-column: span 1 !important;
