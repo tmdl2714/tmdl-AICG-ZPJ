@@ -55,16 +55,16 @@ body #projects .project-item-narrow::before {
 
 .category-hall .category-grid {
   position: absolute !important;
-  top: 26.25% !important;
-  right: 7% !important;
-  bottom: 18.95% !important;
-  left: 7.62% !important;
+  top: 26.18% !important;
+  right: 6.96% !important;
+  bottom: 18.72% !important;
+  left: 7.6% !important;
   z-index: 3 !important;
   display: grid !important;
   grid-template-columns: repeat(10, minmax(0, 1fr)) !important;
   grid-template-rows: minmax(0, 1fr) !important;
   grid-auto-flow: column !important;
-  column-gap: 0.54% !important;
+  column-gap: 0.56% !important;
   row-gap: 0 !important;
   width: auto !important;
   height: auto !important;
@@ -92,10 +92,10 @@ body #projects .project-item-narrow::before {
 .category-hall .category-grid a::before {
   content: "" !important;
   position: absolute !important;
-  top: 0.2% !important;
-  right: 0.15% !important;
-  bottom: 0.1% !important;
-  left: 0.15% !important;
+  top: 0 !important;
+  right: 0.35% !important;
+  bottom: -0.15% !important;
+  left: 0.35% !important;
   width: auto !important;
   height: auto !important;
   aspect-ratio: auto !important;
@@ -120,9 +120,9 @@ body #projects .project-item-narrow::before {
 
 .category-hall .category-grid a:hover::before,
 .category-hall .category-grid a:focus-visible::before {
-  border-color: rgba(126, 211, 255, 0.62) !important;
-  background: rgba(71, 165, 255, 0.08) !important;
-  box-shadow: inset 0 0 18px rgba(100, 200, 255, 0.16), 0 0 22px rgba(80, 185, 255, 0.22) !important;
+  border-color: rgba(126, 211, 255, 0.58) !important;
+  background: rgba(71, 165, 255, 0.06) !important;
+  box-shadow: inset 0 0 14px rgba(100, 200, 255, 0.14), 0 0 18px rgba(80, 185, 255, 0.18) !important;
   opacity: 1 !important;
 }
 
