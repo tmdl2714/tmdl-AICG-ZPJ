@@ -1,9 +1,27 @@
 (() => {
+  function posterMap() {
+    const works = window.CATEGORY_DATA?.video?.works || [];
+    return new Map(works.filter((work) => work.type === "video" && work.poster).map((work) => [work.src, work.poster]));
+  }
+
+  function videoSource(video) {
+    return video?.dataset?.src || video?.getAttribute("src") || "";
+  }
+
+  function applyVideoPosters(root = document) {
+    const posters = posterMap();
+    root.querySelectorAll("video").forEach((video) => {
+      const poster = posters.get(videoSource(video));
+      if (poster) video.setAttribute("poster", poster);
+    });
+  }
+
   function ensureVideoSource(video) {
     if (!video) return;
     if (!video.currentSrc && !video.src && video.dataset.src) {
       video.src = video.dataset.src;
     }
+    applyVideoPosters(video.parentElement || document);
     video.controls = true;
     video.playsInline = true;
     video.preload = "auto";
@@ -44,13 +62,26 @@
   }, true);
 
   const bindViewerObserver = () => {
-    const mediaHost = document.querySelector(".work-viewer-media");
-    if (!mediaHost || !("MutationObserver" in window)) return;
+    applyVideoPosters();
 
-    new MutationObserver(scheduleViewerPlayback).observe(mediaHost, {
-      childList: true,
-      subtree: true
-    });
+    const mediaHost = document.querySelector(".work-viewer-media");
+    if (mediaHost && "MutationObserver" in window) {
+      new MutationObserver(() => {
+        applyVideoPosters(mediaHost);
+        scheduleViewerPlayback();
+      }).observe(mediaHost, {
+        childList: true,
+        subtree: true
+      });
+    }
+
+    const grid = document.querySelector(".category-work-grid");
+    if (grid && "MutationObserver" in window) {
+      new MutationObserver(() => applyVideoPosters(grid)).observe(grid, {
+        childList: true,
+        subtree: true
+      });
+    }
   };
 
   if (document.readyState === "loading") {
