@@ -51,16 +51,16 @@ const CATEGORY_DATA = {
     filters: ["全部作品", "商业宣传", "活动视觉", "品牌塑造", "概念海报", "科技视觉", "文化传播"],
     worksTitle: "作品展示", worksEn: "VISUAL WORKS",
     works: [
+      ["./01_拼车计划.png", "拼车计划", "poster-row"],
+      ["./02_周末狂欢夜.png", "周末狂欢夜", "poster-row"],
+      ["./03_城限专场.png", "城限专场", "poster-row"],
+      ["./04_DM严选.png", "DM严选", "poster-row"],
+      ["./05_周年庆典.png", "周年庆典", "poster-row"],
+      ["./06_未知剧场.png", "未知剧场", "poster-row"],
       ["./ac6fe018-f7f3-4ffa-b677-e88fb228d2eb.png", "海报 Banner 01", "banner"],
       ["./d15079c8-14f0-47b8-864b-dd47c04d6d66.png", "海报 Banner 02", "banner"],
       ["./30cb955e-0822-43f3-98d9-4ba484c120d2.png", "海报 Banner 03", "banner"],
       ["./4cca3669-f0f0-4b6e-8557-176422ad07b2.png", "海报 Banner 04", "banner"],
-      ["./01_拼车计划.png", "拼车计划", "vertical"],
-      ["./02_周末狂欢夜.png", "周末狂欢夜", "vertical"],
-      ["./03_城限专场.png", "城限专场", "vertical"],
-      ["./04_DM严选.png", "DM严选", "vertical"],
-      ["./05_周年庆典.png", "周年庆典", "vertical"],
-      ["./06_未知剧场.png", "未知剧场", "vertical"],
       ["./制作海报 (4).png", "竖版海报", "vertical"]
     ].map(([src, title, orientation]) => imageWork(src, title, orientation)),
     process: ["主题定位", "视觉概念", "AI生成", "商业合成", "字体排版", "成品输出"]
