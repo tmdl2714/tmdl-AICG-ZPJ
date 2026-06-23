@@ -96,7 +96,7 @@
 .contact-art-bili { top: 62.35% !important; height: 10.65% !important; }
 .contact-art-download { top: 77.45% !important; left: 70.35% !important; width: 21.05% !important; height: 8.85% !important; border-radius: 18px !important; }
 
-/* Contact copy rows: keep the large hit area, but glow only the text painted over the image. */
+/* Contact copy rows: keep the large hit area, but brighten the original image text crop. */
 .contact-art-stage .contact-art-hotspot::before,
 .contact-art-stage .contact-art-hotspot::after {
   pointer-events: none !important;
@@ -123,48 +123,50 @@
 }
 
 .contact-art-stage .contact-art-hotspot:not(.contact-art-download)::after {
+  content: "" !important;
   position: absolute !important;
   z-index: 2 !important;
-  left: 27.75% !important;
   display: block !important;
-  width: max-content !important;
-  max-width: none !important;
-  color: rgba(244, 252, 255, 0.34) !important;
-  font-family: Georgia, "Times New Roman", "Songti SC", "SimSun", serif !important;
-  font-size: clamp(15px, 1.48vw, 25px) !important;
-  font-variant-numeric: tabular-nums !important;
-  font-weight: 400 !important;
-  line-height: 1 !important;
-  letter-spacing: 0.015em !important;
-  white-space: nowrap !important;
-  text-align: left !important;
-  text-shadow:
-    0 0 3px rgba(255, 255, 255, 0.88),
-    0 0 10px rgba(147, 229, 255, 0.78),
-    0 0 22px rgba(74, 184, 255, 0.62) !important;
+  background-image: url("./尾页联系我-1.2.4.png?v=contact-ending-20260622") !important;
+  background-repeat: no-repeat !important;
+  background-size: 100vw auto !important;
+  filter: brightness(1.55) saturate(1.08) drop-shadow(0 0 4px rgba(255, 255, 255, 0.62)) drop-shadow(0 0 12px rgba(126, 224, 255, 0.48)) !important;
+  mix-blend-mode: screen !important;
   opacity: 0 !important;
-  transform: translateY(-46%) !important;
-  transition: opacity 140ms ease, color 140ms ease, text-shadow 140ms ease !important;
+  transform: none !important;
+  transition: opacity 140ms ease, filter 140ms ease !important;
 }
 
 .contact-art-stage .contact-art-phone::after {
-  content: "188 0101 7679" !important;
-  top: 78.8% !important;
+  left: 28.52% !important;
+  top: 20.43% !important;
+  width: 43.24% !important;
+  height: 68.72% !important;
+  background-position: -76.675vw -17.703vw !important;
 }
 
 .contact-art-stage .contact-art-wechat::after {
-  content: "seerstar195810" !important;
-  top: 77.9% !important;
+  left: 28.24% !important;
+  top: 30.13% !important;
+  width: 45.49% !important;
+  height: 56.89% !important;
+  background-position: -76.615vw -24.163vw !important;
 }
 
 .contact-art-stage .contact-art-mail::after {
-  content: "tmdl@vip.sina.com" !important;
-  top: 84% !important;
+  left: 28.24% !important;
+  top: 39.55% !important;
+  width: 56.71% !important;
+  height: 56.14% !important;
+  background-position: -76.615vw -30.921vw !important;
 }
 
 .contact-art-stage .contact-art-bili::after {
-  content: "3546742668659042" !important;
-  top: 87.2% !important;
+  left: 28.24% !important;
+  top: 45.19% !important;
+  width: 57.79% !important;
+  height: 49.94% !important;
+  background-position: -76.615vw -37.799vw !important;
 }
 
 .contact-art-stage .contact-art-hotspot:not(.contact-art-download):hover::after,
@@ -174,11 +176,7 @@
 }
 
 .contact-art-stage .contact-art-hotspot:not(.contact-art-download).is-copied::after {
-  color: rgba(255, 255, 255, 0.46) !important;
-  text-shadow:
-    0 0 4px rgba(255, 255, 255, 0.95),
-    0 0 14px rgba(165, 237, 255, 0.9),
-    0 0 30px rgba(88, 193, 255, 0.76) !important;
+  filter: brightness(1.85) saturate(1.14) drop-shadow(0 0 5px rgba(255, 255, 255, 0.78)) drop-shadow(0 0 16px rgba(150, 235, 255, 0.62)) !important;
 }
 
 .contact-art-stage .contact-art-download::after,
@@ -239,5 +237,27 @@
     width: auto;
     padding: 7px 16px 5px;
     font-size: 12px;
+  }
+}
+
+@media (max-width: 760px) {
+  .contact-art-stage .contact-art-hotspot:not(.contact-art-download)::after {
+    background-size: 980px auto !important;
+  }
+
+  .contact-art-stage .contact-art-phone::after {
+    background-position: -751.42px -173.49px !important;
+  }
+
+  .contact-art-stage .contact-art-wechat::after {
+    background-position: -750.83px -236.80px !important;
+  }
+
+  .contact-art-stage .contact-art-mail::after {
+    background-position: -750.83px -303.03px !important;
+  }
+
+  .contact-art-stage .contact-art-bili::after {
+    background-position: -750.83px -370.43px !important;
   }
 }
