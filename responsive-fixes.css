@@ -31,12 +31,12 @@ body #projects .project-item:focus-visible {
   will-change: transform, opacity;
 }
 
-/* Portrait artwork should remain readable inside landscape cards. */
-body #projects [data-featured="poster"] img,
-body #projects [data-featured="ui"] img,
-body #projects [data-featured="ip"] img {
-  object-fit: contain !important;
-  background: #06152f;
+/* Homepage featured cards: rollback to one unified card frame and cover rule. */
+body #projects .project-item img,
+body #projects .project-item video {
+  object-fit: cover !important;
+  object-position: center;
+  background: transparent;
 }
 
 /* Tablet: keep the exhibition wall centered without oversized fixed geometry. */
