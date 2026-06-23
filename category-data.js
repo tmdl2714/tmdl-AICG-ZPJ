@@ -223,8 +223,8 @@ const CATEGORY_DATA = {
       { type: "video", src: "./废土温情_25MB版.mp4", title: "废土温情", orientation: "video-landscape" },
       { type: "video", src: "./猫粮广告_25MB版.mp4", title: "猫粮广告", orientation: "video-landscape" },
       { type: "video", src: "./耳机广告_25MB版.mp4", title: "耳机广告", orientation: "video-landscape" },
-      { type: "image", src: "./封面.png", title: "重生后，我撕了白莲妹妹", orientation: "video-link", href: "https://www.bilibili.com/video/BV1XZEe6KE9Z/" },
-      { type: "image", src: "./assets/categories/video/works/video-destiny-cover.svg", title: "天命不接", orientation: "video-link", href: "https://www.bilibili.com/video/BV11TVF6yEQo/" }
+      { type: "video", src: "./渡鸦.mp4", title: "渡鸦", orientation: "video-landscape", poster: "./渡鸦.png" },
+      { type: "video", src: "./山海镖局_GitHub_25MB内.mp4", title: "山海镖局", orientation: "video-landscape", poster: "./山海镖局.png" }
     ],
     process: ["灵感脚本", "镜头设计", "AI辅助生成", "后期剪辑", "调色音效", "成片输出"]
   }
