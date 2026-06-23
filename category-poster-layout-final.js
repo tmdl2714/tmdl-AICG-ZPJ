@@ -37,7 +37,7 @@
 
   function cardStyle(orientation) {
     if (orientation === "banner") return `${baseCard}grid-column:span 30;aspect-ratio:16/9;border-radius:10px;padding:0;`;
-    if (orientation === "activity-poster") return `${baseCard}grid-column:span 10;aspect-ratio:4/9;padding:4px;border:1px solid rgba(175,214,255,.58);border-radius:14px;background:linear-gradient(145deg,rgba(255,255,255,.68),rgba(226,240,255,.22));box-shadow:inset 0 1px 0 rgba(255,255,255,.82),0 10px 22px rgba(23,62,108,.12),0 0 0 1px rgba(255,255,255,.18);`;
+    if (orientation === "activity-poster") return `${baseCard}grid-column:span 10;aspect-ratio:4/9;padding:3px;border:1px solid rgba(175,214,255,.58);border-radius:14px;background:linear-gradient(145deg,rgba(255,255,255,.68),rgba(226,240,255,.22));box-shadow:inset 0 1px 0 rgba(255,255,255,.82),0 8px 18px rgba(23,62,108,.1),0 0 0 1px rgba(255,255,255,.18);`;
     return `${baseCard}grid-column:span 12;aspect-ratio:3/4;border-radius:10px;`;
   }
 
@@ -49,9 +49,9 @@
 
     if (window.CATEGORY_DATA?.poster) window.CATEGORY_DATA.poster.works = works;
 
-    grid.style.cssText = "display:grid;grid-template-columns:repeat(60,minmax(0,1fr));gap:clamp(10px,1.1vw,16px);align-items:start;grid-auto-flow:row;width:100%;";
+    grid.style.cssText = "display:grid;grid-template-columns:repeat(60,minmax(0,1fr));gap:clamp(8px,.9vw,14px);align-items:start;grid-auto-flow:row;width:100%;";
     const wrap = document.querySelector(".category-works");
-    if (wrap) wrap.style.cssText = "width:min(calc(100vw - 48px),1480px);margin-left:auto;margin-right:auto;";
+    if (wrap) wrap.style.cssText = "width:min(calc(100vw - 64px),1216px);max-width:1216px;margin-left:auto;margin-right:auto;";
 
     grid.innerHTML = works.map((work, index) => `
       <button class="work-card is-${work.orientation}" type="button" data-work-index="${index}" style="${cardStyle(work.orientation)}">
