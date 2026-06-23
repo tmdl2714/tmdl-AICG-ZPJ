@@ -231,6 +231,45 @@ body #projects [data-featured="ip"] img {
   }
 }
 
+/* Featured first-four ratio fixes: 01 广告 / 02 Banner / 03 竖版海报 / 04 动漫短剧. */
+body #projects [data-featured="ad"],
+body #projects [data-featured="banner"],
+body #projects [data-featured="drama"] {
+  height: calc(var(--project-card-width, 320px) * 0.5625) !important;
+  margin-top: calc(var(--project-card-height, 458px) - (var(--project-card-width, 320px) * 0.5625)) !important;
+}
+
+body #projects [data-featured="poster"] {
+  height: calc(var(--project-card-width, 300px) * 1.333333) !important;
+  margin-top: calc(var(--project-card-height, 429px) - (var(--project-card-width, 300px) * 1.333333)) !important;
+}
+
+body #projects [data-featured="ad"] img,
+body #projects [data-featured="banner"] img,
+body #projects [data-featured="drama"] img,
+body #projects [data-featured="ad"] video,
+body #projects [data-featured="banner"] video,
+body #projects [data-featured="drama"] video {
+  object-fit: cover !important;
+}
+
+@media (max-width: 767px) {
+  body #projects [data-featured="ad"],
+  body #projects [data-featured="banner"],
+  body #projects [data-featured="drama"] {
+    height: min(42.75vw, 164px) !important;
+    max-height: 164px !important;
+    margin-top: 0 !important;
+  }
+
+  body #projects [data-featured="poster"] {
+    width: min(56vw, 214px) !important;
+    height: min(74.7vw, 285px) !important;
+    max-height: 285px !important;
+    margin-top: 0 !important;
+  }
+}
+
 /* Respect accessibility and reduce battery use. */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -238,7 +277,6 @@ body #projects [data-featured="ip"] img {
   }
 
   body #projects .project-item {
-    transition-duration: 1ms !important;
-    filter: none !important;
+    transition: none !important;
   }
 }
