@@ -1,36 +1,27 @@
 (() => {
-  const appendUniqueWorks = (category, works) => {
-    if (!window.CATEGORY_DATA?.[category]?.works) return;
-    const currentWorks = window.CATEGORY_DATA[category].works;
-    works.forEach((work) => {
-      if (!currentWorks.some((item) => item.src === work.src)) currentWorks.push(work);
-    });
-  };
-
-  const replaceVideoEndingWorks = () => {
+  const normalizeVideoWorks = () => {
     if (!window.CATEGORY_DATA?.video?.works) return;
-    const currentWorks = window.CATEGORY_DATA.video.works;
-    currentWorks.splice(-2, 2,
+
+    window.CATEGORY_DATA.video.works = [
+      { type: "video", src: "./重生后.mp4", title: "重生后", orientation: "video-landscape", poster: "./重生后.jpg" },
       { type: "video", src: "./渡鸦的礼物.mp4", title: "渡鸦的礼物", orientation: "video-landscape", poster: "./渡鸦的礼物.png" },
-      { type: "video", src: "./山海镖局_GitHub_25MB内.mp4", title: "山海镖局", orientation: "video-landscape", poster: "./山海镖局.png" }
+      { type: "video", src: "./山海镖局_GitHub_25MB内.mp4", title: "山海镖局", orientation: "video-landscape", poster: "./山海镖局.png" },
+      { type: "video", src: "./废土温情_25MB版.mp4", title: "废土温情", orientation: "video-landscape", poster: "./废土温情.png" },
+      { type: "video", src: "./耳机广告_25MB版.mp4", title: "耳机广告", orientation: "video-landscape", poster: "./小耳机.png" },
+      { type: "video", src: "./assets/categories/video/video-01.mp4", title: "窖藏酒CG动画", orientation: "video-landscape" }
+    ];
+  };
+
+  normalizeVideoWorks();
+
+  function videoPosterMap() {
+    const works = window.CATEGORY_DATA?.video?.works || [];
+    return new Map(
+      works
+        .filter((work) => work.type === "video" && work.poster)
+        .map((work) => [work.src, work.poster])
     );
-  };
-
-  appendUniqueWorks("icon", [
-    { type: "image", src: "./01_拼车.png", title: "拼车", orientation: "icon-work" },
-    { type: "image", src: "./02_剧本简介.png", title: "剧本简介", orientation: "icon-work" },
-    { type: "image", src: "./03_会员.png", title: "会员", orientation: "icon-work" },
-    { type: "image", src: "./04_杂谈.png", title: "杂谈", orientation: "icon-work" }
-  ]);
-
-  replaceVideoEndingWorks();
-
-  const VIDEO_POSTERS = {
-    "./渡鸦的礼物.mp4": "./渡鸦的礼物.png",
-    "./raven.mp4": "./raven.png",
-    "./渡鸦.mp4": "./渡鸦.png",
-    "./山海镖局_GitHub_25MB内.mp4": "./山海镖局.png"
-  };
+  }
 
   const innerHTMLDescriptor = Object.getOwnPropertyDescriptor(Element.prototype, "innerHTML");
   if (innerHTMLDescriptor?.set && innerHTMLDescriptor?.get) {
@@ -43,8 +34,9 @@
       set(value) {
         let nextValue = value;
         if (typeof nextValue === "string" && this.matches?.("[data-category-page]")) {
+          const posters = videoPosterMap();
           nextValue = nextValue
-            .replace(/<video\s+src="([^"]+)"/g, (match, src) => `<video${VIDEO_POSTERS[src] ? ` poster="${VIDEO_POSTERS[src]}"` : ""} data-src="${src}"`)
+            .replace(/<video\s+src="([^"]+)"/g, (match, src) => `<video${posters.get(src) ? ` poster="${posters.get(src)}"` : ""} data-src="${src}"`)
             .replace(/preload="metadata"/g, 'preload="none"');
         }
         innerHTMLDescriptor.set.call(this, nextValue);
