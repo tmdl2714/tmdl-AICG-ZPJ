@@ -5,52 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>分类项目 - 铁马德龙作品集</title>
   <meta name="description" content="铁马德龙作品集分类项目二级页面。">
-  <link rel="stylesheet" href="./styles.css?v=poster-only-activity-card-20260623">
-  <link rel="stylesheet" href="./category-process.css?v=poster-only-activity-card-20260623">
-  <style>
-    body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(5),
-    body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(6),
-    body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(7),
-    body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(8),
-    body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(9),
-    body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(10){
-      width:min(100%,76%)!important;
-      justify-self:center!important;
-      aspect-ratio:4/9!important;
-      height:auto!important;
-      min-height:0!important;
-      padding:clamp(2px,.35vw,5px)!important;
-      border:1px solid rgba(175,214,255,.52)!important;
-      border-radius:12px!important;
-      background:linear-gradient(145deg,rgba(255,255,255,.62),rgba(226,240,255,.18))!important;
-      box-shadow:inset 0 1px 0 rgba(255,255,255,.78),0 10px 24px rgba(23,62,108,.12),0 0 0 1px rgba(255,255,255,.16)!important;
-      overflow:hidden!important;
-    }
-    body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(5) img,
-    body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(6) img,
-    body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(7) img,
-    body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(8) img,
-    body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(9) img,
-    body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(10) img{
-      width:100%!important;
-      height:100%!important;
-      max-width:none!important;
-      max-height:none!important;
-      object-fit:contain!important;
-      object-position:center center!important;
-      border-radius:9px!important;
-      background:transparent!important;
-      transform:none!important;
-    }
-    body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(5) span,
-    body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(6) span,
-    body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(7) span,
-    body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(8) span,
-    body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(9) span,
-    body.category-page[data-category="poster"] .category-work-grid .work-card:nth-child(10) span{
-      display:none!important;
-    }
-  </style>
+  <link rel="stylesheet" href="./styles.css?v=poster-runtime-fix-20260623">
+  <link rel="stylesheet" href="./category-process.css?v=poster-runtime-fix-20260623">
 </head>
 <body class="category-page">
   <main class="category-detail" data-category-page></main>
@@ -62,9 +18,9 @@
     <button class="viewer-nav viewer-next" type="button" data-preview-next aria-label="下一个作品"><span class="icon" data-icon="chevron-right"></span></button>
   </div>
 
-  <script src="./script.js?v=poster-only-activity-card-20260623" defer></script>
-  <script src="./category-data.js?v=poster-only-activity-card-20260623" defer></script>
-  <script src="./category-ui-replacement.js?v=poster-only-activity-card-20260623" defer></script>
+  <script src="./script.js?v=poster-runtime-fix-20260623" defer></script>
+  <script src="./category-data.js?v=poster-runtime-fix-20260623" defer></script>
+  <script src="./category-ui-replacement.js?v=poster-runtime-fix-20260623" defer></script>
   <script>
     window.addEventListener("DOMContentLoaded", () => {
       if (!window.CATEGORY_DATA?.video?.works) return;
@@ -78,10 +34,11 @@
       );
     }, { once: true });
   </script>
-  <script src="./category-performance-runtime.js?v=poster-only-activity-card-20260623" defer></script>
-  <script src="./category-page.js?v=poster-only-activity-card-20260623" defer></script>
-  <script src="./category-poster-banner-blur.js?v=poster-only-activity-card-20260623" defer></script>
-  <script src="./category-video-posters.js?v=poster-only-activity-card-20260623" defer></script>
-  <script src="./category-video-click-play.js?v=poster-only-activity-card-20260623" defer></script>
+  <script src="./category-performance-runtime.js?v=poster-runtime-fix-20260623" defer></script>
+  <script src="./category-page.js?v=poster-runtime-fix-20260623" defer></script>
+  <script src="./category-poster-activity-runtime.js?v=poster-runtime-fix-20260623" defer></script>
+  <script src="./category-poster-banner-blur.js?v=poster-runtime-fix-20260623" defer></script>
+  <script src="./category-video-posters.js?v=poster-runtime-fix-20260623" defer></script>
+  <script src="./category-video-click-play.js?v=poster-runtime-fix-20260623" defer></script>
 </body>
 </html>
