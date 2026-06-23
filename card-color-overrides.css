@@ -55,34 +55,30 @@ body #projects .project-item-narrow::before {
 
 .category-hall .category-grid {
   position: absolute !important;
-  top: 26.15% !important;
-  right: 6.93% !important;
-  bottom: 18.6% !important;
-  left: 7.58% !important;
+  inset: 0 !important;
   z-index: 3 !important;
-  display: grid !important;
-  grid-template-columns: repeat(10, minmax(0, 1fr)) !important;
-  grid-template-rows: minmax(0, 1fr) !important;
-  grid-auto-flow: column !important;
-  column-gap: 0.58% !important;
-  row-gap: 0 !important;
+  display: block !important;
+  grid-template-columns: none !important;
+  grid-template-rows: none !important;
+  grid-auto-flow: row !important;
+  gap: 0 !important;
   width: auto !important;
   height: auto !important;
+  margin: 0 !important;
   padding: 0 !important;
-  align-items: stretch !important;
 }
 
-/* Homepage image-map hotspots: keep glow locked to the real clickable area. */
+/* Homepage image-map hotspots: each card is positioned independently to avoid grid drift. */
 .category-hall .category-grid a {
-  position: relative !important;
+  position: absolute !important;
+  top: 26% !important;
   display: block !important;
   min-height: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
+  height: 55.25% !important;
   padding: 0 !important;
   overflow: visible !important;
   border: 0 !important;
-  border-radius: 12px !important;
+  border-radius: 8px !important;
   background: transparent !important;
   box-shadow: none !important;
   filter: none !important;
@@ -90,18 +86,26 @@ body #projects .project-item-narrow::before {
   transition: none !important;
 }
 
+.category-hall .category-grid a:nth-child(1) { left: 7.578% !important; width: 8.319% !important; }
+.category-hall .category-grid a:nth-child(2) { left: 16.353% !important; width: 8.205% !important; }
+.category-hall .category-grid a:nth-child(3) { left: 24.900% !important; width: 8.490% !important; }
+.category-hall .category-grid a:nth-child(4) { left: 33.846% !important; width: 8.034% !important; }
+.category-hall .category-grid a:nth-child(5) { left: 42.279% !important; width: 8.091% !important; }
+.category-hall .category-grid a:nth-child(6) { left: 50.712% !important; width: 8.091% !important; }
+.category-hall .category-grid a:nth-child(7) { left: 59.202% !important; width: 8.148% !important; }
+.category-hall .category-grid a:nth-child(8) { left: 67.749% !important; width: 8.319% !important; }
+.category-hall .category-grid a:nth-child(9) { left: 76.410% !important; width: 8.148% !important; }
+.category-hall .category-grid a:nth-child(10) { left: 84.900% !important; width: 8.148% !important; }
+
 .category-hall .category-grid a::before {
   content: "" !important;
   position: absolute !important;
-  top: 0 !important;
-  right: 0.4% !important;
-  bottom: -0.12% !important;
-  left: 0.4% !important;
+  inset: 0 !important;
   width: auto !important;
   height: auto !important;
   aspect-ratio: auto !important;
   border: 1px solid rgba(126, 211, 255, 0) !important;
-  border-radius: 10px !important;
+  border-radius: inherit !important;
   background: rgba(88, 190, 255, 0) !important;
   box-shadow: none !important;
   opacity: 0 !important;
