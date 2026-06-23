@@ -60,6 +60,42 @@
     return appendChild.call(this, node);
   };
 
+  const NEXT_MAP = {
+    portrait: "outfit",
+    outfit: "retouch",
+    retouch: "poster",
+    poster: "ip",
+    ip: "typography",
+    typography: "symbol",
+    symbol: "ui",
+    ui: "icon",
+    icon: "video",
+    video: "portrait"
+  };
+
+  const NEXT_IMAGES = {
+    outfit: "./下一项/ChatGPT Image 2026年6月12日 19_41_24.png",
+    portrait: "./下一项/ChatGPT Image 2026年6月12日 19_46_19.png",
+    retouch: "./下一项/ChatGPT Image 2026年6月12日 19_48_41 (2).png",
+    poster: "./下一项/ChatGPT Image 2026年6月12日 19_48_42 (3).png",
+    ip: "./下一项/ChatGPT Image 2026年6月12日 19_48_42 (4).png",
+    typography: "./下一项/ChatGPT Image 2026年6月12日 19_48_42 (5).png",
+    symbol: "./下一项/ChatGPT Image 2026年6月12日 19_48_43 (6).png",
+    ui: "./下一项/ChatGPT Image 2026年6月12日 19_48_43 (7).png",
+    icon: "./下一项/ChatGPT Image 2026年6月12日 19_48_43 (8).png",
+    video: "./下一项/ChatGPT Image 2026年6月12日 19_48_44 (9).png"
+  };
+
+  function currentCategory() {
+    return document.body.dataset.category || new URLSearchParams(window.location.search).get("cat") || "portrait";
+  }
+
+  function labelFor(slug) {
+    const item = window.CATEGORY_NAV?.find((entry) => entry.slug === slug);
+    if (slug === "video") return "视频 / 漫剧";
+    return item?.label || slug;
+  }
+
   function tuneWorkImages() {
     const images = [...document.querySelectorAll(".category-work-grid .work-card img")];
     images.forEach((image, index) => {
@@ -70,6 +106,34 @@
       if (!image.width) image.width = image.naturalWidth || 1000;
       if (!image.height) image.height = image.naturalHeight || 1000;
     });
+  }
+
+  function renderNextCard() {
+    const card = document.querySelector(".category-next");
+    if (!card) return;
+    const current = currentCategory();
+    const next = NEXT_MAP[current] || "portrait";
+    const imageSrc = NEXT_IMAGES[next];
+    if (!imageSrc) return;
+    const fallback = [...card.childNodes].map((node) => node.cloneNode(true));
+    const image = document.createElement("img");
+    image.className = "category-next-image";
+    image.src = imageSrc;
+    image.alt = labelFor(next);
+    image.loading = "lazy";
+    image.decoding = "async";
+    image.fetchPriority = "low";
+    image.width = 1920;
+    image.height = 300;
+    image.onerror = () => {
+      card.classList.remove("category-next-card");
+      card.replaceChildren(...fallback.map((node) => node.cloneNode(true)));
+      window.renderIcons?.(card);
+    };
+    card.classList.add("category-next-card");
+    card.href = `./category.html?cat=${encodeURIComponent(next)}`;
+    card.setAttribute("aria-label", `下一项目：${labelFor(next)}`);
+    card.replaceChildren(image);
   }
 
   function loadVideo(video) {
@@ -154,9 +218,9 @@
   }
 
   function tuneDeferredSections() {
-    document.querySelectorAll(".category-process").forEach((section) => {
+    document.querySelectorAll(".category-process, .category-next").forEach((section) => {
       section.style.contentVisibility = "auto";
-      section.style.containIntrinsicSize = "720px";
+      section.style.containIntrinsicSize = section.classList.contains("category-next") ? "320px" : "720px";
     });
   }
 
@@ -166,6 +230,7 @@
       deferWorkVideos();
       interceptViewerVideos();
       bindVideoCardAutoplay();
+      renderNextCard();
       tuneDeferredSections();
     });
   });
