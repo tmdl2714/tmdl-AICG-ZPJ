@@ -1,4 +1,47 @@
 (() => {
+  function applySymbolFrameFit() {
+    if (new URLSearchParams(window.location.search).get("cat") !== "symbol") return;
+    if (document.getElementById("symbol-frame-fit")) return;
+    const style = document.createElement("style");
+    style.id = "symbol-frame-fit";
+    style.textContent = `
+      body.category-page .work-card.is-symbol-board,
+      body.category-page .work-card.is-symbol-board:nth-child(n) {
+        grid-column: span 2 !important;
+        aspect-ratio: 1 / 1 !important;
+        background: rgba(9, 18, 31, 0.84) !important;
+        border: 1px solid rgba(217, 133, 53, 0.5) !important;
+        box-shadow: inset 0 0 0 1px rgba(255, 198, 118, 0.14), 0 14px 34px rgba(0, 0, 0, 0.28) !important;
+        padding: 9px !important;
+        border-radius: 12px !important;
+      }
+      body.category-page .work-card.is-symbol-board img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important;
+        object-position: center center !important;
+        border-radius: 7px !important;
+        box-shadow: none !important;
+        background: transparent !important;
+      }
+      @media (max-width: 1180px) {
+        body.category-page .work-card.is-symbol-board,
+        body.category-page .work-card.is-symbol-board:nth-child(n) {
+          grid-column: span 2 !important;
+        }
+      }
+      @media (max-width: 760px) {
+        body.category-page .work-card.is-symbol-board,
+        body.category-page .work-card.is-symbol-board:nth-child(n) {
+          grid-column: span 1 !important;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  applySymbolFrameFit();
+
   function posterMap() {
     const works = window.CATEGORY_DATA?.video?.works || [];
     return new Map(works.filter((work) => work.type === "video" && work.poster).map((work) => [work.src, work.poster]));
@@ -62,6 +105,7 @@
   }, true);
 
   const bindViewerObserver = () => {
+    applySymbolFrameFit();
     applyVideoPosters();
 
     const mediaHost = document.querySelector(".work-viewer-media");
