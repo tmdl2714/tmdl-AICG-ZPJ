@@ -75,12 +75,12 @@ const CATEGORY_DATA = {
       ["./小水库8.png", "竖版海报 05", "vertical"],
       ["./小水库10.png", "竖版海报 06", "vertical"],
       ["./hp耳机4.1.png", "竖版海报 07", "vertical"],
-      ["./6e143708-8fcf-43d4-a238-808aaf208d1d.png", "竖版海报 12", "vertical"],
       ["./hp耳机10.1.png", "竖版海报 17", "vertical"],
       ["./hp耳机7.png", "竖版海报 18", "vertical"],
       ["./小水库5.png", "竖版海报 19", "vertical"],
       ["./制作海报 (2).png", "竖版海报 20", "vertical"],
-      ["./制作海报 (4).png", "竖版海报 21", "vertical"]
+      ["./制作海报 (4).png", "竖版海报 21", "vertical"],
+      ["./6e143708-8fcf-43d4-a238-808aaf208d1d.png", "竖版海报 12", "vertical"]
     ].map(([src, title, orientation]) => imageWork(src, title, orientation)),
     process: ["主题定位", "视觉概念", "AI生成", "商业合成", "字体排版", "成品输出"]
   },
