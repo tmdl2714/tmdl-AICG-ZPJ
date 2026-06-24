@@ -2,7 +2,7 @@
   const VERSION = "featured-ad-thumbs-20260624";
   const works = [
     ["窖藏酒广告", "./assets/categories/video/video-01.mp4"],
-    ["白酒广告", "./assets/categories/video/video-02.mp4"],
+    ["相机广告", "./assets/categories/video/video-02.mp4"],
     ["精华水广告", "./assets/categories/video/video-03.mp4"]
   ];
 
