@@ -30,6 +30,10 @@
       box-shadow: none !important;
       background: transparent !important;
     }
+
+    body.category-page[data-category="icon"] .work-card.is-icon-work:nth-child(13) {
+      --icon-zoom: 1.08;
+    }
   `;
   document.head.appendChild(frameStyle);
 
