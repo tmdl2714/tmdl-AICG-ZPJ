@@ -40,7 +40,25 @@
     document.head.appendChild(style);
   }
 
+  function applyUiChessFit() {
+    if (new URLSearchParams(window.location.search).get("cat") !== "ui") return;
+    if (document.getElementById("ui-chess-fit")) return;
+    const style = document.createElement("style");
+    style.id = "ui-chess-fit";
+    style.textContent = `
+      body.category-page[data-category="ui"] .work-card.is-ui-launch:nth-child(3) img,
+      body.category-page .work-card.is-ui-launch:nth-child(3) img {
+        object-fit: contain !important;
+        object-position: center center !important;
+        background: transparent !important;
+        transform: none !important;
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
   applySymbolFrameFit();
+  applyUiChessFit();
 
   function posterMap() {
     const works = window.CATEGORY_DATA?.video?.works || [];
@@ -106,6 +124,7 @@
 
   const bindViewerObserver = () => {
     applySymbolFrameFit();
+    applyUiChessFit();
     applyVideoPosters();
 
     const mediaHost = document.querySelector(".work-viewer-media");
