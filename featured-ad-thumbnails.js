@@ -1,9 +1,9 @@
 (() => {
   const VERSION = "featured-ad-thumbs-20260624";
   const works = [
-    ["窖藏酒 CG 动画", "./assets/categories/video/video-01.mp4"],
-    ["15S 商业广告短片", "./assets/categories/video/video-02.mp4"],
-    ["高级护肤品精华水广告", "./assets/categories/video/video-03.mp4"]
+    ["窖藏酒广告", "./assets/categories/video/video-01.mp4"],
+    ["白酒广告", "./assets/categories/video/video-02.mp4"],
+    ["精华水广告", "./assets/categories/video/video-03.mp4"]
   ];
 
   const withVersion = (path) => `${path}?v=${VERSION}`;
