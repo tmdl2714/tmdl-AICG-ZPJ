@@ -40,16 +40,13 @@
     body.category-page[data-category="poster"] .work-card.is-banner.has-blur-bleed .work-card-blur-bg{position:absolute!important;inset:-18px!important;z-index:0!important;display:block!important;width:calc(100% + 36px)!important;height:calc(100% + 36px)!important;min-width:calc(100% + 36px)!important;max-width:none!important;min-height:calc(100% + 36px)!important;object-fit:cover!important;object-position:center center!important;filter:blur(18px) saturate(1.08) brightness(.82)!important;transform:scale(1.08)!important;opacity:.72!important;pointer-events:none!important}
     body.category-page[data-category="poster"] .work-card.is-banner.has-blur-bleed>img:not(.work-card-blur-bg),body.category-page[data-category="poster"] .work-card.is-banner.has-blur-bleed>video{position:relative!important;z-index:1!important;width:100%!important;height:100%!important;object-fit:contain!important;object-position:center center!important;background:transparent!important}
     body.category-page[data-category="poster"] .work-card.is-banner.has-blur-bleed>span{z-index:2!important}
-    body.category-page .category-next.has-next-preview{grid-template-columns:minmax(240px,1fr) minmax(240px,42%)!important;isolation:isolate!important}
-    body.category-page .category-next.has-next-preview>div{z-index:3!important;text-shadow:0 8px 24px rgba(255,255,255,.42)}
-    body.category-page[data-tone="dark"] .category-next.has-next-preview>div,body.category-page[data-tone="deep"] .category-next.has-next-preview>div{text-shadow:0 8px 24px rgba(0,0,0,.5)}
-    body.category-page .category-next-preview{position:absolute!important;top:0!important;right:0!important;bottom:0!important;z-index:1!important;width:min(50%,560px)!important;margin:0!important;overflow:hidden!important;pointer-events:none!important}
-    body.category-page .category-next-preview::before{position:absolute!important;inset:0!important;z-index:2!important;background:linear-gradient(90deg,rgba(244,250,255,.96) 0%,rgba(244,250,255,.58) 32%,rgba(244,250,255,.08) 70%,transparent 100%)!important;content:""!important}
-    body.category-page[data-tone="dark"] .category-next-preview::before,body.category-page[data-tone="deep"] .category-next-preview::before{background:linear-gradient(90deg,rgba(5,12,20,.95) 0%,rgba(5,12,20,.58) 34%,rgba(5,12,20,.14) 74%,transparent 100%)!important}
-    body.category-page .category-next-preview img{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center center!important;filter:saturate(1.06) brightness(.96)!important;transform:scale(1.02)!important;opacity:.74!important}
-    body.category-page .category-next.has-next-preview .next-circle{z-index:4!important;margin-right:18px!important;background:color-mix(in srgb,var(--cat-accent),white 18%)!important;box-shadow:0 16px 30px rgba(30,76,130,.18),inset 0 1px rgba(255,255,255,.38)!important}
+    body.category-page .category-next.has-next-cover{display:block!important;min-height:0!important;aspect-ratio:2048/320!important;padding:0!important;overflow:hidden!important;border-radius:14px!important;background:transparent!important}
+    body.category-page .category-next.has-next-cover::before{content:none!important}
+    body.category-page .category-next.has-next-cover>div,body.category-page .category-next.has-next-cover>.next-circle{display:none!important}
+    body.category-page .category-next-cover{display:block!important;width:100%!important;height:100%!important;margin:0!important;overflow:hidden!important}
+    body.category-page .category-next-cover img{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center center!important;transform:none!important;filter:none!important;opacity:1!important}
     @media(max-width:1180px){body.category-page .category-work-grid{grid-template-columns:repeat(6,minmax(0,1fr))!important}body.category-page .work-card,body.category-page .work-card:nth-child(n),body.category-page .work-card.is-vertical,body.category-page .work-card.is-outfit-work,body.category-page .work-card.is-ui-launch,body.category-page .work-card.is-typography-work,body.category-page .work-card.is-icon-work,body.category-page[data-category="portrait"] .work-card,body.category-page .work-card.is-vertical:nth-child(n),body.category-page .work-card.is-outfit-work:nth-child(n),body.category-page .work-card.is-ui-launch:nth-child(n),body.category-page .work-card.is-typography-work:nth-child(n),body.category-page .work-card.is-icon-work:nth-child(n),body.category-page[data-category="portrait"] .work-card:nth-child(n){grid-column:span 2!important}body.category-page .work-card.is-banner,body.category-page .work-card.is-video-landscape,body.category-page .work-card.is-video-link,body.category-page .work-card.is-retouch-board,body.category-page .work-card.is-ip-board,body.category-page .work-card.is-symbol-board,body.category-page .work-card.is-banner:nth-child(n),body.category-page .work-card.is-video-landscape:nth-child(n),body.category-page .work-card.is-video-link:nth-child(n),body.category-page .work-card.is-retouch-board:nth-child(n),body.category-page .work-card.is-ip-board:nth-child(n),body.category-page .work-card.is-symbol-board:nth-child(n){grid-column:span 3!important}}
-    @media(max-width:760px){body.category-page .category-work-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}body.category-page .work-card,body.category-page .work-card:nth-child(n),body.category-page .work-card.is-vertical,body.category-page .work-card.is-outfit-work,body.category-page .work-card.is-ui-launch,body.category-page .work-card.is-typography-work,body.category-page .work-card.is-icon-work,body.category-page[data-category="portrait"] .work-card,body.category-page .work-card.is-vertical:nth-child(n),body.category-page .work-card.is-outfit-work:nth-child(n),body.category-page .work-card.is-ui-launch:nth-child(n),body.category-page .work-card.is-typography-work:nth-child(n),body.category-page .work-card.is-icon-work:nth-child(n),body.category-page[data-category="portrait"] .work-card:nth-child(n){grid-column:span 1!important}body.category-page .work-card.is-banner,body.category-page .work-card.is-video-landscape,body.category-page .work-card.is-video-link,body.category-page .work-card.is-retouch-board,body.category-page .work-card.is-ip-board,body.category-page .work-card.is-symbol-board,body.category-page .work-card.is-banner:nth-child(n),body.category-page .work-card.is-video-landscape:nth-child(n),body.category-page .work-card.is-video-link:nth-child(n),body.category-page .work-card.is-retouch-board:nth-child(n),body.category-page .work-card.is-ip-board:nth-child(n),body.category-page .work-card.is-symbol-board:nth-child(n){grid-column:span 2!important}body.category-page .category-next.has-next-preview{grid-template-columns:1fr 72px!important;min-height:150px!important}body.category-page .category-next-preview{width:58%!important;opacity:.56!important}body.category-page .category-next-preview::before{background:linear-gradient(90deg,rgba(244,250,255,.98) 0%,rgba(244,250,255,.72) 42%,rgba(244,250,255,.16) 100%)!important}}
+    @media(max-width:760px){body.category-page .category-work-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}body.category-page .work-card,body.category-page .work-card:nth-child(n),body.category-page .work-card.is-vertical,body.category-page .work-card.is-outfit-work,body.category-page .work-card.is-ui-launch,body.category-page .work-card.is-typography-work,body.category-page .work-card.is-icon-work,body.category-page[data-category="portrait"] .work-card,body.category-page .work-card.is-vertical:nth-child(n),body.category-page .work-card.is-outfit-work:nth-child(n),body.category-page .work-card.is-ui-launch:nth-child(n),body.category-page .work-card.is-typography-work:nth-child(n),body.category-page .work-card.is-icon-work:nth-child(n),body.category-page[data-category="portrait"] .work-card:nth-child(n){grid-column:span 1!important}body.category-page .work-card.is-banner,body.category-page .work-card.is-video-landscape,body.category-page .work-card.is-video-link,body.category-page .work-card.is-retouch-board,body.category-page .work-card.is-ip-board,body.category-page .work-card.is-symbol-board,body.category-page .work-card.is-banner:nth-child(n),body.category-page .work-card.is-video-landscape:nth-child(n),body.category-page .work-card.is-video-link:nth-child(n),body.category-page .work-card.is-retouch-board:nth-child(n),body.category-page .work-card.is-ip-board:nth-child(n),body.category-page .work-card.is-symbol-board:nth-child(n){grid-column:span 2!important}}
   </style>
 </head>
 <body class="category-page">
@@ -99,73 +96,40 @@
   <script src="./category-page.js?v=video-inline-latest-20260624" defer></script>
   <script>
     (() => {
-      const NEXT_IMAGE_ALIASES = {
-        portrait: ["AI写真", "ai写真", "portrait", "ai-portrait"],
-        outfit: ["模特换装", "电商模特换装", "outfit", "model-outfit"],
-        retouch: ["产品精修", "retouch", "product-retouch"],
-        poster: ["海报Banner", "海报", "banner", "poster"],
-        ip: ["IP设计", "ip", "ip-design"],
-        typography: ["字体设计", "typography", "font-design"],
-        symbol: ["超级符号", "symbol", "super-symbol"],
-        ui: ["UI启动页", "ui", "ui-launch"],
-        icon: ["ICON设计", "icon", "icon-design"],
-        video: ["视频", "漫剧", "video", "animation-drama"]
+      const NEXT_COVER_MAP = {
+        portrait: "./下一项/01下一项换装.png",
+        outfit: "./下一项/02下一项精修.png",
+        retouch: "./下一项/03下一项海报banner.png",
+        poster: "./下一项/04下一项IP.png",
+        ip: "./下一项/05下一项字体设计.png",
+        typography: "./下一项/06下一项超级符号.png",
+        symbol: "./下一项/07下一项UI.png",
+        ui: "./下一项/08下一项icon.png",
+        icon: "./下一项/09下一项视频漫剧.png",
+        video: "./下一项/10下一项AI写真.png"
       };
-      const IMAGE_EXTS = ["png", "jpg", "jpeg", "webp"];
-      function unique(list) {
-        return [...new Set(list.filter(Boolean))];
-      }
-      function nextImageCandidates(nextItem, nextIndex) {
-        const number = String(nextIndex + 1);
-        const padded = number.padStart(2, "0");
-        const names = unique([
-          ...(NEXT_IMAGE_ALIASES[nextItem.slug] || []),
-          nextItem.slug,
-          nextItem.label,
-          `next-${nextItem.slug}`,
-          `${padded}-${nextItem.slug}`,
-          `${number}-${nextItem.slug}`,
-          `${padded}-${nextItem.label}`,
-          `${number}-${nextItem.label}`,
-          padded,
-          number
-        ]);
-        return names.flatMap((name) => IMAGE_EXTS.map((ext) => `./下一篇/${name}.${ext}`));
-      }
-      function applyCategoryNextPreview() {
+      function applyCategoryNextCover() {
         const card = document.querySelector(".category-next");
-        if (!card || card.querySelector(".category-next-preview") || !window.CATEGORY_NAV?.length) return;
+        if (!card || card.querySelector(".category-next-cover")) return;
         const currentSlug = document.body.dataset.category || new URLSearchParams(location.search).get("cat") || "portrait";
-        const currentIndex = Math.max(0, CATEGORY_NAV.findIndex((item) => item.slug === currentSlug));
-        const nextIndex = (currentIndex + 1) % CATEGORY_NAV.length;
-        const nextItem = CATEGORY_NAV[nextIndex];
-        const candidates = nextImageCandidates(nextItem, nextIndex);
-        if (!candidates.length) return;
-        const preview = document.createElement("figure");
+        const src = NEXT_COVER_MAP[currentSlug];
+        if (!src) return;
+        const cover = document.createElement("figure");
         const img = document.createElement("img");
-        let active = 0;
-        preview.className = "category-next-preview";
+        cover.className = "category-next-cover";
         img.alt = "";
         img.setAttribute("aria-hidden", "true");
         img.loading = "lazy";
         img.decoding = "async";
-        img.onerror = () => {
-          active += 1;
-          if (active < candidates.length) {
-            img.src = candidates[active];
-          } else {
-            preview.remove();
-            card.classList.remove("has-next-preview");
-          }
-        };
-        img.src = candidates[active];
-        preview.appendChild(img);
-        card.classList.add("has-next-preview");
-        card.insertBefore(preview, card.querySelector(".next-circle"));
+        img.onload = () => card.classList.add("has-next-cover");
+        img.onerror = () => cover.remove();
+        img.src = src;
+        cover.appendChild(img);
+        card.insertBefore(cover, card.firstChild);
       }
       window.addEventListener("DOMContentLoaded", () => {
-        applyCategoryNextPreview();
-        requestAnimationFrame(applyCategoryNextPreview);
+        applyCategoryNextCover();
+        requestAnimationFrame(applyCategoryNextCover);
       });
     })();
   </script>
