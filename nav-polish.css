@@ -76,25 +76,24 @@
   margin-top: -70px;
 }
 
-.hero-panel {
-  --hero-bg-offset: 70px;
-  padding-top: 70px;
-}
-
 .contact-art-phone,
 .contact-art-wechat,
 .contact-art-mail,
-.contact-art-bili,
+.contact-art-bili {
+  left: 65.35% !important;
+  width: 26.6% !important;
+}
+
 .contact-art-download {
-  left: 70.6% !important;
-  width: 21.3% !important;
+  left: 70.35% !important;
+  width: 21.05% !important;
 }
 
 .contact-art-phone { top: 29.75% !important; height: 8.35% !important; }
 .contact-art-wechat { top: 39.95% !important; height: 9.9% !important; }
 .contact-art-mail { top: 50.75% !important; height: 10.6% !important; }
 .contact-art-bili { top: 62.35% !important; height: 10.65% !important; }
-.contact-art-download { top: 77.45% !important; left: 70.35% !important; width: 21.05% !important; height: 8.85% !important; border-radius: 18px !important; }
+.contact-art-download { top: 77.45% !important; height: 8.85% !important; border-radius: 18px !important; }
 
 /* Contact copy rows: make the actual characters glow instead of lighting a cropped image block. */
 .contact-art-stage .contact-art-hotspot::before,
@@ -144,21 +143,21 @@
 
 .contact-art-stage .contact-art-phone::after {
   content: "188 0101 7679" !important;
-  left: 29.5% !important;
+  left: 43.35% !important;
   top: 42.5% !important;
   font-size: clamp(12px, 1.06vw, 20px) !important;
 }
 
 .contact-art-stage .contact-art-wechat::after {
   content: "seerstar195810" !important;
-  left: 29.5% !important;
+  left: 43.35% !important;
   top: 43.5% !important;
   font-size: clamp(12px, 1.03vw, 19px) !important;
 }
 
 .contact-art-stage .contact-art-mail::after {
   content: "tmdl@vip.sina.com" !important;
-  left: 29.5% !important;
+  left: 43.35% !important;
   top: 43.5% !important;
   font-size: clamp(11px, 0.98vw, 18px) !important;
   letter-spacing: 0.01em !important;
@@ -166,7 +165,7 @@
 
 .contact-art-stage .contact-art-bili::after {
   content: "3546742668659042" !important;
-  left: 29.5% !important;
+  left: 43.35% !important;
   top: 43.5% !important;
   font-size: clamp(11px, 0.92vw, 17px) !important;
   letter-spacing: 0 !important;
@@ -251,7 +250,7 @@
   .contact-art-stage .contact-art-wechat::after,
   .contact-art-stage .contact-art-mail::after,
   .contact-art-stage .contact-art-bili::after {
-    left: 29.5% !important;
+    left: 43.35% !important;
     top: 43% !important;
     font-size: clamp(10px, 2.2vw, 15px) !important;
   }
