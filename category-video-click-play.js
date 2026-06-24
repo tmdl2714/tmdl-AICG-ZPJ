@@ -40,6 +40,32 @@
     document.head.appendChild(style);
   }
 
+  function applyUiLaunchFrames() {
+    if (new URLSearchParams(window.location.search).get("cat") !== "ui") return;
+    if (document.getElementById("ui-launch-frames")) return;
+    const style = document.createElement("style");
+    style.id = "ui-launch-frames";
+    style.textContent = `
+      body.category-page .work-card.is-ui-launch,
+      body.category-page .work-card.is-ui-launch:nth-child(n) {
+        background: linear-gradient(135deg, rgba(244, 250, 255, 0.86), rgba(220, 237, 255, 0.52)) !important;
+        border: 1px solid rgba(132, 177, 226, 0.46) !important;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.66), 0 12px 30px rgba(36, 88, 140, 0.16) !important;
+        padding: 8px !important;
+        border-radius: 16px !important;
+      }
+      body.category-page .work-card.is-ui-launch img {
+        object-fit: contain !important;
+        object-position: center center !important;
+        background: transparent !important;
+        border-radius: 11px !important;
+        box-shadow: none !important;
+        transform: none !important;
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
   function applyUiChessFit() {
     if (new URLSearchParams(window.location.search).get("cat") !== "ui") return;
     if (document.getElementById("ui-chess-fit")) return;
@@ -58,6 +84,7 @@
   }
 
   applySymbolFrameFit();
+  applyUiLaunchFrames();
   applyUiChessFit();
 
   function posterMap() {
@@ -124,6 +151,7 @@
 
   const bindViewerObserver = () => {
     applySymbolFrameFit();
+    applyUiLaunchFrames();
     applyUiChessFit();
     applyVideoPosters();
 
