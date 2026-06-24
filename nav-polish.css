@@ -151,21 +151,21 @@
 .contact-art-stage .contact-art-phone::after {
   content: "188 0101 7679" !important;
   left: 38.5% !important;
-  top: 42.5% !important;
+  top: 58% !important;
   font-size: clamp(12px, 1.06vw, 20px) !important;
 }
 
 .contact-art-stage .contact-art-wechat::after {
   content: "seerstar195810" !important;
   left: 38.5% !important;
-  top: 43.5% !important;
+  top: 60% !important;
   font-size: clamp(12px, 1.03vw, 19px) !important;
 }
 
 .contact-art-stage .contact-art-mail::after {
   content: "tmdl@vip.sina.com" !important;
   left: 38.5% !important;
-  top: 43.5% !important;
+  top: 60% !important;
   font-size: clamp(11px, 0.98vw, 18px) !important;
   letter-spacing: 0.01em !important;
 }
@@ -173,7 +173,7 @@
 .contact-art-stage .contact-art-bili::after {
   content: "3546742668659042" !important;
   left: 38.5% !important;
-  top: 43.5% !important;
+  top: 60% !important;
   font-size: clamp(11px, 0.92vw, 17px) !important;
   letter-spacing: 0 !important;
 }
@@ -258,7 +258,7 @@
   .contact-art-stage .contact-art-mail::after,
   .contact-art-stage .contact-art-bili::after {
     left: 38.5% !important;
-    top: 43% !important;
+    top: 60% !important;
     font-size: clamp(10px, 2.2vw, 15px) !important;
   }
 }
