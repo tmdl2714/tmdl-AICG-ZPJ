@@ -80,7 +80,7 @@
       ["./icon/icon-扫雷.png", "扫雷"],
       ["./icon/icon-桌面宠物.png", "桌面宠物"],
       ["./icon/icon-相机.png", "相机"],
-      ["./icon/icon-线上课堂.png", "线上课堂"],
+      ["./icon-线上课堂.png?v=online-class-20260624", "线上课堂"],
       ["./icon/icon-购物.png", "购物"],
       ["./icon/icon-银行.png", "银行"]
     ].map(([src, title]) => ({ type: "image", src, title, orientation: "icon-work" })),
