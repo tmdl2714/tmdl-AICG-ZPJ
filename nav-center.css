@@ -1,0 +1,16 @@
+/* Center desktop level-one navigation only. */
+@media (min-width: 901px) {
+  .site-header {
+    grid-template-columns: 1fr auto 1fr;
+  }
+
+  .site-header > .brand {
+    grid-column: 1;
+    justify-self: start;
+  }
+
+  .site-header > .main-nav {
+    grid-column: 2;
+    justify-self: center;
+  }
+}
