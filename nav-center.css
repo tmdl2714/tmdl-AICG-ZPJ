@@ -14,6 +14,13 @@
   }
 }
 
+/* Remove the clipped left edge ghost card in the featured carousel only. */
+#projects .project-edge-clone {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
 html,
 body {
   scrollbar-width: none;
