@@ -1,14 +1,26 @@
-/* Center desktop level-one navigation only. */
+/* Desktop level-one navigation and page scrollbar rail fix. */
 @media (min-width: 901px) {
   .site-header > .brand {
     justify-self: start;
   }
 
   .site-header > .main-nav {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    position: fixed;
+    top: 18px;
+    left: 50vw;
+    transform: translateX(-50%);
     justify-self: auto;
+    z-index: 60;
   }
+}
+
+html,
+body {
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
