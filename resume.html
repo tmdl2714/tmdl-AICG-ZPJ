@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>铁马德龙｜AIGC视觉设计师网页简历</title>
+  <meta name="description" content="铁马德龙 AIGC视觉设计师网页简历：AI图像生成、视觉设计、后期精修、海报Banner、产品展示、IP形象、短视频画面与广告素材制作经验。">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #020914;
+      --panel: rgba(7, 25, 54, 0.76);
+      --line: rgba(116, 190, 255, 0.36);
+      --gold: #d9a64d;
+      --text: #f4f8ff;
+      --muted: #bdd3ec;
+      --dim: #82a8cf;
+      --blue: #68c6ff;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+      background:
+        radial-gradient(circle at 18% 0%, rgba(60, 153, 255, 0.28), transparent 28%),
+        radial-gradient(circle at 86% 14%, rgba(21, 92, 180, 0.32), transparent 34%),
+        linear-gradient(180deg, #020814 0%, #061834 48%, #020914 100%);
+      line-height: 1.8;
+    }
+
+    body::before {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      content: "";
+      background:
+        radial-gradient(circle at 20% 22%, rgba(130, 207, 255, 0.75) 0 1px, transparent 1.8px),
+        radial-gradient(circle at 72% 12%, rgba(130, 207, 255, 0.58) 0 1px, transparent 1.8px),
+        radial-gradient(circle at 88% 48%, rgba(130, 207, 255, 0.4) 0 1px, transparent 1.8px),
+        radial-gradient(ellipse at 50% 100%, rgba(66, 159, 255, 0.22), transparent 55%);
+      opacity: 0.68;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 18px clamp(18px, 4vw, 54px);
+      border-bottom: 1px solid rgba(104, 198, 255, 0.22);
+      background: rgba(2, 9, 20, 0.78);
+      backdrop-filter: blur(18px);
+    }
+
+    .brand strong {
+      display: block;
+      color: var(--gold);
+      font-family: "Noto Serif SC", "SimSun", serif;
+      font-size: 24px;
+      letter-spacing: 0.16em;
+    }
+
+    .brand span {
+      color: var(--dim);
+      font-size: 12px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 16px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav a:hover { color: var(--blue); }
+
+    main {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      padding: 48px 0 72px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 28px;
+      align-items: stretch;
+      margin-bottom: 28px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: linear-gradient(145deg, rgba(10, 39, 83, 0.82), rgba(2, 12, 30, 0.62));
+      box-shadow: 0 26px 70px rgba(0, 8, 25, 0.42), inset 0 0 36px rgba(85, 176, 255, 0.08);
+    }
+
+    .intro-card { padding: clamp(26px, 4vw, 46px); }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--gold);
+      font-size: 13px;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "Noto Serif SC", "SimSun", serif;
+      font-size: clamp(38px, 6vw, 76px);
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      line-height: 1.12;
+      text-shadow: 0 0 30px rgba(104, 198, 255, 0.36);
+    }
+
+    .subtitle {
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: clamp(17px, 2vw, 22px);
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .tags span {
+      padding: 8px 13px;
+      border: 1px solid rgba(217, 166, 77, 0.42);
+      border-radius: 999px;
+      color: #ffe2aa;
+      background: rgba(217, 166, 77, 0.08);
+      font-size: 13px;
+    }
+
+    .profile-card {
+      display: grid;
+      gap: 14px;
+      padding: clamp(24px, 3vw, 34px);
+    }
+
+    .profile-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(116, 190, 255, 0.16);
+    }
+
+    .profile-row span:first-child { color: var(--dim); }
+    .profile-row span:last-child { color: var(--text); text-align: right; }
+
+    section { margin-top: 28px; }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 0 0 20px;
+      font-family: "Noto Serif SC", "SimSun", serif;
+      font-size: clamp(26px, 3vw, 38px);
+      font-weight: 500;
+      letter-spacing: 0.14em;
+    }
+
+    .section-title::after {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(217, 166, 77, 0.88), transparent);
+      content: "";
+    }
+
+    .content { padding: clamp(24px, 3vw, 36px); }
+
+    .summary {
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 22px;
+    }
+
+    .job-title {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      color: #fff1c7;
+      font-weight: 700;
+    }
+
+    ul {
+      margin: 14px 0 0;
+      padding-left: 1.2em;
+      color: var(--muted);
+    }
+
+    li { margin: 8px 0; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .work-item {
+      min-height: 136px;
+      padding: 18px;
+      border: 1px solid rgba(116, 190, 255, 0.22);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .work-item strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #fff1c7;
+      font-size: 17px;
+    }
+
+    .work-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 18px;
+      border: 1px solid rgba(217, 166, 77, 0.58);
+      border-radius: 999px;
+      color: #ffe2aa;
+      background: rgba(217, 166, 77, 0.1);
+    }
+
+    .button.primary {
+      color: #021026;
+      background: linear-gradient(135deg, #ffe1a0, #d9a64d);
+    }
+
+    .footer {
+      margin-top: 36px;
+      color: var(--dim);
+      text-align: center;
+      font-size: 13px;
+      letter-spacing: 0.18em;
+    }
+
+    @media (max-width: 820px) {
+      .page-header { align-items: flex-start; flex-direction: column; }
+      .nav { justify-content: flex-start; }
+      .hero, .grid { grid-template-columns: 1fr; }
+      .profile-row { flex-direction: column; gap: 4px; }
+      .profile-row span:last-child { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+  <header class="page-header">
+    <a class="brand" href="./index.html" aria-label="返回作品集首页">
+      <strong>铁马德龙</strong>
+      <span>AIGC Visual Designer</span>
+    </a>
+    <nav class="nav" aria-label="网页简历导航">
+      <a href="./index.html">作品集首页</a>
+      <a href="#experience">工作经历</a>
+      <a href="#works">作品方向</a>
+      <a href="#contact">联系我</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="resume-title">
+      <div class="card intro-card">
+        <p class="eyebrow">WEB RESUME · 2026</p>
+        <h1 id="resume-title">AIGC视觉设计师</h1>
+        <p class="subtitle">具备 AI 图像生成、视觉设计、后期精修与内容落地经验，能够围绕品牌宣传、活动推广、产品展示、IP形象及短视频画面等需求完成视觉内容制作。</p>
+        <div class="tags" aria-label="核心能力">
+          <span>AI图片生成</span>
+          <span>AI视频视觉</span>
+          <span>海报Banner</span>
+          <span>产品精修</span>
+          <span>IP形象设计</span>
+          <span>短视频画面</span>
+        </div>
+        <div class="cta">
+          <a class="button primary" href="./index.html#projects">查看作品集</a>
+          <a class="button" href="./AIGC简历.pdf" download="铁马德龙简历-AIGC.pdf">下载PDF简历</a>
+        </div>
+      </div>
+
+      <aside class="card profile-card" aria-label="基本信息">
+        <div class="profile-row"><span>姓名</span><span>铁马德龙</span></div>
+        <div class="profile-row"><span>求职方向</span><span>AIGC视觉设计师 / AI创意视觉设计师 / AI内容设计师</span></div>
+        <div class="profile-row"><span>所在地</span><span>北京</span></div>
+        <div class="profile-row"><span>电话</span><span>188 0101 7679</span></div>
+        <div class="profile-row"><span>微信</span><span>seerstar195810</span></div>
+        <div class="profile-row"><span>邮箱</span><span>tmdl@vip.sina.com</span></div>
+      </aside>
+    </section>
+
+    <section class="card content" aria-labelledby="about-title">
+      <h2 id="about-title" class="section-title">个人简介</h2>
+      <p class="summary">我主要做 AIGC 设计相关视觉内容，覆盖 AI 图片生成、视觉方案筛选、PS后期精修、广告图文、平面排版、品牌宣传、活动物料、产品图、IP形象、UI启动页、ICON、字体设计与短视频视觉素材。工作中更关注投放场景、信息层级、画面风格统一和最终输出效果。</p>
+    </section>
+
+    <section id="experience" class="card content" aria-labelledby="experience-title">
+      <h2 id="experience-title" class="section-title">工作经历</h2>
+      <div class="timeline">
+        <article>
+          <div class="job-title">
+            <span>月月合明（北京）文化传媒有限公司｜AIGC视觉设计</span>
+            <span>2024.07 - 2026.06</span>
+          </div>
+          <ul>
+            <li>根据文化活动、品牌宣传及线上投放需求，使用 AI 工具完成活动海报、风格封面、Banner、宣传图、社媒配图等视觉物料生成与优化。</li>
+            <li>结合项目主题、受众定位与投放场景，使用 AI 生成多版视觉方案，并完成画面筛选、构图优化、风格统一及细节修正，提高视觉物料产出效率。</li>
+            <li>负责广告图文、平面排版及品牌宣传相关视觉支持，结合 AI 生成素材完成宣传主视觉、内容封面、活动物料及数字内容设计。</li>
+            <li>参与短视频视觉内容制作，使用 AI 辅助完成视频封面、画面风格参考、分镜画面生成、字幕包装及宣传短片视觉素材整理。</li>
+            <li>使用 AI 工具辅助完成短视频脚本拆解、镜头关键词提炼、动态画面素材生成及视频包装内容制作，提升社媒视频和宣传短片的视觉表现力。</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="works" class="card content" aria-labelledby="works-title">
+      <h2 id="works-title" class="section-title">作品方向</h2>
+      <div class="grid">
+        <article class="work-item"><strong>Banner / 海报</strong><p>活动主视觉、剧本杀宣传、商业推广、线上线下投放物料。</p></article>
+        <article class="work-item"><strong>产品图 / 精修</strong><p>产品质感优化、细节修正、背景处理、商业展示图输出。</p></article>
+        <article class="work-item"><strong>电商模特换装</strong><p>服装迁移、模特展示、风格统一、商品图视觉效率提升。</p></article>
+        <article class="work-item"><strong>IP设计</strong><p>角色主形象、三视图、表情延展、周边应用与品牌化设定。</p></article>
+        <article class="work-item"><strong>UI启动页 / ICON</strong><p>启动页视觉、功能图标、场景化图标与应用入口视觉。</p></article>
+        <article class="work-item"><strong>字体 / 超级符号</strong><p>艺术字、品牌符号、视觉识别点与活动标题字设计。</p></article>
+        <article class="work-item"><strong>AI写真</strong><p>人物风格化写真、商务形象、户外探索、城市青年视觉。</p></article>
+        <article class="work-item"><strong>AI漫剧 / 场景设定</strong><p>角色设定、关键帧、分镜画面、场景氛围与短片视觉包装。</p></article>
+        <article class="work-item"><strong>广告素材</strong><p>围绕卖点、使用场景和投放场景输出可用于推广的视觉素材。</p></article>
+      </div>
+    </section>
+
+    <section class="card content" aria-labelledby="tools-title">
+      <h2 id="tools-title" class="section-title">工具能力</h2>
+      <p class="summary">常用 GPT、Gemini、SD、PS、剪映等工具完成从需求理解、参考整理、提示词拆解、AI生成、筛选优化、后期精修、排版调整到最终交付的流程。</p>
+    </section>
+
+    <section id="contact" class="card content" aria-labelledby="contact-title">
+      <h2 id="contact-title" class="section-title">联系我</h2>
+      <p class="summary">电话：188 0101 7679　｜　微信：seerstar195810　｜　邮箱：tmdl@vip.sina.com</p>
+      <div class="cta">
+        <a class="button primary" href="./index.html">返回作品集首页</a>
+        <a class="button" href="./index.html#contact">查看联系页</a>
+      </div>
+    </section>
+
+    <p class="footer">FUTURE UNFOLDS · CREATION CONTINUES</p>
+  </main>
+</body>
+</html>
